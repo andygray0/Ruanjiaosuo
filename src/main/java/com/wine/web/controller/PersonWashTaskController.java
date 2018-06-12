@@ -177,6 +177,8 @@ public class PersonWashTaskController {
             task2.setId(taskId)
                     .setRealQueryItemCount(task.getItemCount())
                     .setRealFinishedItemCount(task.getItemCount())
+                    .setRealQueryRecordCount(task.getRecordCount())
+                    .setRealFinishedRecordCount(task.getRecordCount())
                     .setWorkLoad(WorkloadKit.countWorkload(task.getItemCount(), task.getItemCount(), task.getCheckTimes(), 1.0));
             personWashTaskService.updateTaskWorkCountByTaskId(task2);
 

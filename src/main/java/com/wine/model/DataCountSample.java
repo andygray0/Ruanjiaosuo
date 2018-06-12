@@ -12,6 +12,12 @@ public class DataCountSample implements Serializable {
     private Integer query = 0;
     private Integer valid = 0;
     private Integer finish = 0;
+
+    private Integer itemRecord = 0;
+    private Integer queryRecord = 0;
+    private Integer validRecord = 0;
+    private Integer finishRecord = 0;
+
     private Integer status;
 
 
@@ -75,6 +81,43 @@ public class DataCountSample implements Serializable {
 
     public DataCountSample setStatus(Integer status) {
         this.status = status;
+        return this;
+    }
+
+
+    public Integer getItemRecord() {
+        return itemRecord;
+    }
+
+    public DataCountSample setItemRecord(Integer itemRecord) {
+        this.itemRecord = itemRecord;
+        return this;
+    }
+
+    public Integer getQueryRecord() {
+        return queryRecord;
+    }
+
+    public DataCountSample setQueryRecord(Integer queryRecord) {
+        this.queryRecord = queryRecord;
+        return this;
+    }
+
+    public Integer getValidRecord() {
+        return validRecord;
+    }
+
+    public DataCountSample setValidRecord(Integer validRecord) {
+        this.validRecord = validRecord;
+        return this;
+    }
+
+    public Integer getFinishRecord() {
+        return finishRecord;
+    }
+
+    public DataCountSample setFinishRecord(Integer finishRecord) {
+        this.finishRecord = finishRecord;
         return this;
     }
 }

@@ -341,7 +341,11 @@
             sum(item_count) AS ITEM,
             sum(real_finished_item_count) AS FINISH,
             sum(real_query_item_count) AS QUERY,
-            0 AS VALID
+            0 AS VALID,
+            sum(record_count) AS ITEM_RECORD,
+            sum(real_finished_record_count) AS FINISH_RECORD,
+            sum(real_query_record_count) AS QUERY_RECORD,
+            0 as VALID_RECORD
         FROM
             (
                 SELECT
@@ -349,6 +353,9 @@
                     item_count,
                     real_query_item_count,
                     real_finished_item_count,
+                    record_count,
+                    real_query_record_count,
+                    real_finished_record_count,
                     date_format(CREATE_TIME, '%Y') AS YEAR,
                     date_format(CREATE_TIME, '%m') AS MONTH
                 FROM

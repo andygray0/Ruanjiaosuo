@@ -41,6 +41,10 @@ public class PersonWashTask implements Serializable {
 
 	private String multiInternFilter;
 
+	private Integer realQueryRecordCount;
+
+	private Integer realFinishedRecordCount;
+
 	public Integer getId(){
 		return this.id;
 	}
@@ -192,4 +196,22 @@ public class PersonWashTask implements Serializable {
         this.multiInternFilter = multiInternFilter;
         return this;
     }
+
+	public Integer getRealQueryRecordCount() {
+		return realQueryRecordCount;
+	}
+
+	public PersonWashTask setRealQueryRecordCount(Integer realQueryRecordCount) {
+		this.realQueryRecordCount = realQueryRecordCount;
+		return this;
+	}
+
+	public Integer getRealFinishedRecordCount() {
+		return realFinishedRecordCount;
+	}
+
+	public PersonWashTask setRealFinishedRecordCount(Integer realFinishedRecordCount) {
+		this.realFinishedRecordCount = realFinishedRecordCount;
+		return this;
+	}
 }

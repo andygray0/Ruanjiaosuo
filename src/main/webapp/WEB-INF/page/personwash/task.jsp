@@ -19,7 +19,7 @@
         div.content_html {
             background-color:#FFFFFF;
         }
-        #left .fixed-table-body{
+        .fixed-table-body{
             max-height:410px;
         }
         .colorOfmintcream{
@@ -157,7 +157,6 @@
                 url: '/personWashTask/findByPage.do',
                 columns: columns,
                 toolbar: 'task-toolbar',
-                height:200,
                 queryParams: function(params) {
                     var temp = {
                         limit: params.limit,

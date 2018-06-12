@@ -715,6 +715,8 @@
         UPDATE  personwash_tasklist
         SET REAL_QUERY_ITEM_COUNT = #{realQueryItemCount},
              REAL_FINISHED_ITEM_COUNT = #{realFinishedItemCount},
+             REAL_QUERY_RECORD_COUNT = #{realQueryRecordCount},
+             REAL_FINISHED_RECORD_COUNT = #{realFinishedRecordCount},
              WORK_LOAD = #{workLoad}
         WHERE
              ID = #{id}

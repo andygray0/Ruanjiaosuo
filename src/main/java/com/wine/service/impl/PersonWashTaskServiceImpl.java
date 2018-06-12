@@ -128,17 +128,21 @@ public class PersonWashTaskServiceImpl implements PersonWashTaskService {
 
             int realQueryCount = 0;
             int realFinishedCount = 0;
+            int realQueryRecordCount = 0;
+            int realFinishedRecordCount = 0;
 
             if(null != dataList && dataList.size() > 0){
                 for(PersonWashWaitCheckData data: dataList){
                     if("1".equals(data.getClReviewStatus())){
                         okList.add(data);
                         realFinishedCount += Integer.parseInt(data.getClCount());
+                        realFinishedRecordCount += 1;
                     } else {
                         failList.add(data);
                     }
                     if("1".equals(data.getClWorkStatus())){
                         realQueryCount += Integer.parseInt(data.getClCount());
+                        realQueryRecordCount += 1;
                     }
                 }
             }
@@ -186,6 +190,8 @@ public class PersonWashTaskServiceImpl implements PersonWashTaskService {
             task2.setId(taskId)
                     .setRealQueryItemCount(realQueryCount)
                     .setRealFinishedItemCount(realFinishedCount)
+                    .setRealQueryRecordCount(realQueryRecordCount)
+                    .setRealFinishedRecordCount(realFinishedRecordCount)
                     .setWorkLoad(0.0);
             personWashTaskMapper.updateTaskWorkCountByTaskId(task2);
 

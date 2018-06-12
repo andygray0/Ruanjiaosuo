@@ -59,33 +59,34 @@ public class PersonWashDataCountController {
                         .setMonth(Integer.parseInt(split[1]));
 
                 if(null != entry.getValue() && entry.getValue().size() > 0){
-                    int item = 0;
-                    int query = 0;
-                    int valid = 0;
-                    int finish = 0;
+                    int itemRecord = 0;
+                    int queryRecord = 0;
+                    int validRecord = 0;
+                    int finishRecord = 0;
                     for(DataCountSample dcs : entry.getValue()){
                         Integer status = dcs.getStatus();
-                        item += dcs.getItem();
+                        itemRecord += dcs.getItemRecord();
                         if(status == 0){ // 查询中
-                            query += dcs.getItem();
+                            queryRecord += dcs.getItemRecord();
                         } else if(status == 1){ // 待验证
-                            valid += dcs.getItem();
+                            validRecord += dcs.getItemRecord();
                         } else if(status == 2){ // 验证通过
-                            finish += dcs.getFinish();
+                            finishRecord += dcs.getFinishRecord();
                         } else if(status == 3) { // 验证退回
-                            query += dcs.getItem();
+                            queryRecord += dcs.getItemRecord();
                         } else if(status == 4){ // 任务被放弃
 
                         } else if(status == 5){ // 放弃后已处理
-                            finish += dcs.getFinish();
+                            finishRecord += dcs.getFinishRecord();
                         }
 
 
                     }
-                    data.setItem(item);
-                    data.setQuery(query);
-                    data.setValid(valid);
-                    data.setFinish(finish);
+                    data.setItemRecord(itemRecord)
+                        .setQueryRecord(queryRecord)
+                        .setValidRecord(validRecord)
+                        .setFinishRecord(finishRecord);
+
                     dataList.add(data);
                 }
 
