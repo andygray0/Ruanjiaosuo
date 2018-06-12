@@ -163,23 +163,23 @@ var tableInit = getDefaultDataGrid({
             align: 'center'
         },
         {
-            field: "item",
-            title: "总数据量(项数)",
+            field: "itemRecord",
+            title: "总数据量(条数)",
             align: 'center'
         },
         {
-            field: "query",
-            title: "查询中(项数)",
+            field: "queryRecord",
+            title: "查询中(条数)",
             align: 'center'
         },
         {
-            field: "valid",
-            title: "待验证(项数)",
+            field: "validRecord",
+            title: "待验证(条数)",
             align: 'center'
         },
         {
-            field: "finish",
-            title: "已完结(项数)",
+            field: "finishRecord",
+            title: "已完结(条数)",
             align: 'center'
         }
     ],
