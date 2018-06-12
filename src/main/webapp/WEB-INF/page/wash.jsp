@@ -693,15 +693,17 @@
     var showall = function(){
         i++;
         if(i%2==1){
+            $('#tb_departments').bootstrapTable('showAllColumns');
             $(".dropdown-menu>li").find("input").each(function(){
                 if(!$(this).get(0).checked){
-                    $(this).click();
+                    $(this).prop("checked",'checked');
                 }
             });
         }else{
+            $('#tb_departments').bootstrapTable('hideAllColumns');
             $(".dropdown-menu>li").find("input").each(function(){
                 if($(this).get(0).checked){
-                    $(this).click();
+                    $(this).prop("checked",false);
                 }
             });
         }
@@ -754,7 +756,7 @@
         $("#btn_query").click(function() {
             var sqlline= getsql();
             if ($("#txt_fromtable").val() == ""  ) {
-                bootbox.alert("请选择数据源表！")
+                bootbox.alert("请选择数据源表！");
 
             } else {
                 var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
@@ -763,8 +765,12 @@
                     fromtable: $("#txt_fromtable").val(),
                     sql: sqlline
                 };
-                $('#tb_departments').bootstrapTable("refresh", temp)
+                $('#tb_departments').bootstrapTable("refresh", temp);
 
+                $('#tb_departments').bootstrapTable('showColumn', 'IR_SITENAME');
+                $('#tb_departments').bootstrapTable('showColumn', 'IR_CHANNEL');
+                $('#tb_departments').bootstrapTable('showColumn', 'IR_URLTITLE');
+                $('#tb_departments').bootstrapTable('showAllColumns');
             }
         });
         $("#btn_wash").click(function(){
@@ -901,6 +907,7 @@
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
                 showExport: false,
+                async:false,
                 onLoadSuccess: function(row,data){
                     $("[data-toggle='tooltip']").tooltip();
                     // $('#tb_departments').bootstrapTable('showColumn', 'IR_SITENAME');

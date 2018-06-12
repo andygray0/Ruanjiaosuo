@@ -522,15 +522,17 @@
     var showall = function(){
         i++;
         if(i%2==1){
+            $('#tb_departments').bootstrapTable('showAllColumns')
             $(".dropdown-menu>li").find("input").each(function(){
                 if(!$(this).get(0).checked){
-                    $(this).click();
+                    $(this).prop("checked",'checked');
                 }
             });
         }else{
+            $('#tb_departments').bootstrapTable('hideAllColumns')
             $(".dropdown-menu>li").find("input").each(function(){
                 if($(this).get(0).checked){
-                    $(this).click();
+                    $(this).prop("checked",false);
                 }
             });
         }
