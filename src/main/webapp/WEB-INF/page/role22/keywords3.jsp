@@ -55,6 +55,11 @@
         #mainDataDiv .fixed-table-body{
             max-height:100%;
         }
+
+        .myeditable-emptyclass{
+            color: red;
+            border-bottom: none!important;
+        }
     </style>
 
 </head>
@@ -415,11 +420,9 @@
                                 title :item.fieldTitle,
                                 validate: function (v) {
                                 if(v.length > 40) return '字符长度不能超过40个';
-                            }
-                        };
-
-                        obj.formatter = function(value, row, index){
-                            return value;
+                            },
+                            emptytext: '——',
+                            emptyclass: 'myeditable-emptyclass'
                         };
 
                         extendsColumns.push(obj);
