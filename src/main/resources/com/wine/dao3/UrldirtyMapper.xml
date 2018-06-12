@@ -1,0 +1,1249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao3.UrldirtyMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model3.Urldirty" >
+    <result column="t_IR_SID" property="irSid" jdbcType="INTEGER" />
+    <result column="t_IR_HKEY" property="irHkey" jdbcType="VARCHAR" />
+    <result column="t_IR_STARTID" property="irStartid" jdbcType="INTEGER" />
+    <result column="t_IR_SERVICEID" property="irServiceid" jdbcType="VARCHAR" />
+    <result column="t_IR_PKEY" property="irPkey" jdbcType="VARCHAR" />
+    <result column="t_IR_URLNAME" property="irUrlname" jdbcType="VARCHAR" />
+    <result column="t_IR_SITENAME" property="irSitename" jdbcType="VARCHAR" />
+    <result column="t_IR_CHANNEL" property="irChannel" jdbcType="VARCHAR" />
+    <result column="t_IR_GROUPNAME" property="irGroupname" jdbcType="VARCHAR" />
+    <result column="t_IR_URLTITLE" property="irUrltitle" jdbcType="VARCHAR" />
+    <result column="t_IR_LASTTIME" property="irLasttime" jdbcType="VARCHAR" />
+    <result column="t_IR_URLDATE" property="irUrldate" jdbcType="VARCHAR" />
+    <result column="t_IR_URLTIME" property="irUrltime" jdbcType="VARCHAR" />
+    <result column="t_IR_LOADTIME" property="irLoadtime" jdbcType="VARCHAR" />
+    <result column="t_IR_SRCNAME" property="irSrcname" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG" property="irCatalog" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG1" property="irCatalog1" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG2" property="irCatalog2" jdbcType="VARCHAR" />
+    <result column="t_IR_SIMFLAG" property="irSimflag" jdbcType="VARCHAR" />
+    <result column="t_IR_SIMRANK" property="irSimrank" jdbcType="VARCHAR" />
+    <result column="t_IR_IMAGEFLAG" property="irImageflag" jdbcType="VARCHAR" />
+    <result column="t_IR_TABLEFLAG" property="irTableflag" jdbcType="VARCHAR" />
+    <result column="t_IR_DOCLENGTH" property="irDoclength" jdbcType="VARCHAR" />
+    <result column="t_IR_BBSNUM" property="irBbsnum" jdbcType="VARCHAR" />
+    <result column="t_IR_BBSTOPIC" property="irBbstopic" jdbcType="VARCHAR" />
+    <result column="t_IR_BBSKEY" property="irBbskey" jdbcType="VARCHAR" />
+    <result column="t_IR_PAGELEVEL" property="irPagelevel" jdbcType="VARCHAR" />
+    <result column="t_IR_PAGERANK" property="irPagerank" jdbcType="VARCHAR" />
+    <result column="t_IR_URLLEVEL" property="irUrllevel" jdbcType="VARCHAR" />
+    <result column="t_IR_MIMETYPE" property="irMimetype" jdbcType="VARCHAR" />
+    <result column="t_IR_FORMAT" property="irFormat" jdbcType="VARCHAR" />
+    <result column="t_IR_CHARSET" property="irCharset" jdbcType="VARCHAR" />
+    <result column="t_IR_URLSIZE" property="irUrlsize" jdbcType="VARCHAR" />
+    <result column="t_IR_URLBODY" property="irUrlbody" jdbcType="VARCHAR" />
+    <result column="t_IR_WCMID" property="irWcmid" jdbcType="VARCHAR" />
+    <result column="t_IR_STATUS" property="irStatus" jdbcType="VARCHAR" />
+    <result column="t_IR_NRESERVED1" property="irNreserved1" jdbcType="VARCHAR" />
+    <result column="t_IR_NRESERVED2" property="irNreserved2" jdbcType="VARCHAR" />
+    <result column="t_IR_NRESERVED3" property="irNreserved3" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED1" property="irVreserved1" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED2" property="irVreserved2" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED3" property="irVreserved3" jdbcType="VARCHAR" />
+    <result column="t_IR_INSERTTIME" property="irInserttime" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_DATE" property="irBiddingDate" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_ID" property="irBiddingId" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_TYPE" property="irBiddingType" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_NAME" property="irBiddingName" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_CONTENT" property="irBiddingContent" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_SOURCE" property="irBiddingSource" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_MONEY" property="irBiddingMoney" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_AGENCY" property="irBiddingAgency" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_ORG" property="irBiddingOrg" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_ADDR" property="irBiddingAddr" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_PER" property="irBiddingPer" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_TEL" property="irBiddingTel" jdbcType="VARCHAR" />
+    <result column="t_IR_BID_DATE" property="irBidDate" jdbcType="VARCHAR" />
+    <result column="t_IR_BID_TYPE" property="irBidType" jdbcType="VARCHAR" />
+    <result column="t_IR_BID_ORG" property="irBidOrg" jdbcType="VARCHAR" />
+    <result column="t_IR_BID_MONEY" property="irBidMoney" jdbcType="VARCHAR" />
+    <result column="t_IR_BID_ADDR" property="irBidAddr" jdbcType="VARCHAR" />
+    <result column="t_IR_ANNULMENT_DATE" property="irAnnulmentDate" jdbcType="VARCHAR" />
+    <result column="t_IR_ANNULMENT_REASON" property="irAnnulmentReason" jdbcType="VARCHAR" />
+    <result column="t_IR_ANNULMENT_TREATMENT" property="irAnnulmentTreatment" jdbcType="VARCHAR" />
+    <result column="t_IR_OPEN_TIME" property="irOpenTime" jdbcType="VARCHAR" />
+    <result column="t_IR_OPEN_ADDR" property="irOpenAddr" jdbcType="VARCHAR" />
+    <result column="t_IR_SALE_START_TIME" property="irSaleStartTime" jdbcType="VARCHAR" />
+    <result column="t_IR_SALE_END_TIME" property="irSaleEndTime" jdbcType="VARCHAR" />
+    <result column="t_IR_QUALIFICATION" property="irQualification" jdbcType="VARCHAR" />
+    <result column="t_IR_SUBCONTRACT" property="irSubcontract" jdbcType="VARCHAR" />
+    <result column="t_IR_TABLE_TAG" property="irTableTag" jdbcType="VARCHAR" />
+    <result column="t_IR_FIRST_ADDR" property="irFirstAddr" jdbcType="VARCHAR" />
+    <result column="t_IR_BANK" property="irBank" jdbcType="VARCHAR" />
+    <result column="t_IR_PRICE" property="irPrice" jdbcType="VARCHAR" />
+    <result column="t_IR_POLICY" property="irPolicy" jdbcType="VARCHAR" />
+    <result column="t_IR_SMALL_ENTERPRISE" property="irSmallEnterprise" jdbcType="VARCHAR" />
+    <result column="t_IR_NATURE" property="irNature" jdbcType="VARCHAR" />
+    <result column="t_IR_MEDIA" property="irMedia" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_FILEID" property="irBiddingFileid" jdbcType="VARCHAR" />
+    <result column="t_IR_BIDDING_NAME_TITLE" property="irBiddingNameTitle" jdbcType="VARCHAR" />
+    <result column="t_IR_PUBLIC_DATE" property="irPublicDate" jdbcType="VARCHAR" />
+    <result column="t_IR_SUBMIT_DATE" property="irSubmitDate" jdbcType="VARCHAR" />
+    <result column="t_IR_ASSOCIATION" property="irAssociation" jdbcType="VARCHAR" />
+    <result column="t_IR_EXPERT" property="irExpert" jdbcType="VARCHAR" />
+    <result column="t_IR_SIGN_DATE" property="irSignDate" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wine.model3.Urldirty" extends="BaseResultMap" >
+    <result column="t_IR_CONTENT" property="irContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.IR_SID as t_IR_SID, t.IR_HKEY as t_IR_HKEY, t.IR_STARTID as t_IR_STARTID, t.IR_SERVICEID as t_IR_SERVICEID, 
+    t.IR_PKEY as t_IR_PKEY, t.IR_URLNAME as t_IR_URLNAME, t.IR_SITENAME as t_IR_SITENAME, 
+    t.IR_CHANNEL as t_IR_CHANNEL, t.IR_GROUPNAME as t_IR_GROUPNAME, t.IR_URLTITLE as t_IR_URLTITLE, 
+    t.IR_LASTTIME as t_IR_LASTTIME, t.IR_URLDATE as t_IR_URLDATE, t.IR_URLTIME as t_IR_URLTIME, 
+    t.IR_LOADTIME as t_IR_LOADTIME, t.IR_SRCNAME as t_IR_SRCNAME, t.IR_CATALOG as t_IR_CATALOG, 
+    t.IR_CATALOG1 as t_IR_CATALOG1, t.IR_CATALOG2 as t_IR_CATALOG2, t.IR_SIMFLAG as t_IR_SIMFLAG, 
+    t.IR_SIMRANK as t_IR_SIMRANK, t.IR_IMAGEFLAG as t_IR_IMAGEFLAG, t.IR_TABLEFLAG as t_IR_TABLEFLAG, 
+    t.IR_DOCLENGTH as t_IR_DOCLENGTH, t.IR_BBSNUM as t_IR_BBSNUM, t.IR_BBSTOPIC as t_IR_BBSTOPIC, 
+    t.IR_BBSKEY as t_IR_BBSKEY, t.IR_PAGELEVEL as t_IR_PAGELEVEL, t.IR_PAGERANK as t_IR_PAGERANK, 
+    t.IR_URLLEVEL as t_IR_URLLEVEL, t.IR_MIMETYPE as t_IR_MIMETYPE, t.IR_FORMAT as t_IR_FORMAT, 
+    t.IR_CHARSET as t_IR_CHARSET, t.IR_URLSIZE as t_IR_URLSIZE, t.IR_URLBODY as t_IR_URLBODY, 
+    t.IR_WCMID as t_IR_WCMID, t.IR_STATUS as t_IR_STATUS, t.IR_NRESERVED1 as t_IR_NRESERVED1, 
+    t.IR_NRESERVED2 as t_IR_NRESERVED2, t.IR_NRESERVED3 as t_IR_NRESERVED3, t.IR_VRESERVED1 as t_IR_VRESERVED1, 
+    t.IR_VRESERVED2 as t_IR_VRESERVED2, t.IR_VRESERVED3 as t_IR_VRESERVED3, t.IR_INSERTTIME as t_IR_INSERTTIME, 
+    t.IR_BIDDING_DATE as t_IR_BIDDING_DATE, t.IR_BIDDING_ID as t_IR_BIDDING_ID, t.IR_BIDDING_TYPE as t_IR_BIDDING_TYPE, 
+    t.IR_BIDDING_NAME as t_IR_BIDDING_NAME, t.IR_BIDDING_CONTENT as t_IR_BIDDING_CONTENT, 
+    t.IR_BIDDING_SOURCE as t_IR_BIDDING_SOURCE, t.IR_BIDDING_MONEY as t_IR_BIDDING_MONEY, 
+    t.IR_BIDDING_AGENCY as t_IR_BIDDING_AGENCY, t.IR_BIDDING_ORG as t_IR_BIDDING_ORG, 
+    t.IR_BIDDING_ADDR as t_IR_BIDDING_ADDR, t.IR_BIDDING_PER as t_IR_BIDDING_PER, t.IR_BIDDING_TEL as t_IR_BIDDING_TEL, 
+    t.IR_BID_DATE as t_IR_BID_DATE, t.IR_BID_TYPE as t_IR_BID_TYPE, t.IR_BID_ORG as t_IR_BID_ORG, 
+    t.IR_BID_MONEY as t_IR_BID_MONEY, t.IR_BID_ADDR as t_IR_BID_ADDR, t.IR_ANNULMENT_DATE as t_IR_ANNULMENT_DATE, 
+    t.IR_ANNULMENT_REASON as t_IR_ANNULMENT_REASON, t.IR_ANNULMENT_TREATMENT as t_IR_ANNULMENT_TREATMENT, 
+    t.IR_OPEN_TIME as t_IR_OPEN_TIME, t.IR_OPEN_ADDR as t_IR_OPEN_ADDR, t.IR_SALE_START_TIME as t_IR_SALE_START_TIME, 
+    t.IR_SALE_END_TIME as t_IR_SALE_END_TIME, t.IR_QUALIFICATION as t_IR_QUALIFICATION, 
+    t.IR_SUBCONTRACT as t_IR_SUBCONTRACT, t.IR_TABLE_TAG as t_IR_TABLE_TAG, t.IR_FIRST_ADDR as t_IR_FIRST_ADDR, 
+    t.IR_BANK as t_IR_BANK, t.IR_PRICE as t_IR_PRICE, t.IR_POLICY as t_IR_POLICY, t.IR_SMALL_ENTERPRISE as t_IR_SMALL_ENTERPRISE, 
+    t.IR_NATURE as t_IR_NATURE, t.IR_MEDIA as t_IR_MEDIA, t.IR_BIDDING_FILEID as t_IR_BIDDING_FILEID, 
+    t.IR_BIDDING_NAME_TITLE as t_IR_BIDDING_NAME_TITLE, t.IR_PUBLIC_DATE as t_IR_PUBLIC_DATE, 
+    t.IR_SUBMIT_DATE as t_IR_SUBMIT_DATE, t.IR_ASSOCIATION as t_IR_ASSOCIATION, t.IR_EXPERT as t_IR_EXPERT, 
+    t.IR_SIGN_DATE as t_IR_SIGN_DATE
+  </sql>
+  <sql id="Blob_Column_List" >
+    t.IR_CONTENT as t_IR_CONTENT
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.wine.model3.UrldirtyCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from sheet1 t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model3.UrldirtyCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from sheet1 t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.wine.model3.UrldirtyCriteria" >
+    delete from sheet1 t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wine.model3.Urldirty" >
+    insert into sheet1 (IR_SID, IR_HKEY, IR_STARTID, 
+      IR_SERVICEID, IR_PKEY, IR_URLNAME, 
+      IR_SITENAME, IR_CHANNEL, IR_GROUPNAME, 
+      IR_URLTITLE, IR_LASTTIME, IR_URLDATE, 
+      IR_URLTIME, IR_LOADTIME, IR_SRCNAME, 
+      IR_CATALOG, IR_CATALOG1, IR_CATALOG2, 
+      IR_SIMFLAG, IR_SIMRANK, IR_IMAGEFLAG, 
+      IR_TABLEFLAG, IR_DOCLENGTH, IR_BBSNUM, 
+      IR_BBSTOPIC, IR_BBSKEY, IR_PAGELEVEL, 
+      IR_PAGERANK, IR_URLLEVEL, IR_MIMETYPE, 
+      IR_FORMAT, IR_CHARSET, IR_URLSIZE, 
+      IR_URLBODY, IR_WCMID, IR_STATUS, 
+      IR_NRESERVED1, IR_NRESERVED2, IR_NRESERVED3, 
+      IR_VRESERVED1, IR_VRESERVED2, IR_VRESERVED3, 
+      IR_INSERTTIME, IR_BIDDING_DATE, IR_BIDDING_ID, 
+      IR_BIDDING_TYPE, IR_BIDDING_NAME, IR_BIDDING_CONTENT, 
+      IR_BIDDING_SOURCE, IR_BIDDING_MONEY, IR_BIDDING_AGENCY, 
+      IR_BIDDING_ORG, IR_BIDDING_ADDR, IR_BIDDING_PER, 
+      IR_BIDDING_TEL, IR_BID_DATE, IR_BID_TYPE, 
+      IR_BID_ORG, IR_BID_MONEY, IR_BID_ADDR, 
+      IR_ANNULMENT_DATE, IR_ANNULMENT_REASON, IR_ANNULMENT_TREATMENT, 
+      IR_OPEN_TIME, IR_OPEN_ADDR, IR_SALE_START_TIME, 
+      IR_SALE_END_TIME, IR_QUALIFICATION, IR_SUBCONTRACT, 
+      IR_TABLE_TAG, IR_FIRST_ADDR, IR_BANK, 
+      IR_PRICE, IR_POLICY, IR_SMALL_ENTERPRISE, 
+      IR_NATURE, IR_MEDIA, IR_BIDDING_FILEID, 
+      IR_BIDDING_NAME_TITLE, IR_PUBLIC_DATE, IR_SUBMIT_DATE, 
+      IR_ASSOCIATION, IR_EXPERT, IR_SIGN_DATE, 
+      IR_CONTENT)
+    values (#{irSid,jdbcType=INTEGER}, #{irHkey,jdbcType=VARCHAR}, #{irStartid,jdbcType=INTEGER}, 
+      #{irServiceid,jdbcType=VARCHAR}, #{irPkey,jdbcType=VARCHAR}, #{irUrlname,jdbcType=VARCHAR}, 
+      #{irSitename,jdbcType=VARCHAR}, #{irChannel,jdbcType=VARCHAR}, #{irGroupname,jdbcType=VARCHAR}, 
+      #{irUrltitle,jdbcType=VARCHAR}, #{irLasttime,jdbcType=VARCHAR}, #{irUrldate,jdbcType=VARCHAR}, 
+      #{irUrltime,jdbcType=VARCHAR}, #{irLoadtime,jdbcType=VARCHAR}, #{irSrcname,jdbcType=VARCHAR}, 
+      #{irCatalog,jdbcType=VARCHAR}, #{irCatalog1,jdbcType=VARCHAR}, #{irCatalog2,jdbcType=VARCHAR}, 
+      #{irSimflag,jdbcType=VARCHAR}, #{irSimrank,jdbcType=VARCHAR}, #{irImageflag,jdbcType=VARCHAR}, 
+      #{irTableflag,jdbcType=VARCHAR}, #{irDoclength,jdbcType=VARCHAR}, #{irBbsnum,jdbcType=VARCHAR}, 
+      #{irBbstopic,jdbcType=VARCHAR}, #{irBbskey,jdbcType=VARCHAR}, #{irPagelevel,jdbcType=VARCHAR}, 
+      #{irPagerank,jdbcType=VARCHAR}, #{irUrllevel,jdbcType=VARCHAR}, #{irMimetype,jdbcType=VARCHAR}, 
+      #{irFormat,jdbcType=VARCHAR}, #{irCharset,jdbcType=VARCHAR}, #{irUrlsize,jdbcType=VARCHAR}, 
+      #{irUrlbody,jdbcType=VARCHAR}, #{irWcmid,jdbcType=VARCHAR}, #{irStatus,jdbcType=VARCHAR}, 
+      #{irNreserved1,jdbcType=VARCHAR}, #{irNreserved2,jdbcType=VARCHAR}, #{irNreserved3,jdbcType=VARCHAR}, 
+      #{irVreserved1,jdbcType=VARCHAR}, #{irVreserved2,jdbcType=VARCHAR}, #{irVreserved3,jdbcType=VARCHAR}, 
+      #{irInserttime,jdbcType=VARCHAR}, #{irBiddingDate,jdbcType=VARCHAR}, #{irBiddingId,jdbcType=VARCHAR}, 
+      #{irBiddingType,jdbcType=VARCHAR}, #{irBiddingName,jdbcType=VARCHAR}, #{irBiddingContent,jdbcType=VARCHAR}, 
+      #{irBiddingSource,jdbcType=VARCHAR}, #{irBiddingMoney,jdbcType=VARCHAR}, #{irBiddingAgency,jdbcType=VARCHAR}, 
+      #{irBiddingOrg,jdbcType=VARCHAR}, #{irBiddingAddr,jdbcType=VARCHAR}, #{irBiddingPer,jdbcType=VARCHAR}, 
+      #{irBiddingTel,jdbcType=VARCHAR}, #{irBidDate,jdbcType=VARCHAR}, #{irBidType,jdbcType=VARCHAR}, 
+      #{irBidOrg,jdbcType=VARCHAR}, #{irBidMoney,jdbcType=VARCHAR}, #{irBidAddr,jdbcType=VARCHAR}, 
+      #{irAnnulmentDate,jdbcType=VARCHAR}, #{irAnnulmentReason,jdbcType=VARCHAR}, #{irAnnulmentTreatment,jdbcType=VARCHAR}, 
+      #{irOpenTime,jdbcType=VARCHAR}, #{irOpenAddr,jdbcType=VARCHAR}, #{irSaleStartTime,jdbcType=VARCHAR}, 
+      #{irSaleEndTime,jdbcType=VARCHAR}, #{irQualification,jdbcType=VARCHAR}, #{irSubcontract,jdbcType=VARCHAR}, 
+      #{irTableTag,jdbcType=VARCHAR}, #{irFirstAddr,jdbcType=VARCHAR}, #{irBank,jdbcType=VARCHAR}, 
+      #{irPrice,jdbcType=VARCHAR}, #{irPolicy,jdbcType=VARCHAR}, #{irSmallEnterprise,jdbcType=VARCHAR}, 
+      #{irNature,jdbcType=VARCHAR}, #{irMedia,jdbcType=VARCHAR}, #{irBiddingFileid,jdbcType=VARCHAR}, 
+      #{irBiddingNameTitle,jdbcType=VARCHAR}, #{irPublicDate,jdbcType=VARCHAR}, #{irSubmitDate,jdbcType=VARCHAR}, 
+      #{irAssociation,jdbcType=VARCHAR}, #{irExpert,jdbcType=VARCHAR}, #{irSignDate,jdbcType=VARCHAR}, 
+      #{irContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.model3.Urldirty" >
+    insert into sheet1
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="irSid != null" >
+        IR_SID,
+      </if>
+      <if test="irHkey != null" >
+        IR_HKEY,
+      </if>
+      <if test="irStartid != null" >
+        IR_STARTID,
+      </if>
+      <if test="irServiceid != null" >
+        IR_SERVICEID,
+      </if>
+      <if test="irPkey != null" >
+        IR_PKEY,
+      </if>
+      <if test="irUrlname != null" >
+        IR_URLNAME,
+      </if>
+      <if test="irSitename != null" >
+        IR_SITENAME,
+      </if>
+      <if test="irChannel != null" >
+        IR_CHANNEL,
+      </if>
+      <if test="irGroupname != null" >
+        IR_GROUPNAME,
+      </if>
+      <if test="irUrltitle != null" >
+        IR_URLTITLE,
+      </if>
+      <if test="irLasttime != null" >
+        IR_LASTTIME,
+      </if>
+      <if test="irUrldate != null" >
+        IR_URLDATE,
+      </if>
+      <if test="irUrltime != null" >
+        IR_URLTIME,
+      </if>
+      <if test="irLoadtime != null" >
+        IR_LOADTIME,
+      </if>
+      <if test="irSrcname != null" >
+        IR_SRCNAME,
+      </if>
+      <if test="irCatalog != null" >
+        IR_CATALOG,
+      </if>
+      <if test="irCatalog1 != null" >
+        IR_CATALOG1,
+      </if>
+      <if test="irCatalog2 != null" >
+        IR_CATALOG2,
+      </if>
+      <if test="irSimflag != null" >
+        IR_SIMFLAG,
+      </if>
+      <if test="irSimrank != null" >
+        IR_SIMRANK,
+      </if>
+      <if test="irImageflag != null" >
+        IR_IMAGEFLAG,
+      </if>
+      <if test="irTableflag != null" >
+        IR_TABLEFLAG,
+      </if>
+      <if test="irDoclength != null" >
+        IR_DOCLENGTH,
+      </if>
+      <if test="irBbsnum != null" >
+        IR_BBSNUM,
+      </if>
+      <if test="irBbstopic != null" >
+        IR_BBSTOPIC,
+      </if>
+      <if test="irBbskey != null" >
+        IR_BBSKEY,
+      </if>
+      <if test="irPagelevel != null" >
+        IR_PAGELEVEL,
+      </if>
+      <if test="irPagerank != null" >
+        IR_PAGERANK,
+      </if>
+      <if test="irUrllevel != null" >
+        IR_URLLEVEL,
+      </if>
+      <if test="irMimetype != null" >
+        IR_MIMETYPE,
+      </if>
+      <if test="irFormat != null" >
+        IR_FORMAT,
+      </if>
+      <if test="irCharset != null" >
+        IR_CHARSET,
+      </if>
+      <if test="irUrlsize != null" >
+        IR_URLSIZE,
+      </if>
+      <if test="irUrlbody != null" >
+        IR_URLBODY,
+      </if>
+      <if test="irWcmid != null" >
+        IR_WCMID,
+      </if>
+      <if test="irStatus != null" >
+        IR_STATUS,
+      </if>
+      <if test="irNreserved1 != null" >
+        IR_NRESERVED1,
+      </if>
+      <if test="irNreserved2 != null" >
+        IR_NRESERVED2,
+      </if>
+      <if test="irNreserved3 != null" >
+        IR_NRESERVED3,
+      </if>
+      <if test="irVreserved1 != null" >
+        IR_VRESERVED1,
+      </if>
+      <if test="irVreserved2 != null" >
+        IR_VRESERVED2,
+      </if>
+      <if test="irVreserved3 != null" >
+        IR_VRESERVED3,
+      </if>
+      <if test="irInserttime != null" >
+        IR_INSERTTIME,
+      </if>
+      <if test="irBiddingDate != null" >
+        IR_BIDDING_DATE,
+      </if>
+      <if test="irBiddingId != null" >
+        IR_BIDDING_ID,
+      </if>
+      <if test="irBiddingType != null" >
+        IR_BIDDING_TYPE,
+      </if>
+      <if test="irBiddingName != null" >
+        IR_BIDDING_NAME,
+      </if>
+      <if test="irBiddingContent != null" >
+        IR_BIDDING_CONTENT,
+      </if>
+      <if test="irBiddingSource != null" >
+        IR_BIDDING_SOURCE,
+      </if>
+      <if test="irBiddingMoney != null" >
+        IR_BIDDING_MONEY,
+      </if>
+      <if test="irBiddingAgency != null" >
+        IR_BIDDING_AGENCY,
+      </if>
+      <if test="irBiddingOrg != null" >
+        IR_BIDDING_ORG,
+      </if>
+      <if test="irBiddingAddr != null" >
+        IR_BIDDING_ADDR,
+      </if>
+      <if test="irBiddingPer != null" >
+        IR_BIDDING_PER,
+      </if>
+      <if test="irBiddingTel != null" >
+        IR_BIDDING_TEL,
+      </if>
+      <if test="irBidDate != null" >
+        IR_BID_DATE,
+      </if>
+      <if test="irBidType != null" >
+        IR_BID_TYPE,
+      </if>
+      <if test="irBidOrg != null" >
+        IR_BID_ORG,
+      </if>
+      <if test="irBidMoney != null" >
+        IR_BID_MONEY,
+      </if>
+      <if test="irBidAddr != null" >
+        IR_BID_ADDR,
+      </if>
+      <if test="irAnnulmentDate != null" >
+        IR_ANNULMENT_DATE,
+      </if>
+      <if test="irAnnulmentReason != null" >
+        IR_ANNULMENT_REASON,
+      </if>
+      <if test="irAnnulmentTreatment != null" >
+        IR_ANNULMENT_TREATMENT,
+      </if>
+      <if test="irOpenTime != null" >
+        IR_OPEN_TIME,
+      </if>
+      <if test="irOpenAddr != null" >
+        IR_OPEN_ADDR,
+      </if>
+      <if test="irSaleStartTime != null" >
+        IR_SALE_START_TIME,
+      </if>
+      <if test="irSaleEndTime != null" >
+        IR_SALE_END_TIME,
+      </if>
+      <if test="irQualification != null" >
+        IR_QUALIFICATION,
+      </if>
+      <if test="irSubcontract != null" >
+        IR_SUBCONTRACT,
+      </if>
+      <if test="irTableTag != null" >
+        IR_TABLE_TAG,
+      </if>
+      <if test="irFirstAddr != null" >
+        IR_FIRST_ADDR,
+      </if>
+      <if test="irBank != null" >
+        IR_BANK,
+      </if>
+      <if test="irPrice != null" >
+        IR_PRICE,
+      </if>
+      <if test="irPolicy != null" >
+        IR_POLICY,
+      </if>
+      <if test="irSmallEnterprise != null" >
+        IR_SMALL_ENTERPRISE,
+      </if>
+      <if test="irNature != null" >
+        IR_NATURE,
+      </if>
+      <if test="irMedia != null" >
+        IR_MEDIA,
+      </if>
+      <if test="irBiddingFileid != null" >
+        IR_BIDDING_FILEID,
+      </if>
+      <if test="irBiddingNameTitle != null" >
+        IR_BIDDING_NAME_TITLE,
+      </if>
+      <if test="irPublicDate != null" >
+        IR_PUBLIC_DATE,
+      </if>
+      <if test="irSubmitDate != null" >
+        IR_SUBMIT_DATE,
+      </if>
+      <if test="irAssociation != null" >
+        IR_ASSOCIATION,
+      </if>
+      <if test="irExpert != null" >
+        IR_EXPERT,
+      </if>
+      <if test="irSignDate != null" >
+        IR_SIGN_DATE,
+      </if>
+      <if test="irContent != null" >
+        IR_CONTENT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="irSid != null" >
+        #{irSid,jdbcType=INTEGER},
+      </if>
+      <if test="irHkey != null" >
+        #{irHkey,jdbcType=VARCHAR},
+      </if>
+      <if test="irStartid != null" >
+        #{irStartid,jdbcType=INTEGER},
+      </if>
+      <if test="irServiceid != null" >
+        #{irServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="irPkey != null" >
+        #{irPkey,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlname != null" >
+        #{irUrlname,jdbcType=VARCHAR},
+      </if>
+      <if test="irSitename != null" >
+        #{irSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="irChannel != null" >
+        #{irChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="irGroupname != null" >
+        #{irGroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltitle != null" >
+        #{irUrltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="irLasttime != null" >
+        #{irLasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrldate != null" >
+        #{irUrldate,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltime != null" >
+        #{irUrltime,jdbcType=VARCHAR},
+      </if>
+      <if test="irLoadtime != null" >
+        #{irLoadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="irSrcname != null" >
+        #{irSrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog != null" >
+        #{irCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog1 != null" >
+        #{irCatalog1,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog2 != null" >
+        #{irCatalog2,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimflag != null" >
+        #{irSimflag,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimrank != null" >
+        #{irSimrank,jdbcType=VARCHAR},
+      </if>
+      <if test="irImageflag != null" >
+        #{irImageflag,jdbcType=VARCHAR},
+      </if>
+      <if test="irTableflag != null" >
+        #{irTableflag,jdbcType=VARCHAR},
+      </if>
+      <if test="irDoclength != null" >
+        #{irDoclength,jdbcType=VARCHAR},
+      </if>
+      <if test="irBbsnum != null" >
+        #{irBbsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="irBbstopic != null" >
+        #{irBbstopic,jdbcType=VARCHAR},
+      </if>
+      <if test="irBbskey != null" >
+        #{irBbskey,jdbcType=VARCHAR},
+      </if>
+      <if test="irPagelevel != null" >
+        #{irPagelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="irPagerank != null" >
+        #{irPagerank,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrllevel != null" >
+        #{irUrllevel,jdbcType=VARCHAR},
+      </if>
+      <if test="irMimetype != null" >
+        #{irMimetype,jdbcType=VARCHAR},
+      </if>
+      <if test="irFormat != null" >
+        #{irFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="irCharset != null" >
+        #{irCharset,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlsize != null" >
+        #{irUrlsize,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlbody != null" >
+        #{irUrlbody,jdbcType=VARCHAR},
+      </if>
+      <if test="irWcmid != null" >
+        #{irWcmid,jdbcType=VARCHAR},
+      </if>
+      <if test="irStatus != null" >
+        #{irStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="irNreserved1 != null" >
+        #{irNreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irNreserved2 != null" >
+        #{irNreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irNreserved3 != null" >
+        #{irNreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved1 != null" >
+        #{irVreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved2 != null" >
+        #{irVreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved3 != null" >
+        #{irVreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irInserttime != null" >
+        #{irInserttime,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingDate != null" >
+        #{irBiddingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingId != null" >
+        #{irBiddingId,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingType != null" >
+        #{irBiddingType,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingName != null" >
+        #{irBiddingName,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingContent != null" >
+        #{irBiddingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingSource != null" >
+        #{irBiddingSource,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingMoney != null" >
+        #{irBiddingMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingAgency != null" >
+        #{irBiddingAgency,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingOrg != null" >
+        #{irBiddingOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingAddr != null" >
+        #{irBiddingAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingPer != null" >
+        #{irBiddingPer,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingTel != null" >
+        #{irBiddingTel,jdbcType=VARCHAR},
+      </if>
+      <if test="irBidDate != null" >
+        #{irBidDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irBidType != null" >
+        #{irBidType,jdbcType=VARCHAR},
+      </if>
+      <if test="irBidOrg != null" >
+        #{irBidOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="irBidMoney != null" >
+        #{irBidMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="irBidAddr != null" >
+        #{irBidAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="irAnnulmentDate != null" >
+        #{irAnnulmentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irAnnulmentReason != null" >
+        #{irAnnulmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="irAnnulmentTreatment != null" >
+        #{irAnnulmentTreatment,jdbcType=VARCHAR},
+      </if>
+      <if test="irOpenTime != null" >
+        #{irOpenTime,jdbcType=VARCHAR},
+      </if>
+      <if test="irOpenAddr != null" >
+        #{irOpenAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="irSaleStartTime != null" >
+        #{irSaleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="irSaleEndTime != null" >
+        #{irSaleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="irQualification != null" >
+        #{irQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="irSubcontract != null" >
+        #{irSubcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="irTableTag != null" >
+        #{irTableTag,jdbcType=VARCHAR},
+      </if>
+      <if test="irFirstAddr != null" >
+        #{irFirstAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="irBank != null" >
+        #{irBank,jdbcType=VARCHAR},
+      </if>
+      <if test="irPrice != null" >
+        #{irPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="irPolicy != null" >
+        #{irPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="irSmallEnterprise != null" >
+        #{irSmallEnterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="irNature != null" >
+        #{irNature,jdbcType=VARCHAR},
+      </if>
+      <if test="irMedia != null" >
+        #{irMedia,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingFileid != null" >
+        #{irBiddingFileid,jdbcType=VARCHAR},
+      </if>
+      <if test="irBiddingNameTitle != null" >
+        #{irBiddingNameTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="irPublicDate != null" >
+        #{irPublicDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irSubmitDate != null" >
+        #{irSubmitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irAssociation != null" >
+        #{irAssociation,jdbcType=VARCHAR},
+      </if>
+      <if test="irExpert != null" >
+        #{irExpert,jdbcType=VARCHAR},
+      </if>
+      <if test="irSignDate != null" >
+        #{irSignDate,jdbcType=VARCHAR},
+      </if>
+      <if test="irContent != null" >
+        #{irContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wine.model3.UrldirtyCriteria" resultType="java.lang.Integer" >
+    select count(*) from sheet1 t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update sheet1 t
+    <set >
+      <if test="record.irSid != null" >
+        t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      </if>
+      <if test="record.irHkey != null" >
+        t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irStartid != null" >
+        t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      </if>
+      <if test="record.irServiceid != null" >
+        t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPkey != null" >
+        t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrlname != null" >
+        t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSitename != null" >
+        t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irChannel != null" >
+        t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irGroupname != null" >
+        t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrltitle != null" >
+        t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irLasttime != null" >
+        t.IR_LASTTIME = #{record.irLasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrldate != null" >
+        t.IR_URLDATE = #{record.irUrldate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrltime != null" >
+        t.IR_URLTIME = #{record.irUrltime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irLoadtime != null" >
+        t.IR_LOADTIME = #{record.irLoadtime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSrcname != null" >
+        t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog != null" >
+        t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog1 != null" >
+        t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog2 != null" >
+        t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSimflag != null" >
+        t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSimrank != null" >
+        t.IR_SIMRANK = #{record.irSimrank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irImageflag != null" >
+        t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irTableflag != null" >
+        t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irDoclength != null" >
+        t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBbsnum != null" >
+        t.IR_BBSNUM = #{record.irBbsnum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBbstopic != null" >
+        t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBbskey != null" >
+        t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPagelevel != null" >
+        t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPagerank != null" >
+        t.IR_PAGERANK = #{record.irPagerank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrllevel != null" >
+        t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irMimetype != null" >
+        t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irFormat != null" >
+        t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCharset != null" >
+        t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrlsize != null" >
+        t.IR_URLSIZE = #{record.irUrlsize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrlbody != null" >
+        t.IR_URLBODY = #{record.irUrlbody,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irWcmid != null" >
+        t.IR_WCMID = #{record.irWcmid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irStatus != null" >
+        t.IR_STATUS = #{record.irStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irNreserved1 != null" >
+        t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irNreserved2 != null" >
+        t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irNreserved3 != null" >
+        t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved1 != null" >
+        t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved2 != null" >
+        t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved3 != null" >
+        t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irInserttime != null" >
+        t.IR_INSERTTIME = #{record.irInserttime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingDate != null" >
+        t.IR_BIDDING_DATE = #{record.irBiddingDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingId != null" >
+        t.IR_BIDDING_ID = #{record.irBiddingId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingType != null" >
+        t.IR_BIDDING_TYPE = #{record.irBiddingType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingName != null" >
+        t.IR_BIDDING_NAME = #{record.irBiddingName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingContent != null" >
+        t.IR_BIDDING_CONTENT = #{record.irBiddingContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingSource != null" >
+        t.IR_BIDDING_SOURCE = #{record.irBiddingSource,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingMoney != null" >
+        t.IR_BIDDING_MONEY = #{record.irBiddingMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingAgency != null" >
+        t.IR_BIDDING_AGENCY = #{record.irBiddingAgency,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingOrg != null" >
+        t.IR_BIDDING_ORG = #{record.irBiddingOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingAddr != null" >
+        t.IR_BIDDING_ADDR = #{record.irBiddingAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingPer != null" >
+        t.IR_BIDDING_PER = #{record.irBiddingPer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingTel != null" >
+        t.IR_BIDDING_TEL = #{record.irBiddingTel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBidDate != null" >
+        t.IR_BID_DATE = #{record.irBidDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBidType != null" >
+        t.IR_BID_TYPE = #{record.irBidType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBidOrg != null" >
+        t.IR_BID_ORG = #{record.irBidOrg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBidMoney != null" >
+        t.IR_BID_MONEY = #{record.irBidMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBidAddr != null" >
+        t.IR_BID_ADDR = #{record.irBidAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAnnulmentDate != null" >
+        t.IR_ANNULMENT_DATE = #{record.irAnnulmentDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAnnulmentReason != null" >
+        t.IR_ANNULMENT_REASON = #{record.irAnnulmentReason,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAnnulmentTreatment != null" >
+        t.IR_ANNULMENT_TREATMENT = #{record.irAnnulmentTreatment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irOpenTime != null" >
+        t.IR_OPEN_TIME = #{record.irOpenTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irOpenAddr != null" >
+        t.IR_OPEN_ADDR = #{record.irOpenAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSaleStartTime != null" >
+        t.IR_SALE_START_TIME = #{record.irSaleStartTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSaleEndTime != null" >
+        t.IR_SALE_END_TIME = #{record.irSaleEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irQualification != null" >
+        t.IR_QUALIFICATION = #{record.irQualification,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSubcontract != null" >
+        t.IR_SUBCONTRACT = #{record.irSubcontract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irTableTag != null" >
+        t.IR_TABLE_TAG = #{record.irTableTag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irFirstAddr != null" >
+        t.IR_FIRST_ADDR = #{record.irFirstAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBank != null" >
+        t.IR_BANK = #{record.irBank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPrice != null" >
+        t.IR_PRICE = #{record.irPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPolicy != null" >
+        t.IR_POLICY = #{record.irPolicy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSmallEnterprise != null" >
+        t.IR_SMALL_ENTERPRISE = #{record.irSmallEnterprise,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irNature != null" >
+        t.IR_NATURE = #{record.irNature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irMedia != null" >
+        t.IR_MEDIA = #{record.irMedia,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingFileid != null" >
+        t.IR_BIDDING_FILEID = #{record.irBiddingFileid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBiddingNameTitle != null" >
+        t.IR_BIDDING_NAME_TITLE = #{record.irBiddingNameTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPublicDate != null" >
+        t.IR_PUBLIC_DATE = #{record.irPublicDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSubmitDate != null" >
+        t.IR_SUBMIT_DATE = #{record.irSubmitDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAssociation != null" >
+        t.IR_ASSOCIATION = #{record.irAssociation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irExpert != null" >
+        t.IR_EXPERT = #{record.irExpert,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSignDate != null" >
+        t.IR_SIGN_DATE = #{record.irSignDate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irContent != null" >
+        t.IR_CONTENT = #{record.irContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update sheet1 t
+    set t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      t.IR_LASTTIME = #{record.irLasttime,jdbcType=VARCHAR},
+      t.IR_URLDATE = #{record.irUrldate,jdbcType=VARCHAR},
+      t.IR_URLTIME = #{record.irUrltime,jdbcType=VARCHAR},
+      t.IR_LOADTIME = #{record.irLoadtime,jdbcType=VARCHAR},
+      t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      t.IR_SIMRANK = #{record.irSimrank,jdbcType=VARCHAR},
+      t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=VARCHAR},
+      t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=VARCHAR},
+      t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=VARCHAR},
+      t.IR_BBSNUM = #{record.irBbsnum,jdbcType=VARCHAR},
+      t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=VARCHAR},
+      t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=VARCHAR},
+      t.IR_PAGERANK = #{record.irPagerank,jdbcType=VARCHAR},
+      t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=VARCHAR},
+      t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      t.IR_URLSIZE = #{record.irUrlsize,jdbcType=VARCHAR},
+      t.IR_URLBODY = #{record.irUrlbody,jdbcType=VARCHAR},
+      t.IR_WCMID = #{record.irWcmid,jdbcType=VARCHAR},
+      t.IR_STATUS = #{record.irStatus,jdbcType=VARCHAR},
+      t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=VARCHAR},
+      t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=VARCHAR},
+      t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=VARCHAR},
+      t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      t.IR_INSERTTIME = #{record.irInserttime,jdbcType=VARCHAR},
+      t.IR_BIDDING_DATE = #{record.irBiddingDate,jdbcType=VARCHAR},
+      t.IR_BIDDING_ID = #{record.irBiddingId,jdbcType=VARCHAR},
+      t.IR_BIDDING_TYPE = #{record.irBiddingType,jdbcType=VARCHAR},
+      t.IR_BIDDING_NAME = #{record.irBiddingName,jdbcType=VARCHAR},
+      t.IR_BIDDING_CONTENT = #{record.irBiddingContent,jdbcType=VARCHAR},
+      t.IR_BIDDING_SOURCE = #{record.irBiddingSource,jdbcType=VARCHAR},
+      t.IR_BIDDING_MONEY = #{record.irBiddingMoney,jdbcType=VARCHAR},
+      t.IR_BIDDING_AGENCY = #{record.irBiddingAgency,jdbcType=VARCHAR},
+      t.IR_BIDDING_ORG = #{record.irBiddingOrg,jdbcType=VARCHAR},
+      t.IR_BIDDING_ADDR = #{record.irBiddingAddr,jdbcType=VARCHAR},
+      t.IR_BIDDING_PER = #{record.irBiddingPer,jdbcType=VARCHAR},
+      t.IR_BIDDING_TEL = #{record.irBiddingTel,jdbcType=VARCHAR},
+      t.IR_BID_DATE = #{record.irBidDate,jdbcType=VARCHAR},
+      t.IR_BID_TYPE = #{record.irBidType,jdbcType=VARCHAR},
+      t.IR_BID_ORG = #{record.irBidOrg,jdbcType=VARCHAR},
+      t.IR_BID_MONEY = #{record.irBidMoney,jdbcType=VARCHAR},
+      t.IR_BID_ADDR = #{record.irBidAddr,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_DATE = #{record.irAnnulmentDate,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_REASON = #{record.irAnnulmentReason,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_TREATMENT = #{record.irAnnulmentTreatment,jdbcType=VARCHAR},
+      t.IR_OPEN_TIME = #{record.irOpenTime,jdbcType=VARCHAR},
+      t.IR_OPEN_ADDR = #{record.irOpenAddr,jdbcType=VARCHAR},
+      t.IR_SALE_START_TIME = #{record.irSaleStartTime,jdbcType=VARCHAR},
+      t.IR_SALE_END_TIME = #{record.irSaleEndTime,jdbcType=VARCHAR},
+      t.IR_QUALIFICATION = #{record.irQualification,jdbcType=VARCHAR},
+      t.IR_SUBCONTRACT = #{record.irSubcontract,jdbcType=VARCHAR},
+      t.IR_TABLE_TAG = #{record.irTableTag,jdbcType=VARCHAR},
+      t.IR_FIRST_ADDR = #{record.irFirstAddr,jdbcType=VARCHAR},
+      t.IR_BANK = #{record.irBank,jdbcType=VARCHAR},
+      t.IR_PRICE = #{record.irPrice,jdbcType=VARCHAR},
+      t.IR_POLICY = #{record.irPolicy,jdbcType=VARCHAR},
+      t.IR_SMALL_ENTERPRISE = #{record.irSmallEnterprise,jdbcType=VARCHAR},
+      t.IR_NATURE = #{record.irNature,jdbcType=VARCHAR},
+      t.IR_MEDIA = #{record.irMedia,jdbcType=VARCHAR},
+      t.IR_BIDDING_FILEID = #{record.irBiddingFileid,jdbcType=VARCHAR},
+      t.IR_BIDDING_NAME_TITLE = #{record.irBiddingNameTitle,jdbcType=VARCHAR},
+      t.IR_PUBLIC_DATE = #{record.irPublicDate,jdbcType=VARCHAR},
+      t.IR_SUBMIT_DATE = #{record.irSubmitDate,jdbcType=VARCHAR},
+      t.IR_ASSOCIATION = #{record.irAssociation,jdbcType=VARCHAR},
+      t.IR_EXPERT = #{record.irExpert,jdbcType=VARCHAR},
+      t.IR_SIGN_DATE = #{record.irSignDate,jdbcType=VARCHAR},
+      t.IR_CONTENT = #{record.irContent,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update sheet1 t
+    set t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      t.IR_LASTTIME = #{record.irLasttime,jdbcType=VARCHAR},
+      t.IR_URLDATE = #{record.irUrldate,jdbcType=VARCHAR},
+      t.IR_URLTIME = #{record.irUrltime,jdbcType=VARCHAR},
+      t.IR_LOADTIME = #{record.irLoadtime,jdbcType=VARCHAR},
+      t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      t.IR_SIMRANK = #{record.irSimrank,jdbcType=VARCHAR},
+      t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=VARCHAR},
+      t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=VARCHAR},
+      t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=VARCHAR},
+      t.IR_BBSNUM = #{record.irBbsnum,jdbcType=VARCHAR},
+      t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=VARCHAR},
+      t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=VARCHAR},
+      t.IR_PAGERANK = #{record.irPagerank,jdbcType=VARCHAR},
+      t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=VARCHAR},
+      t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      t.IR_URLSIZE = #{record.irUrlsize,jdbcType=VARCHAR},
+      t.IR_URLBODY = #{record.irUrlbody,jdbcType=VARCHAR},
+      t.IR_WCMID = #{record.irWcmid,jdbcType=VARCHAR},
+      t.IR_STATUS = #{record.irStatus,jdbcType=VARCHAR},
+      t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=VARCHAR},
+      t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=VARCHAR},
+      t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=VARCHAR},
+      t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      t.IR_INSERTTIME = #{record.irInserttime,jdbcType=VARCHAR},
+      t.IR_BIDDING_DATE = #{record.irBiddingDate,jdbcType=VARCHAR},
+      t.IR_BIDDING_ID = #{record.irBiddingId,jdbcType=VARCHAR},
+      t.IR_BIDDING_TYPE = #{record.irBiddingType,jdbcType=VARCHAR},
+      t.IR_BIDDING_NAME = #{record.irBiddingName,jdbcType=VARCHAR},
+      t.IR_BIDDING_CONTENT = #{record.irBiddingContent,jdbcType=VARCHAR},
+      t.IR_BIDDING_SOURCE = #{record.irBiddingSource,jdbcType=VARCHAR},
+      t.IR_BIDDING_MONEY = #{record.irBiddingMoney,jdbcType=VARCHAR},
+      t.IR_BIDDING_AGENCY = #{record.irBiddingAgency,jdbcType=VARCHAR},
+      t.IR_BIDDING_ORG = #{record.irBiddingOrg,jdbcType=VARCHAR},
+      t.IR_BIDDING_ADDR = #{record.irBiddingAddr,jdbcType=VARCHAR},
+      t.IR_BIDDING_PER = #{record.irBiddingPer,jdbcType=VARCHAR},
+      t.IR_BIDDING_TEL = #{record.irBiddingTel,jdbcType=VARCHAR},
+      t.IR_BID_DATE = #{record.irBidDate,jdbcType=VARCHAR},
+      t.IR_BID_TYPE = #{record.irBidType,jdbcType=VARCHAR},
+      t.IR_BID_ORG = #{record.irBidOrg,jdbcType=VARCHAR},
+      t.IR_BID_MONEY = #{record.irBidMoney,jdbcType=VARCHAR},
+      t.IR_BID_ADDR = #{record.irBidAddr,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_DATE = #{record.irAnnulmentDate,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_REASON = #{record.irAnnulmentReason,jdbcType=VARCHAR},
+      t.IR_ANNULMENT_TREATMENT = #{record.irAnnulmentTreatment,jdbcType=VARCHAR},
+      t.IR_OPEN_TIME = #{record.irOpenTime,jdbcType=VARCHAR},
+      t.IR_OPEN_ADDR = #{record.irOpenAddr,jdbcType=VARCHAR},
+      t.IR_SALE_START_TIME = #{record.irSaleStartTime,jdbcType=VARCHAR},
+      t.IR_SALE_END_TIME = #{record.irSaleEndTime,jdbcType=VARCHAR},
+      t.IR_QUALIFICATION = #{record.irQualification,jdbcType=VARCHAR},
+      t.IR_SUBCONTRACT = #{record.irSubcontract,jdbcType=VARCHAR},
+      t.IR_TABLE_TAG = #{record.irTableTag,jdbcType=VARCHAR},
+      t.IR_FIRST_ADDR = #{record.irFirstAddr,jdbcType=VARCHAR},
+      t.IR_BANK = #{record.irBank,jdbcType=VARCHAR},
+      t.IR_PRICE = #{record.irPrice,jdbcType=VARCHAR},
+      t.IR_POLICY = #{record.irPolicy,jdbcType=VARCHAR},
+      t.IR_SMALL_ENTERPRISE = #{record.irSmallEnterprise,jdbcType=VARCHAR},
+      t.IR_NATURE = #{record.irNature,jdbcType=VARCHAR},
+      t.IR_MEDIA = #{record.irMedia,jdbcType=VARCHAR},
+      t.IR_BIDDING_FILEID = #{record.irBiddingFileid,jdbcType=VARCHAR},
+      t.IR_BIDDING_NAME_TITLE = #{record.irBiddingNameTitle,jdbcType=VARCHAR},
+      t.IR_PUBLIC_DATE = #{record.irPublicDate,jdbcType=VARCHAR},
+      t.IR_SUBMIT_DATE = #{record.irSubmitDate,jdbcType=VARCHAR},
+      t.IR_ASSOCIATION = #{record.irAssociation,jdbcType=VARCHAR},
+      t.IR_EXPERT = #{record.irExpert,jdbcType=VARCHAR},
+      t.IR_SIGN_DATE = #{record.irSignDate,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model.User" >
+    <id column="t_ID" property="id" jdbcType="INTEGER" />
+    <result column="t_LOGIN_NAME" property="loginName" jdbcType="VARCHAR" />
+    <result column="t_PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="t_FIRSTNAME" property="firstname" jdbcType="VARCHAR" />
+    <result column="t_LASTNAME" property="lastname" jdbcType="VARCHAR" />
+    <result column="t_EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="t_LASTLOGIN" property="lastlogin" jdbcType="TIMESTAMP" />
+    <result column="t_FLAG" property="flag" jdbcType="INTEGER" />
+    <result column="t_CREATED" property="created" jdbcType="TIMESTAMP" />
+    <result column="t_MODIFIED" property="modified" jdbcType="TIMESTAMP" />
+</resultMap>
+    <resultMap id="LogintMap" type="com.wine.model.Logint" >
+        <id column="t_ID" property="id" jdbcType="INTEGER" />
+        <result column="t_IP" property="ip" jdbcType="VARCHAR" />
+        <result column="t_MAC" property="mac" jdbcType="VARCHAR" />
+        <result column="t_LOGINUSER" property="loginuser" jdbcType="VARCHAR" />
+        <result column="t_LOGINTIME" property="logintime" jdbcType="TIMESTAMP" />
+        <result column="t_CREATED" property="created" jdbcType="TIMESTAMP" />
+        <result column="t_LOGOUTTIME" property="logouttime" jdbcType="TIMESTAMP" />
+    </resultMap>
+    <insert id="insertLogint" parameterType="com.wine.model.Logint">
+        insert into logint(ip,mac,loginuser,created,logintime)
+        values (#{ip},#{mac},#{loginuser},now(),now())
+    </insert>
+    <insert id="insertOne" parameterType="com.wine.model.User"
+             useGeneratedKeys="true" keyProperty="id" >
+        insert into user(login_name,password,email)
+        values(#{loginName},#{password},#{email})
+    </insert>
+    <insert id="insertLogout" parameterType="com.wine.model.Logint">
+        insert into logint(ip,mac,loginuser,created,logouttime)
+        values (#{ip},#{mac},#{loginuser},now(),now())
+    </insert>
+    <sql id="login_Column_List" >
+        t.id as t_id, t.ip as t_ip, t.mac as t_mac, t.loginuser as t_loginuser, t.created as t_created,
+        t.logintime as t_logintime, t.logouttime as t_logouttime
+    </sql>
+    <!-- customer -->
+    <select id="getloginlistByPage" resultMap="LogintMap"
+            parameterType="com.wine.dao.page.PageQuery">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="login_Column_List" />
+        from logint t where 1=1
+
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.ID as t_ID, t.LOGIN_NAME as t_LOGIN_NAME, t.PASSWORD as t_PASSWORD, t.FIRSTNAME as t_FIRSTNAME, 
+    t.LASTNAME as t_LASTNAME, t.EMAIL as t_EMAIL, t.LASTLOGIN as t_LASTLOGIN, t.FLAG as t_FLAG, 
+    t.CREATED as t_CREATED, t.MODIFIED as t_MODIFIED
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model.UserCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user t
+    where t.ID = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select
+        <include refid="Base_Column_List" />
+        from user t
+        where t.ID = #{id,jdbcType=INTEGER}
+    </select>
+  <select id="countByExample" parameterType="com.wine.model.UserCriteria" resultType="java.lang.Integer" >
+    select count(*) from user t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  
+   <!-- customer -->
+  <update id="update" parameterType="com.wine.model.User">
+		update user
+		<set>
+			<if test="password != null">
+				password = #{password},
+			</if>
+			<if test="lastlogin != null">
+				lastlogin = now(),
+			</if>
+			<if test="modified != null">
+				modified =now()
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+    <update id="updateUserLittleFields">
+        UPDATE user
+        SET login_name = #{loginName},
+            email = #{email}
+        WHERE id = #{id}
+    </update>
+
+    <select id="findByPage" resultType="com.wine.model.User">
+        SELECT
+          a.*,
+          c.id AS roleId,
+          c.name AS roleName
+        FROM
+            (SELECT * FROM user <where>
+        <if test="null != loginName and '' != loginName.trim()">
+            <bind name="loginNameLike" value="'%' + loginName + '%'"/>
+            AND  login_name LIKE #{loginNameLike}
+        </if>
+    </where> ) a
+        LEFT JOIN role_user_relation b ON b.user_id = a.id
+        LEFT JOIN role c ON c.id = b.role_id
+        <where>
+            <if test="null != roleId">
+                AND  c.id = #{roleId}
+            </if>
+        </where>
+        ORDER BY ${sort} ${direction} LIMIT #{startNo},#{limit}
+    </select>
+
+    <select id="countTotal" resultType="_int">
+        SELECT  count(1) as cot FROM  ( SELECT
+        a.*,
+        c.id AS roleId,
+        c.name AS roleName
+        FROM
+        (SELECT * FROM user  <where>
+        <if test="null != loginName and '' != loginName.trim()">
+            <bind name="loginNameLike" value="'%' + loginName + '%'"/>
+            AND  login_name LIKE #{loginNameLike}
+        </if>
+    </where>  ) a
+        LEFT JOIN role_user_relation b ON b.user_id = a.id
+        LEFT JOIN role c ON c.id = b.role_id ) x
+        <where>
+            <if test="null != roleId">
+                AND  roleId = #{roleId}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteBatchByIds" parameterType="String">
+        DELETE FROM user WHERE id IN (${ids})
+    </delete>
+
+    <select id="findCountUniqueField" resultType="_int">
+        SELECT count(1) AS c FROM user WHERE ${field} = #{value}
+    </select>
+
+    <update id="updateByOneField">
+        UPDATE user SET ${field} = #{value} WHERE id = #{id}
+    </update>
+
+    <select id="findCountByOneField" resultType="_int">
+        SELECT count(1) AS c FROM user WHERE ${field} = #{value} AND id != #{id}
+    </select>
+
+
+</mapper>

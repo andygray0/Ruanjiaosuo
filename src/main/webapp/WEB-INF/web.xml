@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	version="2.4"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee  http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+	<display-name>Archetype Created Web Application</display-name>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:applicationContext.xml</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>
+			com.wine.utils.SpringInit
+		</listener-class>
+	</listener>
+	<listener>
+		<listener-class>com.wine.web.listener.WebConfigListener</listener-class>
+	</listener>
+	<session-config>
+		<session-timeout>60</session-timeout>
+	</session-config>
+	<servlet>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring_mvc.xml</param-value>
+		</init-param>
+		<init-param>
+			<param-name>detectAllHandlerExceptionResolvers</param-name><!-- 取消其自动注册的异常解析器 -->
+			<param-value>false</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GetCheckCodeImage</servlet-name>
+		<servlet-class>com.wine.web.servlet.GetCheckCodeImage</servlet-class>
+		<init-param>
+			<param-name>width</param-name>
+			<param-value>250</param-value>
+		</init-param>
+		<init-param>
+			<param-name>height</param-name>
+			<param-value>75</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GetCheckCodeImage</servlet-name>
+		<url-pattern>/getCheckCodeImage</url-pattern>
+	</servlet-mapping>  
+	    
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>login.jsp</welcome-file>
+	</welcome-file-list>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>503</error-code>
+		<location>/error/503.jsp</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error/500.jsp</location>
+	</error-page>
+</web-app>

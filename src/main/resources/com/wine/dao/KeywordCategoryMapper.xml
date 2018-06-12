@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wine.dao.KeywordCategoryMapper">
+
+    <sql id="table">t_keywords_categories</sql>
+
+    <sql id="mainWhere"></sql>
+
+    <select id="countTotal" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" />
+    </select>
+
+    <select id="findAll" resultType="com.wine.model.KeywordCategory">
+        SELECT * FROM <include refid="table" /> AS a ORDER BY CONVERT(a.category_name USING gbk) asc
+    </select>
+
+    <insert id="insertOne" parameterType="com.wine.model.KeywordCategory"
+            useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="table" />(category_name,`describe`,update_time)
+        values(#{categoryName},#{describe},now())
+    </insert>
+
+    <select id="findCountUniqueField" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" /> WHERE ${field} = #{value}
+    </select>
+
+    <update id="updateByOneField">
+        UPDATE <include refid="table" /> SET `${field}` = #{value} WHERE id = #{id}
+    </update>
+
+    <update id="updateById">
+        UPDATE <include refid="table" />
+        SET category_name = #{categoryName},
+              `describe` = #{describe},
+              update_time = now()
+        WHERE id = #{id}
+    </update>
+
+    <select id="findCountByOneField" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" /> WHERE ${field} = #{value} AND id != #{id}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM <include refid="table" /> WHERE  id = #{id}
+    </delete>
+
+</mapper>
+

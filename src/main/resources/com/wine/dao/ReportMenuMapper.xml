@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.ReportMenuMapper">
+
+	<select id="findAll" resultType="com.wine.model.ReportMenu">
+		SELECT * FROM menu_report ORDER BY `order` ASC
+	</select>
+
+	<select id="findAllReportMenus" resultType="com.wine.model.ReportMenu">
+		SELECT
+			c.*
+		FROM
+			(
+				SELECT
+					a.*
+				FROM
+					menu_report a
+				LEFT JOIN role_menuReport_relation b ON b.menu_id = a.id
+				WHERE
+					b.role_id = #{roleId}
+			) c
+		ORDER BY
+			c.`order` ASC
+	</select>
+
+	<delete id="deleteRoleMenuRelations">
+		DELETE  FROM role_menuReport_relation WHERE role_id = #{roleId} AND menu_id IN (${cancelMenu})
+	</delete>
+
+	<insert id="saveRoleMenuRelations">
+		INSERT INTO role_menuRole_relation(role_id,menu_id) VALUES
+		<foreach collection="menuIds" index="index" item="menuId" open="" separator="," close="">
+			(#{roleId}, #{menuId})
+		</foreach>
+	</insert>
+
+	<select id="getById" parameterType="int" resultType="com.wine.model.ReportMenu">
+		SELECT * FROM menu_report WHERE id = #{id}
+	</select>
+
+	<select id="findRoleByMenuId" parameterType="int" resultType="com.wine.model.Role">
+		SELECT b.id,b.name FROM (SELECT role_id FROM role_menuReport_relation WHERE menu_id = #{menuId} ) a
+		LEFT JOIN role b ON b.id = a.role_id
+	</select>
+
+	<delete id="deleteBatchByIds" parameterType="String">
+		DELETE FROM menu_report WHERE id IN (${ids})
+	</delete>
+
+	<delete id="deleteRoleMenuRelationsByMenuIds" parameterType="String">
+		DELETE FROM role_menuReport_relation WHERE menu_id IN (${ids})
+	</delete>
+
+	<delete id="deletePrefixRelationsByIds" parameterType="String">
+		DELETE
+		FROM
+			role_urlprefix_relation_report
+		WHERE
+			urlprefix_id IN (
+				SELECT
+					id
+				FROM
+					url_prefix_report
+				WHERE
+					menuid IN (${ids})
+			)
+	</delete>
+
+	<delete id="deletePrefixByIds" parameterType="String">
+		DELETE FROM url_prefix_report WHERE menuid IN (${ids})
+	</delete>
+
+	<insert id="insertOne" parameterType="com.wine.model.ReportMenu"
+			useGeneratedKeys="true" keyProperty="id" >
+		insert into menu_report(name,pid,menu_level,url,leaf,`order`)
+		values(#{name},#{pid},#{menuLevel},#{url},#{leaf},#{order})
+	</insert>
+
+	<update id="updateOne" parameterType="map">
+		update menu_report
+		<set>
+			<foreach collection="map" index="key" item="value" separator="," open="" close="">
+				`${key}` = #{value}
+			</foreach>
+		</set>
+		<where>
+			id = #{map.id}
+		</where>
+	</update>
+
+	<select id="findById" resultType="com.wine.model.ReportMenu" parameterType="int">
+		SELECT * FROM menu_report WHERE id = #{id}
+	</select>
+
+	<select id="findCountValidAddOrUpdate" resultType="_int">
+		SELECT count(1) AS c FROM menu_report WHERE ${field} = #{value} AND pid = #{pid}
+		<if test="null != id">
+			AND id != #{id}
+		</if>
+	</select>
+
+	<insert id="insertUrlPrefix">
+		INSERT INTO url_prefix_report (url_prefix, controller, note, menuid)
+		VALUES
+			(#{prefix}, '', #{name}, #{menuid})
+	</insert>
+
+	<update id="updateUrlPrefix">
+		UPDATE url_prefix_report
+		SET
+			url_prefix = #{prefix},
+			note = #{name}
+		WHERE
+			menuid = #{menuid}
+	</update>
+
+</mapper>
+

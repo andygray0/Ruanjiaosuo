@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao3.RuleMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model3.Rule" >
+    <id column="t_ID" property="id" jdbcType="INTEGER" />
+    <result column="t_NAME" property="name" jdbcType="VARCHAR" />
+    <result column="t_DESCRIPTION" property="description" jdbcType="VARCHAR" />
+    <result column="t_INPUT" property="input" jdbcType="VARCHAR" />
+    <result column="t_OUTPUT" property="output" jdbcType="VARCHAR" />
+    <result column="t_CONFIG" property="config" jdbcType="VARCHAR" />
+    <result column="t_KEYWORD" property="keyword" jdbcType="VARCHAR" />
+    <result column="t_PATH" property="path" jdbcType="VARCHAR" />
+    <result column="t_SCRIPT" property="script" jdbcType="VARCHAR" />
+    <result column="t_BZ" property="bz" jdbcType="VARCHAR" />
+    <result column="t_MODIFY" property="modify" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.ID as t_ID, t.NAME as t_NAME, t.DESCRIPTION as t_DESCRIPTION, t.INPUT as t_INPUT, 
+    t.OUTPUT as t_OUTPUT, t.CONFIG as t_CONFIG, t.KEYWORD as t_KEYWORD, t.PATH as t_PATH, 
+    t.SCRIPT as t_SCRIPT, t.BZ as t_BZ, t.MODIFY as t_MODIFY
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model3.RuleCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rule t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rule t
+    where t.ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rule
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wine.model3.RuleCriteria" >
+    delete from rule t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wine.model3.Rule" >
+    insert into rule (ID, NAME, DESCRIPTION, 
+      INPUT, OUTPUT, CONFIG, 
+      KEYWORD, PATH, SCRIPT, 
+      BZ, MODIFY)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{input,jdbcType=VARCHAR}, #{output,jdbcType=VARCHAR}, #{config,jdbcType=VARCHAR}, 
+      #{keyword,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{script,jdbcType=VARCHAR}, 
+      #{bz,jdbcType=VARCHAR}, now())
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.model3.Rule" >
+    insert into rule
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="description != null" >
+        DESCRIPTION,
+      </if>
+      <if test="input != null" >
+        INPUT,
+      </if>
+      <if test="output != null" >
+        OUTPUT,
+      </if>
+      <if test="config != null" >
+        CONFIG,
+      </if>
+      <if test="keyword != null" >
+        KEYWORD,
+      </if>
+      <if test="path != null" >
+        PATH,
+      </if>
+      <if test="script != null" >
+        SCRIPT,
+      </if>
+      <if test="bz != null" >
+        BZ,
+      </if>
+      <if test="modify != null" >
+        MODIFY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="input != null" >
+        #{input,jdbcType=VARCHAR},
+      </if>
+      <if test="output != null" >
+        #{output,jdbcType=VARCHAR},
+      </if>
+      <if test="config != null" >
+        #{config,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="script != null" >
+        #{script,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null" >
+        #{modify,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wine.model3.RuleCriteria" resultType="java.lang.Integer" >
+    select count(*) from rule t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rule t
+    <set >
+      <if test="record.id != null" >
+        t.ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        t.NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        t.DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.input != null" >
+        t.INPUT = #{record.input,jdbcType=VARCHAR},
+      </if>
+      <if test="record.output != null" >
+        t.OUTPUT = #{record.output,jdbcType=VARCHAR},
+      </if>
+      <if test="record.config != null" >
+        t.CONFIG = #{record.config,jdbcType=VARCHAR},
+      </if>
+      <if test="record.keyword != null" >
+        t.KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.path != null" >
+        t.PATH = #{record.path,jdbcType=VARCHAR},
+      </if>
+      <if test="record.script != null" >
+        t.SCRIPT = #{record.script,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bz != null" >
+        t.BZ = #{record.bz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.modify != null" >
+        t.MODIFY = #{record.modify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rule t
+    set t.ID = #{record.id,jdbcType=INTEGER},
+      t.NAME = #{record.name,jdbcType=VARCHAR},
+      t.DESCRIPTION = #{record.description,jdbcType=VARCHAR},
+      t.INPUT = #{record.input,jdbcType=VARCHAR},
+      t.OUTPUT = #{record.output,jdbcType=VARCHAR},
+      t.CONFIG = #{record.config,jdbcType=VARCHAR},
+      t.KEYWORD = #{record.keyword,jdbcType=VARCHAR},
+      t.PATH = #{record.path,jdbcType=VARCHAR},
+      t.SCRIPT = #{record.script,jdbcType=VARCHAR},
+      t.BZ = #{record.bz,jdbcType=VARCHAR},
+      t.MODIFY = now()
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.Rule" >
+    update rule
+    <set >
+      <if test="name != null" >
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        DESCRIPTION = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="input != null" >
+        INPUT = #{input,jdbcType=VARCHAR},
+      </if>
+      <if test="output != null" >
+        OUTPUT = #{output,jdbcType=VARCHAR},
+      </if>
+      <if test="config != null" >
+        CONFIG = #{config,jdbcType=VARCHAR},
+      </if>
+      <if test="keyword != null" >
+        KEYWORD = #{keyword,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        PATH = #{path,jdbcType=VARCHAR},
+      </if>
+      <if test="script != null" >
+        SCRIPT = #{script,jdbcType=VARCHAR},
+      </if>
+      <if test="bz != null" >
+        BZ = #{bz,jdbcType=VARCHAR},
+      </if>
+      <if test="modify != null" >
+        MODIFY = #{modify,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.model3.Rule" >
+    update rule
+    set NAME = #{name,jdbcType=VARCHAR},
+      DESCRIPTION = #{description,jdbcType=VARCHAR},
+      INPUT = #{input,jdbcType=VARCHAR},
+      OUTPUT = #{output,jdbcType=VARCHAR},
+      CONFIG = #{config,jdbcType=VARCHAR},
+      KEYWORD = #{keyword,jdbcType=VARCHAR},
+      PATH = #{path,jdbcType=VARCHAR},
+      SCRIPT = #{script,jdbcType=VARCHAR},
+      BZ = #{bz,jdbcType=VARCHAR},
+      MODIFY = now(),
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

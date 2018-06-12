@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wine.dao.LoginLogMapper">
+
+	<sql id="table">login_log</sql>
+	
+	<sql id="mainWhere">
+        <where>
+            <if test="null != userName and '' != userName">
+                AND user_name = #{userName}
+            </if>
+            <if test="null != loginTimeStartTime and '' != loginTimeStartTime">
+                AND login_time &gt;= #{loginTimeStartTime}
+            </if>
+            <if test="null != loginTimeEndTime and '' != loginTimeEndTime">
+                AND login_time &lt;= #{loginTimeEndTime}
+            </if>
+        </where>
+    </sql>
+	
+	<select id="findByPage" resultType="com.wine.model.LoginLog">
+        SELECT * FROM <include refid="table" /> ORDER BY ${sort} ${direction} LIMIT #{startNo},#{limit}
+    </select>
+
+    <select id="countTotal" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" />
+    </select>
+
+    <select id="countTotalWithParams" resultType="_int" parameterType="map">
+        SELECT count(1) AS c FROM <include refid="table" />
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findByPageWithParams" resultType="com.wine.model.LoginLog">
+        SELECT * FROM <include refid="table" />
+        <include refid="mainWhere" />
+        ORDER BY ${sort} ${direction} LIMIT #{startNo},#{limit}
+    </select>
+
+    <delete id="deleteBatchByIds" parameterType="String">
+        DELETE FROM <include refid="table" /> WHERE id IN (${ids})
+    </delete>
+
+    <insert id="insertOne" parameterType="com.wine.model.LoginLog"
+            useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="table" />(user_name,login_time,ip,logout_time)
+        values(#{userName},#{loginTime},#{ip},#{logoutTime})
+    </insert>
+
+    <insert id="insertBatch" parameterType="com.wine.model.LoginLog">
+        insert into <include refid="table" />(user_name,login_time,ip,logout_time)
+        values
+        <foreach collection="list" index="index" item="log" open="" separator="," close="">
+            (#{log.userName},#{log.loginTime},#{log.ip},#{log.logoutTime})
+        </foreach>
+    </insert>
+
+    <select id="findCountUniqueField" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" /> WHERE ${field} = #{value}
+    </select>
+
+    <update id="updateByOneField">
+        UPDATE <include refid="table" /> SET `${field}` = #{value} WHERE id = #{id}
+    </update>
+
+    <select id="findCountByOneField" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" /> WHERE ${field} = #{value} AND id != #{id}
+    </select>
+
+    <select id="findByPageWithCondition"  resultType="com.wine.model.LoginLog">
+        SELECT
+            *
+        FROM
+            <include refid="table" />
+        <include refid="mainWhere" />
+        ORDER BY
+            ${page.order} ${page.direction}
+        LIMIT #{page.startNo},
+         #{page.limit}
+    </select>
+
+    <select id="findCountTotalWithCondition" parameterType="com.wine.model.LoginLog" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+            <include refid="table" />
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findAll" resultType="com.wine.model.LoginLog">
+        SELECT * FROM <include refid="table" /> ORDER BY id ASC
+    </select>
+
+    <select id="findWithCondition" resultType="com.wine.model.LoginLog" >
+        SELECT
+          *
+        FROM
+        <include refid="table" />
+        <include refid="mainWhere" />
+        ORDER BY ${order} ${direction}
+    </select>
+
+
+</mapper>
+

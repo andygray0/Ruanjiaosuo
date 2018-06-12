@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wine.dao.CommonMapper">
+
+
+	<select id="findMaxNumberByToday" resultType="_int">
+        SELECT
+            IFNULL(
+                max(
+                    cast(
+                        SUBSTR(a.${field} FROM 9) AS SIGNED INTEGER
+                    )
+                ),
+                0
+            ) n
+        FROM
+            ${table} a
+        WHERE
+            a.${field} LIKE concat(
+                date_format(now(), '%Y%m%d'),
+                '%'
+            )
+    </select>
+
+
+    <select id="findTableFieldInfo" resultType="com.wine.model.CommonTableField">
+        SELECT
+        a.*
+        FROM
+        common_table_field_title a
+        WHERE
+        a.BELONG_TABLE = '${table}'
+        AND a.`NAME` IN
+        <foreach collection="fieldList" item="item" index="index" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </select>
+
+
+    <update id="updateDatasBy2Map">
+        UPDATE ${table}
+        SET
+        <foreach collection="setMap.keys" item="k1" separator=",">
+            `${k1}` = #{setMap[${k1}]}
+        </foreach>
+        <where>
+            <foreach collection="whereMap.keys" item="k2" separator="  and  ">
+                `${k2}` = #{whereMap[${k2}]}
+            </foreach>
+        </where>
+    </update>
+    
+</mapper>
+

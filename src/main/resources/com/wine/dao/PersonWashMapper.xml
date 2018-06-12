@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.PersonWashMapper">
+
+    <sql id="mainWhere">
+        <where>
+            a.CL_COUNT > 0
+            AND a.CL_WORK_STATUS IS NULL
+            <if test="null != waitCheckData.irLasttimestartDate">
+                AND IR_LASTTIME &gt;= DATE_FORMAT(#{waitCheckData.irLasttimestartDate}, '%Y-%m-%d %h:%i:%s')
+            </if>
+            <if test="null != waitCheckData.irLasttimeendDate">
+                AND IR_LASTTIME &lt;= DATE_FORMAT(#{waitCheckData.irLasttimeendDate}, '%Y-%m-%d %h:%i:%s')
+            </if>
+        </where>
+    </sql>
+
+    <select id="countTotal" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+            urlcontent_check_2017 AS a
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findByPage" resultType="com.wine.model.WaitCheckData">
+        SELECT
+            a.ID,
+            a.IR_SID,
+            a.IR_URLTITLE,
+            a.IR_LASTTIME,
+            a.CL_COUNT
+        FROM
+            urlcontent_check_2017 a
+        <include refid="mainWhere" />
+        ORDER BY
+            ${page.order} ${page.direction}
+        LIMIT ${page.startNo},
+         ${page.limit}
+    </select>
+
+    <select id="sumTheCLcount" parameterType="com.wine.model.WaitCheckData" resultType="_int">
+        SELECT
+        IFNULL(sum(a.CL_COUNT), 0) AS s
+        FROM
+        urlcontent_check_2017 a
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findAllWithCondition" resultType="com.wine.model.WaitCheckData">
+        SELECT
+        a.ID,
+        a.IR_SID,
+        a.CL_COUNT
+        FROM
+        urlcontent_check_2017 a
+        <include refid="mainWhere" />
+        limit 0,
+         ${maxRecord}
+    </select>
+
+    <insert id="insertTheCheckDataRelation">
+    INSERT INTO personwash_task_to_check_data_relation (task_id, check_id)
+    VALUES
+        <foreach collection="checkIds" item="item" index="index" separator=",">
+            (#{taskId}, #{item})
+        </foreach>
+    </insert>
+
+    <update id="updateTheCheckDataStatus">
+         UPDATE urlcontent_check_2017
+         SET CL_WORK_STATUS = #{status}
+         WHERE ID IN
+        <foreach collection="checkIds" item="item" index="index" separator="," open="(" close=")">
+                #{item}
+        </foreach>
+    </update>
+    
+    <select id="findCheckDataById" resultType="com.wine.model.PersonWashWaitCheckData">
+        SELECT
+            ${dynamaicFields}
+        FROM
+            urlcontent_check_2017 AS a
+        WHERE
+            a.ID = #{id}
+    </select>
+
+    <select id="findCheckDataByRecordIndex" resultType="com.wine.model.PersonWashWaitCheckData">
+        SELECT
+            a.*
+        FROM
+            urlcontent_check_2017 a
+        WHERE
+            a.ID IN (
+                SELECT
+                    c.CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation c
+                WHERE
+                    c.TASK_ID = #{taskId}
+            )
+            <if test="null != clWorkStatus">
+                AND  a.CL_WORK_STATUS = #{clWorkStatus}
+            </if>
+              ORDER BY
+            a.IR_SID ASC
+        LIMIT ${recordIndex},
+         1
+    </select>
+
+    <insert id="insertOneUrlcontentCheck" parameterType="com.wine.model.PersonWashWaitCheckData">
+        INSERT INTO   urlcontent_check_2017 (`IR_SID`, `IR_HKEY`, `IR_STARTID`, `IR_SERVICEID`, `IR_PKEY`, `IR_URLNAME`, `IR_SITENAME`, `IR_CHANNEL`, `IR_GROUPNAME`, `IR_URLTITLE`, `IR_LASTTIME`, `IR_URLDATE`, `IR_URLTIME`, `IR_LOADTIME`, `IR_SRCNAME`, `IR_CATALOG`, `IR_CATALOG1`, `IR_CATALOG2`, `IR_SIMFLAG`, `IR_SIMRANK`, `IR_IMAGEFLAG`, `IR_TABLEFLAG`, `IR_DOCLENGTH`, `IR_CONTENT`, `IR_BBSNUM`, `IR_BBSTOPIC`, `IR_BBSKEY`, `IR_PAGELEVEL`, `IR_PAGERANK`, `IR_URLLEVEL`, `IR_MIMETYPE`, `IR_FORMAT`, `IR_CHARSET`, `IR_URLSIZE`, `IR_URLBODY`, `IR_WCMID`, `IR_STATUS`, `IR_NRESERVED1`, `IR_NRESERVED2`, `IR_NRESERVED3`, `IR_VRESERVED1`, `IR_VRESERVED2`, `IR_VRESERVED3`, `IR_INSERTTIME`, `IR_BIDDING_DATE`, `IR_BIDDING_ID`, `IR_BIDDING_TYPE`, `IR_BIDDING_NAME`, `IR_BIDDING_CONTENT`, `IR_BIDDING_SOURCE`, `IR_BIDDING_MONEY`, `IR_BIDDING_AGENCY`, `IR_BIDDING_AGENCY_ADDR`, `IR_BIDDING_AGENCY_TEL`, `IR_BIDDING_ORG`, `IR_BIDDING_ADDR`, `IR_BIDDING_PER`, `IR_BIDDING_TEL`, `IR_BID_DATE`, `IR_BID_TYPE`, `IR_BID_ORG`, `IR_BID_ADDR`, `IR_BID_MONEY`, `IR_ANNULMENT_DATE`, `IR_ANNULMENT_REASON`, `IR_ANNULMENT_TREATMENT`, `IR_OPEN_TIME`, `IR_OPEN_ADDR`, `IR_SALE_START_TIME`, `IR_SALE_END_TIME`, `IR_QUALIFICATION`, `IR_SUBCONTRACT`, `IR_TABLE_TAG`, `IR_FIRST_ADDR`, `IR_FILE_GET_WAY`, `IR_BANK`, `IR_PRICE`, `IR_POLICY`, `IR_SMALL_ENTERPRISE`, `IR_NATURE`, `IR_MEDIA`, `IR_BIDDING_FILEID`, `IR_BIDDING_NAME_TITLE`, `IR_PUBLIC_DATE`, `IR_SUBMIT_DATE`, `IR_ASSOCIATION`, `IR_EXPERT`, `IR_SIGN_DATE`, `IR_RESERVED1`, `IR_RESERVED2`, `IR_RESERVED3`, `IR_RESERVED4`, `IR_RESERVED5`, `IR_RESERVED6`, `IR_RESERVED7`, `IR_RESERVED8`, `IR_RESERVED9`, `IR_RESERVED10`, `IR_RESERVED11`, `IR_RESERVED12`, `IR_RESERVED13`, `IR_RESERVED14`, `IR_RESERVED15`, `IR_RESERVED16`, `IR_RESERVED17`, `IR_RESERVED18`, `IR_RESERVED19`, `IR_RESERVED20`, `IR_RESERVED21`, `IR_RESERVED22`, `IR_RESERVED23`, `IR_RESERVED24`, `IR_RESERVED25`, `IR_RESERVED26`, `IR_RESERVED27`, `IR_RESERVED28`, `IR_RESERVED29`, `IR_RESERVED30`, `IR_RESERVED31`, `IR_RESERVED32`, `IR_RESERVED33`, `IR_RESERVED34`, `IR_RESERVED35`, `IR_RESERVED36`, `IR_RESERVED37`, `IR_RESERVED38`, `IR_RESERVED39`, `IR_RESERVED40`, `IR_RESERVED41`, `IR_RESERVED42`, `IR_RESERVED43`, `IR_RESERVED44`, `IR_RESERVED45`, `IR_RESERVED46`, `IR_RESERVED47`, `IR_RESERVED48`, `IR_RESERVED49`, `IR_RESERVED50`, `IR_NRESERVED1_CHECK`, `IR_NRESERVED2_CHECK`, `IR_NRESERVED3_CHECK`, `IR_VRESERVED1_CHECK`, `IR_VRESERVED2_CHECK`, `IR_VRESERVED3_CHECK`, `IR_BIDDING_DATE_CHECK`, `IR_BIDDING_ID_CHECK`, `IR_BIDDING_TYPE_CHECK`, `IR_BIDDING_NAME_CHECK`, `IR_BIDDING_CONTENT_CHECK`, `IR_BIDDING_SOURCE_CHECK`, `IR_BIDDING_MONEY_CHECK`, `IR_BIDDING_AGENCY_CHECK`, `IR_BIDDING_AGENCY_ADDR_CHECK`, `IR_BIDDING_AGENCY_TEL_CHECK`, `IR_BIDDING_ORG_CHECK`, `IR_BIDDING_ADDR_CHECK`, `IR_BIDDING_PER_CHECK`, `IR_BIDDING_TEL_CHECK`, `IR_BID_DATE_CHECK`, `IR_BID_TYPE_CHECK`, `IR_BID_ORG_CHECK`, `IR_BID_ADDR_CHECK`, `IR_BID_MONEY_CHECK`, `IR_ANNULMENT_DATE_CHECK`, `IR_ANNULMENT_REASON_CHECK`, `IR_ANNULMENT_TREATMENT_CHECK`, `IR_OPEN_TIME_CHECK`, `IR_OPEN_ADDR_CHECK`, `IR_SALE_START_TIME_CHECK`, `IR_SALE_END_TIME_CHECK`, `IR_QUALIFICATION_CHECK`, `IR_SUBCONTRACT_CHECK`, `IR_TABLE_TAG_CHECK`, `IR_FIRST_ADDR_CHECK`, `IR_FILE_GET_WAY_CHECK`, `IR_BANK_CHECK`, `IR_PRICE_CHECK`, `IR_POLICY_CHECK`, `IR_SMALL_ENTERPRISE_CHECK`, `IR_NATURE_CHECK`, `IR_MEDIA_CHECK`, `IR_BIDDING_FILEID_CHECK`, `IR_BIDDING_NAME_TITLE_CHECK`, `IR_PUBLIC_DATE_CHECK`, `IR_SUBMIT_DATE_CHECK`, `IR_ASSOCIATION_CHECK`, `IR_EXPERT_CHECK`, `IR_SIGN_DATE_CHECK`, `IR_RESERVED1_CHECK`, `IR_RESERVED2_CHECK`, `IR_RESERVED3_CHECK`, `IR_RESERVED4_CHECK`, `IR_RESERVED5_CHECK`, `IR_RESERVED6_CHECK`, `IR_RESERVED7_CHECK`, `IR_RESERVED8_CHECK`, `IR_RESERVED9_CHECK`, `IR_RESERVED10_CHECK`, `IR_RESERVED11_CHECK`, `IR_RESERVED12_CHECK`, `IR_RESERVED13_CHECK`, `IR_RESERVED14_CHECK`, `IR_RESERVED15_CHECK`, `IR_RESERVED16_CHECK`, `IR_RESERVED17_CHECK`, `IR_RESERVED18_CHECK`, `IR_RESERVED19_CHECK`, `IR_RESERVED20_CHECK`, `IR_RESERVED21_CHECK`, `IR_RESERVED22_CHECK`, `IR_RESERVED23_CHECK`, `IR_RESERVED24_CHECK`, `IR_RESERVED25_CHECK`, `IR_RESERVED26_CHECK`, `IR_RESERVED27_CHECK`, `IR_RESERVED28_CHECK`, `IR_RESERVED29_CHECK`, `IR_RESERVED30_CHECK`, `IR_RESERVED31_CHECK`, `IR_RESERVED32_CHECK`, `IR_RESERVED33_CHECK`, `IR_RESERVED34_CHECK`, `IR_RESERVED35_CHECK`, `IR_RESERVED36_CHECK`, `IR_RESERVED37_CHECK`, `IR_RESERVED38_CHECK`, `IR_RESERVED39_CHECK`, `IR_RESERVED40_CHECK`, `IR_RESERVED41_CHECK`, `IR_RESERVED42_CHECK`, `IR_RESERVED43_CHECK`, `IR_RESERVED44_CHECK`, `IR_RESERVED45_CHECK`, `IR_RESERVED46_CHECK`, `IR_RESERVED47_CHECK`, `IR_RESERVED48_CHECK`, `IR_RESERVED49_CHECK`, `IR_RESERVED50_CHECK`, `CL_COUNT`, `CL_DISTRIBUTER`, `CL_WORKER`, `CL_REVIEWER`, `CL_WORK_STATUS`, `CL_REVIEW_STATUS`, `CL_TASK`, `CL_TARGET`, `CL_REMARK`)
+
+        VALUES (#{original.irSid},#{original.irHkey},#{original.irStartid},#{original.irServiceid},#{original.irPkey},#{original.irUrlname},#{original.irSitename},#{original.irChannel},#{original.irGroupname},#{original.irUrltitle},#{original.irLasttime},#{original.irUrldate},#{original.irUrltime},#{original.irLoadtime},#{original.irSrcname},#{original.irCatalog},#{original.irCatalog1},#{original.irCatalog2},#{original.irSimflag},#{original.irSimrank},#{original.irImageflag},#{original.irTableflag},#{original.irDoclength},#{original.irContent},#{original.irBbsnum},#{original.irBbstopic},#{original.irBbskey},#{original.irPagelevel},#{original.irPagerank},#{original.irUrllevel},#{original.irMimetype},#{original.irFormat},#{original.irCharset},#{original.irUrlsize},#{original.irUrlbody},#{original.irWcmid},#{original.irStatus},#{original.irNreserved1},#{original.irNreserved2},#{original.irNreserved3},#{original.irVreserved1},#{original.irVreserved2},#{original.irVreserved3},#{original.irInserttime},#{original.irBiddingDate},#{original.irBiddingId},#{original.irBiddingType},#{original.irBiddingName},#{original.irBiddingContent},#{original.irBiddingSource},#{original.irBiddingMoney},#{original.irBiddingAgency},#{original.irBiddingAgencyAddr},#{original.irBiddingAgencyTel},#{original.irBiddingOrg},#{original.irBiddingAddr},#{original.irBiddingPer},#{original.irBiddingTel},#{original.irBidDate},#{original.irBidType},#{original.irBidOrg},#{original.irBidAddr},#{original.irBidMoney},#{original.irAnnulmentDate},#{original.irAnnulmentReason},#{original.irAnnulmentTreatment},#{original.irOpenTime},#{original.irOpenAddr},#{original.irSaleStartTime},#{original.irSaleEndTime},#{original.irQualification},#{original.irSubcontract},#{original.irTableTag},#{original.irFirstAddr},#{original.irFileGetWay},#{original.irBank},#{original.irPrice},#{original.irPolicy},#{original.irSmallEnterprise},#{original.irNature},#{original.irMedia},#{original.irBiddingFileid},#{original.irBiddingNameTitle},#{original.irPublicDate},#{original.irSubmitDate},#{original.irAssociation},#{original.irExpert},#{original.irSignDate},#{original.irReserved1},#{original.irReserved2},#{original.irReserved3},#{original.irReserved4},#{original.irReserved5},#{original.irReserved6},#{original.irReserved7},#{original.irReserved8},#{original.irReserved9},#{original.irReserved10},#{original.irReserved11},#{original.irReserved12},#{original.irReserved13},#{original.irReserved14},#{original.irReserved15},#{original.irReserved16},#{original.irReserved17},#{original.irReserved18},#{original.irReserved19},#{original.irReserved20},#{original.irReserved21},#{original.irReserved22},#{original.irReserved23},#{original.irReserved24},#{original.irReserved25},#{original.irReserved26},#{original.irReserved27},#{original.irReserved28},#{original.irReserved29},#{original.irReserved30},#{original.irReserved31},#{original.irReserved32},#{original.irReserved33},#{original.irReserved34},#{original.irReserved35},#{original.irReserved36},#{original.irReserved37},#{original.irReserved38},#{original.irReserved39},#{original.irReserved40},#{original.irReserved41},#{original.irReserved42},#{original.irReserved43},#{original.irReserved44},#{original.irReserved45},#{original.irReserved46},#{original.irReserved47},#{original.irReserved48},#{original.irReserved49},#{original.irReserved50},
+        #{original.irNreserved1Check},
+
+        #{original.irNreserved2Check},
+
+        #{original.irNreserved3Check},
+
+        #{original.irVreserved1Check},
+
+        #{original.irVreserved2Check},
+
+        #{original.irVreserved3Check},
+
+        #{original.irBiddingDateCheck},
+
+        #{original.irBiddingIdCheck},
+
+        #{original.irBiddingTypeCheck},
+
+        #{original.irBiddingNameCheck},
+
+        #{original.irBiddingContentCheck},
+
+        #{original.irBiddingSourceCheck},
+
+        #{original.irBiddingMoneyCheck},
+
+        #{original.irBiddingAgencyCheck},
+
+        #{original.irBiddingAgencyAddrCheck},
+
+        #{original.irBiddingAgencyTelCheck},
+
+        #{original.irBiddingOrgCheck},
+
+        #{original.irBiddingAddrCheck},
+
+        #{original.irBiddingPerCheck},
+
+        #{original.irBiddingTelCheck},
+
+        #{original.irBidDateCheck},
+
+        #{original.irBidTypeCheck},
+
+        #{original.irBidOrgCheck},
+
+        #{original.irBidAddrCheck},
+
+        #{original.irBidMoneyCheck},
+
+        #{original.irAnnulmentDateCheck},
+
+        #{original.irAnnulmentReasonCheck},
+
+        #{original.irAnnulmentTreatmentCheck},
+
+        #{original.irOpenTimeCheck},
+
+        #{original.irOpenAddrCheck},
+
+        #{original.irSaleStartTimeCheck},
+
+        #{original.irSaleEndTimeCheck},
+
+        #{original.irQualificationCheck},
+
+        #{original.irSubcontractCheck},
+
+        #{original.irTableTagCheck},
+
+        #{original.irFirstAddrCheck},
+
+        #{original.irFileGetWayCheck},
+
+        #{original.irBankCheck},
+
+        #{original.irPriceCheck},
+
+        #{original.irPolicyCheck},
+
+        #{original.irSmallEnterpriseCheck},
+
+        #{original.irNatureCheck},
+
+        #{original.irMediaCheck},
+
+        #{original.irBiddingFileidCheck},
+
+        #{original.irBiddingNameTitleCheck},
+
+        #{original.irPublicDateCheck},
+
+        #{original.irSubmitDateCheck},
+
+        #{original.irAssociationCheck},
+
+        #{original.irExpertCheck},
+
+        #{original.irSignDateCheck},
+
+        #{original.irReserved1Check},
+
+        #{original.irReserved2Check},
+
+        #{original.irReserved3Check},
+
+        #{original.irReserved4Check},
+
+        #{original.irReserved5Check},
+
+        #{original.irReserved6Check},
+
+        #{original.irReserved7Check},
+
+        #{original.irReserved8Check},
+
+        #{original.irReserved9Check},
+
+        #{original.irReserved10Check},
+
+        #{original.irReserved11Check},
+
+        #{original.irReserved12Check},
+
+        #{original.irReserved13Check},
+
+        #{original.irReserved14Check},
+
+        #{original.irReserved15Check},
+
+        #{original.irReserved16Check},
+
+        #{original.irReserved17Check},
+
+        #{original.irReserved18Check},
+
+        #{original.irReserved19Check},
+
+        #{original.irReserved20Check},
+
+        #{original.irReserved21Check},
+
+        #{original.irReserved22Check},
+
+        #{original.irReserved23Check},
+
+        #{original.irReserved24Check},
+
+        #{original.irReserved25Check},
+
+        #{original.irReserved26Check},
+
+        #{original.irReserved27Check},
+
+        #{original.irReserved28Check},
+
+        #{original.irReserved29Check},
+
+        #{original.irReserved30Check},
+
+        #{original.irReserved31Check},
+
+        #{original.irReserved32Check},
+
+        #{original.irReserved33Check},
+
+        #{original.irReserved34Check},
+
+        #{original.irReserved35Check},
+
+        #{original.irReserved36Check},
+
+        #{original.irReserved37Check},
+
+        #{original.irReserved38Check},
+
+        #{original.irReserved39Check},
+
+        #{original.irReserved40Check},
+
+        #{original.irReserved41Check},
+
+        #{original.irReserved42Check},
+
+        #{original.irReserved43Check},
+
+        #{original.irReserved44Check},
+
+        #{original.irReserved45Check},
+
+        #{original.irReserved46Check},
+
+        #{original.irReserved47Check},
+
+        #{original.irReserved48Check},
+
+        #{original.irReserved49Check},
+
+        #{original.irReserved50Check},
+
+        #{original.clCount},
+
+        #{original.clDistributer},
+
+        #{original.clWorker},
+
+        #{original.clReviewer},
+
+        #{original.clWorkStatus},
+
+        #{original.clReviewStatus},
+
+        #{original.clTask},
+
+        #{original.clTarget},
+
+        #{original.clRemark}
+        )
+    </insert>
+
+
+    <select id="countDataCountByPage" resultType="com.wine.model.DataCountSample">
+        SELECT
+            x. YEAR,
+            x. MONTH,
+            x.task_status AS STATUS,
+            sum(item_count) AS ITEM,
+            sum(real_finished_item_count) AS FINISH,
+            sum(real_query_item_count) AS QUERY,
+            0 AS VALID
+        FROM
+            (
+                SELECT
+                    task_status,
+                    item_count,
+                    real_query_item_count,
+                    real_finished_item_count,
+                    date_format(CREATE_TIME, '%Y') AS YEAR,
+                    date_format(CREATE_TIME, '%m') AS MONTH
+                FROM
+                    personwash_tasklist
+            ) x
+       <where>
+           <if test="null != year">
+               AND YEAR = #{year}
+           </if>
+           <if test="null != month">
+               AND MONTH = #{month}
+           </if>
+       </where>
+        GROUP BY
+            x. YEAR,
+            x. MONTH,
+            x.task_status
+        ORDER BY
+            x.`YEAR` DESC,
+            x.`MONTH` DESC
+    </select>
+
+
+    <select id="countDataCountTotal" resultType="int">
+        SELECT
+            count(1) AS c
+        FROM
+            (
+                SELECT DISTINCT
+                    concat(year1, '-', month1) AS ym
+                FROM
+                    (
+                        SELECT
+                            date_format(CREATE_TIME, '%Y') AS year1,
+                            date_format(CREATE_TIME, '%m') AS month1
+                        FROM
+                            personwash_tasklist
+                    ) x
+        <where>
+            <if test="null != year">
+                AND year1 = #{year}
+            </if>
+            <if test="null != month">
+                AND month1 = #{month}
+            </if>
+        </where>
+            ) z
+    </select>
+
+</mapper>
+

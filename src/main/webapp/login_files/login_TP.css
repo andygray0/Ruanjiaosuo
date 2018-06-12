@@ -1,0 +1,268 @@
+.LoginMain {
+    background-image: url(./TPLoginBG.jpg);
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+    .LoginMain .body {
+        height: 540px;
+    }
+
+    .LoginMain .bottom {
+        height: 65px;
+        line-height: 58px;
+    }
+
+    .LoginMain .LoginCenter {
+        position: absolute;
+        left: 50%;
+        margin-left: -640px;
+        height: 1000px;
+        width: 1280px;
+    }
+
+    .LoginMain .SystemName {
+        background-image: url(./TPLogin_BJRJS.png);
+        background-repeat: no-repeat;
+        background-position: -30px -30px;
+        width: 480px;
+        height: 540px;
+		margin-left: 125px;
+        float: left;
+    }
+
+    .LoginMain .LoginWrapper {
+        float: left;
+        width: 410px;
+        height: 350px;
+		margin-left: 110px;
+        margin-top: 154px;
+        overflow: hidden;
+		border-style: solid;
+        border-width: 1px;
+        border-color: #E2E2E2;
+    }
+
+    .LoginMain .LoginContainer {
+        background-color: #ffffff;
+        width: 400px;
+        height: 290px;
+        position: absolute;
+    }
+
+    .LoginMain .LoginType {
+        height: 48px;
+        line-height: 48px;
+        display: block;
+    }
+
+        .LoginMain .LoginType DIV {
+            cursor: pointer;
+        }
+
+
+    .LoginMain .ActiveTab {
+        border-bottom-color: #848484;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+        height: 38px;
+        line-height: 38px;
+        float: left;
+        font-family: ΢���ź�;
+        font-size: 18px;
+        color: #4E4E4E;
+        text-align: center;
+        padding-top: 10px;
+    }
+
+    .LoginMain .UnActiveTab {
+        border-bottom: none;
+        height: 38px;
+        line-height: 38px;
+        float: left;
+        font-family: ΢���ź�;
+        font-size: 18px;
+        color: #999999;
+        padding-top: 10px;
+    }
+
+    .LoginMain .Pos1 {
+        margin-left: 80px;
+    }
+
+    .LoginMain .Pos2 {
+        margin-left: 80px;
+    }
+
+    .LoginMain .logintypecontent {
+        line-height: 22px;
+        font-size: 16px;
+        float: left;
+        color: #333;
+        margin-right: 130px;
+    }
+
+    .LoginMain .usbtype {
+        margin-right: 0px;
+    }
+
+    .LoginMain .AutoHeight {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: #E2E2E2;
+        padding-top: 20px;
+        width: 360px;
+		margin-left: 30px;
+        text-align: center;
+    }
+
+
+    .LoginMain .input {
+        width: 330px;
+        margin: auto;
+    }
+
+        .LoginMain .input INPUT {
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            width: 265px;
+            ime-mode: inactive;
+            direction: ltr;
+            background-color: transparent;
+            padding: 0px 5px;
+        }
+
+    .LoginMain .loginid {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 18px;
+        background-image:url(./Login.png);
+        background-position:-75px -180px;
+    }
+
+    .LoginMain .logininfo {
+        position: absolute;
+        left: 0px;
+        padding: 0 0 0 11px;
+        margin: 0;
+        font-size: 16px;
+        color: #E2E2E2;
+        opacity: 1;
+        display: none;
+        z-index: 10;
+        left: 50px;
+    }
+     .LoginMain .logininfo1 {
+        position: absolute;
+        left: 0px;
+        padding: 0 0 0 11px;
+        margin: 0;
+        font-size: 16px;
+        color: #E2E2E2;
+        opacity: 1;
+        z-index: 10;
+        left: 200px;
+    }
+
+
+
+
+    .LoginMain .password {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        margin-bottom: 18px;
+        background-image:url(./Login.png);
+        background-position:-75px -385px;
+        background-repeat:no-repeat;
+        background-color: transparent;
+    }
+
+    .LoginMain .usblogin .loginid {
+        display: none;
+    }
+
+    .LoginMain .button {
+        width: 100%;
+        height: 46px;
+    }
+
+
+        .LoginMain .button INPUT {
+            height: 46px;
+            width: 100%;
+            background-image: url(./1.png);
+            background-repeat: no-repeat;
+            background-position: -900px -140px;
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+    .LoginMain .otherinfo {
+        width: 400px;
+        text-align: right;
+        line-height: 50px;
+        height: 50px;
+        font-size: 16px;
+        font-family: ΢���ź�;
+    }
+
+
+    .LoginMain .Support1 {
+        width: 1000px;
+        height: 20px;
+        line-height: 28px;
+        vertical-align: 30px;
+		margin-left: 125px;
+        font-family: ΢���ź�;
+		color:#949494;
+		border-top-style: solid;
+        border-top-width: 1px;
+        border-top-color: #7F7F7F;
+    }
+
+	    .LoginMain .Support2 {
+        width: 1000px;
+        height: 20px;
+        line-height: 28px;
+        vertical-align: 30px;
+		margin-left: 125px;
+        font-family: ΢���ź�;
+		color:#949494;
+    }
+
+		    .LoginMain .Support3 {
+        width: 1000px;
+        height: 20px;
+        line-height: 28px;
+        vertical-align: 30px;
+		margin-left: 125px;
+        font-family: Arial;
+		color:#949494;
+    }
+
+
+    .LoginMain .icron {
+        float: left;
+        padding-top: 8px;
+        margin-left: 300px;
+        cursor: pointer;
+    }
+
+    .LoginMain .download {
+        cursor: pointer;
+        float: left;
+        margin-left: 10px;
+    }
+
+
+ .TextboxContainer {
+    margin: 0px;
+    background-color:transparent;
+    padding-left:50px;
+}

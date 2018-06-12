@@ -1,0 +1,1242 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+body, form, html {
+    height: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-family: 微软雅黑;
+    color: #333;
+    background: #fff;
+    background-repeat: repeat-y;
+    background-position: right top;
+    overflow: hidden;
+}
+
+textarea {
+    resize: none;
+    overflow-y: auto;
+    overflow-y: auto;
+}
+
+table {
+    border-collapse: collapse;
+    word-break: break-all;
+}
+
+a, a:visited {
+    text-decoration: none;
+}
+
+    a:link, a:visited {
+        color: #333;
+    }
+
+    a:hover {
+        color: red;
+        text-decoration: underline;
+    }
+
+    a:focus {
+        outline: 0;
+    }
+
+ul {
+    list-style: none;
+}
+
+.PageBg {
+    overflow-y: scroll;
+    overflow-x: auto;
+}
+
+.PageBgNoScroll {
+    overflow: hidden;
+    margin: 0;
+}
+
+.table-title, .table-title-nowidth {
+    white-space: nowrap;
+    padding-right: 5px;
+    text-align: right;
+    height: 27px;
+    color: #333;
+    vertical-align: middle;
+}
+
+.table-title {
+    width: 145px;
+}
+
+.table-title-mustfill {
+    white-space: nowrap;
+    padding-right: 5px;
+    text-align: right;
+    width: 145px;
+    color: #333;
+    height: 27px;
+    vertical-align: middle;
+}
+
+    .table-title-mustfill:before {
+        content: '*';
+        text-align: center;
+        vertical-align: middle;
+        color: red;
+    }
+
+.table-title-Multi {
+    white-space: nowrap;
+    padding-right: 5px;
+    text-align: right;
+    width: 145px;
+    height: 27px;
+    color: #333;
+    vertical-align: top;
+    padding-top: 6px;
+}
+
+
+.table-title-mustfill-Multi {
+    white-space: nowrap;
+    padding-right: 5px;
+    text-align: right;
+    width: 145px;
+    color: #333;
+    height: 27px;
+    vertical-align: top;
+    background-position: right 6px;
+}
+
+    .table-title-mustfill-Multi:before {
+        content: '*';
+        text-align: center;
+        vertical-align: middle;
+        color: red;
+    }
+
+.table-control, .table-control-nowidth, .table-control2, .table-control3, .table-control4, .table-control5 {
+    padding: 4px 0 2px 0;
+    vertical-align: middle;
+    text-align: left;
+    color: #6e622e;
+    position: relative;
+}
+
+.table-control6{padding:4px 0 2px 0;vertical-align:middle;text-align:left;color:#6e622e;position:relative;}
+.table-control6{width:900px;}
+
+.table-control {
+    width: 150px;
+}
+
+.table-control2 {
+    width: 300px;
+}
+
+.table-control3 {
+    width: 450px;
+}
+
+.table-control4 {
+    width: 600px;
+}
+
+.table-control5 {
+    width: 750px;
+}
+
+.table-control-detail {
+    padding: 10px 0 10px 0;
+    background-color: #f3f8fb;
+}
+
+.ui-front {
+    z-index: 300;
+}
+
+.ui-dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: 0;
+    background-color: transparent;
+    z-index: 100;
+    border: solid 8px transparent;
+}
+
+.ui-dialogInfo {
+    background: #fff;
+    border: 0;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    height: 32px;
+    position: relative;
+    border: 1px solid #bbb;
+    border-bottom: none;
+    background-color: #333;
+    width: 100%;
+}
+
+.ui-dialogInfo .ui-dialog-titlebar {
+    background-color: #fff!important;
+    height: 48px;
+    border-bottom: 1px solid #fff;
+}
+
+.ui-dialogInfo .ui-dialog-titleinner {
+    margin: 0 25px;
+    border-bottom: solid 1px #ccc!important;
+    height: 100%;
+}
+
+.ui-dialog .ui-dialog-title {
+    line-height: 18px;
+    margin-top: 9px;
+    margin-left: 11px;
+    color: #fff;
+    float: left;
+    font-size: 18px;
+    white-space: nowrap;
+    width: 90%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-dialogInfo .ui-dialog-title {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    line-height: 18px;
+    height: 28px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin: -10px 0 0 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-image: url(img/mainframe.png);
+    background-repeat: no-repeat;
+    background-position: -80px -320px;
+}
+
+.ui-dialog .ui-dialog-titlebar-closeover {
+    background-position: -80px -350px;
+}
+
+.ui-dialog .ui-dialog-titlebar-min {
+    position: absolute;
+    right: 50px;
+    top: 50%;
+    margin: -10px 0 0 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-image: url(img/chat/min.png);
+    background-repeat: no-repeat;
+}
+
+.ui-dialog .ui-dialog-titlebar-backtotab {
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    margin: -7px 0 0 0;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    background-image: url(img/mainframe.png);
+    background-repeat: no-repeat;
+    background-position: -50px -320px;
+}
+
+.ui-dialog .ui-dialog-content {
+    position: relative;
+    border: 1px solid #bbb;
+    border-top: none;
+    background: #f1f0ee;
+    overflow: hidden;
+    width: 100%;
+}
+
+.ui-dialogInfo .ui-dialog-content {
+    background: #fff;
+}
+
+.ui-dialog .ui-dialog-content .icon {
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    height: 128px;
+    width: 128px;
+    background-image: url(img/mainframe.png);
+    background-repeat: no-repeat;
+}
+
+.ui-dialog .ui-dialog-content .info {
+    background-position: -10px -770px;
+}
+
+.ui-dialog .ui-dialog-content .question {
+    background-position: -310px -920px;
+}
+
+.ui-dialog .ui-dialog-content .errinfo {
+    background-position: -310px -770px;
+}
+
+.ui-dialog .ui-dialog-content .successinfo {
+    background-position: -160px -920px;
+}
+
+.ui-dialog .ui-dialog-content .warninfo {
+    background-position: -10px -1070px;
+}
+
+.ui-dialog .ui-dialog-content .message {
+    position: absolute;
+    left: 200px;
+    top: 10px;
+    right: 20px;
+    font-size: 16px;
+    line-height: 30px;
+    min-height: 24px;
+    color: #333;
+    vertical-align: middle;
+    word-wrap: break-word;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    position: absolute;
+    left: 200px;
+    bottom: 20px;
+    right: 20px;
+    top: 120px;
+    text-align: center;
+    border-width: 1px 0 0 0;
+    background-image: none;
+}
+
+    .ui-dialog .ui-dialog-buttonpane button {
+        margin: .5em 20px .5em 0;
+        cursor: pointer;
+        width: 90px;
+        border: solid 1px #d2d2d2;
+        height: 35px;
+        font-size: 16px;
+        color: #333;
+    }
+
+.ui-draggable .ui-dialog-titlebar {
+    cursor: move;
+}
+
+.ui-resizable {
+    position: relative;
+}
+
+.ui-resizable-handle {
+    position: absolute;
+    font-size: .1px;
+    display: block;
+}
+
+.ui-resizable-autohide .ui-resizable-handle, .ui-resizable-disabled .ui-resizable-handle {
+    display: none;
+}
+
+.ui-resizable-n {
+    cursor: n-resize;
+    height: 7px;
+    width: 100%;
+    top: -5px;
+    left: 0;
+}
+
+.ui-resizable-s {
+    cursor: s-resize;
+    height: 7px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+}
+
+.ui-resizable-e {
+    cursor: e-resize;
+    width: 7px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-w {
+    cursor: w-resize;
+    width: 7px;
+    left: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-se {
+    cursor: se-resize;
+    width: 12px;
+    height: 12px;
+    right: 1px;
+    bottom: 1px;
+}
+
+.ui-resizable-sw {
+    cursor: sw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    bottom: -5px;
+}
+
+.ui-resizable-nw {
+    cursor: nw-resize;
+    width: 9px;
+    height: 9px;
+    left: -5px;
+    top: -5px;
+}
+
+.ui-resizable-ne {
+    cursor: ne-resize;
+    width: 9px;
+    height: 9px;
+    right: -5px;
+    top: -5px;
+}
+
+.mainPageWithTree {
+    width: 100%;
+    height: 100%;
+}
+
+    .mainPageWithTree .leftArea {
+        left: 0;
+        right: 210px;
+        top: 0;
+        bottom: 0;
+        width: 210px;
+        height: 100%;
+        position: relative;
+        background-color: #f8f8f8;
+        border-right: solid 1px #fff;
+    }
+
+    .mainPageWithTree .titleArea {
+        height: 34px;
+        background-color: #e2e2e2;
+        font-size: 18px;
+        line-height: 20px;
+        color: #000;
+        line-height: 34px;
+        padding-left: 10px;
+    }
+
+    .mainPageWithTree .lefttree {
+        width: 210px;
+        position: absolute;
+        left: 0;
+        right: 210px;
+        top: 34px;
+        bottom: 0;
+        overflow: auto;
+    }
+
+        .mainPageWithTree .lefttree IFRAME {
+            background-color: transparent;
+        }
+
+    .mainPageWithTree .rightArea {
+        left: 211px;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+    }
+
+    .mainPageWithTree .content {
+        height: 100%;
+    }
+
+.contentPage, .mainPage {
+    width: 100%;
+    height: 100%;
+}
+
+.contentPage-scroll {
+    overflow-y: auto;
+}
+
+.contentPage .toolbar, .mainPage .toolbar, .openwin .toolbar, .openwin-accordion-content .toolbar {
+    height: 34px;
+    overflow: hidden;
+    background-color: #e2e2e2;
+    vertical-align: middle;
+}
+
+.contentPage .condition-container, .contentPage .condition-container-lockheight, .mainPage .condition-container, .mainPage .condition-container-lockheight {
+    position: relative;
+    background-color: #eeeced;
+    z-index: 1;
+    height: 30px;
+    padding: 5px 5px;
+}
+
+.contentPage .condition-input, .mainPage .condition-input, .openwin .condition-input {
+    width: 900px;
+    margin: auto;
+}
+
+.contentPage .condition-container-lockheight .condition-input ul, .mainPage .condition-container-lockheight .condition-input ul, .openwin .condition-container-lockheight .condition-input ul {
+    display: none;
+}
+
+    .contentPage .condition-container-lockheight .condition-input ul:first-child, .mainPage .condition-container-lockheight .condition-input ul:first-child, .openwin .condition-container-lockheight .condition-input ul:first-child {
+        display: block;
+    }
+
+.contentPage .condition-container .table-title, .contentPage .condition-container .table-title-mustfill, .contentPage .condition-container-lockheight .table-title, .contentPage .condition-container-lockheight .table-title-mustfill, .mainPage .condition-container .table-title, .mainPage .condition-container .table-title-mustfill, .mainPage .condition-container-lockheight .table-title, .mainPage .condition-container-lockheight .table-title-mustfill, .openwin .condition-container .table-title, .openwin .condition-container .table-title-mustfill, .openwin .condition-container-lockheight .table-title, .openwin .condition-container-lockheight .table-title-mustfill {
+    float: left;
+    line-height: 30px;
+    height: 30px;
+}
+
+.contentPage .condition-container-lockheight .table-control, .contentPage .condition-container-lockheight .table-control2, .contentPage .condition-container-lockheight .table-control3, .contentPage .condition-container-lockheight .table-control4, .contentPage .condition-container-lockheight .table-control5, .mainPage .condition-container-lockheight .table-control, .mainPage .condition-container-lockheight .table-control2, .mainPage .condition-container-lockheight .table-control3, .mainPage .condition-container-lockheight .table-control4, .mainPage .condition-container-lockheight .table-control5, .openwin .condition-container-lockheight .table-control, .openwin .condition-container-lockheight .table-control2, .openwin .condition-container-lockheight .table-control3, .openwin .condition-container-lockheight .table-control4, .openwin .condition-container-lockheight .table-control5 {
+    float: left;
+    height: 24px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.contentPage .condition-container .table-control, .contentPage .condition-container .table-control2, .contentPage .condition-container .table-control3, .contentPage .condition-container .table-control4, .contentPage .condition-container .table-control5, .mainPage .condition-container .table-control, .mainPage .condition-container .table-control2, .mainPage .condition-container .table-control3, .mainPage .condition-container .table-control4, .mainPage .condition-container .table-control5, .openwin .condition-container .table-control, .openwin .condition-container .table-control2, .openwin .condition-container .table-control3, .openwin .condition-container .table-control4, .openwin .condition-container .table-control5 {
+    float: left;
+    height: 24px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.contentPage .condition-button, .mainPage .condition-button, .openwin .condition-button {
+    position: absolute;
+    top: 50%;
+    margin-top: -17px;
+    width: 90px;
+    right: 30px;
+    height: 34px;
+    vertical-align: middle;
+}
+
+.contentPage .search, .mainPage .search, .openWin .search {
+    background-image: url(img/mainframe.png);
+    background-position: -310px -380px;
+    min-width: 60px;
+    width: 80px;
+    height: 34px;
+    border: none;
+    cursor: pointer;
+    background-color: #0095D5;
+}
+
+.contentPage .search-over, .mainPage .search-over, .openWin .search-over {
+    background-position: -310px -430px;
+}
+
+.contentPage .condition-collapse, .mainPage .condition-collapse {
+    position: absolute;
+    width: 20px;
+    height: 26px;
+    right: 10px;
+    top: 0;
+    vertical-align: middle;
+    background-image: url(img/mainframe.png);
+    background-position: -160px -385px;
+    cursor: pointer;
+}
+
+.contentPage .condition-collapse-expanded, .mainPage .condition-collapse-expanded {
+    background-position: -190px -380px!important;
+    height: 45px!important;
+}
+
+.contentPage .content, .mainPage .content {
+    background-color: #fff;
+    margin-top: 0;
+}
+
+    .contentPage .content .content-container, .mainPage .content .content-container, .openwin .content .content-container {
+        padding-bottom: 10px;
+    }
+
+.contentPage .bottom .SelBtn {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #eaeaea;
+}
+
+.openwin {
+    background-color: #f0f4f6;
+    height: 100%;
+    width: 100%;
+}
+
+    .openwin .content {
+        position: relative;
+        width: 100%;
+        overflow: auto;
+    }
+
+        .openwin .content .content-container {
+            text-align: center;
+        }
+
+.openwin-accordion {
+    background-image: url(img/openwin/line.png);
+    background-position: 20px 1px;
+    background-repeat: repeat-y;
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+.openwin-accordion-last {
+    background-image: url(img/openwin/line_15.png);
+    background-position: 20px 1px;
+    background-repeat: no-repeat;
+}
+
+.openwin-accordion .openwin-accordion-left {
+    width: 41px;
+    height: 40px;
+    float: left;
+    background-image: url(img/mainframe.png);
+    background-position: -19px -560px;
+    background-repeat: no-repeat;
+}
+
+.openwin-accordion .openwin-accordion-sequence {
+    margin: 7px auto auto;
+    width: 32px;
+    line-height: 28px;
+    color: #968a5e;
+    font-family: Arial;
+    vertical-align: middle;
+    font-size: 28px;
+    font-style: italic;
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    cursor: pointer;
+}
+
+.openwin-accordion .openwin-accordion-right {
+    margin-left: 60px;
+}
+
+.openwin-accordion .openwin-accordion-maintitle {
+    color: #333;
+    font-size: 18px;
+    text-align: center;
+    height: 40px;
+    font-weight: bolder;
+    position: relative;
+}
+
+.openwin-accordion .openwin-accordion-header {
+    margin-top: 0;
+    height: 40px;
+    background-color: #d1d1d1;
+    padding: 0 20px;
+}
+
+.openwin-accordion .openwin-accordion-title {
+    height: 40px;
+    color: #333;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: left;
+    float: left;
+}
+
+    .openwin-accordion .openwin-accordion-title .tabs {
+        white-space: nowrap;
+        word-break: keep-all;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .openwin-accordion .openwin-accordion-title .manual {
+        float: left;
+        margin-right: 50px;
+        padding: 0 10px;
+        cursor: pointer;
+        min-width: 60px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .openwin-accordion .openwin-accordion-title .tab {
+        float: left;
+        font-size: 14px;
+        background-color: #eee;
+        margin: 10px 5px 0 0;
+        padding: 0 10px;
+        cursor: pointer;
+        min-width: 60px;
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .openwin-accordion .openwin-accordion-title .tab-active {
+        color: #fff;
+        font-size: 20px;
+        background-color: #53aee0;
+    }
+
+.openwin-accordion .openwin-accordion-collpase {
+    width: 20px;
+    height: 40px;
+    float: right;
+    background-image: url(img/mainframe.png);
+    background-position: -120px -530px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.openwin-accordion .openwin-accordion-collpase-open {
+    background-position: -260px -363px;
+}
+
+.openwin-accordion .openwin-accordion-content {
+    background-color: #fff;
+    padding: 15px 20px;
+    text-align: left;
+}
+
+.openwin-accordion .openwin-accordion-contentbg {
+    background-image: url(img/openwin/alterItembg.png);
+    background-repeat: repeat;
+}
+
+.updateprogress {
+    position: absolute;
+    height: 100px;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    margin: -50px 0 0 -100px;
+    background: url(img/loader.png) no-repeat;
+    z-index: 0;
+}
+
+    .updateprogress img {
+        position: absolute;
+        top: 34px;
+        left: 20px;
+        vertical-align: middle;
+    }
+
+    .updateprogress p {
+        margin: 0 0 0 55px;
+        line-height: 100px;
+        font-weight: 700;
+    }
+
+        .updateprogress p span {
+            margin: 0 0 0 10px;
+        }
+
+.modalBackground {
+    z-index: 2000;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: gray;
+    filter: alpha(opacity=80);
+    opacity: .7;
+}
+
+.epoint-checkboxlist TD, .epoint-radiobuttonlist TD {
+    vertical-align: middle;
+    height: 22px;
+    text-align: left;
+}
+
+.epoint-checkbox, .epoint-checkboxlist, .epoint-radiobuttonlist {
+    margin-left: 5px;
+}
+
+    .epoint-checkbox INPUT, .epoint-checkboxlist INPUT, .epoint-radiobuttonlist INPUT {
+        margin-right: 5px;
+        height: 22px;
+        vertical-align: middle;
+    }
+
+    .epoint-checkbox LABEL, .epoint-checkboxlist LABEL, .epoint-radiobuttonlist LABEL {
+        height: 22px;
+        vertical-align: middle;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+
+.epoint-listbox option {
+    padding: 5px;
+}
+
+.small-icon {
+    height: 25px;
+    width: 25px;
+    min-width: 0!important;
+    cursor: pointer;
+    background-image: url(img/icon/icon-13x13.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-right: 0;
+    border: none;
+}
+
+    .small-icon:hover {
+        background-position-y: -154px;
+        background-color: transparent!important;
+    }
+
+.small-icon-add {
+    background-position: -14px -74px;
+}
+
+.small-icon-del {
+    background-position: -44px -74px;
+}
+
+.small-icon-edit {
+    background-position: -74px -74px;
+}
+
+.small-icon-view {
+    background-position: -104px -74px;
+}
+
+.small-icon-setting {
+    background-position: -134px -74px;
+}
+
+.small-icon-copy {
+    background-position: -164px -74px;
+}
+
+.small-icon-init {
+    background-position: -194px -74px;
+}
+
+.small-icon-pause {
+    background-position: -224px -74px;
+}
+
+.small-icon-play {
+    background-position: -254px -74px;
+}
+
+.small-icon-stop {
+    background-position: -284px -74px;
+}
+
+.small-icon-disable {
+    background-position: -314px -74px;
+}
+
+.small-icon-import {
+    background-position: -344px -74px;
+}
+
+.small-icon-list {
+    background-position: -374px -74px;
+}
+
+.small-icon-design {
+    background-position: -404px -74px;
+}
+
+.small-icon-propety {
+    background-position: -434px -74px;
+}
+
+.small-icon-print {
+    background-position: -464px -74px;
+}
+
+.small-icon-history {
+    background-position: -494px -74px;
+}
+
+.small-icon-generate {
+    background-position: -554px -74px;
+}
+
+.small-icon-refresh {
+    background-position: -584px -74px;
+}
+
+.small-icon-info {
+    background-position: -614px -74px;
+}
+
+.small-icon-mail {
+    background-position: -644px -74px;
+}
+
+.small-icon-sms {
+    background-position: -674px -74px;
+}
+
+.small-icon-notread {
+    background-position: -704px -74px;
+}
+
+.small-icon-read {
+    background-position: -734px -74px;
+}
+
+.small-icon-save {
+    background-position: -764px -74px;
+}
+
+.small-icon-over {
+    background-position-y: -154px;
+    background-color: transparent!important;
+}
+
+.small-pic {
+    height: 25px;
+    width: 25px;
+    min-width: 0!important;
+    background-image: url(img/icon/icon-13x13.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-right: 0;
+    border: none;
+}
+
+.small-pic-haspay {
+    background-position: -50px -220px;
+}
+
+.small-pic-notpay {
+    background-position: -50px -260px;
+}
+
+.small-pic-hasjiaona {
+    background-position: -90px -220px;
+}
+
+.small-pic-notjiaona {
+    background-position: -90px -260px;
+}
+
+.small-pic-confirmAttend {
+    background-position: -290px -220px;
+}
+
+.small-pic-confirmNoAttend {
+    background-position: -290px -260px;
+}
+
+.small-pic-notconfirm {
+    background-position: -130px -260px;
+}
+
+.small-pic-hassend {
+    background-position: -170px -220px;
+}
+
+.small-pic-notsend {
+    background-position: -170px -260px;
+}
+
+.small-pic-hassign {
+    background-position: -210px -220px;
+}
+
+.small-pic-notsign {
+    background-position: -210px -260px;
+}
+
+.DivAsTable UL {
+    width: 100%;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+    .DivAsTable UL LI {
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: none;
+        float: left;
+    }
+
+.fontDanWei {
+    margin-left: 5px;
+    color: #666;
+    height: 21px;
+    line-height: 21px;
+}
+
+.toolbar-left {
+    display: inline;
+    float: right;
+    padding-left: 10px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+}
+
+.toolbar-right {
+    float: left;
+    display: inline;
+}
+
+.liItem {
+    text-align: left;
+    height: 25px;
+    margin-top: 3px;
+}
+
+    .liItem a {
+        text-decoration: none;
+        line-height: 19px;
+    }
+
+.liItemA {
+    display: none;
+}
+
+.tdRight {
+    padding-right: 18px;
+    float: right;
+    height: 34px;
+    width: 200px;
+    line-height: 34px;
+    vertical-align: middle;
+}
+
+    .tdRight > span {
+        float: right;
+    }
+
+    .tdRight > input {
+        float: right;
+    }
+
+.toolbarImg {
+    background: url(img/icon/module-icon.png) no-repeat;
+    width: 29px!important;
+    height: 29px!important;
+    width: 27px;
+    height: 27px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e2e2e2;
+    cursor: pointer;
+    overflow: visible;
+}
+
+    .toolbarImg.lczz {
+        background-position: -881px -18px;
+    }
+
+    .toolbarImg.lczz1 {
+        background-position: -881px -18px;
+        border-color: #bababa;
+        background-color: #d6d6d6;
+    }
+
+    .toolbarImg.savepdf {
+        background-position: -1123px -18px;
+    }
+
+    .toolbarImg.savepdf1 {
+        background-position: -1123px -18px;
+        border-color: #bababa;
+        background-color: #d6d6d6;
+    }
+
+    .toolbarImg.backoff {
+        background-position: -1063px -18px;
+        width: 29px;
+        height: 29px;
+    }
+
+    .toolbarImg.backoff1 {
+        background-position: -1063px -18px;
+        border-color: #bababa;
+        background-color: #d6d6d6;
+        width: 29px;
+        height: 29px;
+    }
+
+    .toolbarImg.his {
+        background-position: -941px -50px;
+    }
+
+    .toolbarImg.his1 {
+        background-position: -941px -50px;
+        border-color: #bababa;
+        background-color: #d6d6d6;
+    }
+
+.JSGCBDList.AddBD {
+    width: 20px;
+    height: 20px;
+    background-image: url(../JSGCZtbMis2/Ascx/JSGCBdAdd.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    cursor: pointer;
+    padding-top: 6px;
+    margin-left: 725px;
+}
+
+.DNum {
+    float: left;
+    color: red;
+    padding-left: 5px;
+}
+
+.DUnit {
+    float: left;
+    color: #6e622e;
+    padding-left: 3px;
+}
+
+.tipcolor {
+    color: red;
+}
+
+.perImg, .perText {
+    float: left;
+    cursor: pointer;
+    padding-left: 5px;
+    padding-top: 8px;
+}
+
+#BackReason {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    float: left;
+    cursor: pointer;
+    display: none;
+}
+
+.d1, .d2, .d3 {
+    float: left;
+    height: 34px;
+    vertical-align: middle;
+}
+
+.div-tips-zs {
+    background: #f9d3cc;
+    width: 746px;
+    color: #e24023;
+    min-height: 30px;
+    margin-left: 100px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.div-tips-notes {
+    background: #ffe9ad;
+    width: 746px;
+    color: #e24023;
+    min-height: 30px;
+    margin-left: 100px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.div-tips-longnotes {
+    width: 746px;
+    color: #e24023;
+    min-height: 30px;
+    margin-left: 100px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    background: #d1e4f3;
+}
+
+.div-tips-list {
+    width: 746px;
+    color: #e24023;
+    min-height: 30px;
+    margin-left: 100px;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 10px;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    background: #effeb9;
+}
+
+.div-tips-img {
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    left: 10px;
+    background: url(img/icon/icon-13x13.png) no-repeat -377px -222px;
+}
+
+.JSGCBDList_CSIX.AddBD {
+    width: 20px;
+    height: 20px;
+    background-image: url(../JSGCZtbMis2/Ascx/JSGCBdAdd.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+    border-top-style: solid;
+    border-right-style: solid;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    cursor: pointer;
+    padding-top: 6px;
+}

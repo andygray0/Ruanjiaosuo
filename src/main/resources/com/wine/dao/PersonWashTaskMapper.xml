@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.PersonWashTaskMapper">
+
+    <sql id="mainWhere">
+        <where>
+            <if test="null != task.checkIntern and '' != task.checkIntern.trim()">
+                AND a.CHECK_INTERN = #{task.checkIntern}
+            </if>
+            <if test="null != task.taskStatus and '' != task.taskStatus.trim()">
+                AND a.TASK_STATUS = #{task.taskStatus}
+            </if>
+            <if test="null != task.multiInternFilter and '' != task.multiInternFilter.trim()">
+                AND a.CHECK_INTERN  IN  (${task.multiInternFilter})
+            </if>
+        </where>
+    </sql>
+
+    <select id="countTotal" parameterType="com.wine.model.PersonWashTask" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+        personwash_tasklist AS a
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findByPage" resultType="com.wine.model.PersonWashTask">
+        SELECT
+            a.*
+        FROM
+            personwash_tasklist a
+        <include refid="mainWhere" />
+        ORDER BY
+            ${page.order} ${page.direction}
+        LIMIT ${page.startNo},
+         ${page.limit}
+    </select>
+
+
+
+    <select id="findById" resultType="com.wine.model.PersonWashTask" parameterType="int">
+        SELECT
+            a.*
+        FROM
+            personwash_tasklist a
+        WHERE a.id = #{taskId}
+    </select>
+
+
+    <select id="countTotalCheckDataByTask" parameterType="int" resultType="_int">
+        SELECT
+            count(1) AS total
+        FROM
+            urlcontent_check_2017 a
+        WHERE
+            a.ID IN (
+                SELECT
+                    c.CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation c
+                WHERE
+                    c.TASK_ID = #{taskId}
+            )
+        <if test="null != clWorkStatus">
+            AND  a.CL_WORK_STATUS = #{clWorkStatus}
+        </if>
+        <if test="null != clReviewStatus and 0 != clReviewStatus">
+            AND  a.CL_REVIEW_STATUS = #{clReviewStatus}
+        </if>
+        <if test="0 == clReviewStatus">
+            AND  a.CL_REVIEW_STATUS IS NULL
+        </if>
+
+    </select>
+
+    <select id="findByPageCheckDataByTask" resultType="com.wine.model.WaitCheckData" >
+        SELECT
+            a.ID,
+            a.IR_SID,
+            a.IR_URLTITLE,
+            a.IR_LASTTIME,
+            a.CL_COUNT,
+            a.CL_WORK_STATUS,
+            a.CL_REVIEW_STATUS
+        FROM
+            urlcontent_check_2017 a
+        WHERE
+            a.ID IN (
+                SELECT
+                    c.CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation c
+                WHERE
+                    c.TASK_ID = #{taskId}
+            )
+            <if test="null != clWorkStatus">
+                AND  a.CL_WORK_STATUS = #{clWorkStatus}
+            </if>
+            <if test="null != clReviewStatus and 0 != clReviewStatus">
+                AND  a.CL_REVIEW_STATUS = #{clReviewStatus}
+            </if>
+            <if test="0 == clReviewStatus">
+                AND  a.CL_REVIEW_STATUS IS NULL
+            </if>
+        ORDER BY
+            IR_SID ASC
+        LIMIT ${page.startNo},
+         ${page.limit}
+    </select>
+
+    <insert id="insertOne" parameterType="com.wine.model.PersonWashTask"
+            useGeneratedKeys="true" keyProperty="id" >
+        insert into personwash_tasklist(
+              TASK_NAME,
+              TASK_STATUS,
+              CREATE_TIME,
+              VIRTUAL_FEEDBACK_TIME,
+              CHECK_INTERN,
+              ITEM_COUNT,
+              CHECK_TIMES,
+              CHECK_STATUS,
+              REAL_FEEDBACK_TIME,
+              VALIDATE_TIME,
+              RECORD_COUNT
+              )
+        values(
+              #{taskName},
+              '0',
+              now(),
+              #{virtualFeedbackTime},
+              #{checkIntern},
+              #{itemCount},
+              0,
+              '0',
+              #{realFeedbackTime},
+              #{validateTime},
+              #{recordCount}
+        )
+    </insert>
+
+    <update id="updateRandomCheckRate">
+        UPDATE personwash_tasklist
+        SET RANDOM_CHECK_RATE = #{rate}
+        WHERE
+            ID = #{taskId}
+    </update>
+
+    <select id="findTemporarySavedFields" parameterType="int" resultType="java.lang.String">
+        SELECT
+            field_name
+        FROM
+            personwash_temporary_save
+        WHERE
+            check_id = #{checkId}
+    </select>
+
+    <insert id="saveTemporaryDatasForIntern">
+        INSERT INTO `lxty`.`personwash_temporary_save` (`check_id`, `field_name`)
+        VALUES
+        <foreach collection="fieldList" item="field" index="index" separator=",">
+            (#{checkId}, #{field})
+        </foreach>
+    </insert>
+
+    <delete id="deleteTemporaryDatasByCheckId" parameterType="int">
+        DELETE
+        FROM
+            personwash_temporary_save
+        WHERE
+            check_id = #{checkId}
+    </delete>
+
+    <delete id="deleteTemporaryDatasByTaskId" parameterType="int">
+        DELETE
+        FROM
+            personwash_temporary_save
+        WHERE
+            check_id IN (
+                SELECT
+                    CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation
+                WHERE
+                    TASK_ID = #{taskId}
+            )
+    </delete>
+
+
+    <select id="countTheRateOfAlreadyValidated" parameterType="int" resultType="java.lang.String">
+        SELECT
+            IFNULL(
+                concat(
+                    truncate(truncate(x / y, 5) * 100, 3),
+                    '%'
+                ),
+                concat(0, '%')
+            ) AS r
+        FROM
+            (
+                SELECT
+                    IFNULL(sum(a.CL_COUNT), 0) x,
+                    1 AS z
+                FROM
+                    urlcontent_check_2017 a
+                WHERE
+                    a.ID IN (
+                        SELECT
+                            CHECK_ID
+                        FROM
+                            personwash_task_to_check_data_relation
+                        WHERE
+                            TASK_ID = #{taskId}
+                    )
+                AND a.CL_REVIEW_STATUS = 1
+            ) u
+        LEFT JOIN (
+            SELECT
+                *
+            FROM
+                (
+                    SELECT
+                        b.ITEM_COUNT y,
+                        1 AS z
+                    FROM
+                        personwash_tasklist b
+                    WHERE
+                        b.ID = #{taskId}
+                ) o
+        ) k ON u.z = k.z
+    </select>
+
+    <update id="updateCheckDataModifyStatusByTaskId">
+        UPDATE urlcontent_check_2017
+        SET CL_WORK_STATUS = 0,
+            CL_REVIEW_STATUS = 0
+        WHERE
+            ID IN (
+                SELECT
+                    CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation
+                WHERE
+                    TASK_ID = #{taskId}
+            )
+    </update>
+
+
+    <select id="countTotalNotModifiedRecords" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+            urlcontent_check_2017 a
+        WHERE
+            a.ID IN (
+                SELECT
+                    CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation
+                WHERE
+                    TASK_ID = #{taskId}
+            )
+        AND a.CL_WORK_STATUS != 1;
+    </select>
+
+
+    <select id="findAllCheckDatasByTaskId" resultType="com.wine.model.PersonWashWaitCheckData">
+         SELECT
+            a.*
+        FROM
+            urlcontent_check_2017 a
+        WHERE
+            a.ID IN (
+                SELECT
+                    c.CHECK_ID
+                FROM
+                    personwash_task_to_check_data_relation c
+                WHERE
+                    c.TASK_ID = #{taskId}
+            )
+    </select>
+
+
+    <select id="findByTableNameAndId" resultType="com.wine.model.PersonWashCleanResult">
+        SELECT  *  FROM  ${tableName}  WHERE  IR_SID  =  ${irSid}
+    </select>
+
+    <insert id="insertOneCheckData">
+        INSERT INTO ${tableName}
+        VALUES (#{original.irSid},#{original.irHkey},#{original.irStartid},#{original.irServiceid},#{original.irPkey},#{original.irUrlname},#{original.irSitename},#{original.irChannel},#{original.irGroupname},#{original.irUrltitle},#{original.irLasttime},#{original.irUrldate},#{original.irUrltime},#{original.irLoadtime},#{original.irSrcname},#{original.irCatalog},#{original.irCatalog1},#{original.irCatalog2},#{original.irSimflag},#{original.irSimrank},#{original.irImageflag},#{original.irTableflag},#{original.irDoclength},#{original.irContent},#{original.irBbsnum},#{original.irBbstopic},#{original.irBbskey},#{original.irPagelevel},#{original.irPagerank},#{original.irUrllevel},#{original.irMimetype},#{original.irFormat},#{original.irCharset},#{original.irUrlsize},#{original.irUrlbody},#{original.irWcmid},#{original.irStatus},#{original.irNreserved1},#{original.irNreserved2},#{original.irNreserved3},#{original.irVreserved1},#{original.irVreserved2},#{original.irVreserved3},#{original.irInserttime},#{original.irBiddingDate},#{original.irBiddingId},#{original.irBiddingType},#{original.irBiddingName},#{original.irBiddingContent},#{original.irBiddingSource},#{original.irBiddingMoney},#{original.irBiddingAgency},#{original.irBiddingAgencyAddr},#{original.irBiddingAgencyTel},#{original.irBiddingOrg},#{original.irBiddingAddr},#{original.irBiddingPer},#{original.irBiddingTel},#{original.irBidDate},#{original.irBidType},#{original.irBidOrg},#{original.irBidAddr},#{original.irBidMoney},#{original.irAnnulmentDate},#{original.irAnnulmentReason},#{original.irAnnulmentTreatment},#{original.irOpenTime},#{original.irOpenAddr},#{original.irSaleStartTime},#{original.irSaleEndTime},#{original.irQualification},#{original.irSubcontract},#{original.irTableTag},#{original.irFirstAddr},#{original.irFileGetWay},#{original.irBank},#{original.irPrice},#{original.irPolicy},#{original.irSmallEnterprise},#{original.irNature},#{original.irMedia},#{original.irBiddingFileid},#{original.irBiddingNameTitle},#{original.irPublicDate},#{original.irSubmitDate},#{original.irAssociation},#{original.irExpert},#{original.irSignDate},#{original.irReserved1},#{original.irReserved2},#{original.irReserved3},#{original.irReserved4},#{original.irReserved5},#{original.irReserved6},#{original.irReserved7},#{original.irReserved8},#{original.irReserved9},#{original.irReserved10},#{original.irReserved11},#{original.irReserved12},#{original.irReserved13},#{original.irReserved14},#{original.irReserved15},#{original.irReserved16},#{original.irReserved17},#{original.irReserved18},#{original.irReserved19},#{original.irReserved20},#{original.irReserved21},#{original.irReserved22},#{original.irReserved23},#{original.irReserved24},#{original.irReserved25},#{original.irReserved26},#{original.irReserved27},#{original.irReserved28},#{original.irReserved29},#{original.irReserved30},#{original.irReserved31},#{original.irReserved32},#{original.irReserved33},#{original.irReserved34},#{original.irReserved35},#{original.irReserved36},#{original.irReserved37},#{original.irReserved38},#{original.irReserved39},#{original.irReserved40},#{original.irReserved41},#{original.irReserved42},#{original.irReserved43},#{original.irReserved44},#{original.irReserved45},#{original.irReserved46},#{original.irReserved47},#{original.irReserved48},#{original.irReserved49},#{original.irReserved50})
+    </insert>
+
+    <update id="updateOneCheckData">
+        UPDATE ${tableName} t
+        <set >
+            <if test="record.irSid != null" >
+                t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+            </if>
+            <if test="record.irHkey != null" >
+                t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irStartid != null" >
+                t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+            </if>
+            <if test="record.irServiceid != null" >
+                t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irPkey != null" >
+                t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irUrlname != null" >
+                t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irSitename != null" >
+                t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irChannel != null" >
+                t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irGroupname != null" >
+                t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irUrltitle != null" >
+                t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irLasttime != null" >
+                t.IR_LASTTIME = #{record.irLasttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.irUrldate != null" >
+                t.IR_URLDATE = #{record.irUrldate,jdbcType=DATE},
+            </if>
+            <if test="record.irUrltime != null" >
+                t.IR_URLTIME = #{record.irUrltime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.irLoadtime != null" >
+                t.IR_LOADTIME = #{record.irLoadtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.irSrcname != null" >
+                t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irCatalog != null" >
+                t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irCatalog1 != null" >
+                t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irCatalog2 != null" >
+                t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irSimflag != null" >
+                t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irSimrank != null" >
+                t.IR_SIMRANK = #{record.irSimrank,jdbcType=INTEGER},
+            </if>
+            <if test="record.irImageflag != null" >
+                t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=INTEGER},
+            </if>
+            <if test="record.irTableflag != null" >
+                t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=INTEGER},
+            </if>
+            <if test="record.irDoclength != null" >
+                t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=INTEGER},
+            </if>
+            <if test="record.irBbsnum != null" >
+                t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
+            </if>
+            <if test="record.irBbstopic != null" >
+                t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=INTEGER},
+            </if>
+            <if test="record.irBbskey != null" >
+                t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irPagelevel != null" >
+                t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=INTEGER},
+            </if>
+            <if test="record.irPagerank != null" >
+                t.IR_PAGERANK = #{record.irPagerank,jdbcType=INTEGER},
+            </if>
+            <if test="record.irUrllevel != null" >
+                t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=INTEGER},
+            </if>
+            <if test="record.irMimetype != null" >
+                t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irFormat != null" >
+                t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irCharset != null" >
+                t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irUrlsize != null" >
+                t.IR_URLSIZE = #{record.irUrlsize,jdbcType=INTEGER},
+            </if>
+            <if test="record.irWcmid != null" >
+                t.IR_WCMID = #{record.irWcmid,jdbcType=INTEGER},
+            </if>
+            <if test="record.irStatus != null" >
+                t.IR_STATUS = #{record.irStatus,jdbcType=TINYINT},
+            </if>
+            <if test="record.irNreserved1 != null" >
+                t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=INTEGER},
+            </if>
+            <if test="record.irNreserved2 != null" >
+                t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=INTEGER},
+            </if>
+            <if test="record.irNreserved3 != null" >
+                t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=INTEGER},
+            </if>
+            <if test="record.irVreserved1 != null" >
+                t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irVreserved2 != null" >
+                t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irVreserved3 != null" >
+                t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irInserttime != null" >
+                t.IR_INSERTTIME = #{record.irInserttime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.irReserved1 != null" >
+                t.IR_RESERVED1 = #{record.irReserved1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved2 != null" >
+                t.IR_RESERVED2 = #{record.irReserved2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved3 != null" >
+                t.IR_RESERVED3 = #{record.irReserved3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved4 != null" >
+                t.IR_RESERVED4 = #{record.irReserved4,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved5 != null" >
+                t.IR_RESERVED5 = #{record.irReserved5,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved6 != null" >
+                t.IR_RESERVED6 = #{record.irReserved6,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved7 != null" >
+                t.IR_RESERVED7 = #{record.irReserved7,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved8 != null" >
+                t.IR_RESERVED8 = #{record.irReserved8,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved9 != null" >
+                t.IR_RESERVED9 = #{record.irReserved9,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved10 != null" >
+                t.IR_RESERVED10 = #{record.irReserved10,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved11 != null" >
+                t.IR_RESERVED11 = #{record.irReserved11,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved12 != null" >
+                t.IR_RESERVED12 = #{record.irReserved12,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved13 != null" >
+                t.IR_RESERVED13 = #{record.irReserved13,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved14 != null" >
+                t.IR_RESERVED14 = #{record.irReserved14,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved15 != null" >
+                t.IR_RESERVED15 = #{record.irReserved15,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved16 != null" >
+                t.IR_RESERVED16 = #{record.irReserved16,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved17 != null" >
+                t.IR_RESERVED17 = #{record.irReserved17,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved18 != null" >
+                t.IR_RESERVED18 = #{record.irReserved18,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved19 != null" >
+                t.IR_RESERVED19 = #{record.irReserved19,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved20 != null" >
+                t.IR_RESERVED20 = #{record.irReserved20,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved21 != null" >
+                t.IR_RESERVED21 = #{record.irReserved21,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved22 != null" >
+                t.IR_RESERVED22 = #{record.irReserved22,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved23 != null" >
+                t.IR_RESERVED23 = #{record.irReserved23,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved24 != null" >
+                t.IR_RESERVED24 = #{record.irReserved24,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved25 != null" >
+                t.IR_RESERVED25 = #{record.irReserved25,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved26 != null" >
+                t.IR_RESERVED26 = #{record.irReserved26,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved27 != null" >
+                t.IR_RESERVED27 = #{record.irReserved27,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved28 != null" >
+                t.IR_RESERVED28 = #{record.irReserved28,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved29 != null" >
+                t.IR_RESERVED29 = #{record.irReserved29,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved30 != null" >
+                t.IR_RESERVED30 = #{record.irReserved30,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved31 != null" >
+                t.IR_RESERVED31 = #{record.irReserved31,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved32 != null" >
+                t.IR_RESERVED32 = #{record.irReserved32,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved33 != null" >
+                t.IR_RESERVED33 = #{record.irReserved33,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved34 != null" >
+                t.IR_RESERVED34 = #{record.irReserved34,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved35 != null" >
+                t.IR_RESERVED35 = #{record.irReserved35,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved36 != null" >
+                t.IR_RESERVED36 = #{record.irReserved36,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved37 != null" >
+                t.IR_RESERVED37 = #{record.irReserved37,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved38 != null" >
+                t.IR_RESERVED38 = #{record.irReserved38,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved39 != null" >
+                t.IR_RESERVED39 = #{record.irReserved39,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved40 != null" >
+                t.IR_RESERVED40 = #{record.irReserved40,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved41 != null" >
+                t.IR_RESERVED41 = #{record.irReserved41,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved42 != null" >
+                t.IR_RESERVED42 = #{record.irReserved42,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved43 != null" >
+                t.IR_RESERVED43 = #{record.irReserved43,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved44 != null" >
+                t.IR_RESERVED44 = #{record.irReserved44,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved45 != null" >
+                t.IR_RESERVED45 = #{record.irReserved45,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved46 != null" >
+                t.IR_RESERVED46 = #{record.irReserved46,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved47 != null" >
+                t.IR_RESERVED47 = #{record.irReserved47,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved48 != null" >
+                t.IR_RESERVED48 = #{record.irReserved48,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved49 != null" >
+                t.IR_RESERVED49 = #{record.irReserved49,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irReserved50 != null" >
+                t.IR_RESERVED50 = #{record.irReserved50,jdbcType=VARCHAR},
+            </if>
+            <if test="record.irContent != null" >
+                t.IR_CONTENT = #{record.irContent,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irUrlbody != null" >
+                t.IR_URLBODY = #{record.irUrlbody,jdbcType=LONGVARBINARY},
+            </if>
+            <if test="record.irBiddingDate != null" >
+                t.IR_BIDDING_DATE = #{record.irBiddingDate,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingId != null" >
+                t.IR_BIDDING_ID = #{record.irBiddingId,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingType != null" >
+                t.IR_BIDDING_TYPE = #{record.irBiddingType,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingName != null" >
+                t.IR_BIDDING_NAME = #{record.irBiddingName,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingContent != null" >
+                t.IR_BIDDING_CONTENT = #{record.irBiddingContent,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingSource != null" >
+                t.IR_BIDDING_SOURCE = #{record.irBiddingSource,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingMoney != null" >
+                t.IR_BIDDING_MONEY = #{record.irBiddingMoney,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingAgency != null" >
+                t.IR_BIDDING_AGENCY = #{record.irBiddingAgency,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingAgencyAddr != null" >
+                t.IR_BIDDING_AGENCY_ADDR = #{record.irBiddingAgencyAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingAgencyTel != null" >
+                t.IR_BIDDING_AGENCY_TEL = #{record.irBiddingAgencyTel,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingOrg != null" >
+                t.IR_BIDDING_ORG = #{record.irBiddingOrg,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingAddr != null" >
+                t.IR_BIDDING_ADDR = #{record.irBiddingAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingPer != null" >
+                t.IR_BIDDING_PER = #{record.irBiddingPer,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingTel != null" >
+                t.IR_BIDDING_TEL = #{record.irBiddingTel,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBidDate != null" >
+                t.IR_BID_DATE = #{record.irBidDate,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBidType != null" >
+                t.IR_BID_TYPE = #{record.irBidType,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBidOrg != null" >
+                t.IR_BID_ORG = #{record.irBidOrg,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBidMoney != null" >
+                t.IR_BID_MONEY = #{record.irBidMoney,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBidAddr != null" >
+                t.IR_BID_ADDR = #{record.irBidAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irAnnulmentDate != null" >
+                t.IR_ANNULMENT_DATE = #{record.irAnnulmentDate,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irAnnulmentReason != null" >
+                t.IR_ANNULMENT_REASON = #{record.irAnnulmentReason,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irAnnulmentTreatment != null" >
+                t.IR_ANNULMENT_TREATMENT = #{record.irAnnulmentTreatment,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irOpenTime != null" >
+                t.IR_OPEN_TIME = #{record.irOpenTime,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irOpenAddr != null" >
+                t.IR_OPEN_ADDR = #{record.irOpenAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSaleStartTime != null" >
+                t.IR_SALE_START_TIME = #{record.irSaleStartTime,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSaleEndTime != null" >
+                t.IR_SALE_END_TIME = #{record.irSaleEndTime,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irQualification != null" >
+                t.IR_QUALIFICATION = #{record.irQualification,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSubcontract != null" >
+                t.IR_SUBCONTRACT = #{record.irSubcontract,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irTableTag != null" >
+                t.IR_TABLE_TAG = #{record.irTableTag,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irFirstAddr != null" >
+                t.IR_FIRST_ADDR = #{record.irFirstAddr,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irFileGetWay != null" >
+                t.IR_FILE_GET_WAY = #{record.irFileGetWay,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBank != null" >
+                t.IR_BANK = #{record.irBank,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irPrice != null" >
+                t.IR_PRICE = #{record.irPrice,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irPolicy != null" >
+                t.IR_POLICY = #{record.irPolicy,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSmallEnterprise != null" >
+                t.IR_SMALL_ENTERPRISE = #{record.irSmallEnterprise,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irNature != null" >
+                t.IR_NATURE = #{record.irNature,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irMedia != null" >
+                t.IR_MEDIA = #{record.irMedia,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingFileid != null" >
+                t.IR_BIDDING_FILEID = #{record.irBiddingFileid,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irBiddingNameTitle != null" >
+                t.IR_BIDDING_NAME_TITLE = #{record.irBiddingNameTitle,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irPublicDate != null" >
+                t.IR_PUBLIC_DATE = #{record.irPublicDate,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSubmitDate != null" >
+                t.IR_SUBMIT_DATE = #{record.irSubmitDate,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irAssociation != null" >
+                t.IR_ASSOCIATION = #{record.irAssociation,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irExpert != null" >
+                t.IR_EXPERT = #{record.irExpert,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.irSignDate != null" >
+                t.IR_SIGN_DATE = #{record.irSignDate,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+       WHERE
+            IR_SID = #{record.irSid}
+    </update>
+
+    <update id="updateTaskWorkCountByTaskId" parameterType="com.wine.model.PersonWashTask">
+        UPDATE  personwash_tasklist
+        SET REAL_QUERY_ITEM_COUNT = #{realQueryItemCount},
+             REAL_FINISHED_ITEM_COUNT = #{realFinishedItemCount},
+             WORK_LOAD = #{workLoad}
+        WHERE
+             ID = #{id}
+    </update>
+
+
+</mapper>
+

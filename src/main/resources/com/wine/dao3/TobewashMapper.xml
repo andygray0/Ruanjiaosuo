@@ -1,0 +1,1151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao3.TobewashMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model3.Tobewash" >
+    <id column="t_IR_HKEY" property="irHkey" jdbcType="VARCHAR" />
+    <id column="t_IR_BBSNUM" property="irBbsnum" jdbcType="INTEGER" />
+    <result column="t_IR_SID" property="irSid" jdbcType="INTEGER" />
+    <result column="t_IR_STARTID" property="irStartid" jdbcType="INTEGER" />
+    <result column="t_IR_SERVICEID" property="irServiceid" jdbcType="VARCHAR" />
+    <result column="t_IR_PKEY" property="irPkey" jdbcType="VARCHAR" />
+    <result column="t_IR_URLNAME" property="irUrlname" jdbcType="VARCHAR" />
+    <result column="t_IR_EXTNAME" property="irExtname" jdbcType="VARCHAR" />
+    <result column="t_IR_SITENAME" property="irSitename" jdbcType="VARCHAR" />
+    <result column="t_IR_CHANNEL" property="irChannel" jdbcType="VARCHAR" />
+    <result column="t_IR_GROUPNAME" property="irGroupname" jdbcType="VARCHAR" />
+    <result column="t_IR_URLTITLE" property="irUrltitle" jdbcType="VARCHAR" />
+    <result column="t_IR_URLTOPIC" property="irUrltopic" jdbcType="VARCHAR" />
+    <result column="t_IR_LASTTIME" property="irLasttime" jdbcType="TIMESTAMP" />
+    <result column="t_IR_URLDATE" property="irUrldate" jdbcType="DATE" />
+    <result column="t_IR_URLTIME" property="irUrltime" jdbcType="TIMESTAMP" />
+    <result column="t_IR_LOADTIME" property="irLoadtime" jdbcType="TIMESTAMP" />
+    <result column="t_IR_SRCNAME" property="irSrcname" jdbcType="VARCHAR" />
+    <result column="t_IR_AUTHORS" property="irAuthors" jdbcType="VARCHAR" />
+    <result column="t_IR_DISTRICT" property="irDistrict" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG" property="irCatalog" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG1" property="irCatalog1" jdbcType="VARCHAR" />
+    <result column="t_IR_CATALOG2" property="irCatalog2" jdbcType="VARCHAR" />
+    <result column="t_IR_KEYWORDS" property="irKeywords" jdbcType="VARCHAR" />
+    <result column="t_IR_ABSTRACT" property="irAbstract" jdbcType="VARCHAR" />
+    <result column="t_IR_SIMFLAG" property="irSimflag" jdbcType="VARCHAR" />
+    <result column="t_IR_SIMRANK" property="irSimrank" jdbcType="INTEGER" />
+    <result column="t_IR_IMAGEFLAG" property="irImageflag" jdbcType="INTEGER" />
+    <result column="t_IR_TABLEFLAG" property="irTableflag" jdbcType="INTEGER" />
+    <result column="t_IR_DOCLENGTH" property="irDoclength" jdbcType="INTEGER" />
+    <result column="t_IR_BBSTOPIC" property="irBbstopic" jdbcType="INTEGER" />
+    <result column="t_IR_BBSKEY" property="irBbskey" jdbcType="VARCHAR" />
+    <result column="t_IR_PAGELEVEL" property="irPagelevel" jdbcType="INTEGER" />
+    <result column="t_IR_PAGERANK" property="irPagerank" jdbcType="INTEGER" />
+    <result column="t_IR_URLLEVEL" property="irUrllevel" jdbcType="INTEGER" />
+    <result column="t_IR_MIMETYPE" property="irMimetype" jdbcType="VARCHAR" />
+    <result column="t_IR_FORMAT" property="irFormat" jdbcType="VARCHAR" />
+    <result column="t_IR_CHARSET" property="irCharset" jdbcType="VARCHAR" />
+    <result column="t_IR_URLSIZE" property="irUrlsize" jdbcType="INTEGER" />
+    <result column="t_IR_WCMID" property="irWcmid" jdbcType="INTEGER" />
+    <result column="t_IR_STATUS" property="irStatus" jdbcType="TINYINT" />
+    <result column="t_IR_NRESERVED1" property="irNreserved1" jdbcType="INTEGER" />
+    <result column="t_IR_NRESERVED2" property="irNreserved2" jdbcType="INTEGER" />
+    <result column="t_IR_NRESERVED3" property="irNreserved3" jdbcType="INTEGER" />
+    <result column="t_IR_VRESERVED1" property="irVreserved1" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED2" property="irVreserved2" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED3" property="irVreserved3" jdbcType="VARCHAR" />
+    <result column="t_IR_VRESERVED4" property="irVreserved4" jdbcType="VARCHAR" />
+    <result column="t_IR_SRESERVED1" property="irSreserved1" jdbcType="VARCHAR" />
+    <result column="t_IR_SRESERVED2" property="irSreserved2" jdbcType="VARCHAR" />
+    <result column="t_IR_SRESERVED3" property="irSreserved3" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.wine.model3.TobewashWithBLOBs" extends="BaseResultMap" >
+    <result column="t_IR_CONTENT" property="irContentStr" jdbcType="VARCHAR" />
+    <result column="t_IR_URLCONTENT" property="irUrlcontentStr" jdbcType="VARCHAR" />
+    <result column="t_IR_URLBODY" property="irUrlbodyStr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.IR_HKEY as t_IR_HKEY, t.IR_BBSNUM as t_IR_BBSNUM, t.IR_SID as t_IR_SID, t.IR_STARTID as t_IR_STARTID, 
+    t.IR_SERVICEID as t_IR_SERVICEID, t.IR_PKEY as t_IR_PKEY, t.IR_URLNAME as t_IR_URLNAME, 
+    t.IR_EXTNAME as t_IR_EXTNAME, t.IR_SITENAME as t_IR_SITENAME, t.IR_CHANNEL as t_IR_CHANNEL, 
+    t.IR_GROUPNAME as t_IR_GROUPNAME, t.IR_URLTITLE as t_IR_URLTITLE, t.IR_URLTOPIC as t_IR_URLTOPIC, 
+    t.IR_LASTTIME as t_IR_LASTTIME, t.IR_URLDATE as t_IR_URLDATE, t.IR_URLTIME as t_IR_URLTIME, 
+    t.IR_LOADTIME as t_IR_LOADTIME, t.IR_SRCNAME as t_IR_SRCNAME, t.IR_AUTHORS as t_IR_AUTHORS, 
+    t.IR_DISTRICT as t_IR_DISTRICT, t.IR_CATALOG as t_IR_CATALOG, t.IR_CATALOG1 as t_IR_CATALOG1, 
+    t.IR_CATALOG2 as t_IR_CATALOG2, t.IR_KEYWORDS as t_IR_KEYWORDS, t.IR_ABSTRACT as t_IR_ABSTRACT, 
+    t.IR_SIMFLAG as t_IR_SIMFLAG, t.IR_SIMRANK as t_IR_SIMRANK, t.IR_IMAGEFLAG as t_IR_IMAGEFLAG, 
+    t.IR_TABLEFLAG as t_IR_TABLEFLAG, t.IR_DOCLENGTH as t_IR_DOCLENGTH, t.IR_BBSTOPIC as t_IR_BBSTOPIC, 
+    t.IR_BBSKEY as t_IR_BBSKEY, t.IR_PAGELEVEL as t_IR_PAGELEVEL, t.IR_PAGERANK as t_IR_PAGERANK, 
+    t.IR_URLLEVEL as t_IR_URLLEVEL, t.IR_MIMETYPE as t_IR_MIMETYPE, t.IR_FORMAT as t_IR_FORMAT, 
+    t.IR_CHARSET as t_IR_CHARSET, t.IR_URLSIZE as t_IR_URLSIZE, t.IR_WCMID as t_IR_WCMID, 
+    t.IR_STATUS as t_IR_STATUS, t.IR_NRESERVED1 as t_IR_NRESERVED1, t.IR_NRESERVED2 as t_IR_NRESERVED2, 
+    t.IR_NRESERVED3 as t_IR_NRESERVED3, t.IR_VRESERVED1 as t_IR_VRESERVED1, t.IR_VRESERVED2 as t_IR_VRESERVED2, 
+    t.IR_VRESERVED3 as t_IR_VRESERVED3, t.IR_VRESERVED4 as t_IR_VRESERVED4, t.IR_SRESERVED1 as t_IR_SRESERVED1, 
+    t.IR_SRESERVED2 as t_IR_SRESERVED2, t.IR_SRESERVED3 as t_IR_SRESERVED3
+  </sql>
+  <sql id="Blob_Column_List" >
+    cast(t.IR_CONTENT as char) as t_IR_CONTENT,
+    cast(t.IR_URLCONTENT as char) as t_IR_URLCONTENT,
+    cast(t.IR_URLBODY as char) as t_IR_URLBODY
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.wine.model3.TobewashCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from URLCONTENT t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model3.TobewashCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from URLCONTENT t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectBySqlWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from URLCONTENT t ${value}
+  </select>
+  <select id="selectBySql" resultMap="BaseResultMap" parameterType="String" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from URLCONTENT t ${value}
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="com.wine.model3.TobewashKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from URLCONTENT t
+    where t.IR_HKEY = #{irHkey,jdbcType=VARCHAR}
+      and t.IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.wine.model3.TobewashKey" >
+    delete from urlcontent
+    where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
+      and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wine.model3.TobewashCriteria" >
+    delete from URLCONTENT t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wine.model3.TobewashWithBLOBs" >
+    insert into urlcontent (IR_HKEY, IR_BBSNUM, IR_SID, 
+      IR_STARTID, IR_SERVICEID, IR_PKEY, 
+      IR_URLNAME, IR_EXTNAME, IR_SITENAME, 
+      IR_CHANNEL, IR_GROUPNAME, IR_URLTITLE, 
+      IR_URLTOPIC, IR_LASTTIME, IR_URLDATE, 
+      IR_URLTIME, IR_LOADTIME, IR_SRCNAME, 
+      IR_AUTHORS, IR_DISTRICT, IR_CATALOG, 
+      IR_CATALOG1, IR_CATALOG2, IR_KEYWORDS, 
+      IR_ABSTRACT, IR_SIMFLAG, IR_SIMRANK, 
+      IR_IMAGEFLAG, IR_TABLEFLAG, IR_DOCLENGTH, 
+      IR_BBSTOPIC, IR_BBSKEY, IR_PAGELEVEL, 
+      IR_PAGERANK, IR_URLLEVEL, IR_MIMETYPE, 
+      IR_FORMAT, IR_CHARSET, IR_URLSIZE, 
+      IR_WCMID, IR_STATUS, IR_NRESERVED1, 
+      IR_NRESERVED2, IR_NRESERVED3, IR_VRESERVED1, 
+      IR_VRESERVED2, IR_VRESERVED3, IR_VRESERVED4, 
+      IR_SRESERVED1, IR_SRESERVED2, IR_SRESERVED3, 
+      IR_CONTENT, IR_URLCONTENT, IR_URLBODY
+      )
+    values (#{irHkey,jdbcType=VARCHAR}, #{irBbsnum,jdbcType=INTEGER}, #{irSid,jdbcType=INTEGER}, 
+      #{irStartid,jdbcType=INTEGER}, #{irServiceid,jdbcType=VARCHAR}, #{irPkey,jdbcType=VARCHAR}, 
+      #{irUrlname,jdbcType=VARCHAR}, #{irExtname,jdbcType=VARCHAR}, #{irSitename,jdbcType=VARCHAR}, 
+      #{irChannel,jdbcType=VARCHAR}, #{irGroupname,jdbcType=VARCHAR}, #{irUrltitle,jdbcType=VARCHAR}, 
+      #{irUrltopic,jdbcType=VARCHAR}, #{irLasttime,jdbcType=TIMESTAMP}, #{irUrldate,jdbcType=DATE}, 
+      #{irUrltime,jdbcType=TIMESTAMP}, #{irLoadtime,jdbcType=TIMESTAMP}, #{irSrcname,jdbcType=VARCHAR}, 
+      #{irAuthors,jdbcType=VARCHAR}, #{irDistrict,jdbcType=VARCHAR}, #{irCatalog,jdbcType=VARCHAR}, 
+      #{irCatalog1,jdbcType=VARCHAR}, #{irCatalog2,jdbcType=VARCHAR}, #{irKeywords,jdbcType=VARCHAR}, 
+      #{irAbstract,jdbcType=VARCHAR}, #{irSimflag,jdbcType=VARCHAR}, #{irSimrank,jdbcType=INTEGER}, 
+      #{irImageflag,jdbcType=INTEGER}, #{irTableflag,jdbcType=INTEGER}, #{irDoclength,jdbcType=INTEGER}, 
+      #{irBbstopic,jdbcType=INTEGER}, #{irBbskey,jdbcType=VARCHAR}, #{irPagelevel,jdbcType=INTEGER}, 
+      #{irPagerank,jdbcType=INTEGER}, #{irUrllevel,jdbcType=INTEGER}, #{irMimetype,jdbcType=VARCHAR}, 
+      #{irFormat,jdbcType=VARCHAR}, #{irCharset,jdbcType=VARCHAR}, #{irUrlsize,jdbcType=INTEGER}, 
+      #{irWcmid,jdbcType=INTEGER}, #{irStatus,jdbcType=TINYINT}, #{irNreserved1,jdbcType=INTEGER}, 
+      #{irNreserved2,jdbcType=INTEGER}, #{irNreserved3,jdbcType=INTEGER}, #{irVreserved1,jdbcType=VARCHAR}, 
+      #{irVreserved2,jdbcType=VARCHAR}, #{irVreserved3,jdbcType=VARCHAR}, #{irVreserved4,jdbcType=VARCHAR}, 
+      #{irSreserved1,jdbcType=VARCHAR}, #{irSreserved2,jdbcType=VARCHAR}, #{irSreserved3,jdbcType=VARCHAR}, 
+      #{irContent,jdbcType=LONGVARBINARY}, #{irUrlcontent,jdbcType=LONGVARBINARY}, #{irUrlbody,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
+    insert into urlcontent
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="irHkey != null" >
+        IR_HKEY,
+      </if>
+      <if test="irBbsnum != null" >
+        IR_BBSNUM,
+      </if>
+      <if test="irSid != null" >
+        IR_SID,
+      </if>
+      <if test="irStartid != null" >
+        IR_STARTID,
+      </if>
+      <if test="irServiceid != null" >
+        IR_SERVICEID,
+      </if>
+      <if test="irPkey != null" >
+        IR_PKEY,
+      </if>
+      <if test="irUrlname != null" >
+        IR_URLNAME,
+      </if>
+      <if test="irExtname != null" >
+        IR_EXTNAME,
+      </if>
+      <if test="irSitename != null" >
+        IR_SITENAME,
+      </if>
+      <if test="irChannel != null" >
+        IR_CHANNEL,
+      </if>
+      <if test="irGroupname != null" >
+        IR_GROUPNAME,
+      </if>
+      <if test="irUrltitle != null" >
+        IR_URLTITLE,
+      </if>
+      <if test="irUrltopic != null" >
+        IR_URLTOPIC,
+      </if>
+      <if test="irLasttime != null" >
+        IR_LASTTIME,
+      </if>
+      <if test="irUrldate != null" >
+        IR_URLDATE,
+      </if>
+      <if test="irUrltime != null" >
+        IR_URLTIME,
+      </if>
+      <if test="irLoadtime != null" >
+        IR_LOADTIME,
+      </if>
+      <if test="irSrcname != null" >
+        IR_SRCNAME,
+      </if>
+      <if test="irAuthors != null" >
+        IR_AUTHORS,
+      </if>
+      <if test="irDistrict != null" >
+        IR_DISTRICT,
+      </if>
+      <if test="irCatalog != null" >
+        IR_CATALOG,
+      </if>
+      <if test="irCatalog1 != null" >
+        IR_CATALOG1,
+      </if>
+      <if test="irCatalog2 != null" >
+        IR_CATALOG2,
+      </if>
+      <if test="irKeywords != null" >
+        IR_KEYWORDS,
+      </if>
+      <if test="irAbstract != null" >
+        IR_ABSTRACT,
+      </if>
+      <if test="irSimflag != null" >
+        IR_SIMFLAG,
+      </if>
+      <if test="irSimrank != null" >
+        IR_SIMRANK,
+      </if>
+      <if test="irImageflag != null" >
+        IR_IMAGEFLAG,
+      </if>
+      <if test="irTableflag != null" >
+        IR_TABLEFLAG,
+      </if>
+      <if test="irDoclength != null" >
+        IR_DOCLENGTH,
+      </if>
+      <if test="irBbstopic != null" >
+        IR_BBSTOPIC,
+      </if>
+      <if test="irBbskey != null" >
+        IR_BBSKEY,
+      </if>
+      <if test="irPagelevel != null" >
+        IR_PAGELEVEL,
+      </if>
+      <if test="irPagerank != null" >
+        IR_PAGERANK,
+      </if>
+      <if test="irUrllevel != null" >
+        IR_URLLEVEL,
+      </if>
+      <if test="irMimetype != null" >
+        IR_MIMETYPE,
+      </if>
+      <if test="irFormat != null" >
+        IR_FORMAT,
+      </if>
+      <if test="irCharset != null" >
+        IR_CHARSET,
+      </if>
+      <if test="irUrlsize != null" >
+        IR_URLSIZE,
+      </if>
+      <if test="irWcmid != null" >
+        IR_WCMID,
+      </if>
+      <if test="irStatus != null" >
+        IR_STATUS,
+      </if>
+      <if test="irNreserved1 != null" >
+        IR_NRESERVED1,
+      </if>
+      <if test="irNreserved2 != null" >
+        IR_NRESERVED2,
+      </if>
+      <if test="irNreserved3 != null" >
+        IR_NRESERVED3,
+      </if>
+      <if test="irVreserved1 != null" >
+        IR_VRESERVED1,
+      </if>
+      <if test="irVreserved2 != null" >
+        IR_VRESERVED2,
+      </if>
+      <if test="irVreserved3 != null" >
+        IR_VRESERVED3,
+      </if>
+      <if test="irVreserved4 != null" >
+        IR_VRESERVED4,
+      </if>
+      <if test="irSreserved1 != null" >
+        IR_SRESERVED1,
+      </if>
+      <if test="irSreserved2 != null" >
+        IR_SRESERVED2,
+      </if>
+      <if test="irSreserved3 != null" >
+        IR_SRESERVED3,
+      </if>
+      <if test="irContent != null" >
+        IR_CONTENT,
+      </if>
+      <if test="irUrlcontent != null" >
+        IR_URLCONTENT,
+      </if>
+      <if test="irUrlbody != null" >
+        IR_URLBODY,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="irHkey != null" >
+        #{irHkey,jdbcType=VARCHAR},
+      </if>
+      <if test="irBbsnum != null" >
+        #{irBbsnum,jdbcType=INTEGER},
+      </if>
+      <if test="irSid != null" >
+        #{irSid,jdbcType=INTEGER},
+      </if>
+      <if test="irStartid != null" >
+        #{irStartid,jdbcType=INTEGER},
+      </if>
+      <if test="irServiceid != null" >
+        #{irServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="irPkey != null" >
+        #{irPkey,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlname != null" >
+        #{irUrlname,jdbcType=VARCHAR},
+      </if>
+      <if test="irExtname != null" >
+        #{irExtname,jdbcType=VARCHAR},
+      </if>
+      <if test="irSitename != null" >
+        #{irSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="irChannel != null" >
+        #{irChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="irGroupname != null" >
+        #{irGroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltitle != null" >
+        #{irUrltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltopic != null" >
+        #{irUrltopic,jdbcType=VARCHAR},
+      </if>
+      <if test="irLasttime != null" >
+        #{irLasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irUrldate != null" >
+        #{irUrldate,jdbcType=DATE},
+      </if>
+      <if test="irUrltime != null" >
+        #{irUrltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irLoadtime != null" >
+        #{irLoadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irSrcname != null" >
+        #{irSrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="irAuthors != null" >
+        #{irAuthors,jdbcType=VARCHAR},
+      </if>
+      <if test="irDistrict != null" >
+        #{irDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog != null" >
+        #{irCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog1 != null" >
+        #{irCatalog1,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog2 != null" >
+        #{irCatalog2,jdbcType=VARCHAR},
+      </if>
+      <if test="irKeywords != null" >
+        #{irKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="irAbstract != null" >
+        #{irAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimflag != null" >
+        #{irSimflag,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimrank != null" >
+        #{irSimrank,jdbcType=INTEGER},
+      </if>
+      <if test="irImageflag != null" >
+        #{irImageflag,jdbcType=INTEGER},
+      </if>
+      <if test="irTableflag != null" >
+        #{irTableflag,jdbcType=INTEGER},
+      </if>
+      <if test="irDoclength != null" >
+        #{irDoclength,jdbcType=INTEGER},
+      </if>
+      <if test="irBbstopic != null" >
+        #{irBbstopic,jdbcType=INTEGER},
+      </if>
+      <if test="irBbskey != null" >
+        #{irBbskey,jdbcType=VARCHAR},
+      </if>
+      <if test="irPagelevel != null" >
+        #{irPagelevel,jdbcType=INTEGER},
+      </if>
+      <if test="irPagerank != null" >
+        #{irPagerank,jdbcType=INTEGER},
+      </if>
+      <if test="irUrllevel != null" >
+        #{irUrllevel,jdbcType=INTEGER},
+      </if>
+      <if test="irMimetype != null" >
+        #{irMimetype,jdbcType=VARCHAR},
+      </if>
+      <if test="irFormat != null" >
+        #{irFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="irCharset != null" >
+        #{irCharset,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlsize != null" >
+        #{irUrlsize,jdbcType=INTEGER},
+      </if>
+      <if test="irWcmid != null" >
+        #{irWcmid,jdbcType=INTEGER},
+      </if>
+      <if test="irStatus != null" >
+        #{irStatus,jdbcType=TINYINT},
+      </if>
+      <if test="irNreserved1 != null" >
+        #{irNreserved1,jdbcType=INTEGER},
+      </if>
+      <if test="irNreserved2 != null" >
+        #{irNreserved2,jdbcType=INTEGER},
+      </if>
+      <if test="irNreserved3 != null" >
+        #{irNreserved3,jdbcType=INTEGER},
+      </if>
+      <if test="irVreserved1 != null" >
+        #{irVreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved2 != null" >
+        #{irVreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved3 != null" >
+        #{irVreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved4 != null" >
+        #{irVreserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved1 != null" >
+        #{irSreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved2 != null" >
+        #{irSreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved3 != null" >
+        #{irSreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irContent != null" >
+        #{irContent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="irUrlcontent != null" >
+        #{irUrlcontent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="irUrlbody != null" >
+        #{irUrlbody,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wine.model3.TobewashCriteria" resultType="java.lang.Integer" >
+    select count(*) from URLCONTENT t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update urlcontent t
+    <set >
+      <if test="record.irHkey != null" >
+        t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irBbsnum != null" >
+        t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.irSid != null" >
+        t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      </if>
+      <if test="record.irStartid != null" >
+        t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      </if>
+      <if test="record.irServiceid != null" >
+        t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPkey != null" >
+        t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrlname != null" >
+        t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irExtname != null" >
+        t.IR_EXTNAME = #{record.irExtname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSitename != null" >
+        t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irChannel != null" >
+        t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irGroupname != null" >
+        t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrltitle != null" >
+        t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrltopic != null" >
+        t.IR_URLTOPIC = #{record.irUrltopic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irLasttime != null" >
+        t.IR_LASTTIME = #{record.irLasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.irUrldate != null" >
+        t.IR_URLDATE = #{record.irUrldate,jdbcType=DATE},
+      </if>
+      <if test="record.irUrltime != null" >
+        t.IR_URLTIME = #{record.irUrltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.irLoadtime != null" >
+        t.IR_LOADTIME = #{record.irLoadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.irSrcname != null" >
+        t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAuthors != null" >
+        t.IR_AUTHORS = #{record.irAuthors,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irDistrict != null" >
+        t.IR_DISTRICT = #{record.irDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog != null" >
+        t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog1 != null" >
+        t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCatalog2 != null" >
+        t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irKeywords != null" >
+        t.IR_KEYWORDS = #{record.irKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irAbstract != null" >
+        t.IR_ABSTRACT = #{record.irAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSimflag != null" >
+        t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSimrank != null" >
+        t.IR_SIMRANK = #{record.irSimrank,jdbcType=INTEGER},
+      </if>
+      <if test="record.irImageflag != null" >
+        t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.irTableflag != null" >
+        t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.irDoclength != null" >
+        t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=INTEGER},
+      </if>
+      <if test="record.irBbstopic != null" >
+        t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=INTEGER},
+      </if>
+      <if test="record.irBbskey != null" >
+        t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irPagelevel != null" >
+        t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.irPagerank != null" >
+        t.IR_PAGERANK = #{record.irPagerank,jdbcType=INTEGER},
+      </if>
+      <if test="record.irUrllevel != null" >
+        t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.irMimetype != null" >
+        t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irFormat != null" >
+        t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irCharset != null" >
+        t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irUrlsize != null" >
+        t.IR_URLSIZE = #{record.irUrlsize,jdbcType=INTEGER},
+      </if>
+      <if test="record.irWcmid != null" >
+        t.IR_WCMID = #{record.irWcmid,jdbcType=INTEGER},
+      </if>
+      <if test="record.irStatus != null" >
+        t.IR_STATUS = #{record.irStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.irNreserved1 != null" >
+        t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=INTEGER},
+      </if>
+      <if test="record.irNreserved2 != null" >
+        t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=INTEGER},
+      </if>
+      <if test="record.irNreserved3 != null" >
+        t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=INTEGER},
+      </if>
+      <if test="record.irVreserved1 != null" >
+        t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved2 != null" >
+        t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved3 != null" >
+        t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irVreserved4 != null" >
+        t.IR_VRESERVED4 = #{record.irVreserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSreserved1 != null" >
+        t.IR_SRESERVED1 = #{record.irSreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSreserved2 != null" >
+        t.IR_SRESERVED2 = #{record.irSreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irSreserved3 != null" >
+        t.IR_SRESERVED3 = #{record.irSreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="record.irContent != null" >
+        t.IR_CONTENT = #{record.irContent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.irUrlcontent != null" >
+        t.IR_URLCONTENT = #{record.irUrlcontent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="record.irUrlbody != null" >
+        t.IR_URLBODY = #{record.irUrlbody,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update urlcontent t
+    set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
+      t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      t.IR_EXTNAME = #{record.irExtname,jdbcType=VARCHAR},
+      t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      t.IR_URLTOPIC = #{record.irUrltopic,jdbcType=VARCHAR},
+      t.IR_LASTTIME = #{record.irLasttime,jdbcType=TIMESTAMP},
+      t.IR_URLDATE = #{record.irUrldate,jdbcType=DATE},
+      t.IR_URLTIME = #{record.irUrltime,jdbcType=TIMESTAMP},
+      t.IR_LOADTIME = #{record.irLoadtime,jdbcType=TIMESTAMP},
+      t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      t.IR_AUTHORS = #{record.irAuthors,jdbcType=VARCHAR},
+      t.IR_DISTRICT = #{record.irDistrict,jdbcType=VARCHAR},
+      t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      t.IR_KEYWORDS = #{record.irKeywords,jdbcType=VARCHAR},
+      t.IR_ABSTRACT = #{record.irAbstract,jdbcType=VARCHAR},
+      t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      t.IR_SIMRANK = #{record.irSimrank,jdbcType=INTEGER},
+      t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=INTEGER},
+      t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=INTEGER},
+      t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=INTEGER},
+      t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=INTEGER},
+      t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=INTEGER},
+      t.IR_PAGERANK = #{record.irPagerank,jdbcType=INTEGER},
+      t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=INTEGER},
+      t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      t.IR_URLSIZE = #{record.irUrlsize,jdbcType=INTEGER},
+      t.IR_WCMID = #{record.irWcmid,jdbcType=INTEGER},
+      t.IR_STATUS = #{record.irStatus,jdbcType=TINYINT},
+      t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=INTEGER},
+      t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=INTEGER},
+      t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=INTEGER},
+      t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      t.IR_VRESERVED4 = #{record.irVreserved4,jdbcType=VARCHAR},
+      t.IR_SRESERVED1 = #{record.irSreserved1,jdbcType=VARCHAR},
+      t.IR_SRESERVED2 = #{record.irSreserved2,jdbcType=VARCHAR},
+      t.IR_SRESERVED3 = #{record.irSreserved3,jdbcType=VARCHAR},
+      t.IR_CONTENT = #{record.irContent,jdbcType=LONGVARBINARY},
+      t.IR_URLCONTENT = #{record.irUrlcontent,jdbcType=LONGVARBINARY},
+      t.IR_URLBODY = #{record.irUrlbody,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update urlcontent t
+    set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
+      t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
+      t.IR_SID = #{record.irSid,jdbcType=INTEGER},
+      t.IR_STARTID = #{record.irStartid,jdbcType=INTEGER},
+      t.IR_SERVICEID = #{record.irServiceid,jdbcType=VARCHAR},
+      t.IR_PKEY = #{record.irPkey,jdbcType=VARCHAR},
+      t.IR_URLNAME = #{record.irUrlname,jdbcType=VARCHAR},
+      t.IR_EXTNAME = #{record.irExtname,jdbcType=VARCHAR},
+      t.IR_SITENAME = #{record.irSitename,jdbcType=VARCHAR},
+      t.IR_CHANNEL = #{record.irChannel,jdbcType=VARCHAR},
+      t.IR_GROUPNAME = #{record.irGroupname,jdbcType=VARCHAR},
+      t.IR_URLTITLE = #{record.irUrltitle,jdbcType=VARCHAR},
+      t.IR_URLTOPIC = #{record.irUrltopic,jdbcType=VARCHAR},
+      t.IR_LASTTIME = #{record.irLasttime,jdbcType=TIMESTAMP},
+      t.IR_URLDATE = #{record.irUrldate,jdbcType=DATE},
+      t.IR_URLTIME = #{record.irUrltime,jdbcType=TIMESTAMP},
+      t.IR_LOADTIME = #{record.irLoadtime,jdbcType=TIMESTAMP},
+      t.IR_SRCNAME = #{record.irSrcname,jdbcType=VARCHAR},
+      t.IR_AUTHORS = #{record.irAuthors,jdbcType=VARCHAR},
+      t.IR_DISTRICT = #{record.irDistrict,jdbcType=VARCHAR},
+      t.IR_CATALOG = #{record.irCatalog,jdbcType=VARCHAR},
+      t.IR_CATALOG1 = #{record.irCatalog1,jdbcType=VARCHAR},
+      t.IR_CATALOG2 = #{record.irCatalog2,jdbcType=VARCHAR},
+      t.IR_KEYWORDS = #{record.irKeywords,jdbcType=VARCHAR},
+      t.IR_ABSTRACT = #{record.irAbstract,jdbcType=VARCHAR},
+      t.IR_SIMFLAG = #{record.irSimflag,jdbcType=VARCHAR},
+      t.IR_SIMRANK = #{record.irSimrank,jdbcType=INTEGER},
+      t.IR_IMAGEFLAG = #{record.irImageflag,jdbcType=INTEGER},
+      t.IR_TABLEFLAG = #{record.irTableflag,jdbcType=INTEGER},
+      t.IR_DOCLENGTH = #{record.irDoclength,jdbcType=INTEGER},
+      t.IR_BBSTOPIC = #{record.irBbstopic,jdbcType=INTEGER},
+      t.IR_BBSKEY = #{record.irBbskey,jdbcType=VARCHAR},
+      t.IR_PAGELEVEL = #{record.irPagelevel,jdbcType=INTEGER},
+      t.IR_PAGERANK = #{record.irPagerank,jdbcType=INTEGER},
+      t.IR_URLLEVEL = #{record.irUrllevel,jdbcType=INTEGER},
+      t.IR_MIMETYPE = #{record.irMimetype,jdbcType=VARCHAR},
+      t.IR_FORMAT = #{record.irFormat,jdbcType=VARCHAR},
+      t.IR_CHARSET = #{record.irCharset,jdbcType=VARCHAR},
+      t.IR_URLSIZE = #{record.irUrlsize,jdbcType=INTEGER},
+      t.IR_WCMID = #{record.irWcmid,jdbcType=INTEGER},
+      t.IR_STATUS = #{record.irStatus,jdbcType=TINYINT},
+      t.IR_NRESERVED1 = #{record.irNreserved1,jdbcType=INTEGER},
+      t.IR_NRESERVED2 = #{record.irNreserved2,jdbcType=INTEGER},
+      t.IR_NRESERVED3 = #{record.irNreserved3,jdbcType=INTEGER},
+      t.IR_VRESERVED1 = #{record.irVreserved1,jdbcType=VARCHAR},
+      t.IR_VRESERVED2 = #{record.irVreserved2,jdbcType=VARCHAR},
+      t.IR_VRESERVED3 = #{record.irVreserved3,jdbcType=VARCHAR},
+      t.IR_VRESERVED4 = #{record.irVreserved4,jdbcType=VARCHAR},
+      t.IR_SRESERVED1 = #{record.irSreserved1,jdbcType=VARCHAR},
+      t.IR_SRESERVED2 = #{record.irSreserved2,jdbcType=VARCHAR},
+      t.IR_SRESERVED3 = #{record.irSreserved3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
+    update urlcontent
+    <set >
+      <if test="irSid != null" >
+        IR_SID = #{irSid,jdbcType=INTEGER},
+      </if>
+      <if test="irStartid != null" >
+        IR_STARTID = #{irStartid,jdbcType=INTEGER},
+      </if>
+      <if test="irServiceid != null" >
+        IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},
+      </if>
+      <if test="irPkey != null" >
+        IR_PKEY = #{irPkey,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlname != null" >
+        IR_URLNAME = #{irUrlname,jdbcType=VARCHAR},
+      </if>
+      <if test="irExtname != null" >
+        IR_EXTNAME = #{irExtname,jdbcType=VARCHAR},
+      </if>
+      <if test="irSitename != null" >
+        IR_SITENAME = #{irSitename,jdbcType=VARCHAR},
+      </if>
+      <if test="irChannel != null" >
+        IR_CHANNEL = #{irChannel,jdbcType=VARCHAR},
+      </if>
+      <if test="irGroupname != null" >
+        IR_GROUPNAME = #{irGroupname,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltitle != null" >
+        IR_URLTITLE = #{irUrltitle,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrltopic != null" >
+        IR_URLTOPIC = #{irUrltopic,jdbcType=VARCHAR},
+      </if>
+      <if test="irLasttime != null" >
+        IR_LASTTIME = #{irLasttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irUrldate != null" >
+        IR_URLDATE = #{irUrldate,jdbcType=DATE},
+      </if>
+      <if test="irUrltime != null" >
+        IR_URLTIME = #{irUrltime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irLoadtime != null" >
+        IR_LOADTIME = #{irLoadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="irSrcname != null" >
+        IR_SRCNAME = #{irSrcname,jdbcType=VARCHAR},
+      </if>
+      <if test="irAuthors != null" >
+        IR_AUTHORS = #{irAuthors,jdbcType=VARCHAR},
+      </if>
+      <if test="irDistrict != null" >
+        IR_DISTRICT = #{irDistrict,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog != null" >
+        IR_CATALOG = #{irCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog1 != null" >
+        IR_CATALOG1 = #{irCatalog1,jdbcType=VARCHAR},
+      </if>
+      <if test="irCatalog2 != null" >
+        IR_CATALOG2 = #{irCatalog2,jdbcType=VARCHAR},
+      </if>
+      <if test="irKeywords != null" >
+        IR_KEYWORDS = #{irKeywords,jdbcType=VARCHAR},
+      </if>
+      <if test="irAbstract != null" >
+        IR_ABSTRACT = #{irAbstract,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimflag != null" >
+        IR_SIMFLAG = #{irSimflag,jdbcType=VARCHAR},
+      </if>
+      <if test="irSimrank != null" >
+        IR_SIMRANK = #{irSimrank,jdbcType=INTEGER},
+      </if>
+      <if test="irImageflag != null" >
+        IR_IMAGEFLAG = #{irImageflag,jdbcType=INTEGER},
+      </if>
+      <if test="irTableflag != null" >
+        IR_TABLEFLAG = #{irTableflag,jdbcType=INTEGER},
+      </if>
+      <if test="irDoclength != null" >
+        IR_DOCLENGTH = #{irDoclength,jdbcType=INTEGER},
+      </if>
+      <if test="irBbstopic != null" >
+        IR_BBSTOPIC = #{irBbstopic,jdbcType=INTEGER},
+      </if>
+      <if test="irBbskey != null" >
+        IR_BBSKEY = #{irBbskey,jdbcType=VARCHAR},
+      </if>
+      <if test="irPagelevel != null" >
+        IR_PAGELEVEL = #{irPagelevel,jdbcType=INTEGER},
+      </if>
+      <if test="irPagerank != null" >
+        IR_PAGERANK = #{irPagerank,jdbcType=INTEGER},
+      </if>
+      <if test="irUrllevel != null" >
+        IR_URLLEVEL = #{irUrllevel,jdbcType=INTEGER},
+      </if>
+      <if test="irMimetype != null" >
+        IR_MIMETYPE = #{irMimetype,jdbcType=VARCHAR},
+      </if>
+      <if test="irFormat != null" >
+        IR_FORMAT = #{irFormat,jdbcType=VARCHAR},
+      </if>
+      <if test="irCharset != null" >
+        IR_CHARSET = #{irCharset,jdbcType=VARCHAR},
+      </if>
+      <if test="irUrlsize != null" >
+        IR_URLSIZE = #{irUrlsize,jdbcType=INTEGER},
+      </if>
+      <if test="irWcmid != null" >
+        IR_WCMID = #{irWcmid,jdbcType=INTEGER},
+      </if>
+      <if test="irStatus != null" >
+        IR_STATUS = #{irStatus,jdbcType=TINYINT},
+      </if>
+      <if test="irNreserved1 != null" >
+        IR_NRESERVED1 = #{irNreserved1,jdbcType=INTEGER},
+      </if>
+      <if test="irNreserved2 != null" >
+        IR_NRESERVED2 = #{irNreserved2,jdbcType=INTEGER},
+      </if>
+      <if test="irNreserved3 != null" >
+        IR_NRESERVED3 = #{irNreserved3,jdbcType=INTEGER},
+      </if>
+      <if test="irVreserved1 != null" >
+        IR_VRESERVED1 = #{irVreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved2 != null" >
+        IR_VRESERVED2 = #{irVreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved3 != null" >
+        IR_VRESERVED3 = #{irVreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irVreserved4 != null" >
+        IR_VRESERVED4 = #{irVreserved4,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved1 != null" >
+        IR_SRESERVED1 = #{irSreserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved2 != null" >
+        IR_SRESERVED2 = #{irSreserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="irSreserved3 != null" >
+        IR_SRESERVED3 = #{irSreserved3,jdbcType=VARCHAR},
+      </if>
+      <if test="irContent != null" >
+        IR_CONTENT = #{irContent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="irUrlcontent != null" >
+        IR_URLCONTENT = #{irUrlcontent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="irUrlbody != null" >
+        IR_URLBODY = #{irUrlbody,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
+      and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+  </update>
+  <update id="modify" parameterType="java.lang.String" >
+    update urlcontent
+    set ${column} = ${modify}
+    ${sql}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wine.model3.TobewashWithBLOBs" >
+    update urlcontent
+    set IR_SID = #{irSid,jdbcType=INTEGER},
+      IR_STARTID = #{irStartid,jdbcType=INTEGER},
+      IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},
+      IR_PKEY = #{irPkey,jdbcType=VARCHAR},
+      IR_URLNAME = #{irUrlname,jdbcType=VARCHAR},
+      IR_EXTNAME = #{irExtname,jdbcType=VARCHAR},
+      IR_SITENAME = #{irSitename,jdbcType=VARCHAR},
+      IR_CHANNEL = #{irChannel,jdbcType=VARCHAR},
+      IR_GROUPNAME = #{irGroupname,jdbcType=VARCHAR},
+      IR_URLTITLE = #{irUrltitle,jdbcType=VARCHAR},
+      IR_URLTOPIC = #{irUrltopic,jdbcType=VARCHAR},
+      IR_LASTTIME = #{irLasttime,jdbcType=TIMESTAMP},
+      IR_URLDATE = #{irUrldate,jdbcType=DATE},
+      IR_URLTIME = #{irUrltime,jdbcType=TIMESTAMP},
+      IR_LOADTIME = #{irLoadtime,jdbcType=TIMESTAMP},
+      IR_SRCNAME = #{irSrcname,jdbcType=VARCHAR},
+      IR_AUTHORS = #{irAuthors,jdbcType=VARCHAR},
+      IR_DISTRICT = #{irDistrict,jdbcType=VARCHAR},
+      IR_CATALOG = #{irCatalog,jdbcType=VARCHAR},
+      IR_CATALOG1 = #{irCatalog1,jdbcType=VARCHAR},
+      IR_CATALOG2 = #{irCatalog2,jdbcType=VARCHAR},
+      IR_KEYWORDS = #{irKeywords,jdbcType=VARCHAR},
+      IR_ABSTRACT = #{irAbstract,jdbcType=VARCHAR},
+      IR_SIMFLAG = #{irSimflag,jdbcType=VARCHAR},
+      IR_SIMRANK = #{irSimrank,jdbcType=INTEGER},
+      IR_IMAGEFLAG = #{irImageflag,jdbcType=INTEGER},
+      IR_TABLEFLAG = #{irTableflag,jdbcType=INTEGER},
+      IR_DOCLENGTH = #{irDoclength,jdbcType=INTEGER},
+      IR_BBSTOPIC = #{irBbstopic,jdbcType=INTEGER},
+      IR_BBSKEY = #{irBbskey,jdbcType=VARCHAR},
+      IR_PAGELEVEL = #{irPagelevel,jdbcType=INTEGER},
+      IR_PAGERANK = #{irPagerank,jdbcType=INTEGER},
+      IR_URLLEVEL = #{irUrllevel,jdbcType=INTEGER},
+      IR_MIMETYPE = #{irMimetype,jdbcType=VARCHAR},
+      IR_FORMAT = #{irFormat,jdbcType=VARCHAR},
+      IR_CHARSET = #{irCharset,jdbcType=VARCHAR},
+      IR_URLSIZE = #{irUrlsize,jdbcType=INTEGER},
+      IR_WCMID = #{irWcmid,jdbcType=INTEGER},
+      IR_STATUS = #{irStatus,jdbcType=TINYINT},
+      IR_NRESERVED1 = #{irNreserved1,jdbcType=INTEGER},
+      IR_NRESERVED2 = #{irNreserved2,jdbcType=INTEGER},
+      IR_NRESERVED3 = #{irNreserved3,jdbcType=INTEGER},
+      IR_VRESERVED1 = #{irVreserved1,jdbcType=VARCHAR},
+      IR_VRESERVED2 = #{irVreserved2,jdbcType=VARCHAR},
+      IR_VRESERVED3 = #{irVreserved3,jdbcType=VARCHAR},
+      IR_VRESERVED4 = #{irVreserved4,jdbcType=VARCHAR},
+      IR_SRESERVED1 = #{irSreserved1,jdbcType=VARCHAR},
+      IR_SRESERVED2 = #{irSreserved2,jdbcType=VARCHAR},
+      IR_SRESERVED3 = #{irSreserved3,jdbcType=VARCHAR},
+      IR_CONTENT = #{irContent,jdbcType=LONGVARBINARY},
+      IR_URLCONTENT = #{irUrlcontent,jdbcType=LONGVARBINARY},
+      IR_URLBODY = #{irUrlbody,jdbcType=LONGVARBINARY}
+    where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
+      and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.model3.Tobewash" >
+    update urlcontent
+    set IR_SID = #{irSid,jdbcType=INTEGER},
+      IR_STARTID = #{irStartid,jdbcType=INTEGER},
+      IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},
+      IR_PKEY = #{irPkey,jdbcType=VARCHAR},
+      IR_URLNAME = #{irUrlname,jdbcType=VARCHAR},
+      IR_EXTNAME = #{irExtname,jdbcType=VARCHAR},
+      IR_SITENAME = #{irSitename,jdbcType=VARCHAR},
+      IR_CHANNEL = #{irChannel,jdbcType=VARCHAR},
+      IR_GROUPNAME = #{irGroupname,jdbcType=VARCHAR},
+      IR_URLTITLE = #{irUrltitle,jdbcType=VARCHAR},
+      IR_URLTOPIC = #{irUrltopic,jdbcType=VARCHAR},
+      IR_LASTTIME = #{irLasttime,jdbcType=TIMESTAMP},
+      IR_URLDATE = #{irUrldate,jdbcType=DATE},
+      IR_URLTIME = #{irUrltime,jdbcType=TIMESTAMP},
+      IR_LOADTIME = #{irLoadtime,jdbcType=TIMESTAMP},
+      IR_SRCNAME = #{irSrcname,jdbcType=VARCHAR},
+      IR_AUTHORS = #{irAuthors,jdbcType=VARCHAR},
+      IR_DISTRICT = #{irDistrict,jdbcType=VARCHAR},
+      IR_CATALOG = #{irCatalog,jdbcType=VARCHAR},
+      IR_CATALOG1 = #{irCatalog1,jdbcType=VARCHAR},
+      IR_CATALOG2 = #{irCatalog2,jdbcType=VARCHAR},
+      IR_KEYWORDS = #{irKeywords,jdbcType=VARCHAR},
+      IR_ABSTRACT = #{irAbstract,jdbcType=VARCHAR},
+      IR_SIMFLAG = #{irSimflag,jdbcType=VARCHAR},
+      IR_SIMRANK = #{irSimrank,jdbcType=INTEGER},
+      IR_IMAGEFLAG = #{irImageflag,jdbcType=INTEGER},
+      IR_TABLEFLAG = #{irTableflag,jdbcType=INTEGER},
+      IR_DOCLENGTH = #{irDoclength,jdbcType=INTEGER},
+      IR_BBSTOPIC = #{irBbstopic,jdbcType=INTEGER},
+      IR_BBSKEY = #{irBbskey,jdbcType=VARCHAR},
+      IR_PAGELEVEL = #{irPagelevel,jdbcType=INTEGER},
+      IR_PAGERANK = #{irPagerank,jdbcType=INTEGER},
+      IR_URLLEVEL = #{irUrllevel,jdbcType=INTEGER},
+      IR_MIMETYPE = #{irMimetype,jdbcType=VARCHAR},
+      IR_FORMAT = #{irFormat,jdbcType=VARCHAR},
+      IR_CHARSET = #{irCharset,jdbcType=VARCHAR},
+      IR_URLSIZE = #{irUrlsize,jdbcType=INTEGER},
+      IR_WCMID = #{irWcmid,jdbcType=INTEGER},
+      IR_STATUS = #{irStatus,jdbcType=TINYINT},
+      IR_NRESERVED1 = #{irNreserved1,jdbcType=INTEGER},
+      IR_NRESERVED2 = #{irNreserved2,jdbcType=INTEGER},
+      IR_NRESERVED3 = #{irNreserved3,jdbcType=INTEGER},
+      IR_VRESERVED1 = #{irVreserved1,jdbcType=VARCHAR},
+      IR_VRESERVED2 = #{irVreserved2,jdbcType=VARCHAR},
+      IR_VRESERVED3 = #{irVreserved3,jdbcType=VARCHAR},
+      IR_VRESERVED4 = #{irVreserved4,jdbcType=VARCHAR},
+      IR_SRESERVED1 = #{irSreserved1,jdbcType=VARCHAR},
+      IR_SRESERVED2 = #{irSreserved2,jdbcType=VARCHAR},
+      IR_SRESERVED3 = #{irSreserved3,jdbcType=VARCHAR}
+    where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
+      and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+  </update>
+</mapper>

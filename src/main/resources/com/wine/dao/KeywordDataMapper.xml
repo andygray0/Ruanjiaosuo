@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.wine.dao.KeywordDataMapper">
+
+	<sql id="table">t_keywords_datas</sql>
+	
+	<sql id="mainWhere">
+        <where>
+            keyword_category_id = #{data.keywordCategoryId}
+            <if test="null != data.keyword and '' != data.keyword">
+                AND keyword = #{data.keyword}
+            </if>
+            <if test="null != data.category0 and '' != data.category0">
+                AND category0 = #{data.category0}
+            </if>
+            <if test="null != data.category1 and '' != data.category1">
+                AND category1 = #{data.category1}
+            </if>
+            <if test="null != data.category2 and '' != data.category2">
+                AND category2 = #{data.category2}
+            </if>
+            <if test="null != data.category3 and '' != data.category3">
+                AND category3 = #{data.category3}
+            </if>
+            <if test="null != data.category4 and '' != data.category4">
+                AND category4 = #{data.category4}
+            </if>
+            <if test="null != data.category5 and '' != data.category5">
+                AND category5 = #{data.category5}
+            </if>
+            <if test="null != data.category6 and '' != data.category6">
+                AND category6 = #{data.category6}
+            </if>
+            <if test="null != data.category7 and '' != data.category7">
+                AND category7 = #{data.category7}
+            </if>
+            <if test="null != data.category8 and '' != data.category8">
+                AND category8 = #{data.category8}
+            </if>
+            <if test="null != data.category9 and '' != data.category9">
+                AND category9 = #{data.category9}
+            </if>
+        </where>
+    </sql>
+
+
+    <select id="countTotalWithCondtions" resultType="_int">
+        SELECT count(1) AS c FROM <include refid="table" />
+        <include refid="mainWhere" />
+    </select>
+
+    <select id="findByPageWithCondtions" resultType="com.wine.model.KeywordData">
+        SELECT
+            a.id,
+            a.keyword,
+            a.keyword_category_id
+            ${extendFields}
+        FROM
+            t_keywords_datas AS a
+        <include refid="mainWhere" />
+        ORDER BY
+            ${page.order} ${page.direction}
+        LIMIT ${page.startNo},
+        ${page.limit}
+    </select>
+
+
+    <select id="findByCategoryIdWithCondtions" resultType="com.wine.model.KeywordData">
+        SELECT
+        a.id,
+        a.keyword,
+        a.keyword_category_id
+        ${paramsMap.extendFields}
+        FROM
+        t_keywords_datas AS a
+        <include refid="mainWhere" />
+    </select>
+
+
+    <select id="findExtendsTableFieldsList" resultType="com.wine.model.ExtendsTableField" parameterType="int">
+        SELECT
+            a.*
+        FROM
+            t_extends_table_fields AS a
+        WHERE
+            a.relation_id = #{keywordCategoryId}
+        AND a.show_flag = 1
+        AND a.belong_table = 't_keywords_datas'
+    </select>
+
+    <select id="findAllExtendsTableFieldsList" resultType="com.wine.model.ExtendsTableField" parameterType="int">
+        SELECT
+        a.*
+        FROM
+        t_extends_table_fields AS a
+        WHERE
+        a.relation_id = #{keywordCategoryId}
+        AND a.belong_table = 't_keywords_datas'
+    </select>
+
+    <delete id="removeExtendFieldsByRelationId">
+        DELETE FROM t_extends_table_fields  WHERE relation_id = #{relationId}
+    </delete>
+
+    <insert id="saveExtendFieldsRelation" >
+        INSERT INTO t_extends_table_fields (field_name, field_title, number_flag, show_flag, relation_id,belong_table)
+        VALUES
+        <foreach collection="arr" index="index" item="field" open="" separator="," close="">
+            (#{field.fieldName},#{field.fieldTitle},#{field.numberFlag},#{field.showFlag},#{field.relationId},'t_keywords_datas')
+        </foreach>
+    </insert>
+
+
+    <insert id="insertBatch" parameterType="com.wine.model.KeywordData">
+        insert into <include refid="table" /> (keyword,keyword_category_id,category0,category1,category2,category3,category4,category5,category6,category7,category8,category9)
+        values
+        <foreach collection="list" index="index" item="keyword" open="" separator="," close="">
+            (#{keyword.keyword}, #{keyword.keywordCategoryId},#{keyword.category0},#{keyword.category1},#{keyword.category2},#{keyword.category3},#{keyword.category4},#{keyword.category5},#{keyword.category6},#{keyword.category7},#{keyword.category8},#{keyword.category9})
+        </foreach>
+    </insert>
+
+    <delete id="deleteBatchByIds" parameterType="String">
+        DELETE FROM <include refid="table" /> WHERE id IN (${ids})
+    </delete>
+
+    <insert id="insertOne" parameterType="com.wine.model.KeywordData"
+            useGeneratedKeys="true" keyProperty="id" >
+        insert into <include refid="table" /> (keyword,keyword_category_id,category0,category1,category2,category3,category4,category5,category6,category7,category8,category9)
+        values (#{keyword}, #{keywordCategoryId},#{category0},#{category1},#{category2},#{category3},#{category4},#{category5},#{category6},#{category7},#{category8},#{category9})
+    </insert>
+
+    <delete id="deleteByKeywordCategoryId">
+        DELETE FROM <include refid="table" /> WHERE keyword_category_id = #{keywordCategoryId}
+    </delete>
+
+    <delete id="deleteExtendFieldsByKeywordCategoryId">
+        DELETE FROM t_extends_table_fields WHERE relation_id = #{keywordCategoryId}
+    </delete>
+
+    <update id="updateByOneField">
+        UPDATE <include refid="table" /> SET `${field}` = #{value} WHERE id = #{id}
+    </update>
+
+</mapper>
+

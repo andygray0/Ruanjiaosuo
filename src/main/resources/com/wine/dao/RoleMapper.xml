@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.RoleMapper">
+
+	<resultMap id="BaseResultMap" type="com.wine.model.Role">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="role_level" property="roleLevel" jdbcType="INTEGER" />
+		<result column="code" property="code" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="findAll" resultMap="BaseResultMap">
+		SELECT * FROM role ORDER BY role_level DESC
+	</select>
+
+	<select id="findAllUsersWithRole" resultType="map">
+		SELECT a.id,a.login_name as loginName,a.email,c.name,c.id as roleId FROM user a
+		LEFT JOIN role_user_relation b ON a.id = b.user_id
+		LEFT JOIN role c ON b.role_id = c.id
+	</select>
+
+	<insert id="saveUserRoleRelation" >
+		INSERT INTO role_user_relation(user_id, role_id)
+		VALUES (#{userId}, #{roleId})
+	</insert>
+
+	<delete id="deleteUserRoleRelation">
+		DELETE FROM role_user_relation WHERE user_id = #{userId}
+	</delete>
+	<delete id="deleteById" >
+		DELETE FROM user WHERE  id = #{id}
+	</delete>
+
+	<update id="updateUserRoleRelation">
+		UPDATE role_user_relation
+		SET role_id = #{roleId}
+		WHERE user_id = #{userId}
+	</update>
+
+	<select id="findMapOfMenuToRoleByRoleId" parameterType="int" resultType="map">
+		SELECT a.id AS menuId,b.role_id AS roleId FROM menu a
+		LEFT JOIN role_menu_relation b ON b.menu_id = a.id
+		WHERE b.role_id = #{roleId}
+	</select>
+
+	<select id="findMapOfMenuToReportRoleByRoleId" parameterType="int" resultType="map">
+		SELECT a.id AS menuId,b.role_id AS roleId FROM menu_report a
+		LEFT JOIN role_menuReport_relation b ON b.menu_id = a.id
+		WHERE b.role_id = #{roleId}
+	</select>
+
+	<select id="findRoleMenusByRoleId" parameterType="int" resultType="com.wine.model.RoleMenu">
+		SELECT
+			c.*
+		FROM
+			(
+				SELECT
+					a.*
+				FROM
+					menu a
+				LEFT JOIN role_menu_relation b ON b.menu_id = a.id
+				WHERE
+					b.role_id = #{roleId}
+			) c
+		ORDER BY
+			c.menu_level ASC,
+			c.order ASC
+	</select>
+
+
+
+	<select id="findByPage" resultType="com.wine.model.Role">
+		SELECT * FROM role ORDER BY ${sort} ${direction} LIMIT #{startNo},#{limit}
+	</select>
+
+	<insert id="insertOne" parameterType="com.wine.model.Role"
+			useGeneratedKeys="true" keyProperty="id" >
+		insert into role(name,role_level,code)
+		values(#{name},#{roleLevel},#{code})
+	</insert>
+
+	<select id="countTotal" resultType="_int">
+		SELECT count(1) AS c FROM role
+	</select>
+
+	<delete id="deleteBatchByIds" parameterType="String">
+		DELETE FROM role WHERE id IN (${ids})
+	</delete>
+
+	<update id="updateByOneField">
+		UPDATE role SET ${field} = #{value} WHERE id = #{id}
+	</update>
+
+	<select id="findCountByOneField" resultType="_int">
+		SELECT count(1) AS c FROM role WHERE ${field} = #{value} AND id != #{id}
+	</select>
+
+	<select id="findCountUniqueField" resultType="_int">
+		SELECT count(1) AS c FROM role WHERE ${field} = #{value}
+	</select>
+
+	<delete id="deleteUserRoleRelationByRoleIds" parameterType="String">
+		DELETE FROM role_user_relation WHERE role_id IN (${ids})
+	</delete>
+
+	<delete id="deleteMenuRoleRelationByRoleIds" parameterType="String">
+		DELETE FROM role_menu_relation WHERE role_id IN (${ids})
+	</delete>
+
+	<delete id="deleteUserRoleRelationByUserIds" parameterType="String">
+		DELETE FROM role_user_relation WHERE user_id IN (${ids})
+	</delete>
+
+	<select id="findIdAndValue"  resultType="com.wine.model.Role">
+		SELECT id, name FROM role ORDER BY id ASC
+	</select>
+
+	<select id="findAllUrlPrefixWithRole" resultType="map" parameterType="int">
+		SELECT
+			a.id,
+			a.url_prefix AS urlPrefix,
+			a.controller,
+			a.note,
+			b.role_id AS roleId
+		FROM
+			url_prefix a
+		LEFT JOIN role_urlprefix_relation b ON a.id = b.urlprefix_id
+		AND b.role_id = #{roleId}
+		ORDER BY a.url_prefix ASC
+	</select>
+
+
+	<select id="findAllUrlPrefixWithRoleReport" resultType="map" parameterType="int">
+		SELECT
+			a.id,
+			a.url_prefix AS urlPrefix,
+			a.controller,
+			a.note,
+			b.role_id AS roleId
+		FROM
+			url_prefix_report a
+		LEFT JOIN role_urlprefix_relation_report b ON a.id = b.urlprefix_id
+		AND b.role_id = #{roleId}
+		ORDER BY a.url_prefix ASC
+	</select>
+
+	<delete id="deleteUrlPrefixRoleRelation" parameterType="int">
+		DELETE FROM role_urlprefix_relation WHERE role_id = #{roleId}
+	</delete>
+	<delete id="deleteUrlPrefixRoleRelationReport" parameterType="int">
+		DELETE FROM role_urlprefix_relation_report WHERE role_id = #{roleId}
+	</delete>
+
+	<delete id="deleteUrlPrefixRelationByRoleIds" parameterType="java.lang.String">
+		DELETE FROM role_urlprefix_relation WHERE role_id IN (${roleIds})
+	</delete>
+
+	<insert id="saveUrlPrefixRoleRelation" >
+		INSERT INTO role_urlprefix_relation (role_id, urlprefix_id)
+		VALUES
+		<foreach collection="urlPrefixIds" item="item" index="index" open="" separator="," close="">
+			(#{roleId}, #{item})
+		</foreach>
+	</insert>
+	<insert id="saveUrlPrefixRoleRelationReport" >
+		INSERT INTO role_urlprefix_relation_report (role_id, urlprefix_id)
+		VALUES
+		<foreach collection="urlPrefixIds" item="item" index="index" open="" separator="," close="">
+			(#{roleId}, #{item})
+		</foreach>
+	</insert>
+
+	<select id="getRoleByUserId" resultType="com.wine.model.Role" parameterType="int">
+		SELECT
+			*
+		FROM
+			role
+		WHERE
+			id = (
+				SELECT
+					a.role_id
+				FROM
+					role_user_relation a
+				WHERE
+					a.user_id = #{userId}
+			)
+	</select>
+
+	<select id="findUrlPrefixStringWithRole" parameterType="int" resultType="java.lang.String">
+		SELECT
+			a.url_prefix AS urlPrefix
+		FROM
+			url_prefix a
+		WHERE
+			a.id IN (
+				SELECT
+					b.urlprefix_id
+				FROM
+					role_urlprefix_relation b
+				WHERE
+					b.role_id = #{roleId}
+			)
+	</select>
+
+	<select id="findUrlPrefixStringWithRoleReport" parameterType="int" resultType="java.lang.String">
+		SELECT
+			a.url_prefix AS urlPrefix
+		FROM
+			url_prefix_report a
+		WHERE
+			a.id IN (
+				SELECT
+					b.urlprefix_id
+				FROM
+					role_urlprefix_relation_report b
+				WHERE
+					b.role_id = #{roleId}
+			)
+	</select>
+
+	<select id="findUsersByRoleName" parameterType="java.lang.String" resultType="com.wine.model.User">
+		SELECT
+			a.id,
+		  a.login_name
+		FROM
+			USER a
+		LEFT JOIN role_user_relation b ON a.id = b.user_id
+		LEFT JOIN role c ON c.id = b.role_id
+		WHERE
+			c. NAME = #{roleName}
+	</select>
+
+</mapper>
+

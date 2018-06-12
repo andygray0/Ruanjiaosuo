@@ -1,0 +1,33 @@
+.common-ellipsis{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tooltip-inner{
+    max-width:600px;
+    padding: 6px;
+    background-color:rgba(0,0,0,.8);
+}
+.fixed-table-body thead{
+    background-color: #bee7f3;
+}
+.fixed-table-body{
+    color: #7c7c7c;
+}
+
+.addRow{
+    padding: 0px 12px;
+    line-height: 26px;
+    color: #fff;
+    background-color: #337ab7;
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.addRow:hover{
+    background-color: #286090;
+}

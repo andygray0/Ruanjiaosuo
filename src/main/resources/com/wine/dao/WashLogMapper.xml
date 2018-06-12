@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.WashLogMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model.WashLog" >
+    <id column="t_id" property="id" jdbcType="INTEGER" />
+    <result column="t_name" property="name" jdbcType="VARCHAR" />
+    <result column="t_exway" property="exway" jdbcType="INTEGER" />
+    <result column="t_rules" property="rules" jdbcType="VARCHAR" />
+    <result column="t_sourcetable" property="sourcetable" jdbcType="VARCHAR" />
+    <result column="t_goaltable" property="goaltable" jdbcType="VARCHAR" />
+    <result column="t_querys" property="querys" jdbcType="VARCHAR" />
+    <result column="t_counts" property="counts" jdbcType="INTEGER" />
+    <result column="t_fromtime" property="fromtime" jdbcType="TIMESTAMP" />
+    <result column="t_totime" property="totime" jdbcType="TIMESTAMP" />
+    <result column="t_successflag" property="successflag" jdbcType="INTEGER" />
+    <result column="t_errlog" property="errlog" jdbcType="VARCHAR" />
+    <result column="t_cleancount" property="cleancount" jdbcType="INTEGER" />
+    <result column="t_checkcount" property="checkcount" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.id as t_id, t.name as t_name, t.exway as t_exway, t.rules as t_rules, t.sourcetable as t_sourcetable, 
+    t.goaltable as t_goaltable, t.querys as t_querys, t.counts as t_counts, t.fromtime as t_fromtime, 
+    t.totime as t_totime, t.successflag as t_successflag, t.errlog as t_errlog, t.cleancount as t_cleancount, 
+    t.checkcount as t_checkcount
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model.WashLogCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wash_log t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wash_log t
+    where t.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wash_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wine.model.WashLogCriteria" >
+    delete from wash_log t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wine.model.WashLog" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wash_log (id, name, exway, 
+      rules, sourcetable, goaltable, 
+      querys, counts, fromtime, 
+      totime, successflag, errlog, 
+      cleancount, checkcount)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{exway,jdbcType=INTEGER}, 
+      #{rules,jdbcType=VARCHAR}, #{sourcetable,jdbcType=VARCHAR}, #{goaltable,jdbcType=VARCHAR}, 
+      #{querys,jdbcType=VARCHAR}, #{counts,jdbcType=INTEGER}, #{fromtime,jdbcType=TIMESTAMP}, 
+      #{totime,jdbcType=TIMESTAMP}, #{successflag,jdbcType=INTEGER}, #{errlog,jdbcType=VARCHAR}, 
+      #{cleancount,jdbcType=INTEGER}, #{checkcount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.model.WashLog" >
+    insert into wash_log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="exway != null" >
+        exway,
+      </if>
+      <if test="rules != null" >
+        rules,
+      </if>
+      <if test="sourcetable != null" >
+        sourcetable,
+      </if>
+      <if test="goaltable != null" >
+        goaltable,
+      </if>
+      <if test="querys != null" >
+        querys,
+      </if>
+      <if test="counts != null" >
+        counts,
+      </if>
+      <if test="fromtime != null" >
+        fromtime,
+      </if>
+      <if test="totime != null" >
+        totime,
+      </if>
+      <if test="successflag != null" >
+        successflag,
+      </if>
+      <if test="errlog != null" >
+        errlog,
+      </if>
+      <if test="cleancount != null" >
+        cleancount,
+      </if>
+      <if test="checkcount != null" >
+        checkcount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="exway != null" >
+        #{exway,jdbcType=INTEGER},
+      </if>
+      <if test="rules != null" >
+        #{rules,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetable != null" >
+        #{sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltable != null" >
+        #{goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="querys != null" >
+        #{querys,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null" >
+        #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="fromtime != null" >
+        #{fromtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totime != null" >
+        #{totime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="successflag != null" >
+        #{successflag,jdbcType=INTEGER},
+      </if>
+      <if test="errlog != null" >
+        #{errlog,jdbcType=VARCHAR},
+      </if>
+      <if test="cleancount != null" >
+        #{cleancount,jdbcType=INTEGER},
+      </if>
+      <if test="checkcount != null" >
+        #{checkcount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wine.model.WashLogCriteria" resultType="java.lang.Integer" >
+    select count(*) from wash_log t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wash_log t
+    <set >
+      <if test="record.id != null" >
+        t.id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        t.name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exway != null" >
+        t.exway = #{record.exway,jdbcType=INTEGER},
+      </if>
+      <if test="record.rules != null" >
+        t.rules = #{record.rules,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourcetable != null" >
+        t.sourcetable = #{record.sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goaltable != null" >
+        t.goaltable = #{record.goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.querys != null" >
+        t.querys = #{record.querys,jdbcType=VARCHAR},
+      </if>
+      <if test="record.counts != null" >
+        t.counts = #{record.counts,jdbcType=INTEGER},
+      </if>
+      <if test="record.fromtime != null" >
+        t.fromtime = #{record.fromtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.totime != null" >
+        t.totime = #{record.totime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.successflag != null" >
+        t.successflag = #{record.successflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.errlog != null" >
+        t.errlog = #{record.errlog,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cleancount != null" >
+        t.cleancount = #{record.cleancount,jdbcType=INTEGER},
+      </if>
+      <if test="record.checkcount != null" >
+        t.checkcount = #{record.checkcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wash_log t
+    set t.id = #{record.id,jdbcType=INTEGER},
+      t.name = #{record.name,jdbcType=VARCHAR},
+      t.exway = #{record.exway,jdbcType=INTEGER},
+      t.rules = #{record.rules,jdbcType=VARCHAR},
+      t.sourcetable = #{record.sourcetable,jdbcType=VARCHAR},
+      t.goaltable = #{record.goaltable,jdbcType=VARCHAR},
+      t.querys = #{record.querys,jdbcType=VARCHAR},
+      t.counts = #{record.counts,jdbcType=INTEGER},
+      t.fromtime = #{record.fromtime,jdbcType=TIMESTAMP},
+      t.totime = #{record.totime,jdbcType=TIMESTAMP},
+      t.successflag = #{record.successflag,jdbcType=INTEGER},
+      t.errlog = #{record.errlog,jdbcType=VARCHAR},
+      t.cleancount = #{record.cleancount,jdbcType=INTEGER},
+      t.checkcount = #{record.checkcount,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateOne" parameterType="map">
+    update menu
+    <set>
+      <foreach collection="map" index="key" item="value" separator="," open="" close="">
+        `${key}` = #{value}
+      </foreach>
+    </set>
+    <where>
+      id = #{map.id}
+    </where>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model.WashLog" >
+    update wash_log
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="exway != null" >
+        exway = #{exway,jdbcType=INTEGER},
+      </if>
+      <if test="rules != null" >
+        rules = #{rules,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetable != null" >
+        sourcetable = #{sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltable != null" >
+        goaltable = #{goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="querys != null" >
+        querys = #{querys,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null" >
+        counts = #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="fromtime != null" >
+        fromtime = #{fromtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totime != null" >
+        totime = #{totime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="successflag != null" >
+        successflag = #{successflag,jdbcType=INTEGER},
+      </if>
+      <if test="errlog != null" >
+        errlog = #{errlog,jdbcType=VARCHAR},
+      </if>
+      <if test="cleancount != null" >
+        cleancount = #{cleancount,jdbcType=INTEGER},
+      </if>
+      <if test="checkcount != null" >
+        checkcount = #{checkcount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.model.WashLog" >
+    update wash_log
+    set name = #{name,jdbcType=VARCHAR},
+      exway = #{exway,jdbcType=INTEGER},
+      rules = #{rules,jdbcType=VARCHAR},
+      sourcetable = #{sourcetable,jdbcType=VARCHAR},
+      goaltable = #{goaltable,jdbcType=VARCHAR},
+      querys = #{querys,jdbcType=VARCHAR},
+      counts = #{counts,jdbcType=INTEGER},
+      fromtime = #{fromtime,jdbcType=TIMESTAMP},
+      totime = #{totime,jdbcType=TIMESTAMP},
+      successflag = #{successflag,jdbcType=INTEGER},
+      errlog = #{errlog,jdbcType=VARCHAR},
+      cleancount = #{cleancount,jdbcType=INTEGER},
+      checkcount = #{checkcount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

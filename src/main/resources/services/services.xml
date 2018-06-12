@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd  http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd  http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-3.0.xsd">
+	
+	<import resource="classpath:dao/dao.xml"/>
+	<!-- <import resource="classpath:rmi/rmi_client_context.xml"/> -->
+	
+	<bean autowire="byName" class="com.wine.service.impl.LoginServiceImpl" id="loginService"/>
+	<!--<bean autowire="byName" class="com.wine.service.impl.QaServiceImpl" id="qaService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.MenuServiceImpl" id="menuService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.PictureServiceImpl" id="pictureService"/>-->
+	<bean autowire="byName" class="com.wine.service.impl.LogServiceImpl" id="logService"/>
+	<!--<bean autowire="byName" class="com.wine.service.impl.NavMenuServiceImpl" id="navMenuService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.InfoServiceImpl" id="infoService"/>-->
+    <!--<bean autowire="byName" class="com.wine.service.impl.InfoWenjuanServiceImpl" id="infoWenjuanService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.LeftMenuServiceImpl" id="leftMenuService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.WeathererviceImpl" id="weatherService"/>-->
+    <!--<bean autowire="byName" class="com.wine.service.impl.MemberServiceImpl" id="memberService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.RecommendBookServiceImpl" id="recommendBookService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.RecommendBookServiceImpl" id="recommendMagazineService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.QuestionnaireServiceImpl" id="questionnaireService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.ActivityServiceImpl" id="activityService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.WxxxbServiceImpl" id="wxxxbService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.QkxxbServiceImpl" id="qkxxbService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.LibUserServiceImpl" id="libUserService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.UserActivityServiceImpl" id="userActivityService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.QkhdbServiceImpl" id="qkhdbService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.TmjwbServiceImpl" id="tmjwbService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.WxxxstServiceImpl" id="wxxxstService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.QkxxstServiceImpl" id="qkxxstService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.QkczstServiceImpl" id="qkczstService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.TmxxjwstServiceImpl" id="tmxxjwstService"/>-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.JyxxbServiceImpl" id="jyxxbService"/>-->
+	<!--&lt;!&ndash;<bean autowire="byName" class="com.wine.service.impl.DzxxbServiceImpl" id="dzxxbService"/>&ndash;&gt;-->
+	<!--<bean autowire="byName" class="com.wine.service.impl.BorrowOrderServiceImpl" id="borrowOrderService"/>-->
+	<bean autowire="byName" class="com.wine.service.impl.UrlconServiceImpl" id="urlconService"/>
+	<bean autowire="byName" class="com.wine.service.impl.TobewashServiceImpl" id="tobewashService"/>
+	<bean autowire="byName" class="com.wine.service.impl.TocleanServiceImpl" id="tocleanService"/>
+	<bean autowire="byName" class="com.wine.service.impl.TaskServiceImpl" id="taskService"/>
+	<bean autowire="byName" class="com.wine.service.impl.RuleServiceImpl" id="ruleService"/>
+
+	<bean autowire="byName" class="com.wine.service.impl.RoleServiceImpl" id="roleService"/>
+	<bean autowire="byName" class="com.wine.service.impl.RoleMenuServiceImpl" id="menuService"/>
+	<bean autowire="byName" class="com.wine.service.impl.UserServiceImpl" id="userService"/>
+
+	<bean autowire="byName" class="com.wine.service.impl.LoginLogServiceImpl" id="loginLogService"/>
+	<bean autowire="byName" class="com.wine.service.impl.OperateLogServiceImpl" id="operateLogService"/>
+	<bean autowire="byName" class="com.wine.service.impl.KeywordCategoryServiceImpl" id="keywordCategoryService" />
+	<bean autowire="byName" class="com.wine.service.impl.KeywordDataServiceImpl" id="keywordDataService" />
+
+
+	<bean autowire="byName" class="com.wine.service.impl.PersonWashServiceImpl" id="personWashService" />
+	<bean autowire="byName" class="com.wine.service.impl.PersonWashTaskServiceImpl" id="personWashTaskService" />
+
+	<bean autowire="byName" class="com.wine.service.impl.DataStatisticsAnalyzeServiceImpl" id="dataStatisticsAnalyzeService" />
+
+	<bean autowire="byName" class="com.wine.service.impl.ReportMenuServiceImpl" id="reportMenuService" />
+
+
+	<bean autowire="byName" class="com.wine.service.impl.WashTimerServiceImpl" id="washTimerService" />
+	<bean autowire="byName" class="com.wine.service.impl.CommonServiceImpl" id="commonService" />
+	<bean autowire="byName" class="com.wine.service.impl.StrategyServiceImpl" id="strategyService" />
+	<bean autowire="byName" class="com.wine.service.impl.WashLogServiceImpl" id="washLogService" />
+
+</beans>
+

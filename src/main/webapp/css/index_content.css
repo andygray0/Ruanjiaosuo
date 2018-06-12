@@ -1,0 +1,271 @@
+
+*{
+    box-sizing: border-box;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+    font: 14px "微软雅黑 Light";
+}
+.cont{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: 0 1% 0.5% 1%;
+    overflow-y: auto;
+    background: url("../img/menu/bg_content.jpg") repeat;
+}
+.topDataNum{
+    height:100px;
+    width: 100%;
+}
+
+.dataMon{
+    width: 24%;
+    height: 100px;
+    background-color: #fff;
+    float: left;
+    position: relative;
+    border-radius: 2px;
+    box-shadow: 0 0 0 rgba(0,0,0,0);
+    transition:box-shadow .5s;
+    -moz-transition:box-shadow .5s; /* Firefox 4 */
+    -webkit-transition:box-shadow .5s; /* Safari and Chrome */
+    -o-transition:box-shadow .5s; /* Opera */
+}
+.dataMon:hover{
+    -moz-box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+}
+.dataMon:nth-child(1){
+    margin-right: calc(8% / 6);
+}
+.dataMon:nth-child(2){
+    margin-right: calc(8% / 6);
+}
+.dataMon:nth-child(3){
+    margin-right: calc(8% / 6);
+}
+.dataMon .dataMon-sp1,.dataMon-sp2,.dataMon-sp3{
+    display: block;
+    color: #909090;
+}
+.dataMon-sp1{
+    margin-left: 6%;
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: bolder;
+}
+.dataMon-sp2{
+    margin-left: 13%;
+    margin-top: 15px;
+    color: #bababa;
+    font-weight: bolder;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.dataMon-sp3{
+    display: block;
+    /*width: 25%;*/
+    height: 80%;
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    font-size: 4.5em;
+    background-color: #ff2a00;
+    text-align: center;
+    line-height: 125%;
+    color: #fff;
+    border-radius: 5px;
+    font-family: "微软雅黑";
+}
+.dataMon:nth-child(2) .dataMon-sp3{
+    background-color: #a2d13b;
+}
+.dataMon:nth-child(3) .dataMon-sp3{
+    background-color: #ffc200;
+}
+.dataMon:nth-child(4) .dataMon-sp3{
+    background-color: #2aa9ee;
+}
+
+
+.yearData{
+    height:30px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 4px;
+    margin-bottom: 2px;
+    border-left: 3px solid #33ccff;
+}
+
+
+.yearData div{
+    float: left;
+    height: 30px;
+    width: 180px;
+    line-height: 30px;
+
+}
+.yearData .yData{
+    font-size: 14px;
+    color: #576063;
+    font-weight: bolder;
+    padding-left: 10px;
+}
+.yearData .allData , .insData{
+    color: #b4b4b4;
+    font-size: 13px;
+}
+.yearData .allData span{
+    padding-right: 10px;
+}
+.yearData .insData span{
+    padding-right: 10px;
+}
+.yearData .allData span:nth-child(2){
+    color: #3CF;
+    font-weight: bolder;
+}
+.yearData .insData span:nth-child(2){
+    color: #3CF;
+    font-weight: bolder;
+}
+
+
+
+.numChart{
+    width: auto;
+    display: block;
+    border: 1px solid #e1e1e1;
+    border-radius: 2px;
+    background-color: rgba(251, 251, 252, 1);
+    margin-bottom: 0.5%;
+}
+.footDataTab{
+    /*height:auto;*/
+    width: 100%;
+    /*height: calc( + 50px);*/
+    border-radius: 2px;
+    background-color: rgb(255, 255, 255);
+    padding: 2px 2px;
+}
+.footDataTab table{
+    color: #7c7c7c;
+    font-family: "微软雅黑 Light";
+    font-size: 13px;
+}
+.footDataTab table td{
+    max-height:30px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.footDataTab table thead{
+    background-color: #bee7f3;
+    /*height: ;*/
+}
+.footDataTab table thead div{
+    /*text-align: center;*/
+}
+.footDataTab .fixed-table-pagination{
+    padding: 1px 5px;
+}
+.footDataTab .info{
+    background-color: #EDEFEF;
+}
+.tb_head{
+    font: 14px "微软雅黑 Light";
+    width:100%;
+    height:30px;
+    font-weight: bolder;
+    color: #576063;
+    line-height: 30px;
+}
+.tb_head i {
+    float: left;
+    font-size: 18px;
+    font-weight: bolder;
+    margin-right: 6px;
+    margin-left: 5px;
+    height: 30px;
+    line-height: 32px;
+}
+.tb_head .tb_head_data {
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+}
+
+
+
+
+
+/**
+ * fadeInDownShadow 滑过阴影动画
+ -----------------------------
+ */
+
+@-webkit-keyframes fadeInDownShadow {
+    from {
+        -moz-box-shadow: 0 0 0 rgba(0,0,0,0);
+        box-shadow: 0 0 0 rgba(0,0,0,0);
+
+        -webkit-transform: translatey(-2px);
+        -moz-transform: translatey(-2px);
+        -o-transform: translatey(-2px);
+        transform: translatey(-2px);
+    }
+    to {
+        -moz-box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+        box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+@-moz-keyframes fadeInDownShadow {
+    from {
+        -webkit-transform: translatey(-2px);
+        -moz-transform: translatey(-2px);
+        -o-transform: translatey(-2px);
+        transform: translatey(-2px);
+    }
+    to {
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+@keyframes fadeInDownShadow {
+    from {
+        -webkit-transform: translatey(-2px);
+        -moz-transform: translatey(-2px);
+        -o-transform: translatey(-2px);
+        transform: translatey(-2px);
+    }
+    to {
+        -webkit-transform: translatey(0);
+        -moz-transform: translatey(0);
+        -o-transform: translatey(0);
+        transform: translatey(0);
+    }
+}
+.in-downShadow {
+    -webkit-animation-name: fadeInDownShadow;
+    -moz-animation-name: fadeInDownShadow;
+    -o-animation-name: fadeInDownShadow;
+    animation-name: fadeInDownShadow;
+    -webkit-animation-fill-mode: both;
+    -moz-animation-fill-mode: both;
+    -o-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -moz-animation-duration: 1s;
+    -o-animation-duration: 1s;
+    animation-duration: 1s;
+}

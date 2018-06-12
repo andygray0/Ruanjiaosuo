@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.DataStatisticsAnalyzeMapper">
+
+    <sql id="mainWhere">
+        <where>
+            <if test="null != analyze.year">
+                AND a.year = #{analyze.year}
+            </if>
+            <if test="null != analyze.season and '' != analyze.season.trim()">
+                AND a.season = #{analyze.season}
+            </if>
+        </where>
+    </sql>
+
+    <select id="countTotal" resultType="_int" parameterType="com.wine.model.DataStatisticsAnalyze">
+        SELECT
+        count(1) AS c
+        FROM
+        data_statistics_analyze AS a
+        <include refid="mainWhere" />
+    </select>
+
+
+    <select id="findByPage" resultType="com.wine.model.DataStatisticsAnalyze">
+        SELECT
+        a.*
+        FROM
+        data_statistics_analyze a
+        <include refid="mainWhere" />
+        ORDER BY
+        CREATE_TIME DESC
+        LIMIT ${page.startNo},
+        ${page.limit}
+    </select>
+
+
+    <insert id="insertEntity" parameterType="com.wine.model.DataStatisticsAnalyze"
+            useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO data_statistics_analyze(year,season,create_time, create_by)
+        VALUES (#{year},#{season},#{createTime}, #{createBy})
+    </insert>
+
+    <select id="countByYearAndSeason" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+            data_statistics_analyze a
+        WHERE
+            a. YEAR = #{year}
+        AND a.SEASON = #{season}
+    </select>
+
+    <update id="updateEntityByYearAndSeason">
+        UPDATE data_statistics_analyze
+        SET CREATE_TIME = now(),
+        CREATE_BY = #{createBy}
+        WHERE
+            YEAR = #{year}
+        AND SEASON = #{season}
+    </update>
+
+
+
+</mapper>
+

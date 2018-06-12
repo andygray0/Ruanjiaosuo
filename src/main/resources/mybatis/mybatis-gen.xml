@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <classPathEntry location="C:/Users/zhaoao/.m2/repository/mysql/mysql-connector-java/5.1.25/mysql-connector-java-5.1.25.jar" />
+    <context id="DefualtJava5" targetRuntime="MyBatis3">
+        <property name="suppressTypeWarnings" value="true" />
+        <!-- <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" /> -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$" />
+            <property name="replaceString" value="Criteria" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">
+            <property name="targetPackage" value="META-INF/mybatis" />
+            <property name="targetProject" value="C:/Users/zhaoao/ruanjiaosuo" />
+        </plugin>
+        <commentGenerator >
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/radar2?useUnicode=true&amp;characterEncoding=UTF-8" userId="root" password="toor" />
+        <javaModelGenerator targetPackage="com.wine.model3" targetProject="C:/Users/zhaoao/ruanjiaosuo/src/main/java">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <sqlMapGenerator targetPackage="com.wine.dao3" targetProject="C:/Users/zhaoao/ruanjiaosuo/src/main/resources">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wine.dao3" targetProject="C:/Users/zhaoao/ruanjiaosuo/src/main/java">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <table schema="radar2" tableName="urlcontent_info_soft_effective_20171" domainObjectName="UrlCon"
+               alias="t" enableInsert="true" enableUpdateByPrimaryKey="true"
+               enableDeleteByPrimaryKey="true" enableDeleteByExample="true"
+               enableUpdateByExample="true" />
+    </context>
+</generatorConfiguration>

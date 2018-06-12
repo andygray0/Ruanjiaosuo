@@ -1,0 +1,179 @@
+div.nav{
+    width: 600px;
+    height:36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 12px;
+    position: absolute;
+    margin:40px auto 0 auto;
+    margin-top: 80px;
+    margin-left:700px;
+}
+/*nav-main*/
+ul.nav-main{
+    width: 100%;
+    height: 100%;
+    font-size: 15px;
+    list-style-type: none;
+}
+ul.nav-main span{
+    margin-left: 10px  ;
+    display: inline-block;
+    width: 13px;
+    height: 7px;
+    border-left:0px;
+}
+
+/*导航条设置*/
+/*ul.nav-main>li>a {*/
+/*//border-left: 1px solid transparent;*/
+/*width: 100px;*/
+/*float: left;*/
+/*list-style: none;*/
+/*position: relative;*/
+/*display: inline-table;*/
+/*background:#fff ;*/
+/*cursor: pointer;*/
+/*font-size: 15px;*/
+/*font-weight: bolder;*/
+/*text-align:center;*/
+/*color: #767779;*/
+/*line-height:40px;*/
+/*height: 32px;*/
+/*line-height: 32px; !*这一句不可少*!*/
+/*}*/
+ul.nav-main>li:hover{
+    color:#fff ;
+    background:#4481c0 ;
+}
+li.selected {
+    color:#fff ;
+    background:#4481c0 ;
+}
+ul.nav-main>li>a:hover{
+    text-decoration: none;
+}
+
+ul.nav-main a:hover{
+    text-decoration: none;
+}
+/*隐藏盒子设置*/
+div.hidden-box{
+    width: 120px;
+    border: 1px solid #643519;
+    border-top: 0;
+    position: absolute;
+    text-align:center;
+    display:none;
+    background:#fff;
+    top: 36px;
+}
+.hidden-box>ul{
+    list-style-type: none;
+    color: #643519;
+    cursor: pointer;
+}
+.hidden-box li:hover{
+    background: #643519;
+    color: #fff;
+}
+/*隐藏盒子位置设置*/
+.hidden-loc-index{
+    left: 657px;
+    top:  500px;
+}
+.hidden-loc-us{
+    left: 757px;
+}
+.hidden-loc-info{
+    left: 857px;
+}
+.box04{
+    left:957px;
+}
+
+nav ul ul {
+    display: none;
+    width:100px;
+    padding-left: 0px;
+}
+/*.long{*/
+/*width:200px;*/
+/*position: absolute;*/
+/*}*/
+
+nav ul li:hover > ul {
+    display: block;
+
+    width:100px;
+}
+nav ul li:hover .long > ul {
+    display: block;
+    width:200px;
+}
+
+nav ul {
+    list-style: none;
+    position: relative;
+    display: inline-table;
+}
+/*nav ul:after {*/
+/*content: ""; clear: both; display: block;*/
+/*}*/
+
+nav ul li {
+    width: 100px;
+    float: left;
+}
+nav ul li .long{
+    width: 250px;
+    float: left;
+}
+
+nav ul li:hover {
+    background: #36648B;
+    color: #fff;
+
+}
+
+nav ul li a {
+    font-size: 15px;
+    display: block;
+    text-decoration: none;
+}
+
+
+nav ul ul li{
+    background:#B0C4DB; border-radius: 0px; padding: 0;
+    position: absolute; top: 100%;
+}
+nav ul ul li {
+    float: left;
+    position: relative;
+}
+nav ul ul li a {
+    color: #757575;
+}
+
+nav ul ul li a:hover {
+    color: #fff;
+}
+
+nav ul ul ul {
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+
+
+#footer {
+    width:100%;
+    clear:both;
+    border-bottom:1px solid #e0e0e0;
+    border-top:1px solid #e0e0e0;
+    margin-top: 100px;
+}
+
+#tab1 {
+    color:#0A529E;
+}

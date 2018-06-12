@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd ">
+	
+	<import resource="classpath:datasource.xml"/>
+	<bean id="transactionManager_1" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds8" />
+	</bean>
+
+	<bean id="mysqlSessionFactory_1" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/mysql-config.xml"/>
+		<property name="dataSource" ref="ds8" />
+		<property name="typeAliasesPackage" value="com.wine.model3" />
+
+	</bean>
+
+	<bean name="mapperScannerConfigurer_1" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.wine.dao3"/>
+		<property name="sqlSessionFactoryBeanName" value="mysqlSessionFactory_1"/>
+	</bean>
+
+	<bean id="transactionManager_2" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds1" />
+	</bean>
+
+	<bean id="mysqlSessionFactory_2" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="configLocation" value="classpath:mybatis/mysql-config.xml"/>
+		<property name="dataSource" ref="ds1" />
+		<property name="typeAliasesPackage" value="com.wine.model" />
+
+	</bean>
+
+	<bean name="mapperScannerConfigurer_2" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.wine.dao"/>
+		<property name="sqlSessionFactoryBeanName" value="mysqlSessionFactory_2"/>
+	</bean>
+</beans>

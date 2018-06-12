@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wine.dao.WashTimerMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model.WashTimer" >
+    <id column="t_id" property="id" jdbcType="INTEGER" />
+    <result column="t_name" property="name" jdbcType="VARCHAR" />
+    <result column="t_description" property="description" jdbcType="VARCHAR" />
+    <result column="t_sourcetable" property="sourcetable" jdbcType="VARCHAR" />
+    <result column="t_querys" property="querys" jdbcType="VARCHAR" />
+    <result column="t_rules" property="rules" jdbcType="VARCHAR" />
+    <result column="t_goaltable" property="goaltable" jdbcType="VARCHAR" />
+    <result column="t_starttime" property="starttime" jdbcType="TIMESTAMP" />
+    <result column="t_stamp" property="stamp" jdbcType="TIMESTAMP" />
+    <result column="t_onoff" property="onoff" jdbcType="INTEGER" />
+    <result column="t_reserved1" property="reserved1" jdbcType="VARCHAR" />
+    <result column="t_reserved2" property="reserved2" jdbcType="VARCHAR" />
+    <result column="t_reserved3" property="reserved3" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    t.id as t_id, t.name as t_name, t.description as t_description, t.sourcetable as t_sourcetable, 
+    t.querys as t_querys, t.rules as t_rules, t.goaltable as t_goaltable, t.starttime as t_starttime, 
+    t.stamp as t_stamp, t.onoff as t_onoff, t.reserved1 as t_reserved1, t.reserved2 as t_reserved2, 
+    t.reserved3 as t_reserved3
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model.WashTimerCriteria" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wash_timer t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wash_timer t
+    where t.id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wash_timer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.wine.model.WashTimerCriteria" >
+    delete from wash_timer t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.wine.model.WashTimer" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into wash_timer (id, name, description, 
+      sourcetable, querys, rules, 
+      goaltable, starttime, stamp, 
+      onoff, reserved1, reserved2, 
+      reserved3)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{sourcetable,jdbcType=VARCHAR}, #{querys,jdbcType=VARCHAR}, #{rules,jdbcType=VARCHAR}, 
+      #{goaltable,jdbcType=VARCHAR}, #{starttime,jdbcType=TIMESTAMP}, #{stamp,jdbcType=TIMESTAMP}, 
+      #{onoff,jdbcType=INTEGER}, #{reserved1,jdbcType=VARCHAR}, #{reserved2,jdbcType=VARCHAR}, 
+      #{reserved3,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wine.model.WashTimer" >
+    insert into wash_timer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="sourcetable != null" >
+        sourcetable,
+      </if>
+      <if test="querys != null" >
+        querys,
+      </if>
+      <if test="rules != null" >
+        rules,
+      </if>
+      <if test="goaltable != null" >
+        goaltable,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="stamp != null" >
+        stamp,
+      </if>
+      <if test="onoff != null" >
+        onoff,
+      </if>
+      <if test="reserved1 != null" >
+        reserved1,
+      </if>
+      <if test="reserved2 != null" >
+        reserved2,
+      </if>
+      <if test="reserved3 != null" >
+        reserved3,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetable != null" >
+        #{sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="querys != null" >
+        #{querys,jdbcType=VARCHAR},
+      </if>
+      <if test="rules != null" >
+        #{rules,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltable != null" >
+        #{goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stamp != null" >
+        #{stamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onoff != null" >
+        #{onoff,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null" >
+        #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.wine.model.WashTimerCriteria" resultType="java.lang.Integer" >
+    select count(*) from wash_timer t
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wash_timer t
+    <set >
+      <if test="record.id != null" >
+        t.id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        t.name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null" >
+        t.description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sourcetable != null" >
+        t.sourcetable = #{record.sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.querys != null" >
+        t.querys = #{record.querys,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rules != null" >
+        t.rules = #{record.rules,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goaltable != null" >
+        t.goaltable = #{record.goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.starttime != null" >
+        t.starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stamp != null" >
+        t.stamp = #{record.stamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.onoff != null" >
+        t.onoff = #{record.onoff,jdbcType=INTEGER},
+      </if>
+      <if test="record.reserved1 != null" >
+        t.reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved2 != null" >
+        t.reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reserved3 != null" >
+        t.reserved3 = #{record.reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wash_timer t
+    set t.id = #{record.id,jdbcType=INTEGER},
+      t.name = #{record.name,jdbcType=VARCHAR},
+      t.description = #{record.description,jdbcType=VARCHAR},
+      t.sourcetable = #{record.sourcetable,jdbcType=VARCHAR},
+      t.querys = #{record.querys,jdbcType=VARCHAR},
+      t.rules = #{record.rules,jdbcType=VARCHAR},
+      t.goaltable = #{record.goaltable,jdbcType=VARCHAR},
+      t.starttime = #{record.starttime,jdbcType=TIMESTAMP},
+      t.stamp = #{record.stamp,jdbcType=TIMESTAMP},
+      t.onoff = #{record.onoff,jdbcType=INTEGER},
+      t.reserved1 = #{record.reserved1,jdbcType=VARCHAR},
+      t.reserved2 = #{record.reserved2,jdbcType=VARCHAR},
+      t.reserved3 = #{record.reserved3,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model.WashTimer" >
+    update wash_timer
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sourcetable != null" >
+        sourcetable = #{sourcetable,jdbcType=VARCHAR},
+      </if>
+      <if test="querys != null" >
+        querys = #{querys,jdbcType=VARCHAR},
+      </if>
+      <if test="rules != null" >
+        rules = #{rules,jdbcType=VARCHAR},
+      </if>
+      <if test="goaltable != null" >
+        goaltable = #{goaltable,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stamp != null" >
+        stamp = #{stamp,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onoff != null" >
+        onoff = #{onoff,jdbcType=INTEGER},
+      </if>
+      <if test="reserved1 != null" >
+        reserved1 = #{reserved1,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved2 != null" >
+        reserved2 = #{reserved2,jdbcType=VARCHAR},
+      </if>
+      <if test="reserved3 != null" >
+        reserved3 = #{reserved3,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wine.model.WashTimer" >
+    update wash_timer
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      sourcetable = #{sourcetable,jdbcType=VARCHAR},
+      querys = #{querys,jdbcType=VARCHAR},
+      rules = #{rules,jdbcType=VARCHAR},
+      goaltable = #{goaltable,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      stamp = #{stamp,jdbcType=TIMESTAMP},
+      onoff = #{onoff,jdbcType=INTEGER},
+      reserved1 = #{reserved1,jdbcType=VARCHAR},
+      reserved2 = #{reserved2,jdbcType=VARCHAR},
+      reserved3 = #{reserved3,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
