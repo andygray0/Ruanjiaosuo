@@ -21,6 +21,15 @@
     <link href="../js/bootstrap-table/bootstrap-table.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-validator/css/bootstrapValidator.min.css" rel="stylesheet"  type="text/css"/>
+    <style>
+        .th-inner{
+            font-size:14px
+        }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
+    </style>
+
 </head>
 <body>
 <h3 style="margin-left: 15px">清洗执行记录</h3>
@@ -119,8 +128,6 @@
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
                 columns: [{
-                    checkbox: true
-                },   {
                     field: 'id',
                     title: '序号'
                 },{
@@ -211,7 +218,18 @@
                     field: 'checkcount',
                     title: '待查数据量'
                 }
-                ]
+                ],
+                rowStyle: function (row, index) {
+                    //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                    var strclass = "";
+                    if (index % 2 == 1) {
+                        strclass = 'active';//还有一个active
+                    }
+                    else {
+                        return {};
+                    }
+                    return {classes: strclass}
+                },
             });
         };
 

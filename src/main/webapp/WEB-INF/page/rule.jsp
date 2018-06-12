@@ -27,6 +27,12 @@
         .modal .modal-dialog .modal-content .form-horizontal .controls .input-file{
 
         }
+        .th-inner{
+            font-size:14px
+        }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
 
     </style>
 
@@ -280,6 +286,17 @@
                 return moment(value,"x").format("YYYY-MM-DD HH:mm:ss")
             }
                 }],
+                rowStyle: function (row, index) {
+                    //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                    var strclass = "";
+                    if (index % 2 == 1) {
+                        strclass = 'active';//还有一个active
+                    }
+                    else {
+                        return {};
+                    }
+                    return {classes: strclass}
+                },
                 onEditableSave: function (field, row) {
                     $.ajax({
                         type: "post",

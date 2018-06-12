@@ -48,6 +48,12 @@
         .tb_dep_content .bootstrap-table{
             height: 80%;
         }
+        .th-inner{
+            font-size:14px
+        }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
         .panel{
             margin-bottom: 10px;
         }

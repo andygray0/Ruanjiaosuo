@@ -21,8 +21,8 @@
     <title>批量修改</title>
     <link href="../js/bootstrap/css/bootstrap.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-table/bootstrap-table.css" rel="stylesheet"  type="text/css"/>
-    <link href="../css/common.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/mloading/jquery.mloading.css" rel="stylesheet"  type="text/css"/>
+    <link href="../css/common.css" rel="stylesheet"  type="text/css"/>
     <style>
         th,td{
             white-space: nowrap;
@@ -33,11 +33,11 @@
             color: #576063;
         }
         #tb_departments{
-            background-color: #fff;
+            /*background-color: #fff;*/
             padding: 15px;
         }
         .tb_dep_content{
-            background-color: #fff;
+            /*background-color: #fff;*/
             margin: 0 15px 15px 15px;
             padding: 2px;
             border-radius: 3px;
@@ -67,6 +67,12 @@
             font-size: 16px;
             line-height: 28px;
             font-weight: normal;
+        }
+        .th-inner{
+            font-size:14px
+        }
+        .fixed-table-header{
+            background-color: #bee7f3;
         }
         .addRow{
             padding: 0px 12px;
@@ -298,7 +304,7 @@
         <button id="btn_model" type="button" style="margin-left:15px" class="btn btn-primary">导入模板下载</button>
         <button type="button"  style="margin-left:20px" id="btn_download" class="btn btn-primary" >数据导出</button>
 </div>
-<div class="modifyDataShow">
+<div class="tb_dep_content">
     <table id="tb_departments" class="table table-hover"></table>
 </div>
 <div id="myModal" class="modal fade"  role="dialog"   aria-hidden=true>
@@ -607,7 +613,7 @@
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber:1,                       //初始化加载第一页，默认第一页
                 pageSize: 10,                       //每页的记录行数（*）
-                pageList: [10, 20, 30, 50],        //可供选择的每页的行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
                 search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: true,
                 showColumns: true,                  //是否显示所有的列
