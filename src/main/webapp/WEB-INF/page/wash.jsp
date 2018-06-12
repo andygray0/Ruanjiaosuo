@@ -34,6 +34,12 @@
              height: auto;
              padding-bottom: 0;
         }
+		.th-inner{
+			font-size:14px
+		}
+		.fixed-table-header{
+			background-color: #bee7f3;
+		}
         /*表格高度固定 内部自适应滚动*/
         /*.fixed-table-body {*/
             /*max-height: 285px;*/
@@ -42,11 +48,11 @@
             font-size: 14px;
             color: #576063;
         }
-        #tb_departments thead{
-            font-weight: bold;
-            font-size: 15px;
-            color: #576063;
-        }
+        /*#tb_departments thead{*/
+            /*font-weight: bold;*/
+            /*font-size: 12px!important;*/
+            /*color: #576063;*/
+        /*}*/
         .fixed-table-toolbar .columns{
              margin-top: 0;
              margin-bottom: 0;
@@ -766,11 +772,6 @@
                     sql: sqlline
                 };
                 $('#tb_departments').bootstrapTable("refresh", temp);
-
-                $('#tb_departments').bootstrapTable('showColumn', 'IR_SITENAME');
-                $('#tb_departments').bootstrapTable('showColumn', 'IR_CHANNEL');
-                $('#tb_departments').bootstrapTable('showColumn', 'IR_URLTITLE');
-                $('#tb_departments').bootstrapTable('showAllColumns');
             }
         });
         $("#btn_wash").click(function(){
@@ -869,13 +870,7 @@
 
         }
     });
-    $('#tb_departments').bootstrapTable("refreshOptions",{columns:columns});
-
-    $('#tb_departments').bootstrapTable('showColumn', 'IR_SITENAME');
-    $('#tb_departments').bootstrapTable('showColumn', 'IR_CHANNEL');
-    $('#tb_departments').bootstrapTable('showColumn', 'IR_URLTITLE');
-
-    $(".dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")
+    // $('#tb_departments').bootstrapTable("refresh",{columns:columns});
 
     var TableInit = function () {
         var oTableInit = new Object();
@@ -894,7 +889,7 @@
                 sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber:1,                       //初始化加载第一页，默认第一页
                 pageSize: 10,                       //每页的记录行数（*）
-                pageList: [10, 25, 50, 100,1000],        //可供选择的每页的行数（*）
+                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
                 search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: false,
                 showColumns: true,                  //是否显示所有的列
@@ -910,9 +905,18 @@
                 async:false,
                 onLoadSuccess: function(row,data){
                     $("[data-toggle='tooltip']").tooltip();
-                    // $('#tb_departments').bootstrapTable('showColumn', 'IR_SITENAME');
-                    // $('#tb_departments').bootstrapTable('showColumn', 'IR_CHANNEL');
-                    // $('#tb_departments').bootstrapTable('showColumn', 'IR_URLTITLE');
+                    //添加默认列
+                    $('#tb_departments').bootstrapTable('showColumn', 'irSitename');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irChannel');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irUrltitle');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irUrldate');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBiddingMoney');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBiddingAgency');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBiddingOrg');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBiddingAddr');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBidOrg');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBidAddr');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irBidMoney');
                 },
                 onColumnSwitch: function(field, checked){
                     $("[data-toggle='tooltip']").tooltip();
@@ -926,7 +930,8 @@
                     else {
                         return {};
                     }
-                    return {classes: strclass}
+                    return {classes: strclass,
+					fontsize:14}
                 },
 //                    exportDataType: 'all',
 //                 exportTypes:[ 'csv', 'json', 'sql', 'xml','doc', 'excel', 'xlsx'],
