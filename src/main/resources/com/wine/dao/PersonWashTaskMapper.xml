@@ -37,6 +37,14 @@
     </select>
 
 
+    <select id="findAllTaskList" resultType="com.wine.model.PersonWashTask">
+        SELECT
+            *
+        FROM
+            personwash_tasklist
+    </select>
+
+
 
     <select id="findById" resultType="com.wine.model.PersonWashTask" parameterType="int">
         SELECT

@@ -46,6 +46,16 @@
                     </c:if>
                     </select>
                 </div>
+
+                <!--
+                <div style="margin-top:10px;">
+                    <button class="btn btn-primary" onclick="exportExcel();">
+                        <span class="glyphicon glyphicon-export"></span>
+                        <span>导出Excel</span>
+                    </button>
+                </div>
+                -->
+
             </div>
             <table id="mainDg" style="background:rgb(255,255,255);" class="table table-hover"></table>
         </div>
@@ -107,15 +117,6 @@ var tableInit = getDefaultDataGrid({
     url: '/personWashCountWork/findByPage.do',
     columns: [
         {
-            title: '序号',
-            align: 'center',
-            formatter: function (value, row, index) {
-                var options = $("#mainDg").bootstrapTable("getOptions");
-                var startNo = (options.pageNumber - 1) * (options.pageSize);
-                return startNo + index + 1;
-            }
-        },
-        {
             field: "taskName",
             title: "分配任务",
             align: 'center'
@@ -131,7 +132,7 @@ var tableInit = getDefaultDataGrid({
         },
         {
             field: "realQueryItemCount",
-            title: "实际查询数据量",
+            title: "实际查询数据量(项)",
             align: 'center'
         },
         {
@@ -141,7 +142,7 @@ var tableInit = getDefaultDataGrid({
         },
         {
             field: "realFinishedItemCount",
-            title: "实际完成数据量",
+            title: "实际完成数据量(项)",
             align: 'center'
         },
         {
@@ -197,6 +198,12 @@ tableInit.Init();
 });
 
 
+    function exportExcel() {
+
+        var url = "/personWashCountWork/exportExcel.do";
+        window.open(url);
+
+    }
 
 </script>
 

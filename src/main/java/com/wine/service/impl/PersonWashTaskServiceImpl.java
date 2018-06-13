@@ -208,5 +208,10 @@ public class PersonWashTaskServiceImpl implements PersonWashTaskService {
         personWashTaskMapper.updateTaskWorkCountByTaskId(task2);
     }
 
+    @Override
+    public List<PersonWashTask> findAllTaskList() {
+        return personWashTaskMapper.findAllTaskList();
+    }
+
 
 }
