@@ -51,7 +51,9 @@
             </form>
         </div>
     </div>
-    <table id="tb_departments" class="table table-hover"></table>
+    <div class="table-responsive">
+    <table id="tb_departments" class="table table-hover table text-nowrap"></table>
+    </div>
 </div>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
@@ -78,6 +80,12 @@
 <script type="text/javascript" src="../js/plupload-2.0.0/js/i18n/zh_CN.js"></script>
 
 <script type="text/javascript">
+    $(function () {
+        $(".errlog").click(function () {
+            var val=$(this).attr("rel");
+            alert(val);
+        });
+    });
     function trim(str){
         return str.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -99,6 +107,12 @@
         //2.初始化Button的点击事件
         var oButtonInit = new ButtonInit();
         oButtonInit.Init();
+
+        $(".errlog").click(function () {
+                bootbox.alert(this.attr('href'));
+            }
+
+        )
 
     });
     var TableInit = function () {
@@ -132,7 +146,8 @@
                     title: '序号'
                 },{
                     field: 'name',
-                    title: '名称'
+                    title: '名称',
+                    width:100
                 }, {
                     field: 'exway',
                     title: '执行方式',
@@ -308,6 +323,8 @@
     //     });
     //
     // }
+
+
 </script>
 </body>
 </html>
