@@ -81,7 +81,7 @@
     <div style="background-color:#FFFFFF;">
         <div style="margin-bottom:0;">
             <div id="toolbar">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" onclick="exportExcel();">
                     <span class="glyphicon glyphicon-export"></span>
                     <span>导出Excel</span>
                 </button>
@@ -247,6 +247,11 @@ tableInit.Init();
             btnHide: true,
             url: '/personWashDataCount/popDetailDataCountDialog.do?' + "year=" + year + "&month=" + month
         });
+    }
+    
+    function exportExcel() {
+        var url = "/personWashDataCount/exportExcel.do"
+        window.open(url);
     }
 
 

@@ -192,4 +192,83 @@ public class PersonWashDataCountController {
     }
 
 
+
+    @RequestMapping("/exportExcel")
+    public void exportExcel(HttpServletResponse response){
+
+
+        List<DataCountSample> result = personWashService.countDataCountByPage(null, null, null);
+
+        List<DataCountSample> dataList = new ArrayList<DataCountSample>();
+
+        if(null != result && result.size() > 0){
+            Map<String, List<DataCountSample>> dataMap = new TreeMap<String, List<DataCountSample>>(new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return o2.compareTo(o1);
+                }
+            });
+            for (DataCountSample data : result) {
+                String key = data.getYear() + "-" + (data.getMonth() < 10 ? "0" + data.getMonth() : data.getMonth());
+                List<DataCountSample> tmpList = dataMap.get(key);
+                if (null == tmpList) {
+                    tmpList = new ArrayList<DataCountSample>();
+                }
+                tmpList.add(data);
+                dataMap.put(key, tmpList);
+            }
+
+            for (Map.Entry<String, List<DataCountSample>> entry : dataMap.entrySet()) {
+                DataCountSample data = new DataCountSample();
+
+                String[] split = entry.getKey().split("-");
+                data.setYear(Integer.parseInt(split[0]))
+                        .setMonth(Integer.parseInt(split[1]));
+
+                if(null != entry.getValue() && entry.getValue().size() > 0){
+                    int itemRecord = 0;
+                    int queryRecord = 0;
+                    int validRecord = 0;
+                    int finishRecord = 0;
+                    for(DataCountSample dcs : entry.getValue()){
+                        Integer status = dcs.getStatus();
+                        itemRecord += dcs.getItemRecord();
+                        if(status == 0){ // 查询中
+                            queryRecord += dcs.getItemRecord();
+                        } else if(status == 1){ // 待验证
+                            validRecord += dcs.getItemRecord();
+                        } else if(status == 2){ // 验证通过
+                            finishRecord += dcs.getFinishRecord();
+                        } else if(status == 3) { // 验证退回
+                            queryRecord += dcs.getItemRecord();
+                        } else if(status == 4){ // 任务被放弃
+
+                        } else if(status == 5){ // 放弃后已处理
+                            finishRecord += dcs.getFinishRecord();
+                        }
+
+
+                    }
+                    data.setItemRecord(itemRecord)
+                            .setQueryRecord(queryRecord)
+                            .setValidRecord(validRecord)
+                            .setFinishRecord(finishRecord);
+
+                    dataList.add(data);
+                }
+            }
+        }
+
+
+        String filename = "数据量统计";
+        String[] headers = {"年份","月份","总数据量(条数)","查询中(条数)","待验证(条数)","已完结(条数)"};
+        String[] keys = {"year","month","item_record","query_record","valid_record","finish_record"};
+        List<Map<String,Object>> mapList = BeanKit.getMapListFromBeanList(dataList, keys);
+        Map<String, Object> flagMap = new HashMap<String, Object>();
+
+        ExportExcelKit.exportExcel(response,filename,headers, keys, mapList, flagMap);
+
+    }
+
+
 }
