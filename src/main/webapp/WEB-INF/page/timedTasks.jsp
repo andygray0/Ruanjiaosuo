@@ -174,7 +174,19 @@
                 },   {
                     field: 'id',
                     title: 'ID'
-                },{
+                },
+                    {
+                        field: 'onoff',
+                        title: '状态',
+                        formatter: function (value) {
+                            if(value==0){
+                                return '未启动'
+                            }
+                            if(value==1){
+                                return '启动'
+                            }
+                        }
+                    },{
                     field: 'name',
                     title: '名称',
                     editable: {
@@ -273,19 +285,7 @@
                                 // if (!v) return '查询条件不能为空';
                             }
                         }
-                    },
-                    {
-                    field: 'onoff',
-                    title: '状态',
-                        formatter: function (value) {
-                           if(value==0){
-                                return '未启动'
-                            }
-                            if(value==1){
-                                return '启动'
-                            }
-                        }
-                }
+                    }
                 ],
                 rowStyle: function (row, index) {
                     //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
