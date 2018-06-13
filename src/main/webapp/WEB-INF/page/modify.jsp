@@ -1192,7 +1192,7 @@
             window.open("/getmodel.do")}
         );
 
-        $(".dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")
+        $(".bootstrap-table .dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")
 
     });
 

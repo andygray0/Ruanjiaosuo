@@ -897,7 +897,7 @@
         }
     });
     // $('#tb_departments').bootstrapTable("refresh",{columns:columns});
-
+    var count = 0;
     var TableInit = function () {
         var oTableInit = new Object();
         //初始化Table
@@ -943,6 +943,9 @@
                     $('#tb_departments').bootstrapTable('showColumn', 'irBidOrg');
                     $('#tb_departments').bootstrapTable('showColumn', 'irBidAddr');
                     $('#tb_departments').bootstrapTable('showColumn', 'irBidMoney');
+                    count++;
+                    if(count==1){
+                    $(".bootstrap-table .dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")}
                 },
                 onColumnSwitch: function(field, checked){
                     $("[data-toggle='tooltip']").tooltip();
@@ -1001,10 +1004,6 @@
 
         return oInit;
     };
-    $(function() {
-
-    });
-
 
     $(function() {
 
