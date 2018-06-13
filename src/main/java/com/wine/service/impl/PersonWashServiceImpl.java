@@ -88,4 +88,9 @@ public class PersonWashServiceImpl implements PersonWashService {
     public List<PersonWashWaitCheckData> findCheckDataListByTaskId(Integer id) {
         return personWashMapper.findCheckDataListByTaskId(id);
     }
+
+    @Override
+    public List<DetailDataSizeCount> findAllOfDetailCount(Integer year, Integer month) {
+        return personWashMapper.findAllOfDetailCount(year, month);
+    }
 }

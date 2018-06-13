@@ -37,4 +37,6 @@ public interface PersonWashService {
     List<DetailDataSizeCount> findByPageOfDetailCount(ParamPage<DetailDataSizeCount> page, Integer year, Integer month);
 
     List<PersonWashWaitCheckData> findCheckDataListByTaskId(Integer id);
+
+    List<DetailDataSizeCount> findAllOfDetailCount(Integer year, Integer month);
 }

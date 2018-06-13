@@ -5,9 +5,12 @@
 
 <div id="detail-pop-data-size-count">
 
-    <div>
-        <div id="toolbar">
-
+    <div style="margin-top:20px;">
+        <div id="toolbarOfDetail">
+            <button class="btn btn-success" onclick="exportExcelDetail();">
+                <span class="glyphicon glyphicon-export"></span>
+                <span>导出Excel</span>
+            </button>
         </div>
         <div>
             <table id="detailOfmainDg" style="background:rgb(255,255,255);" class="table table-hover"></table>
@@ -26,6 +29,7 @@ $(function () {
         id: 'detailOfmainDg',
         url: '/personWashDataCount/findByPageForDetailInfo.do?' + "year=" + ${year} + "&month=" + ${month},
         height: '350',
+        toolbar: 'toolbarOfDetail',
         columns: [
             {
                 field: "taskName",
@@ -72,5 +76,11 @@ $(function () {
     tableInit.Init();
 
 });
+
+
+function exportExcelDetail() {
+    var url = "/personWashDataCount/exportExcelDetail.do?" + "year=" + ${year} + "&month=" + ${month};
+    window.open(url);
+}
 
 </script>

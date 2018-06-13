@@ -43,4 +43,6 @@ public interface PersonWashMapper {
 
     List<PersonWashWaitCheckData> findCheckDataListByTaskId(@Param("taskId") Integer id);
 
+    List<DetailDataSizeCount> findAllOfDetailCount(@Param("year") Integer year, @Param("month") Integer month);
+
 }

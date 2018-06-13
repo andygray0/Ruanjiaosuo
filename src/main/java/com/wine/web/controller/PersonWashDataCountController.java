@@ -5,6 +5,7 @@ import com.wine.model.DetailDataSizeCount;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.service.PersonWashService;
 import com.wine.utils.BeanKit;
+import com.wine.utils.ExportExcelKit;
 import com.wine.web.bean.ParamPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 @Controller
@@ -153,6 +155,40 @@ public class PersonWashDataCountController {
         map.put("total", total);
         map.put("rows", countList);
         return map;
+    }
+
+
+    @RequestMapping("/exportExcelDetail")
+    public void exportExcelDetail(HttpServletResponse response, Integer year, Integer month){
+
+        List<DetailDataSizeCount> countList = personWashService.findAllOfDetailCount(year, month);
+
+        for(DetailDataSizeCount count: countList){
+            List<PersonWashWaitCheckData> checkList = personWashService.findCheckDataListByTaskId(count.getId());
+            if(null != checkList && checkList.size() > 0){
+                for(PersonWashWaitCheckData check: checkList){
+                    List<String> list = BeanKit.getDynamicFieldsBySuffixIsNotNull(check, "Check");
+                    switch (list.size()){
+                        case 0: break;
+                        case 1: count.setItem1(count.getItem1() + 1);break;
+                        case 2: count.setItem2(count.getItem2() + 1);break;
+                        case 3: count.setItem3(count.getItem3() + 1);break;
+                        case 4: count.setItem4(count.getItem4() + 1);break;
+                        default: count.setItem5(count.getItem5() + 1);break;
+                    }
+                }
+            }
+        }
+
+
+        String filename = year + "年" + month + "月" + "数据量统计详情";
+        String[] headers = {"分配任务","数据量(条)","1项数据量(条)","2项数据量(条)","3项数据量(条)","4项数据量(条)","5项数据量(条)","数据量(项)"};
+        String[] keys = {"task_name","record_count","item1","item2","item3","item4","item5","item_count"};
+        List<Map<String,Object>> mapList = BeanKit.getMapListFromBeanList(countList, keys);
+        Map<String, Object> flagMap = new HashMap<String, Object>();
+
+        ExportExcelKit.exportExcel(response,filename,headers, keys, mapList, flagMap);
+
     }
 
 
