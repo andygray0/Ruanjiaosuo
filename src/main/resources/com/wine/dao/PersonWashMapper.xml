@@ -405,5 +405,48 @@
             ) z
     </select>
 
+
+    <select id="countDetailByYearAndMonth" resultType="_int">
+        SELECT
+            count(1) AS c
+        FROM
+            personwash_tasklist
+        WHERE
+            date_format(CREATE_TIME, '%Y') = #{year}
+        AND date_format(CREATE_TIME, '%m') = #{month}
+    </select>
+
+    <select id="findByPageOfDetailCount" resultType="com.wine.model.DetailDataSizeCount">
+        SELECT
+            id,
+            TASK_NAME,
+            ITEM_COUNT,
+            RECORD_COUNT
+        FROM
+            personwash_tasklist a
+        WHERE
+            date_format(CREATE_TIME, '%Y') = #{year}
+        AND date_format(CREATE_TIME, '%m') = #{month}
+        LIMIT #{page.startNo},
+        #{page.limit}
+    </select>
+
+
+    <select id="findCheckDataListByTaskId" resultType="com.wine.model.PersonWashWaitCheckData">
+        SELECT
+            *
+        FROM
+            urlcontent_check_2017
+        WHERE
+            ID IN (
+                SELECT
+                    check_id
+                FROM
+                    personwash_task_to_check_data_relation
+                WHERE
+                    TASK_ID = #{taskId}
+            )
+    </select>
+
 </mapper>
 

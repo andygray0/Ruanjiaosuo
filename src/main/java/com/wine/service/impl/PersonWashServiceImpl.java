@@ -2,6 +2,7 @@ package com.wine.service.impl;
 
 import com.wine.dao.PersonWashMapper;
 import com.wine.model.DataCountSample;
+import com.wine.model.DetailDataSizeCount;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model.WaitCheckData;
 import com.wine.service.PersonWashService;
@@ -71,5 +72,20 @@ public class PersonWashServiceImpl implements PersonWashService {
     @Override
     public int countDataCountTotal(Integer year, Integer month) {
         return personWashMapper.countDataCountTotal(year, month);
+    }
+
+    @Override
+    public int countDetailByYearAndMonth(Integer year, Integer month) {
+        return personWashMapper.countDetailByYearAndMonth(year, month);
+    }
+
+    @Override
+    public List<DetailDataSizeCount> findByPageOfDetailCount(ParamPage<DetailDataSizeCount> page, Integer year, Integer month) {
+        return personWashMapper.findByPageOfDetailCount(page, year,month);
+    }
+
+    @Override
+    public List<PersonWashWaitCheckData> findCheckDataListByTaskId(Integer id) {
+        return personWashMapper.findCheckDataListByTaskId(id);
     }
 }
