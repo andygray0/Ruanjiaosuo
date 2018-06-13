@@ -301,6 +301,18 @@
             var channel = $.trim($("#channel").val());
             var groupname = $.trim($("#groupname").val());
             var startid = $.trim($("#startid").val());
+            if (urlDateFrom!="" ^ urlDateTo!=""){
+                bootbox.alert("请输入完整的发布日期！");
+                return "where 1>1";
+            }
+            if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                bootbox.alert("请输入完整的采集时间！");
+                return "where 1>1";
+            }
+            if (loadTimeFrom!="" ^ loadTimeTo!=""){
+                bootbox.alert("请输入完整的入库时间！");
+                return "where 1>1";
+            }
             if (urlDateFrom!=""&&urlDateTo!=""){
                 if (sql == ""){
                     sql = "where ir_urldate between '"+urlDateFrom+"' and '"+urlDateTo+ "' ";
@@ -528,14 +540,14 @@
     var showall = function(){
         i++;
         if(i%2==1){
-            $('#tb_departments').bootstrapTable('showAllColumns')
+            $('#tb_departments').bootstrapTable('showAllColumns');
             $(".dropdown-menu>li").find("input").each(function(){
                 if(!$(this).get(0).checked){
                     $(this).prop("checked",'checked');
                 }
             });
         }else{
-            $('#tb_departments').bootstrapTable('hideAllColumns')
+            $('#tb_departments').bootstrapTable('hideAllColumns');
             $(".dropdown-menu>li").find("input").each(function(){
                 if($(this).get(0).checked){
                     $(this).prop("checked",false);
@@ -661,7 +673,6 @@
         });
 
         $("#btn_query").click(function () {
-            var sqlline= getsql();
             if ($("#manageTables").val() == "" ) {
                 bootbox.alert("请选择数据表！")
             }
@@ -720,10 +731,10 @@
                         }
                     });
                     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                        limit: 10,   //页面大小
-                        page: 1,  //页码
-                        sql: getsql(),
-                        i: $("#manageTables").val(),
+                        // limit: 10,   //页面大小
+                        // page: 1,  //页码
+                        // sql: getsql(),
+                        // i: $("#manageTables").val(),
                         columns: columns
                     };
                     $('#tb_departments').bootstrapTable("refreshOptions", temp);

@@ -984,18 +984,51 @@
             }
         });
         $("#btn_query").click(function () {
+            var urlDateFrom = $.trim($("#urlDateFrom").val());
+            var urlDateTo = $.trim($("#urlDateTo").val());
+            var lastTimeFrom = $.trim($("#lastTimeFrom").val());
+            var lastTimeTo = $.trim($("#lastTimeTo").val());
+            var loadTimeFrom = $.trim($("#loadTimeFrom").val());
+            var loadTimeTo = $.trim($("#loadTimeTo").val());
+            if (urlDateFrom!="" ^ urlDateTo!=""){
+                bootbox.alert("请输入完整的发布日期！");
+                $('#tb_departments').bootstrapTable("removeAll");
+                return ;
+            }
+            if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                bootbox.alert("请输入完整的采集时间！");
+                $('#tb_departments').bootstrapTable("removeAll");
+                return ;
+            }
+            if (loadTimeFrom!="" ^ loadTimeTo!=""){
+                bootbox.alert("请输入完整的入库时间！");
+                $('#tb_departments').bootstrapTable("removeAll");
+                return ;
+            }
            var sql = getsql();
-            var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                limit: 10,   //页面大小
-                page: 1,  //页码
-                sql: sql,
-                i:'urlcontent'
-            };
-            $('#tb_departments').bootstrapTable('removeAll');
-            $('#tb_departments').bootstrapTable('refresh', temp);
+            $('#tb_departments').bootstrapTable('refresh', {query:{limit: 10,page: 1,sql: sql, i:'urlcontent'}});
         });
         $("#btn_modify").click(function () {
-            if(getsql()==""||$("#columntomodify").val()==""){
+            var urlDateFrom = $.trim($("#urlDateFrom").val());
+            var urlDateTo = $.trim($("#urlDateTo").val());
+            var lastTimeFrom = $.trim($("#lastTimeFrom").val());
+            var lastTimeTo = $.trim($("#lastTimeTo").val());
+            var loadTimeFrom = $.trim($("#loadTimeFrom").val());
+            var loadTimeTo = $.trim($("#loadTimeTo").val());
+            if (urlDateFrom!="" ^ urlDateTo!=""){
+                bootbox.alert("请输入完整的发布日期！");
+                return ;
+            }
+            if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                bootbox.alert("请输入完整的采集时间！");
+                return ;
+            }
+            if (loadTimeFrom!="" ^ loadTimeTo!=""){
+                bootbox.alert("请输入完整的入库时间！");
+                return ;
+            }
+            var sqlline = getsql();
+            if(sqlline==""||$("#columntomodify").val()==""){
                 bootbox.alert("请输入修改条件后，再修改数据！");
                 return;
             }
@@ -1011,9 +1044,8 @@
                 },
                 callback: function(result) {
                     if(result) {
-                        var sql = getsql();
                         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
-                            sql:sql,
+                            sql:sqlline,
                             column:$("#columntomodify").val(),
                             modify:$("#tomodify").val()
                         };
@@ -1039,6 +1071,24 @@
             });
         });
         $("#btn_delete").click(function () {
+            var urlDateFrom = $.trim($("#urlDateFrom").val());
+            var urlDateTo = $.trim($("#urlDateTo").val());
+            var lastTimeFrom = $.trim($("#lastTimeFrom").val());
+            var lastTimeTo = $.trim($("#lastTimeTo").val());
+            var loadTimeFrom = $.trim($("#loadTimeFrom").val());
+            var loadTimeTo = $.trim($("#loadTimeTo").val());
+            if (urlDateFrom!="" ^ urlDateTo!=""){
+                bootbox.alert("请输入完整的发布日期！");
+                return ;
+            }
+            if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                bootbox.alert("请输入完整的采集时间！");
+                return ;
+            }
+            if (loadTimeFrom!="" ^ loadTimeTo!=""){
+                bootbox.alert("请输入完整的入库时间！");
+                return ;
+            }
             if(getsql()==""){
                 bootbox.alert("请输入查询条件后，再删除数据！");
                 return;

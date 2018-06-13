@@ -765,6 +765,20 @@
                 bootbox.alert("请选择数据源表！");
 
             } else {
+                var urlDateFrom = $.trim($("#urlDateFrom").val());
+                var urlDateTo = $.trim($("#urlDateTo").val());
+                var lastTimeFrom = $.trim($("#lastTimeFrom").val());
+                var lastTimeTo = $.trim($("#lastTimeTo").val());
+                if (urlDateFrom!="" ^ urlDateTo!=""){
+                    bootbox.alert("请输入完整的发布日期！");
+                    $('#tb_departments').bootstrapTable("removeAll");
+                    return ;
+                }
+                if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                    bootbox.alert("请输入完整的采集时间！");
+                    $('#tb_departments').bootstrapTable("removeAll");
+                    return ;
+                }
                 var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                     limit: 10,   //页面大小
                     page: 1,  //页码
@@ -781,6 +795,18 @@
                 if($("#txt_fromtable").val()==""|$("#txt_search_rule").val()==""|$("#txt_totable").val()==""){
                     bootbox.alert("请输入完整清洗条件！")
 				}	else{
+                    var urlDateFrom = $.trim($("#urlDateFrom").val());
+                    var urlDateTo = $.trim($("#urlDateTo").val());
+                    var lastTimeFrom = $.trim($("#lastTimeFrom").val());
+                    var lastTimeTo = $.trim($("#lastTimeTo").val());
+                    if (urlDateFrom!="" ^ urlDateTo!=""){
+                        bootbox.alert("请输入完整的发布日期！");
+                        return ;
+                    }
+                    if (lastTimeFrom!="" ^ lastTimeTo!=""){
+                        bootbox.alert("请输入完整的采集时间！");
+                        return ;
+                    }
                     var temp = {
                         fromtable:$("#txt_fromtable").val(),
                         sql:getsql(),
