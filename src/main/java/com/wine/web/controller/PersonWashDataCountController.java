@@ -1,7 +1,10 @@
 package com.wine.web.controller;
 
 import com.wine.model.DataCountSample;
+import com.wine.model.DetailDataSizeCount;
+import com.wine.model.PersonWashWaitCheckData;
 import com.wine.service.PersonWashService;
+import com.wine.utils.BeanKit;
 import com.wine.web.bean.ParamPage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -104,6 +107,51 @@ public class PersonWashDataCountController {
 //        personWashService
         map.put("total", total);
         map.put("rows", finalList);
+        return map;
+    }
+
+
+    @RequestMapping("/popDetailDataCountDialog")
+    public String popDetailDataCountDialog(Model model, Integer year, Integer month){
+        model.addAttribute("year", year);
+        model.addAttribute("month", month);
+        return "personwash/detail_data_count";
+    }
+
+
+    @RequestMapping("/findByPageForDetailInfo")
+    @ResponseBody
+    public Map<String, Object> findByPageForDetailInfo(ParamPage<DetailDataSizeCount> page, Integer year, Integer month){
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        int total = personWashService.countDetailByYearAndMonth(year, month);
+
+        List<DetailDataSizeCount> countList = new ArrayList<DetailDataSizeCount>();
+
+       if(total > 0){
+           countList = personWashService.findByPageOfDetailCount(page, year, month);
+
+           for(DetailDataSizeCount count: countList){
+               List<PersonWashWaitCheckData> checkList = personWashService.findCheckDataListByTaskId(count.getId());
+               if(null != checkList && checkList.size() > 0){
+                   for(PersonWashWaitCheckData check: checkList){
+                       List<String> list = BeanKit.getDynamicFieldsBySuffixIsNotNull(check, "Check");
+                       switch (list.size()){
+                           case 0: break;
+                           case 1: count.setItem1(count.getItem1() + 1);break;
+                           case 2: count.setItem2(count.getItem2() + 1);break;
+                           case 3: count.setItem3(count.getItem3() + 1);break;
+                           case 4: count.setItem4(count.getItem4() + 1);break;
+                           default: count.setItem5(count.getItem5() + 1);break;
+                       }
+                   }
+               }
+           }
+
+       }
+
+        map.put("total", total);
+        map.put("rows", countList);
         return map;
     }
 

@@ -1,6 +1,7 @@
 package com.wine.dao;
 
 import com.wine.model.DataCountSample;
+import com.wine.model.DetailDataSizeCount;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model.WaitCheckData;
 import com.wine.web.bean.ParamPage;
@@ -35,5 +36,11 @@ public interface PersonWashMapper {
     List<DataCountSample> countDataCountByPage(@Param("page") ParamPage<DataCountSample> page, @Param("year") Integer year, @Param("month") Integer month);
 
     int countDataCountTotal(@Param("year") Integer year, @Param("month") Integer month);
+
+    List<DetailDataSizeCount> findByPageOfDetailCount(@Param("page") ParamPage<DetailDataSizeCount> page, @Param("year") Integer year, @Param("month") Integer month);
+
+    int countDetailByYearAndMonth(@Param("year") Integer year, @Param("month") Integer month);
+
+    List<PersonWashWaitCheckData> findCheckDataListByTaskId(@Param("taskId") Integer id);
 
 }

@@ -27,6 +27,10 @@
             width: 700px;
         }
 
+        #detail-pop-data-size-count .fixed-table-body{
+            max-height:300px;
+        }
+
     </style>
 
 </head>
@@ -86,13 +90,13 @@
 
     <!-- 模态框（Modal） -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-        <div class="modal-dialog" style="width:750px;">
+        <div class="modal-dialog" style="width:90%;">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h4 class="modal-title" id="myModalLabel2"></h4>
                 </div>
-                <div class="modal-body" style="max-height:400px;overflow-y:auto;">
+                <div class="modal-body" style="padding-top:0px;">
 
                 </div>
                 <div class="modal-footer">
@@ -141,7 +145,6 @@ var tableInit = getDefaultDataGrid({
     url: '/personWashDataCount/findByPage.do',
     pageSize: 12,
     pageList: [12, 25, 50, 100,1000],
-    height: 'auto',
     columns: [
         {
             title: '序号',
@@ -181,6 +184,13 @@ var tableInit = getDefaultDataGrid({
             field: "finishRecord",
             title: "已完结(条数)",
             align: 'center'
+        },
+        {
+            title: '操作',
+            align: 'center',
+            formatter: function(value, row, index){
+                return "<a href='javascript:void(0);' onclick='showDetailOfDataCount("+ row.year +","+ row.month +");'>详情</a>";
+             }
         }
     ],
     queryParams: function(params) {
@@ -203,6 +213,10 @@ var tableInit = getDefaultDataGrid({
         };
         return temp;
     }
+    /**,
+    success: function () {
+        $("#mainDg").bootstrapTable("resetView");
+    } */
 });
 tableInit.Init();
 
@@ -230,6 +244,17 @@ tableInit.Init();
             pageNumber : 1
         });
     }
+
+
+    function showDetailOfDataCount(year, month) {
+        showModalDialog({
+            title : '数据量详情',
+            id : 'myModal',
+            btnHide: true,
+            url: '/personWashDataCount/popDetailDataCountDialog.do?' + "year=" + year + "&month=" + month
+        });
+    }
+
 
 </script>
 

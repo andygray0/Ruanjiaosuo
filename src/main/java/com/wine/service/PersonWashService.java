@@ -1,6 +1,7 @@
 package com.wine.service;
 
 import com.wine.model.DataCountSample;
+import com.wine.model.DetailDataSizeCount;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model.WaitCheckData;
 import com.wine.web.bean.ParamPage;
@@ -30,4 +31,10 @@ public interface PersonWashService {
     List<DataCountSample> countDataCountByPage(ParamPage<DataCountSample> page, Integer year, Integer month);
 
     int countDataCountTotal(Integer year, Integer month);
+
+    int countDetailByYearAndMonth(Integer year, Integer month);
+
+    List<DetailDataSizeCount> findByPageOfDetailCount(ParamPage<DetailDataSizeCount> page, Integer year, Integer month);
+
+    List<PersonWashWaitCheckData> findCheckDataListByTaskId(Integer id);
 }
