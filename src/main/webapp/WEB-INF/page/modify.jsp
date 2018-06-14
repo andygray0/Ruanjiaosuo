@@ -299,8 +299,8 @@
     <%--</div>--%>
 <div id="toolbar" class="btn-group">
     <%--<button type="button"  id="import" style="margin-left:50px"  class="btn btn-primary" >数据导入</button>--%>
-    <button id="btn_add" type="button" style="margin-left:15px"  data-toggle="modal" data-target="#myModal" class="btn btn-primary">新增导入</button>
-        <button id="btn_add1" type="button" style="margin-left:15px"  data-toggle="modal" data-target="#myModal" class="btn btn-primary">覆盖导入</button>
+    <button id="btn_add" type="button" style="margin-left:15px"  data-toggle="modal" data-target="#myModal" class="btn btn-primary" onclick="changeUploader()">新增导入</button>
+        <button id="btn_add1" type="button" style="margin-left:15px"  data-toggle="modal" data-target="#myModal" class="btn btn-primary" onclick="changeUploader1()">覆盖导入</button>
         <button id="btn_model" type="button" style="margin-left:15px" class="btn btn-primary">导入模板下载</button>
         <button type="button"  style="margin-left:20px" id="btn_download" class="btn btn-primary" >数据导出</button>
 </div>
@@ -311,7 +311,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div id="legend" class="">
-                <legend class="">&nbsp;&nbsp;上传文件</legend>
+                <legend id="uploadtitle">&nbsp;&nbsp;上传文件</legend>
             </div>
 
             <div id="fileDiv">
@@ -439,6 +439,12 @@
         $("#lastTimeTo").datetimepicker("setStartDate", $("#lastTimeFrom").val());
     });
 
+    var changeUploader = function () {
+        $('#uploadtitle').html("新增导入")
+    };
+    var changeUploader1 = function () {
+        $('#uploadtitle').html("覆盖导入")
+    };
     var getsql = function(){
         if ($(":radio:checked").val() == 'sql') {
             var sql = $("#sqlwhere").val();
@@ -1223,7 +1229,9 @@
         browse_button : 'browse',
         //服务器端的上传地址
         url : '/uploadFile.do',
-        multi_selection: false
+        multi_selection: false,
+        filters: [                //文件类型限制
+            {title: "excel文件", extensions: "xlsx" }]
     });
     //在实例对象上调用init()方法进行初始化
     uploader.init();
@@ -1261,13 +1269,17 @@
         function(up, files,res) {
             try {
                 var fname = res.response.replace("\"","").replace("\"","");   // 后端返回的标志
-
-                $.post("/insertexcel.do?fn="+fname, function(data) {
-                    if(data==true){
-                        bootbox.alert("导入成功")
+                var texts = $('#uploadtitle').html();
+                var type = 1;
+                if(texts == "新增导入"){
+                    type = 0;
+                }
+                $.post("/insertexcel.do?fn="+fname+"&type="+type, function(data) {//type=0 新增导入type=1覆盖导入
+                    if(data.success==true){
+                        bootbox.alert("导入成功");
                     }
                     else{
-                        bootbox.alert("导入失败")
+                        bootbox.alert("导入失败,"+data.msg.toString());
                     }
                 }).error(function() { bootbox.alert({
                     title: "提示",

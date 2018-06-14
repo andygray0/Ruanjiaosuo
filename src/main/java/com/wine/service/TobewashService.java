@@ -19,6 +19,6 @@ public interface TobewashService {
     Map getColumns();
     List<Tobewash> getListBySql(String sql);
     List<TobewashWithBLOBs> getListBySqlWithBlob(String sql);
-
+    Map insertExcel(String fn,int type)  throws Exception;
     void handlerListOnlySelect(List<TobewashWithBLOBs> list, String fields);
 }

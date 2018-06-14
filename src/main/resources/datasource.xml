@@ -92,4 +92,11 @@
 		<property name="defaultAutoCommit" value="true"></property>
 	</bean>
 
+	<bean id="txManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="ds8" />
+	</bean>
+
+	<!-- 事务注解驱动，标注@Transactional的类和方法将具有事务性 -->
+	<tx:annotation-driven transaction-manager="txManager" />
 </beans>

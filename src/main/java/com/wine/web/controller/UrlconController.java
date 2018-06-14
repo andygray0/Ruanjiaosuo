@@ -2,11 +2,7 @@ package com.wine.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import com.wine.dao3.TobewashMapper;
 import com.wine.model.PersonWashCleanResult;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model.Wait2Check;
@@ -15,8 +11,6 @@ import com.wine.model3.*;
 import com.wine.quartz.ScheduleTask;
 import com.wine.service.*;
 import com.wine.utils.StrKit;
-import org.apache.commons.lang.ObjectUtils;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.BeanUtils;
@@ -30,7 +24,6 @@ import java.io.*;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -441,84 +434,19 @@ public class UrlconController {
             JSONArray jsonArray = JSONArray.parseArray(JSON.toJSON(lists).toString());
             return jsonArray;
         }
+
+
     @RequestMapping(value = "/insertexcel.do")
     @ResponseBody
-    public Boolean insertexcel(String fn){
-        JSONArray jsonArray = getexcel("upload\\"+fn);
-        if(jsonArray.size()>0){
-            int length = jsonArray.size();
-            for(int i=0;i<length;i++){
-                TobewashWithBLOBs urlcon = new TobewashWithBLOBs();
-                urlcon.setIrSid(getInt(jsonArray.getJSONObject(i).getString("IR_SID")));
-                if(jsonArray.getJSONObject(i).getString("IR_CONTENT")!=null&&!jsonArray.getJSONObject(i).getString("IR_CONTENT").equals(""))
-                { urlcon.setIrContent(jsonArray.getJSONObject(i).getString("IR_CONTENT").getBytes());}
-                else{
-                    urlcon.setIrContent(new byte[0]);
-                }
-                if(jsonArray.getJSONObject(i).getString("IR_URLCONTENT")!=null&&!jsonArray.getJSONObject(i).getString("IR_URLCONTENT").equals(""))
-                { urlcon.setIrUrlcontent(jsonArray.getJSONObject(i).getString("IR_URLCONTENT").getBytes());}
-                else{
-                    urlcon.setIrUrlcontent(new byte[0]);
-                }
-                urlcon.setIrUrlcontent(jsonArray.getJSONObject(i).getString("IR_URLCONTENT").getBytes());
-                urlcon.setIrUrldate(getdate(jsonArray.getJSONObject(i).getString("IR_URLDATE")));
-                urlcon.setIrUrltime(gettime(jsonArray.getJSONObject(i).getString("IR_URLTIME")));
-                urlcon.setIrHkey(jsonArray.getJSONObject(i).getString("IR_HKEY"));
-                urlcon.setIrStartid(getInt(jsonArray.getJSONObject(i).getString("IR_STARTID")));
-                urlcon.setIrServiceid(jsonArray.getJSONObject(i).getString("IR_SERVICEID"));
-                urlcon.setIrPkey(jsonArray.getJSONObject(i).getString("IR_PKEY"));
-                urlcon.setIrUrlname(jsonArray.getJSONObject(i).getString("IR_URLNAME"));
-                urlcon.setIrExtname(jsonArray.getJSONObject(i).getString("IR_EXTNAME"));
-                urlcon.setIrSitename(jsonArray.getJSONObject(i).getString("IR_SITENAME"));
-                urlcon.setIrChannel(jsonArray.getJSONObject(i).getString("IR_CHANNEL"));
-                urlcon.setIrGroupname(jsonArray.getJSONObject(i).getString("IR_GROUPNAME"));
-                urlcon.setIrUrltitle(jsonArray.getJSONObject(i).getString("IR_URLTITLE"));
-                urlcon.setIrUrltopic(jsonArray.getJSONObject(i).getString("IR_URLTOPIC"));
-                urlcon.setIrLasttime(gettime(jsonArray.getJSONObject(i).getString("IR_LASTTIME")));
-                urlcon.setIrLoadtime(gettime(jsonArray.getJSONObject(i).getString("IR_LOADTIME")));
-                urlcon.setIrSrcname(jsonArray.getJSONObject(i).getString("IR_SRCNAME"));
-                urlcon.setIrAuthors(jsonArray.getJSONObject(i).getString("IR_AUTHORS"));
-                urlcon.setIrDistrict(jsonArray.getJSONObject(i).getString("IR_DISTRICT"));
-                urlcon.setIrCatalog(jsonArray.getJSONObject(i).getString("IR_CATALOG"));
-                urlcon.setIrCatalog1(jsonArray.getJSONObject(i).getString("IR_CATALOG1"));
-                urlcon.setIrCatalog2(jsonArray.getJSONObject(i).getString("IR_CATALOG2"));
-                urlcon.setIrKeywords(jsonArray.getJSONObject(i).getString("IR_KEYWORDS"));
-                urlcon.setIrAbstract(jsonArray.getJSONObject(i).getString("IR_ABSTRACT"));
-                urlcon.setIrSimflag(jsonArray.getJSONObject(i).getString("IR_SIMFLAG"));
-                urlcon.setIrSimrank(getInt(jsonArray.getJSONObject(i).getString("IR_SIMRANK")));
-                urlcon.setIrImageflag(getInt(jsonArray.getJSONObject(i).getString("IR_IMAGEFLAG")));
-                urlcon.setIrTableflag(getInt(jsonArray.getJSONObject(i).getString("IR_TABLEFLAG")));
-                urlcon.setIrDoclength(getInt(jsonArray.getJSONObject(i).getString("IR_DOCLENGTH")));
-                urlcon.setIrBbsnum(getInt(jsonArray.getJSONObject(i).getString("IR_BBSNUM")));
-                urlcon.setIrBbstopic(getInt(jsonArray.getJSONObject(i).getString("IR_BBSTOPIC")));
-                urlcon.setIrBbskey(jsonArray.getJSONObject(i).getString("IR_BBSKEY"));
-                urlcon.setIrPagelevel(getInt(jsonArray.getJSONObject(i).getString("IR_PAGELEVEL")));
-                urlcon.setIrPagerank(getInt(jsonArray.getJSONObject(i).getString("IR_PAGERANK")));
-                urlcon.setIrUrllevel(getInt(jsonArray.getJSONObject(i).getString("IR_URLLEVEL")));
-                urlcon.setIrMimetype(jsonArray.getJSONObject(i).getString("IR_MIMETYPE"));
-                urlcon.setIrFormat(jsonArray.getJSONObject(i).getString("IR_FORMAT"));
-                urlcon.setIrCharset(jsonArray.getJSONObject(i).getString("IR_CHARSET"));
-                urlcon.setIrUrlsize(getInt(jsonArray.getJSONObject(i).getString("IR_URLSIZE")));
-                if(jsonArray.getJSONObject(i).getString("IR_URLBODY")!=null&&!jsonArray.getJSONObject(i).getString("IR_URLBODY").equals(""))
-                {urlcon.setIrUrlbody(jsonArray.getJSONObject(i).getString("IR_URLBODY").getBytes());}
-                else{urlcon.setIrUrlbody(new byte[0]);}
-                urlcon.setIrWcmid(getInt(jsonArray.getJSONObject(i).getString("IR_WCMID")));
-                urlcon.setIrStatus(getByte(jsonArray.getJSONObject(i).getString("IR_STATUS")));
-                urlcon.setIrNreserved1(getInt(jsonArray.getJSONObject(i).getString("IR_NRESERVED1")));
-                urlcon.setIrNreserved2(getInt(jsonArray.getJSONObject(i).getString("IR_NRESERVED2")));
-                urlcon.setIrNreserved3(getInt(jsonArray.getJSONObject(i).getString("IR_NRESERVED3")));
-                urlcon.setIrVreserved1(jsonArray.getJSONObject(i).getString("IR_NRESERVED1"));
-                urlcon.setIrVreserved2(jsonArray.getJSONObject(i).getString("IR_NRESERVED2"));
-                urlcon.setIrVreserved3(jsonArray.getJSONObject(i).getString("IR_NRESERVED3"));
-                urlcon.setIrVreserved4(jsonArray.getJSONObject(i).getString("IR_NRESERVED4"));
-                urlcon.setIrSreserved1(jsonArray.getJSONObject(i).getString("IR_SRESERVED1"));
-                urlcon.setIrSreserved2(jsonArray.getJSONObject(i).getString("IR_SRESERVED2"));
-                urlcon.setIrSreserved3(jsonArray.getJSONObject(i).getString("IR_SRESERVED3"));
-                tobewashService.save(urlcon);
-            }
-            return true;
-        }
-        else {return false;}
+    public Map insertexcel(String fn,int type){
+            Map map = new HashMap();
+            try{
+         return tobewashService.insertExcel(fn,type);}
+         catch (Exception e){
+             map.put("success",false);
+             map.put("msg",e.getMessage());
+             return map;
+         }
     }
 
     private Date getdate(String dt){
@@ -531,15 +459,6 @@ public class UrlconController {
         }
     }
 
-    private Integer getInt(String str){
-        try {
-            Integer i = new Integer(str);
-            return i;
-        }
-        catch (Exception e){
-            return null;
-        }
-    }
 
     private Date gettime(String dt){
         try {
@@ -550,15 +469,7 @@ public class UrlconController {
             return null;
         }
     }
-    private Byte getByte(String by){
-        try {
-            Byte aByte = Byte.valueOf(by);
-            return aByte;
-        }
-        catch (Exception e){
-            return null;
-        }
-    }
+
 
 
     @RequestMapping(value = "/washedit.do")
