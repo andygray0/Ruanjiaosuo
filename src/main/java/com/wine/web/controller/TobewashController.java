@@ -2,6 +2,7 @@ package com.wine.web.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.wine.model.PersonWashCleanResult;
 import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model3.TobewashWithBLOBs;
@@ -85,7 +86,7 @@ public class TobewashController {
         fn = simpleDateFormat.format(date);
         String excelPath = "F:\\"+fn+".xlsx";
 //        String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
-        String jsonStr = JSON.toJSONString(list);
+        String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
         Workbook workbook = null;
         try {
@@ -104,16 +105,22 @@ public class TobewashController {
                     bignum = i;
                 }
             }
+            List list1 = new ArrayList();
+            for(String str:fields.split(",")){
+                list1.add(str);
+            }
             JSONObject item = jo.getJSONObject(bignum);
             Iterator<String> iterator = item.keySet().iterator();
             int column = 0;
             while (iterator.hasNext()) {
                 String key = iterator.next(); // 得到keypr
-                if("irContentStr".equals(key) ||  "irUrlcontentStr".equals(key)  || "irUrlbodyStr".equals(key) ){
-                    key = key.replaceAll("Str", "");
+                if(list1.contains(key)) {
+                    if ("irContentStr".equals(key) || "irUrlcontentStr".equals(key) || "irUrlbodyStr".equals(key)) {
+                        key = key.replaceAll("Str", "");
+                    }
+                    Cell cell = row0.createCell(column++);
+                    cell.setCellValue(toupper(key));
                 }
-                Cell cell = row0.createCell(column++);
-                cell.setCellValue(toupper(key));
             }
 
             for (int rowNum = 1; rowNum <= jo.size(); rowNum++) {
@@ -123,6 +130,7 @@ public class TobewashController {
                 column = 0;// 从第0列开始放
                 while (iterator1.hasNext()) {
                     String key = iterator1.next(); // 得到key
+                    if(list1.contains(key)){
                     Cell cell = row.createCell(column++);
                     String cellValue = item1.getString(key);
                     if("irContentStr".equals(key) ||  "irUrlcontentStr".equals(key)  || "irUrlbodyStr".equals(key) ){
@@ -130,7 +138,7 @@ public class TobewashController {
                             cellValue = cellValue.substring(0, 32767);
                         }
                     }
-                    cell.setCellValue(cellValue);
+                    cell.setCellValue(cellValue);}
                 }
             }
             try {
