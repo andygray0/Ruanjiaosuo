@@ -15,6 +15,9 @@
         #roleDg tr.selected td {
             background-color : linen;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
     </style>
 
 </head>

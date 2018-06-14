@@ -37,7 +37,18 @@ function getDefaultDataGrid(config){
             columns: config.columns,
             onEditableSave: config.editSave,
             onLoadSuccess: config.success,
-            onColumnSwitch: config.onColumnSwitch
+            onColumnSwitch: config.onColumnSwitch,
+            rowStyle: function (row, index) {
+                //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
+                var strclass = "";
+                if (index%2 == 1) {
+                    strclass = 'active';//还有一个active
+                }
+                else {
+                    return {};
+                }
+                return {classes: strclass}
+            }
         });
     };
 
