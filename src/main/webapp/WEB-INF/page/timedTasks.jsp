@@ -73,7 +73,7 @@
             <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>停止
         </button>
     </div>
-    <table id="tb_departments" class="table table-hover"></table>
+    <table id="tb_departments" class="table table-hover  text-nowrap"></table>
 </div>
 </div>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
