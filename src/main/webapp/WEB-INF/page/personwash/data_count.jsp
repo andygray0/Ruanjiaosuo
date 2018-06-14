@@ -28,7 +28,7 @@
         }
 
         #detail-pop-data-size-count .fixed-table-body{
-            max-height:300px;
+            max-height:222px;
         }
 
     </style>
@@ -81,7 +81,10 @@
     <div style="background-color:#FFFFFF;">
         <div style="margin-bottom:0;">
             <div id="toolbar">
-
+                <button class="btn btn-primary" onclick="exportExcel();">
+                    <span class="glyphicon glyphicon-export"></span>
+                    <span>导出Excel</span>
+                </button>
             </div>
             <table id="mainDg" style="background:rgb(255,255,255);" class="table table-hover"></table>
         </div>
@@ -146,15 +149,6 @@ var tableInit = getDefaultDataGrid({
     pageSize: 12,
     pageList: [12, 25, 50, 100,1000],
     columns: [
-        {
-            title: '序号',
-            align: 'center',
-            formatter: function (value, row, index) {
-                var options = $("#mainDg").bootstrapTable("getOptions");
-                var startNo = (options.pageNumber - 1) * (options.pageSize);
-                return startNo + index + 1;
-            }
-        },
         {
             field: "year",
             title: "年份",
@@ -253,6 +247,11 @@ tableInit.Init();
             btnHide: true,
             url: '/personWashDataCount/popDetailDataCountDialog.do?' + "year=" + year + "&month=" + month
         });
+    }
+    
+    function exportExcel() {
+        var url = "/personWashDataCount/exportExcel.do"
+        window.open(url);
     }
 
 

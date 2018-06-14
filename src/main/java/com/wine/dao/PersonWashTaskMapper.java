@@ -52,4 +52,6 @@ public interface PersonWashTaskMapper {
 
     void updateTaskWorkCountByTaskId(PersonWashTask task2);
 
+    List<PersonWashTask> findAllTaskList();
+
 }

@@ -46,4 +46,5 @@ public interface PersonWashTaskService {
 
     void updateTaskWorkCountByTaskId(PersonWashTask task2);
 
+    List<PersonWashTask> findAllTaskList();
 }
