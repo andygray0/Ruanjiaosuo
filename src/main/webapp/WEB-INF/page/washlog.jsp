@@ -166,6 +166,9 @@
                     field: 'sourcetable',
                     title: '数据源表'
                 },{
+                    field: 'simplewashcolumn',
+                    title: '简单清洗列'
+                },{
                     field: 'querys',
                     title: '查询语句'
                 },{
@@ -209,7 +212,7 @@
                         if(min >= 1){
                             time = min+"分"
                         }
-                        time= time+ seconds%60 +"秒"
+                        time= time+ seconds%60 +"秒";
                         return time;
                     }
                 },{
