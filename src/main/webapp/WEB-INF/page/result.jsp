@@ -203,6 +203,9 @@ fn = "";
                                 "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                 "visible": false,
                                 "formatter": function (value) {
+                                    if(value==null){
+                                        return null;
+                                    }
                                     return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
                                 }
                             });
