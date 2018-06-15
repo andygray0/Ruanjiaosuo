@@ -495,7 +495,7 @@
         url : '/uploadFile.do',
         multi_selection: false,
         filters: [                //文件类型限制
-            {title: "清洗程序", extensions: "jar.py" }]
+            {title: "清洗程序", extensions: "jar,py" }]
     });
     //在实例对象上调用init()方法进行初始化
     uploader2.init();
