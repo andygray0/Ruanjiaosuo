@@ -138,7 +138,7 @@
                 minimumCountColumns: 2,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
                 height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+                uniqueId: "id",                     //每一行的唯一标识，一般为主键列
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
                 columns: [{
@@ -226,7 +226,7 @@
                             return "执行成功"
                         }
                         if(value == 0||value==null){
-                            return '<a onclick ="bootbox.alert(\''+row.errlog+'\')">执行失败<a/>'
+                            return "<a onclick ='alertmsg("+row.id+")'>执行失败<a/>"
                         }
                     }
                 },{
@@ -326,7 +326,10 @@
     //     });
     //
     // }
-
+    var alertmsg = function (id) {
+        var row =$('#tb_departments').bootstrapTable('getRowByUniqueId', id);
+        bootbox.alert(row.errlog);
+    }
 
 </script>
 </body>
