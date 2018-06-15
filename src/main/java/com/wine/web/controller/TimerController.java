@@ -38,10 +38,11 @@ public class TimerController {
     }
     @RequestMapping(value = "/insertWashTimer.do")
     @ResponseBody
-    public Map insert(String taskname,String description,String rules,String sourcetable,String goaltable,String starttime,String expression,String querys,int onoff) throws ParseException {
+    public Map insert(String taskname,String simplewashcolumn,String description,String rules,String sourcetable,String goaltable,String starttime,String expression,String querys,int onoff) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         WashTimer WashTimer = new WashTimer();
         WashTimer.setDescription(description);
+        WashTimer.setReserved2(simplewashcolumn);//简单清洗列
         WashTimer.setName(taskname);
         WashTimer.setRules(rules);
         WashTimer.setSourcetable(sourcetable);

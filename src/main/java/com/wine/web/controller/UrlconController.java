@@ -68,7 +68,7 @@ public class UrlconController {
 
     @RequestMapping(value = "/wash.do")
     @ResponseBody
-    public Map createExcelFile(HttpServletResponse response,String fromtable, String sql, String rule, String totable) {
+    public Map createExcelFile(HttpServletResponse response,String columnname,String fromtable, String sql, String rule, String totable) {
         List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
         List<String> rules =  Arrays.asList(rule.split(","));
         Date currentTime = new Date();
@@ -85,6 +85,7 @@ public class UrlconController {
         washlog.setQuerys("select * from "+fromtable+" "+sql);
         washlog.setCounts(list.size());
         washlog.setExway(0);
+        washlog.setSimplewashcolumn(columnname);
         if(list.size()<1){
             Map map = new HashMap();
             map.put("success",false);
@@ -92,7 +93,6 @@ public class UrlconController {
             washlog.setSuccessflag(0);
             washlog.setErrlog("未查到数据！");
             washLogService.insert(washlog);
-            int id = washlog.getId();
             return map;
         }
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -102,24 +102,26 @@ public class UrlconController {
         String excelPath = "F:\\"+dt+".xlsx";
         String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
-        Workbook workbook = null;
-//        try {
-            // XSSFWork used for .xslx (>= 2007), HSSWorkbook for 03 .xsl
-        workbook = new XSSFWorkbook();//HSSFWorkbook();//WorkbookFactory.create(inputStream);
-//        }catch(Exception e) {
-//            System.out.println("Excel写入错误");
-//            e.printStackTrace();
-//        }
-        if(workbook != null) {
+        Workbook workbook = new XSSFWorkbook();
             Sheet sheet = workbook.createSheet();
             Row row0 = sheet.createRow(0);
             JSONObject item = jo.getJSONObject(0);
             Iterator<String> iterator = item.keySet().iterator();
             int column = 0;
             while (iterator.hasNext()) {
+                if (columnname.equals("")){
                 String key = iterator.next(); // 得到keypr
                 Cell cell = row0.createCell(column++);
                 cell.setCellValue(toupper(key));
+                }
+                else{
+                    String key = iterator.next(); // 得到keypr
+                    String upperkey =toupper(key);
+                    if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")){
+                        Cell cell = row0.createCell(column++);
+                        cell.setCellValue(upperkey);
+                    }
+                }
             }
 
             for (int rowNum = 1; rowNum <= jo.size(); rowNum++) {
@@ -129,12 +131,26 @@ public class UrlconController {
                 column = 0;// 从第0列开始放
                 while (iterator1.hasNext()) {
                     String key = iterator1.next(); // 得到key
+                    if (columnname.equals("")){
                     String value = item1.getString(key); // 得到key对应的value
                     if(value!=null&&value.length()>32767){
                         value = value.substring(0,32767);
                     }
                     Cell cell = row.createCell(column++);
                     cell.setCellValue(value);
+                    }
+                    else{
+                        String upperkey =toupper(key);
+                        if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")) {
+                            String value = item1.getString(key); // 得到key对应的value
+                            if (value != null && value.length() > 32767) {
+                                value = value.substring(0, 32767);
+                            }
+                            Cell cell = row.createCell(column++);
+                            cell.setCellValue(value);
+                        }
+                    }
+
                 }
             }
             try {
@@ -152,7 +168,6 @@ public class UrlconController {
                 washLogService.insert(washlog);
                 return map;
             }
-        }
         File sss = new File(excelPath);
         System.out.println(sss.getAbsolutePath());
         washLogService.insert(washlog);
@@ -507,35 +522,41 @@ public class UrlconController {
         Method[] methods = Wait2Check.class.getMethods();
         int p=0;
         int q=0;
-        for(int i=0;i<jsonArray.size();i++){
-            Wait2Check aa = JSON.toJavaObject(jsonArray.getJSONObject(i), Wait2Check.class);
-            int count = 0;
-            for(Method m : methods){
-                if(m.getName().startsWith("get") && m.getName().endsWith("Check")){
-                    if(m.invoke(aa)!=null&&!m.invoke(aa).equals("")){
-                        count ++;
+        try {
+            for (int i = 0; i < jsonArray.size(); i++) {
+                Wait2Check aa = JSON.toJavaObject(jsonArray.getJSONObject(i), Wait2Check.class);
+                int count = 0;
+                for (Method m : methods) {
+                    if (m.getName().startsWith("get") && m.getName().endsWith("Check")) {
+                        if (m.invoke(aa) != null && !m.invoke(aa).equals("")) {
+                            count++;
+                        }
                     }
                 }
-            }
-            if(count==0){
+                if (count == 0) {
 //                PersonWashCleanResult clean = new PersonWashCleanResult();
-                PersonWashCleanResult clean = new PersonWashCleanResult();
-                BeanUtils.copyProperties(aa,clean);
-                urlconService.insertOrUpdate(clean,"radar2."+totable);
-                p=p+1;
-            }
-            else
-            {
-                PersonWashWaitCheckData wait = new PersonWashWaitCheckData();
-                BeanUtils.copyProperties(aa,wait);
-                wait.setClCount(Integer.toString(count));
-                wait.setClTarget(totable);
-               personWashService.insertOneUrlcontentCheck(wait);
-               q=q+1;
-            }
+                    PersonWashCleanResult clean = new PersonWashCleanResult();
+                    BeanUtils.copyProperties(aa, clean);
+                    urlconService.insertOrUpdate(clean, totable);
+                    p = p + 1;
+                } else {
+                    PersonWashWaitCheckData wait = new PersonWashWaitCheckData();
+                    BeanUtils.copyProperties(aa, wait);
+                    wait.setClCount(Integer.toString(count));
+                    wait.setClTarget(totable);
+                    personWashService.insertOneUrlcontentCheck(wait);
+                    q = q + 1;
+                }
 
+            }
+        }catch (Exception e){
+            washLog.setErrlog(e.getMessage().substring(0,200));
+            washLog.setSuccessflag(0);
+            washLogService.update(washLog);
+            map.put("succcess",false);
+            map.put("msg","数据导入过程中失败，错误信息："+e.getMessage());
+            return map;
         }
-        Map map2= new HashMap();
         washLog.setSuccessflag(1);
         washLog.setCleancount(p);
         washLog.setCheckcount(q);
@@ -624,10 +645,10 @@ public class UrlconController {
     @ResponseBody
     public Map getfields(){
         Map map =new HashMap();
-        Urlcon urlcon = new Urlcon();
+        PersonWashCleanResult urlcon = new PersonWashCleanResult();
         Field[] fields=urlcon.getClass().getDeclaredFields();
         List<String> list = new ArrayList<String>();
-        for(int i=0; i<fields.length-1;i++){
+        for(int i=1; i<fields.length;i++){
             list.add(StrKit.camelToUnderline(fields[i].getName()));
         }
         map.put("fields",list);
@@ -678,7 +699,7 @@ public class UrlconController {
 
     @RequestMapping(value = "/washAndApprove.do")
     @ResponseBody
-    public Map createExcelFile2(HttpServletResponse response,String fromtable, String sql, String rule, String totable,String taskname) {
+    public Map createExcelFile2(HttpServletResponse response,String fromtable,String columnname,String sql, String rule, String totable,String taskname) {
         List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
         List<String> rules =  Arrays.asList(rule.split(","));
         WashLog washlog = new WashLog();
@@ -691,6 +712,7 @@ public class UrlconController {
         washlog.setQuerys("select * from "+fromtable+" "+sql);
         washlog.setCounts(list.size());
         washlog.setExway(1);
+        washlog.setSimplewashcolumn(columnname);
         if(list.size()<1){
             Map map = new HashMap();
             map.put("success",false);
@@ -723,9 +745,19 @@ public class UrlconController {
             Iterator<String> iterator = item.keySet().iterator();
             int column = 0;
             while (iterator.hasNext()) {
-                String key = iterator.next(); // 得到keypr
-                Cell cell = row0.createCell(column++);
-                cell.setCellValue(toupper(key));
+                if (columnname.equals("")){
+                    String key = iterator.next(); // 得到keypr
+                    Cell cell = row0.createCell(column++);
+                    cell.setCellValue(toupper(key));
+                }
+                else{
+                    String key = iterator.next(); // 得到keypr
+                    String upperkey =toupper(key);
+                    if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")){
+                        Cell cell = row0.createCell(column++);
+                        cell.setCellValue(upperkey);
+                    }
+                }
             }
 
             for (int rowNum = 1; rowNum <= jo.size(); rowNum++) {
@@ -735,12 +767,26 @@ public class UrlconController {
                 column = 0;// 从第0列开始放
                 while (iterator1.hasNext()) {
                     String key = iterator1.next(); // 得到key
-                    String value = item1.getString(key); // 得到key对应的value
-                    if(value!=null&&value.length()>32767){
-                        value = value.substring(0,32767);
+                    if (columnname.equals("")){
+                        String value = item1.getString(key); // 得到key对应的value
+                        if(value!=null&&value.length()>32767){
+                            value = value.substring(0,32767);
+                        }
+                        Cell cell = row.createCell(column++);
+                        cell.setCellValue(value);
                     }
-                    Cell cell = row.createCell(column++);
-                    cell.setCellValue(value);
+                    else{
+                        String upperkey =toupper(key);
+                        if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")) {
+                            String value = item1.getString(key); // 得到key对应的value
+                            if (value != null && value.length() > 32767) {
+                                value = value.substring(0, 32767);
+                            }
+                            Cell cell = row.createCell(column++);
+                            cell.setCellValue(value);
+                        }
+                    }
+
                 }
             }
             try {

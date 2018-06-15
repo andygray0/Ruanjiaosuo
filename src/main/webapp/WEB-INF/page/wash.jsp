@@ -218,21 +218,47 @@
 									<option  value="">请选择...</option>
 								</select>
 							</div>
+                            <label class="control-label  col-sm-1" for="txt_wash_column">简单清洗字段</label>
+                            <div class="col-sm-2">
+                                <select type="text" class="form-control selectpicker" id="txt_wash_column" disabled="true">
+                                    <option  value="">请选择...</option>
+                                </select>
+                            </div>
 
-							<label class="control-label  col-sm-1" for="txt_search_rule">目标库</label>
+							<label class="control-label  col-sm-1" for="txt_totable">目标库</label>
 							<div class="col-sm-2">
 								<select type="text" class="form-control selectpicker" id="txt_totable">
 									<option  value="">请选择...</option>
 								</select>
 							</div>
-							<div class="col-sm-4" style="text-align:left;">
-								<button type="button" style="margin-left:50px" id="btn_wash" class="btn btn-primary" >清洗</button>
-								<button type="button" style="margin-left:50px" data-target="#myModal" data-toggle="modal"  id="btn_add_timer" class="btn btn-primary" >添加定时任务</button>
-							</div>
+
 						</div>
 					</form>
+
+					<button type="button" style="margin-left:10px" id="btn_wash" class="btn btn-primary addrow" >清洗</button>
+					<button type="button" style="margin-left:50px" data-target="#myModal" data-toggle="modal"  id="btn_add_timer" class="btn btn-primary" >添加定时任务</button>
+
 				</div>
 			</div>
+			<%--<div class="panel panel-default">--%>
+				<%--<div class="panel-heading">简单规则</div>--%>
+				<%--<div class="panel-body">--%>
+					<%--<form id="formSearch4" class="form-horizontal">--%>
+						<%--<div class="form-group" style="margin-top:15px">--%>
+							<%--<label class="control-label  col-sm-1" for="txt_search_rule1">清洗规则</label>--%>
+							<%--<div class="col-sm-2">--%>
+								<%--<select type="text" class="form-control selectpicker" id="txt_search_rule1">--%>
+									<%--<option  value="">请选择...</option>--%>
+								<%--</select>--%>
+							<%--</div>--%>
+
+							<%--<div class="col-sm-4" style="text-align:left;">--%>
+								<%--<button type="button" style="margin-left:50px" id="btn_wash1" class="btn btn-primary" >清洗</button>--%>
+							<%--</div>--%>
+						<%--</div>--%>
+					<%--</form>--%>
+				<%--</div>--%>
+			<%--</div>--%>
 			<%--<div id="toolbar" class="btn-group">--%>
 				<%--<button id="btn_add" type="button" class="btn btn-default">--%>
 					<%--<span class="glyphicon glyphicon-plus" aria-hidden="true">新增</span>--%>
@@ -267,13 +293,25 @@
 							<div class="form-group">
 								<label for="sourcetable" class="col-sm-2 control-label">数据源表</label>
 								<div class="col-sm-8">
-									<input id="sourcetable" name="sourcetable" type="text" class="form-control" readonly>
+									<select type="text" class="form-control selectpicker" id="sourcetable" name="sourcetable">
+										<option  value="">请选择...</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="sourcetable" class="col-sm-2 control-label">简单清洗列</label>
+								<div class="col-sm-8">
+									<select type="text" class="form-control selectpicker" id="simplewashcolumn" name="simplewashcolumn">
+										<option  value="">请选择...</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="goaltable" class="col-sm-2 control-label">目标表</label>
 								<div class="col-sm-8">
-									<input id="goaltable" name="goaltable" type="text" class="form-control" readonly>
+									<select type="text" class="form-control selectpicker" id="goaltable" name="goaltable">
+										<option  value="">请选择...</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -285,7 +323,9 @@
 							<div class="form-group">
 								<label for="rules" class="col-sm-2 control-label">清洗规则</label>
 								<div class="col-sm-8">
-									<input id="rules" name="rules" type="text" class="form-control"  readonly>
+									<select type="text" class="form-control selectpicker" id="rules" name="rules">
+										<option  value="">请选择...</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group">
@@ -479,6 +519,13 @@
                 }
             },
             sourcetable: {
+                validators: {
+                    notEmpty: {//检测非空,radio也可用
+                        message: '文本框必须输入'
+                    }
+                }
+            },
+            simplewashcolumn: {
                 validators: {
                     notEmpty: {//检测非空,radio也可用
                         message: '文本框必须输入'
@@ -737,9 +784,14 @@
 
         $('#myModal').on('show.bs.modal', function () {
             $('#sourcetable').val($('#txt_fromtable').val());
+            $('#sourcetable').selectpicker('refresh');
             $('#goaltable').val($('#txt_totable').val());
+            $('#goaltable').selectpicker('refresh');
             $('#rules').val($('#txt_search_rule').val());
+            $('#rules').selectpicker('refresh');
             $('#querys').val(getsql());
+            $('#simplewashcolumn').val($('#txt_wash_column').val());
+            $('#simplewashcolumn').selectpicker('refresh');
         });
         $('.date').datetimepicker().on('changeDate', function(ev) {
 //
@@ -811,7 +863,8 @@
                         fromtable:$("#txt_fromtable").val(),
                         sql:getsql(),
                         rule:$("#txt_search_rule").val(),
-                        totable:$("#txt_totable").val()
+                        totable:$("#txt_totable").val(),
+                        columnname:$("#txt_wash_column").val(),
                     };
                     $("body").mLoading({
                         text:"清洗过程可能较长，请耐心等待..."//加载文字，默认值：加载中...
@@ -1022,6 +1075,21 @@
                 alert("规则加载失败" + data);
             }
         });
+        $.ajax({
+            url: "/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            data: 'data',
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#rules.selectpicker').append("<option value=" + data[i].rules + ">" + data[i].name + "</option>");
+                });
+                $('#rules').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("规则加载失败" + data);
+            }
+        });
 
         $.ajax({
             url: "/getFromTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
@@ -1052,6 +1120,34 @@
                 alert("目标表加载失败" + data);
             }
         });
+        $.ajax({
+            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#sourcetable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
+                });
+                $('#sourcetable').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("目标表加载失败" + data);
+            }
+        });
+        $.ajax({
+            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#goaltable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
+                });
+                $('#goaltable').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("目标表加载失败" + data);
+            }
+        });
 
         $.ajax({
             url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
@@ -1066,7 +1162,70 @@
                 alert("自定义查询字段加载失败" + data);
             }
         });
+        $.ajax({
+            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data.fields, function (i) {
+                    $('#txt_wash_column').append("<option value=" + data.fields[i] + ">" + data.fields[i] + "</option>");
+                });
+                $('#txt_wash_column').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("自定义查询字段加载失败" + data);
+            }
+        });
 
+        $.ajax({
+            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data.fields, function (i) {
+                    $('#simplewashcolumn').append("<option value=" + data.fields[i] + ">" + data.fields[i] + "</option>");
+                });
+                $('#simplewashcolumn').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("自定义查询字段加载失败" + data);
+            }
+        });
+
+    });
+
+
+    $('#txt_fromtable').on('hide.bs.select',function () {
+        if($('#txt_fromtable').val()!=""){
+            $('#txt_wash_column').attr("disabled",false);
+            $('#txt_wash_column').selectpicker('refresh');
+            if($('#txt_wash_column').val()!="") {
+                $('#txt_totable').val($('#txt_fromtable').val());
+                $('#txt_totable').selectpicker('refresh');
+            }
+		}
+		else{
+            if($('#txt_wash_column').val()!=""){
+                $('#txt_totable').attr("disabled",false);
+                $('#txt_totable').val("");
+                $('#txt_totable').selectpicker('refresh');
+			}
+            $('#txt_wash_column').attr("disabled",true);
+            $('#txt_wash_column').val("");
+            $('#txt_wash_column').selectpicker('refresh');
+		}
+    });
+    $('#txt_wash_column').on('hide.bs.select',function () {
+        if($('#txt_wash_column').val()!=""){
+        $('#txt_totable').val($('#txt_fromtable').val());
+        $('#txt_totable').attr("disabled",true);
+        $('#txt_totable').selectpicker('refresh');
+        }
+        else{
+            $('#txt_totable').attr("disabled",false);
+            $('#txt_totable').val("");
+            $('#txt_totable').selectpicker('refresh');
+		}
     });
 </script>
 </body>
