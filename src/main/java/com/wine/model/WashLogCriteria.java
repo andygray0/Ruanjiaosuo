@@ -1005,6 +1005,76 @@ public class WashLogCriteria {
             return (Criteria) this;
         }
 
+        public Criteria andSimplewashcolumnIsNull() {
+            addCriterion("t.simplewashcolumn is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnIsNotNull() {
+            addCriterion("t.simplewashcolumn is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnEqualTo(String value) {
+            addCriterion("t.simplewashcolumn =", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnNotEqualTo(String value) {
+            addCriterion("t.simplewashcolumn <>", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnGreaterThan(String value) {
+            addCriterion("t.simplewashcolumn >", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnGreaterThanOrEqualTo(String value) {
+            addCriterion("t.simplewashcolumn >=", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnLessThan(String value) {
+            addCriterion("t.simplewashcolumn <", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnLessThanOrEqualTo(String value) {
+            addCriterion("t.simplewashcolumn <=", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnLike(String value) {
+            addCriterion("t.simplewashcolumn like", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnNotLike(String value) {
+            addCriterion("t.simplewashcolumn not like", value, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnIn(List<String> values) {
+            addCriterion("t.simplewashcolumn in", values, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnNotIn(List<String> values) {
+            addCriterion("t.simplewashcolumn not in", values, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnBetween(String value1, String value2) {
+            addCriterion("t.simplewashcolumn between", value1, value2, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnNotBetween(String value1, String value2) {
+            addCriterion("t.simplewashcolumn not between", value1, value2, "simplewashcolumn");
+            return (Criteria) this;
+        }
+
         public Criteria andNameLikeInsensitive(String value) {
             addCriterion("upper(t.name) like", value.toUpperCase(), "name");
             return (Criteria) this;
@@ -1032,6 +1102,11 @@ public class WashLogCriteria {
 
         public Criteria andErrlogLikeInsensitive(String value) {
             addCriterion("upper(t.errlog) like", value.toUpperCase(), "errlog");
+            return (Criteria) this;
+        }
+
+        public Criteria andSimplewashcolumnLikeInsensitive(String value) {
+            addCriterion("upper(t.simplewashcolumn) like", value.toUpperCase(), "simplewashcolumn");
             return (Criteria) this;
         }
     }

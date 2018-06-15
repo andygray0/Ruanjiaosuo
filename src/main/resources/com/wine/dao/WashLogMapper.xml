@@ -16,6 +16,7 @@
     <result column="t_errlog" property="errlog" jdbcType="VARCHAR" />
     <result column="t_cleancount" property="cleancount" jdbcType="INTEGER" />
     <result column="t_checkcount" property="checkcount" jdbcType="INTEGER" />
+    <result column="t_simplewashcolumn" property="simplewashcolumn" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -79,7 +80,7 @@
     t.id as t_id, t.name as t_name, t.exway as t_exway, t.rules as t_rules, t.sourcetable as t_sourcetable, 
     t.goaltable as t_goaltable, t.querys as t_querys, t.counts as t_counts, t.fromtime as t_fromtime, 
     t.totime as t_totime, t.successflag as t_successflag, t.errlog as t_errlog, t.cleancount as t_cleancount, 
-    t.checkcount as t_checkcount
+    t.checkcount as t_checkcount, t.simplewashcolumn as t_simplewashcolumn
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model.WashLogCriteria" >
     select
@@ -112,19 +113,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.wine.model.WashLog" >
-    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
     insert into wash_log (id, name, exway, 
       rules, sourcetable, goaltable, 
       querys, counts, fromtime, 
       totime, successflag, errlog, 
-      cleancount, checkcount)
+      cleancount, checkcount, simplewashcolumn
+      )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{exway,jdbcType=INTEGER}, 
       #{rules,jdbcType=VARCHAR}, #{sourcetable,jdbcType=VARCHAR}, #{goaltable,jdbcType=VARCHAR}, 
       #{querys,jdbcType=VARCHAR}, #{counts,jdbcType=INTEGER}, #{fromtime,jdbcType=TIMESTAMP}, 
       #{totime,jdbcType=TIMESTAMP}, #{successflag,jdbcType=INTEGER}, #{errlog,jdbcType=VARCHAR}, 
-      #{cleancount,jdbcType=INTEGER}, #{checkcount,jdbcType=INTEGER})
+      #{cleancount,jdbcType=INTEGER}, #{checkcount,jdbcType=INTEGER}, #{simplewashcolumn,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.wine.model.WashLog" >
     insert into wash_log
@@ -171,6 +171,9 @@
       <if test="checkcount != null" >
         checkcount,
       </if>
+      <if test="simplewashcolumn != null" >
+        simplewashcolumn,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -214,6 +217,9 @@
       </if>
       <if test="checkcount != null" >
         #{checkcount,jdbcType=INTEGER},
+      </if>
+      <if test="simplewashcolumn != null" >
+        #{simplewashcolumn,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -268,6 +274,9 @@
       <if test="record.checkcount != null" >
         t.checkcount = #{record.checkcount,jdbcType=INTEGER},
       </if>
+      <if test="record.simplewashcolumn != null" >
+        t.simplewashcolumn = #{record.simplewashcolumn,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -288,21 +297,11 @@
       t.successflag = #{record.successflag,jdbcType=INTEGER},
       t.errlog = #{record.errlog,jdbcType=VARCHAR},
       t.cleancount = #{record.cleancount,jdbcType=INTEGER},
-      t.checkcount = #{record.checkcount,jdbcType=INTEGER}
+      t.checkcount = #{record.checkcount,jdbcType=INTEGER},
+      t.simplewashcolumn = #{record.simplewashcolumn,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateOne" parameterType="map">
-    update menu
-    <set>
-      <foreach collection="map" index="key" item="value" separator="," open="" close="">
-        `${key}` = #{value}
-      </foreach>
-    </set>
-    <where>
-      id = #{map.id}
-    </where>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.wine.model.WashLog" >
     update wash_log
@@ -346,6 +345,9 @@
       <if test="checkcount != null" >
         checkcount = #{checkcount,jdbcType=INTEGER},
       </if>
+      <if test="simplewashcolumn != null" >
+        simplewashcolumn = #{simplewashcolumn,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -363,7 +365,8 @@
       successflag = #{successflag,jdbcType=INTEGER},
       errlog = #{errlog,jdbcType=VARCHAR},
       cleancount = #{cleancount,jdbcType=INTEGER},
-      checkcount = #{checkcount,jdbcType=INTEGER}
+      checkcount = #{checkcount,jdbcType=INTEGER},
+      simplewashcolumn = #{simplewashcolumn,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

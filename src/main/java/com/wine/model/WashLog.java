@@ -32,6 +32,8 @@ public class WashLog implements Serializable {
 
     private Integer checkcount;
 
+    private String simplewashcolumn;
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {
@@ -144,5 +146,13 @@ public class WashLog implements Serializable {
 
     public void setCheckcount(Integer checkcount) {
         this.checkcount = checkcount;
+    }
+
+    public String getSimplewashcolumn() {
+        return simplewashcolumn;
+    }
+
+    public void setSimplewashcolumn(String simplewashcolumn) {
+        this.simplewashcolumn = simplewashcolumn == null ? null : simplewashcolumn.trim();
     }
 }
