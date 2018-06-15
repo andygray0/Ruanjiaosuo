@@ -163,7 +163,7 @@
     </select>
 
     <insert id="saveTemporaryDatasForIntern">
-        INSERT INTO `lxty`.`personwash_temporary_save` (`check_id`, `field_name`)
+        INSERT INTO `test`.`personwash_temporary_save` (`check_id`, `field_name`)
         VALUES
         <foreach collection="fieldList" item="field" index="index" separator=",">
             (#{checkId}, #{field})
@@ -293,12 +293,12 @@
     </select>
 
     <insert id="insertOneCheckData">
-        INSERT INTO ${tableName}
+        INSERT INTO radar2.${tableName}
         VALUES (#{original.irSid},#{original.irHkey},#{original.irStartid},#{original.irServiceid},#{original.irPkey},#{original.irUrlname},#{original.irSitename},#{original.irChannel},#{original.irGroupname},#{original.irUrltitle},#{original.irLasttime},#{original.irUrldate},#{original.irUrltime},#{original.irLoadtime},#{original.irSrcname},#{original.irCatalog},#{original.irCatalog1},#{original.irCatalog2},#{original.irSimflag},#{original.irSimrank},#{original.irImageflag},#{original.irTableflag},#{original.irDoclength},#{original.irContent},#{original.irBbsnum},#{original.irBbstopic},#{original.irBbskey},#{original.irPagelevel},#{original.irPagerank},#{original.irUrllevel},#{original.irMimetype},#{original.irFormat},#{original.irCharset},#{original.irUrlsize},#{original.irUrlbody},#{original.irWcmid},#{original.irStatus},#{original.irNreserved1},#{original.irNreserved2},#{original.irNreserved3},#{original.irVreserved1},#{original.irVreserved2},#{original.irVreserved3},#{original.irInserttime},#{original.irBiddingDate},#{original.irBiddingId},#{original.irBiddingType},#{original.irBiddingName},#{original.irBiddingContent},#{original.irBiddingSource},#{original.irBiddingMoney},#{original.irBiddingAgency},#{original.irBiddingAgencyAddr},#{original.irBiddingAgencyTel},#{original.irBiddingOrg},#{original.irBiddingAddr},#{original.irBiddingPer},#{original.irBiddingTel},#{original.irBidDate},#{original.irBidType},#{original.irBidOrg},#{original.irBidAddr},#{original.irBidMoney},#{original.irAnnulmentDate},#{original.irAnnulmentReason},#{original.irAnnulmentTreatment},#{original.irOpenTime},#{original.irOpenAddr},#{original.irSaleStartTime},#{original.irSaleEndTime},#{original.irQualification},#{original.irSubcontract},#{original.irTableTag},#{original.irFirstAddr},#{original.irFileGetWay},#{original.irBank},#{original.irPrice},#{original.irPolicy},#{original.irSmallEnterprise},#{original.irNature},#{original.irMedia},#{original.irBiddingFileid},#{original.irBiddingNameTitle},#{original.irPublicDate},#{original.irSubmitDate},#{original.irAssociation},#{original.irExpert},#{original.irSignDate},#{original.irReserved1},#{original.irReserved2},#{original.irReserved3},#{original.irReserved4},#{original.irReserved5},#{original.irReserved6},#{original.irReserved7},#{original.irReserved8},#{original.irReserved9},#{original.irReserved10},#{original.irReserved11},#{original.irReserved12},#{original.irReserved13},#{original.irReserved14},#{original.irReserved15},#{original.irReserved16},#{original.irReserved17},#{original.irReserved18},#{original.irReserved19},#{original.irReserved20},#{original.irReserved21},#{original.irReserved22},#{original.irReserved23},#{original.irReserved24},#{original.irReserved25},#{original.irReserved26},#{original.irReserved27},#{original.irReserved28},#{original.irReserved29},#{original.irReserved30},#{original.irReserved31},#{original.irReserved32},#{original.irReserved33},#{original.irReserved34},#{original.irReserved35},#{original.irReserved36},#{original.irReserved37},#{original.irReserved38},#{original.irReserved39},#{original.irReserved40},#{original.irReserved41},#{original.irReserved42},#{original.irReserved43},#{original.irReserved44},#{original.irReserved45},#{original.irReserved46},#{original.irReserved47},#{original.irReserved48},#{original.irReserved49},#{original.irReserved50})
     </insert>
 
     <update id="updateOneCheckData">
-        UPDATE ${tableName} t
+        UPDATE radar2.${tableName} t
         <set >
             <if test="record.irSid != null" >
                 t.IR_SID = #{record.irSid,jdbcType=INTEGER},
