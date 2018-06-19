@@ -466,7 +466,7 @@
     };
     var formValidator = function(){
         $("#addform").bootstrapValidator({
-            live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
             excluded: [':disabled',  ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
             // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
             message: '验证失败',//好像从来没出现过
@@ -526,6 +526,7 @@
                 //     }
                 // },
                 expression: {
+                    trigger:"change",
                     validators: {
                         notEmpty: {//检测非空,radio也可用
                             message: '文本框必须输入'
@@ -662,6 +663,10 @@
         forceParse: 0,
         showMeridian: 1
 
+    }).on('hide',function(e) {
+        $('#addform').data('bootstrapValidator')
+            .updateStatus('starttime', 'NOT_VALIDATED',null)
+            .validateField('starttime');
     });
     $('#lastTimeTo').datetimepicker({
         format:'yyyy-mm-dd hh:ii',
@@ -686,7 +691,7 @@
     }).on('changeDate', function(e){
         var time = $('#everytime').val();
         var strs =  time.split(":"); //字符分割
-        $('#expression').val("0 "+strs[1]+" "+strs[0]+" * * ?");
+        $('#expression').val("0 "+strs[1]+" "+strs[0]+" * * ?").change();
     });
     for(var i=1;i<101;i++){
         $('#intertime').append("<option value=" + i + ">" + i + "</option>");
@@ -694,7 +699,7 @@
     $('#opti').on('changed.bs.select',function(e){
         var op =$('#opti').val();
         if (op  == "1"){
-            $('#expression').val("");
+            $('#expression').val("").change();
             document.getElementById("everytimediv").setAttribute("style", "");
             document.getElementById("intertimediv").setAttribute("style", "display:none");
             document.getElementById("intertimediv1").setAttribute("style", "display:none");
@@ -702,7 +707,7 @@
             $('#intertime').selectpicker("refresh");
         }
         if (op == "2"){
-            $('#expression').val("");
+            $('#expression').val("").change();
             document.getElementById("intertimediv").setAttribute("style", "");
             document.getElementById("intertimediv1").setAttribute("style", "");
             document.getElementById("everytimediv").setAttribute("style", "display:none");
@@ -712,7 +717,7 @@
     });
     $('#intertime').on('changed.bs.select',function(e){
         var num = $('#intertime').val();
-        $('#expression').val("*  * 1/"+num+" * * ?");
+        $('#expression').val("*  * 1/"+num+" * * ?").change();
     });
     var i = 0;
     var showall = function(){
@@ -768,6 +773,9 @@
         $('.date').datetimepicker().on('changeDate', function(ev) {
 //
         }).on('hide', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        }).on('show', function(event) {
             event.preventDefault();
             event.stopPropagation();
         });
