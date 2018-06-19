@@ -714,7 +714,7 @@
     }).on('changeDate', function(e){
         var time = $('#everytime').val();
         var strs =  time.split(":"); //字符分割
-        $('#expression').val("* "+strs[1]+" "+strs[0]+" * * ?");
+        $('#expression').val("0 "+strs[1]+" "+strs[0]+" * * ?");
     });
     for(var i=1;i<101;i++){
         $('#intertime').append("<option value=" + i + ">" + i + "</option>");
