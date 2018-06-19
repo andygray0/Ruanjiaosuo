@@ -29,6 +29,8 @@
     <link href="../js/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-validator/css/bootstrapValidator.min.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"  type="text/css"/>
+    <link href="../js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
+
     <style>
         .th-inner{
             font-size:14px
@@ -66,6 +68,12 @@
         </div>
     </div>
     <div id="toolbar" class="btn-group">
+        <button id="btn_add" type="button" class="btn btn-default" onclick="window.location.href='/datawash/newTimer.do'">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+        </button>
+        <button id="btn_modify" type="button"   class="btn btn-default"  onclick="modifyTask()">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>修改
+        </button>
         <button id="btn_delete" type="button" class="btn btn-default" onclick="deleteRows()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
         </button>
@@ -79,6 +87,124 @@
     </div>
     <table id="tb_departments" class="table table-hover  text-nowrap"></table>
 </div>
+<div id="myModal" class="modal fade"  role="dialog"   aria-hidden="true" >
+    <div class="modal-dialog modal-lg" style="width: 50%">
+        <div class="modal-content">
+            <legend  > &nbsp;&nbsp;修改定时任务</legend>
+            <form id="addform" class="form-horizontal" >
+                <div class="form-group">
+                    <label for="taskname" class="col-sm-2 control-label">任务ID</label>
+                    <div class="col-sm-8">
+                        <input id="taskid" name="taskid" type="text" class="form-control" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="taskname" class="col-sm-2 control-label">任务名称</label>
+                    <div class="col-sm-8">
+                        <input id="taskname" name="taskname" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description" class="col-sm-2 control-label" >任务描述</label>
+                    <div class="col-sm-8">
+                        <input id="description" name="description" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sourcetable" class="col-sm-2 control-label">数据源表</label>
+                    <div class="col-sm-8">
+                        <select type="text" class="form-control selectpicker" id="sourcetable" name="sourcetable">
+                            <option  value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sourcetable" class="col-sm-2 control-label">简单清洗列</label>
+                    <div class="col-sm-8">
+                        <select type="text" class="form-control selectpicker" id="simplewashcolumn" name="simplewashcolumn">
+                            <option  value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="goaltable" class="col-sm-2 control-label">目标表</label>
+                    <div class="col-sm-8">
+                        <select type="text" class="form-control selectpicker" id="goaltable" name="goaltable">
+                            <option  value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="querys" class="col-sm-2 control-label">查询条件</label>
+                    <div class="col-sm-8">
+                        <input id="querys" name="querys" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="rules" class="col-sm-2 control-label">清洗规则</label>
+                    <div class="col-sm-8">
+                        <select type="text" class="form-control selectpicker" id="rules" name="rules">
+                            <option  value="">请选择...</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="starttime" class="col-sm-2 control-label">开始时间</label>
+                    <div class="col-sm-8">
+                        <input id="starttime" name="starttime" type="text" class="form-control date form_datetime" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="starttime" class="col-sm-2 control-label">时间戳</label>
+                    <div class="col-sm-8">
+                        <input id="stamp" name="stamp" type="text" class="form-control date form_datetime" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="opti" class="col-sm-2 control-label">选择</label>
+                    <div class="col-sm-3">
+                        <select id="opti"  type="text" class="form-control selectpicker " readonly>
+                            <option value="1">每天</option>
+                            <option value="2">每隔</option>
+                        </select>
+                    </div>
+                    <div  id="everytimediv" class="col-sm-3">
+                        <input id="everytime" type="text" class="form-control date form_datetime" readonly>
+                    </div>
+                    <div id="intertimediv" class="col-sm-3" style="display: none">
+                        <select id="intertime" type="text" class="form-control selectpicker" >
+                            <option value="">请选择</option>
+                        </select>
+                    </div>
+                    <div id="intertimediv1" class="col-sm-1" style="display: none">
+                        <label class="control-label">小时</label>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="expression" class="col-sm-2 control-label">时间表达式</label>
+                    <div class="col-sm-8">
+                        <input id="expression" name="expression" type="text" class="form-control" readonly>
+                    </div>
+                </div>
+                <div  class="form-group">
+                    <label for="onoff" class="col-sm-2 control-label">是否激活</label>
+                    <div class="col-sm-8">
+                        <select class="form-control selectpicker" id="onoff" name="onoff"  disabled="true">
+                            <option value="0">否</option>
+                            <option value="1">是</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+            <div class="modal-footer" >
+                <input type="hidden" id="ID" name="ID" />
+                <button type="submit" class="btn btn-primary"  onclick ="modify()">确定</button>
+                <button type="button" class="btn green" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
 </div>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="../js/jquery.form.js"></script>
@@ -90,10 +216,13 @@
 <script type="text/javascript" src="../js/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
 <script type="text/javascript" src="../js/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script type="text/javascript" src="../js/bootstrap-validator/js/language/zh_CN.js"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../js/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
 <script  src="../js/pdfmake.min.js"></script>
 <script  src="../js/jspdf.min.js"></script>
 <script  src="../js/jspdf.plugin.autotable.js"></script>
 <script  src="../js/vfs_fonts.js"></script>
+<script  src="../js/date.js"></script>
 
 <script type="text/javascript" src="../js/html2canvas.min.js"></script>
 <script type="text/javascript" src="../js/FileSaver.min.js"></script>
@@ -170,7 +299,7 @@
                 minimumCountColumns: 2,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
                 height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
-                uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+                uniqueId: "id",                     //每一行的唯一标识，一般为主键列
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
                 columns: [{
@@ -192,85 +321,30 @@
                         }
                     },{
                     field: 'name',
-                    title: '名称',
-                    editable: {
-                        type: 'text',
-                        title: '名称',
-                        validate: function (v) {
-                            if (!v) return '名称不能为空';
-                        }
-                    }
+                    title: '名称'
                 }, {
                     field: 'description',
-                    title: '描述',
-                    editable: {
-                        type: 'text',
-                        title: '描述',
-                        validate: function (v) {
-                            if (!v) return '描述不能为空';
-                        }
-                    }
+                    title: '描述'
                 }, {
                     field: 'sourcetable',
-                    title: '数据源表',
-                    editable: {
-                        type: 'text',
-                        title: '数据源表',
-                        validate: function (v) {
-                            if (!v) return '数据源表不能为空';
-                        }
-                    }
+                    title: '数据源表'
                 }, {
                         field: 'reserved2',
-                        title: '简单清洗列',
-                        editable: {
-                            type: 'text',
-                            title: '简单清洗列',
-                            emptytext: '——',
-                            emptyclass: 'myeditable-emptyclass'
-                        }
+                        title: '简单清洗列'
                     },{
                     field: 'goaltable',
-                    title: '目标表',
-                    editable: {
-                        type: 'text',
-                        title: '目标表',
-                        validate: function (v) {
-                            if (!v) return '目标表不能为空';
-                        }
-                    }
+                    title: '目标表'
                 }, {
                     field: 'querys',
-                    title: '查询条件',
-                    editable: {
-                        type: 'text',
-                        title: '查询条件',
-                        validate: function (v) {
-                            if (!v) return '查询条件不能为空';
-                        }
-                    }
+                    title: '查询条件'
                 },{
                     field: 'rules',
-                    title: '清洗规则',
-                    editable: {
-                        type: 'text',
-                        title: '清洗规则',
-                        validate: function (v) {
-                            if (!v) return '清洗规则不能为空';
-                        }
-                    }
+                    title: '清洗规则'
                 },{
                     field: 'starttime',
                     title: '开始时间',
                     formatter: function (value) {
                         return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
-                    },
-                    editable: {
-                        type: 'text',
-                        title: '开始时间',
-                        validate: function (v) {
-                            // if (!v) return '查询条件不能为空';
-                        }
                     }
                 },{
                     field: 'stamp',
@@ -279,28 +353,11 @@
                         if(value!=null)
                         {return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")}
                         else{return ""}
-                    },
-                    editable: {
-                        type: 'text',
-                        title: '时间戳时间',
-                        validate: function (v) {
-                            // if (!v) return '查询条件不能为空';
-
-                        },
-                        emptytext: '——',
-                        emptyclass: 'myeditable-emptyclass'
                     }
                 },
                     {
                         field: 'reserved1',
-                        title: '时间表达式',
-                        editable: {
-                            type: 'text',
-                            title: '时间表达式',
-                            validate: function (v) {
-                                // if (!v) return '查询条件不能为空';
-                            }
-                        }
+                        title: '时间表达式'
                     }
                 ],
                 rowStyle: function (row, index) {
@@ -504,7 +561,318 @@
         $('#tb_departments').bootstrapTable('refresh');
     }
 
+    var modifyTask = function(){
+        var rows = $("#tb_departments").bootstrapTable('getSelections');
+            if(rows.length == 1){
+                $('#sourcetable').val( rows[0].sourcetable);
+                $('#sourcetable').selectpicker('refresh');
+                $('#goaltable').val(rows[0].goaltable);
+                $('#goaltable').selectpicker('refresh');
+                $('#rules').val(rows[0].rules);
+                $('#rules').selectpicker('refresh');
+                $('#querys').val(rows[0].querys);
+                $('#simplewashcolumn').val(rows[0].reserved2);
+                $('#simplewashcolumn').selectpicker('refresh');
+                if(rows[0].starttime != undefined){
+                $('#starttime').val(new Date(rows[0].starttime).Format("yyyy-MM-dd hh:mm"));
+                $('#starttime').datetimepicker('update');
+                }
+                if(rows[0].stamp != undefined){
+                $('#stamp').val(new Date(rows[0].stamp).Format("yyyy-MM-dd hh:mm"));
+                $('#stamp').datetimepicker('update');
+                }
+                $('#taskid').val(rows[0].id);
+                $('#taskname').val(rows[0].name);
+                $('#description').val(rows[0].description);
+                $('#expression').val(rows[0].reserved1);
+                $('#onoff').val(rows[0].onoff);
+                $('#onoff').selectpicker('refresh');
+                $("#myModal").modal('show');
+            }
+            else{
+                bootbox.alert("请选择一行！");
+            }
+    };
+    var formValidator = function(){
+        $("#addform").bootstrapValidator({
+            live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            excluded: [':disabled',  ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+            // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
+            message: '验证失败',//好像从来没出现过
+            feedbackIcons: {//根据验证结果显示的各种图标
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                taskid: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                taskname: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                description: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                sourcetable: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                // simplewashcolumn: {
+                //     validators: {
+                //         notEmpty: {//检测非空,radio也可用
+                //             message: '文本框必须输入'
+                //         }
+                //     }
+                // },
+                goaltable: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                rules: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                starttime: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                expression: {
+                    trigger:"change",
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                }
+            }
+        });
+    };
+    var modify = function(){
+        $("#addform").bootstrapValidator('validate');//提交验证
+        if ($("#addform").data('bootstrapValidator').isValid()) {
+            var rows = $("#tb_departments").bootstrapTable('getSelections');
+            if ($('#sourcetable').val() == rows[0].sourcetable
+                && $('#goaltable').val() == rows[0].goaltable
+                && $('#rules').val() == rows[0].rules
+                && $('#querys').val() == rows[0].querys
+                && $('#simplewashcolumn').val() == rows[0].reserved2
+                && $('#starttime').val() == new Date(rows[0].starttime).Format("yyyy-MM-dd hh:mm")
+                && $('#stamp').val() == getDate(rows[0].stamp)
+                && $('#taskid').val() == rows[0].id
+                && $('#taskname').val() == rows[0].name
+                && $('#description').val() == rows[0].description
+                && $('#expression').val() == rows[0].reserved1
+                && $('#onoff').val() == rows[0].onoff) {
+                $('#myModal').modal('hide');
+                $('#myModal').removeData("bs.modal");
+                bootbox.alert("数据未改变！")
+            } else{
+                $("#onoff").attr("disabled", false);
+                var params = $("#addform").serialize();
+                $.post("/modifyWashTimer.do", params, function (result) {
+                    if (result.success) {
+                        bootbox.dialog({
+                            title: '提示',
+                            message: '修改成功',
+                            buttons: {
+                                ok: {
+                                    label: "确定",
+                                    className: 'btn-info'
+                                }
+                            }
+                        });
+                        $('#myModal').modal('hide');
+                        $('#myModal').removeData("bs.modal");
+                        $('#tb_departments').bootstrapTable('refresh');
+                    } else {
+                        bootbox.alert("修改失败!");
+                    }
+                });
+        }
+        }
+    };
+    $(function () {
+        $.ajax({
+            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#sourcetable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
+                });
+                $('#sourcetable').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("目标表加载失败" + data);
+            }
+        });
+        $.ajax({
+            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#goaltable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
+                });
+                $('#goaltable').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("目标表加载失败" + data);
+            }
+        });
 
+        $.ajax({
+            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            success: function (data) {
+                $.each(data.fields, function (i) {
+                    $('#simplewashcolumn').append("<option value=" + data.fields[i] + ">" + data.fields[i] + "</option>");
+                });
+                $('#simplewashcolumn').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("自定义查询字段加载失败" + data);
+            }
+        });
+
+        $.ajax({
+            url: "/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            type: "get",
+            dataType: "json",
+            data: 'data',
+            success: function (data) {
+                $.each(data, function (i) {
+                    $('#rules.selectpicker').append("<option value=" + data[i].rules + ">" + data[i].name + "</option>");
+                });
+                $('#rules').selectpicker('refresh');
+            },
+            error: function (data) {
+                alert("规则加载失败" + data);
+            }
+        });
+        $('#starttime').datetimepicker({
+            format:'yyyy-mm-dd hh:ii',
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        }).on('hide',function(e) {
+            $('#addform').data('bootstrapValidator')
+                .updateStatus('starttime', 'NOT_VALIDATED',null)
+                .validateField('starttime');
+        });
+
+        $('#stamp').datetimepicker({
+            format:'yyyy-mm-dd hh:ii',
+            language:  'zh-CN',
+            weekStart: 1,
+            todayBtn:  1,
+            autoclose: 1,
+            todayHighlight: 1,
+            startView: 2,
+            forceParse: 0,
+            showMeridian: 1
+        });
+
+        $('#everytime').datetimepicker({
+            language:  'zh-CN',
+            format: 'hh:ii',
+            startView:1,
+            autoclose: 1,
+            maxView:1
+        }).on('changeDate', function(e){
+            var time = $('#everytime').val();
+            var strs =  time.split(":"); //字符分割
+            $('#expression').val("0 "+strs[1]+" "+strs[0]+" * * ?").change();
+        });
+        for(var i=1;i<101;i++){
+            $('#intertime').append("<option value=" + i + ">" + i + "</option>");
+        }
+        $('#opti').on('changed.bs.select',function(e){
+            var op =$('#opti').val();
+            if (op  == "1"){
+                $('#expression').val("").change();
+                document.getElementById("everytimediv").setAttribute("style", "");
+                document.getElementById("intertimediv").setAttribute("style", "display:none");
+                document.getElementById("intertimediv1").setAttribute("style", "display:none");
+                $('#intertime').val("");
+                $('#intertime').selectpicker("refresh");
+            }
+            if (op == "2"){
+                $('#expression').val("").change();
+                document.getElementById("intertimediv").setAttribute("style", "");
+                document.getElementById("intertimediv1").setAttribute("style", "");
+                document.getElementById("everytimediv").setAttribute("style", "display:none");
+                $('#everytime').val("");
+                $('#everytime').datetimepicker("refresh");
+            }
+        });
+        $('#intertime').on('changed.bs.select',function(e){
+            var num = $('#intertime').val();
+            $('#expression').val("*  * 1/"+num+" * * ?").change();
+        });
+
+        $('.date').datetimepicker().on('changeDate', function(ev) {
+//
+        }).on('hide', function(event) {
+            event.preventDefault();
+            event.stopPropagation();
+        });
+
+        $("#myModal").on("hide.bs.modal", function() {
+            $("#addform input").val("");
+            $("#addform select").selectpicker('val', 0);
+            $("#addform select").selectpicker('refresh');
+            $("#addform").data('bootstrapValidator').destroy();
+            $("#addform").data('bootstrapValidator',null);
+            formValidator();
+            document.getElementById("everytimediv").setAttribute("style", "");
+            document.getElementById("intertimediv").setAttribute("style", "display:none");
+            document.getElementById("intertimediv1").setAttribute("style", "display:none");
+        });
+        formValidator();
+
+
+
+    })
+    var getDate = function( stamp){
+        if(stamp==null||stamp==""){
+            return "";
+        }
+        else{
+            return new Date(stamp).Format("yyyy-MM-dd hh:mm");
+        }
+    }
 </script>
 
 </body>

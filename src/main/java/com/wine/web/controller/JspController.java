@@ -79,6 +79,7 @@ public class JspController {
     public String datamanageManage(){
         return "datamanage";
     }
+
     /**
      * 数据监控
      */
@@ -126,6 +127,10 @@ public class JspController {
     public String datawashLog(){
         return "washlog";
     }
+    @RequestMapping("/datawash/newTimer.do")
+    public String newTimer(){
+        return "newTimer";
+    }
     /**
      * 清洗规则管理
      */
@@ -148,13 +153,13 @@ public class JspController {
         return "editable";
     }
 
-    /**
-     * 待查数据分配
-     */
-    @RequestMapping("/personwashWaitDataAllot/toIndex.do")
-    public String personwashWaitDataAllottoIndex(){
-        return "toclean";
-    }
+//    /**
+//     * 待查数据分配
+//     */
+//    @RequestMapping("/personwashWaitDataAllot/toIndex.do")
+//    public String personwashWaitDataAllottoIndex(){
+//        return "toclean";
+//    }
 
     /**
      * 2017年四季度行业运行数据分析报告

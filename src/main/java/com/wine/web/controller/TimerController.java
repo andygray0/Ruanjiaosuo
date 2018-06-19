@@ -60,6 +60,35 @@ public class TimerController {
         map.put("id",WashTimer.getId());
         return map ;
     }
+    @RequestMapping(value = "/modifyWashTimer.do")
+    @ResponseBody
+    public Map update(int taskid,String taskname,String simplewashcolumn,String description,String rules,String sourcetable,String goaltable,String starttime,String stamp,String expression,String querys,int onoff) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        WashTimer WashTimer = new WashTimer();
+        WashTimer.setId(taskid);
+        WashTimer.setDescription(description);
+        WashTimer.setReserved2(simplewashcolumn);//简单清洗列
+        WashTimer.setName(taskname);
+        WashTimer.setRules(rules);
+        WashTimer.setSourcetable(sourcetable);
+        WashTimer.setGoaltable(goaltable);
+        WashTimer.setQuerys(querys);
+        WashTimer.setOnoff(onoff);
+        WashTimer.setReserved1(expression);
+        if(!starttime.equals("")){
+            WashTimer.setStarttime(sdf.parse(starttime));
+        }
+        if(!stamp.equals("")){
+            WashTimer.setStamp(sdf.parse(stamp));
+        }else{
+            WashTimer.setStamp(null);
+        }
+        washTimerService.updateTimer(WashTimer);
+        Map map = new HashMap();
+        map.put("success",true);
+        map.put("id",WashTimer.getId());
+        return map ;
+    }
     @RequestMapping(value = "/deleteWashTimer.do")
     @ResponseBody
     public Map deleteWashTimer(int id){
