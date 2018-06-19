@@ -745,7 +745,7 @@ public class UrlconController {
             Iterator<String> iterator = item.keySet().iterator();
             int column = 0;
             while (iterator.hasNext()) {
-                if (columnname.equals("")){
+                if (columnname.equals("")||columnname.equals("null")){
                     String key = iterator.next(); // 得到keypr
                     Cell cell = row0.createCell(column++);
                     cell.setCellValue(toupper(key));

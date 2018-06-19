@@ -51,9 +51,8 @@ public class MyJob {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if(1==1){
         washTimer.setStamp(date);
-        washTimerService.updateTimer(washTimer);}
+        washTimerService.updateTimer(washTimer);
         System.out.println(response.getStatusLine());
         System.out.println("====================");
         System.out.println(response.getProtocolVersion());

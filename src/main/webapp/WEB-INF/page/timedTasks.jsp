@@ -36,6 +36,10 @@
         .fixed-table-header{
             background-color: #bee7f3;
         }
+        .myeditable-emptyclass{
+            color: red;
+            border-bottom: none!important;
+        }
     </style>
 
 </head>
@@ -217,6 +221,15 @@
                         }
                     }
                 }, {
+                        field: 'reserved2',
+                        title: '简单清洗列',
+                        editable: {
+                            type: 'text',
+                            title: '简单清洗列',
+                            emptytext: '——',
+                            emptyclass: 'myeditable-emptyclass'
+                        }
+                    },{
                     field: 'goaltable',
                     title: '目标表',
                     editable: {
@@ -272,7 +285,10 @@
                         title: '时间戳时间',
                         validate: function (v) {
                             // if (!v) return '查询条件不能为空';
-                        }
+
+                        },
+                        emptytext: '——',
+                        emptyclass: 'myeditable-emptyclass'
                     }
                 },
                     {
