@@ -236,7 +236,7 @@
 					</form>
 
 					<button type="button" style="margin-left:10px" id="btn_wash" class="btn btn-primary addrow" >清洗</button>
-					<button type="button" style="margin-left:50px" data-target="#myModal" data-toggle="modal"  id="btn_add_timer" class="btn btn-primary" >添加定时任务</button>
+					<%--<button type="button" style="margin-left:50px" data-target="#myModal" data-toggle="modal"  id="btn_add_timer" class="btn btn-primary" >添加定时任务</button>--%>
 
 				</div>
 			</div>
@@ -273,113 +273,113 @@
 			<%--</div>--%>
 			<table id="tb_departments" style="height: auto;overflow: auto;" class="table table-hover "></table>
 
-			<div id="myModal" class="modal fade"  role="dialog"   aria-hidden=true>
-				<div class="modal-dialog modal-lg" style="width: 50%">
-					<div class="modal-content">
-							<legend  > &nbsp;&nbsp;添加定时任务</legend>
-						<form id="addform" class="form-horizontal" >
-							<div class="form-group">
-								<label for="taskname" class="col-sm-2 control-label">任务名称</label>
-								<div class="col-sm-8">
-									<input id="taskname" name="taskname" type="text" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="description" class="col-sm-2 control-label" >任务描述</label>
-								<div class="col-sm-8">
-									<input id="description" name="description" type="text" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="sourcetable" class="col-sm-2 control-label">数据源表</label>
-								<div class="col-sm-8">
-									<select type="text" class="form-control selectpicker" id="sourcetable" name="sourcetable">
-										<option  value="">请选择...</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="sourcetable" class="col-sm-2 control-label">简单清洗列</label>
-								<div class="col-sm-8">
-									<select type="text" class="form-control selectpicker" id="simplewashcolumn" name="simplewashcolumn">
-										<option  value="">请选择...</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="goaltable" class="col-sm-2 control-label">目标表</label>
-								<div class="col-sm-8">
-									<select type="text" class="form-control selectpicker" id="goaltable" name="goaltable">
-										<option  value="">请选择...</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="querys" class="col-sm-2 control-label">查询条件</label>
-								<div class="col-sm-8">
-									<input id="querys" name="querys" type="text" class="form-control">
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="rules" class="col-sm-2 control-label">清洗规则</label>
-								<div class="col-sm-8">
-									<select type="text" class="form-control selectpicker" id="rules" name="rules">
-										<option  value="">请选择...</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="starttime" class="col-sm-2 control-label">开始时间</label>
-								<div class="col-sm-8">
-									<input id="starttime" name="starttime" type="text" class="form-control date form_datetime" readonly>
-								</div>
-							</div>
-							<div class="form-group">
-								<label for="opti" class="col-sm-2 control-label">选择</label>
-								<div class="col-sm-3">
-									<select id="opti" name="opti" type="text" class="form-control selectpicker " readonly>
-										<option value="1">每天</option>
-										<option value="2">每隔</option>
-									</select>
-								</div>
-								<div  id="everytimediv" class="col-sm-3">
-									<input id="everytime" type="text" class="form-control date form_datetime" readonly>
-                                </div>
-                                <div id="intertimediv" class="col-sm-3" style="display: none">
-                                    <select id="intertime" type="text" class="form-control selectpicker" >
-                                        <option value="">请选择</option>
-                                    </select>
-                                </div>
-                                <div id="intertimediv1" class="col-sm-1" style="display: none">
-                                    <label class="control-label">小时</label>
-                                </div>
+			<%--<div id="myModal" class="modal fade"  role="dialog"   aria-hidden=true>--%>
+				<%--<div class="modal-dialog modal-lg" style="width: 50%">--%>
+					<%--<div class="modal-content">--%>
+							<%--<legend  > &nbsp;&nbsp;添加定时任务</legend>--%>
+						<%--<form id="addform" class="form-horizontal" >--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="taskname" class="col-sm-2 control-label">任务名称</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<input id="taskname" name="taskname" type="text" class="form-control">--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="description" class="col-sm-2 control-label" >任务描述</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<input id="description" name="description" type="text" class="form-control">--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="sourcetable" class="col-sm-2 control-label">数据源表</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<select type="text" class="form-control selectpicker" id="sourcetable" name="sourcetable">--%>
+										<%--<option  value="">请选择...</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="sourcetable" class="col-sm-2 control-label">简单清洗列</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<select type="text" class="form-control selectpicker" id="simplewashcolumn" name="simplewashcolumn">--%>
+										<%--<option  value="">请选择...</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="goaltable" class="col-sm-2 control-label">目标表</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<select type="text" class="form-control selectpicker" id="goaltable" name="goaltable">--%>
+										<%--<option  value="">请选择...</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="querys" class="col-sm-2 control-label">查询条件</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<input id="querys" name="querys" type="text" class="form-control">--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="rules" class="col-sm-2 control-label">清洗规则</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<select type="text" class="form-control selectpicker" id="rules" name="rules">--%>
+										<%--<option  value="">请选择...</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="starttime" class="col-sm-2 control-label">开始时间</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<input id="starttime" name="starttime" type="text" class="form-control date form_datetime" readonly>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+							<%--<div class="form-group">--%>
+								<%--<label for="opti" class="col-sm-2 control-label">选择</label>--%>
+								<%--<div class="col-sm-3">--%>
+									<%--<select id="opti" name="opti" type="text" class="form-control selectpicker " readonly>--%>
+										<%--<option value="1">每天</option>--%>
+										<%--<option value="2">每隔</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+								<%--<div  id="everytimediv" class="col-sm-3">--%>
+									<%--<input id="everytime" type="text" class="form-control date form_datetime" readonly>--%>
+                                <%--</div>--%>
+                                <%--<div id="intertimediv" class="col-sm-3" style="display: none">--%>
+                                    <%--<select id="intertime" type="text" class="form-control selectpicker" >--%>
+                                        <%--<option value="">请选择</option>--%>
+                                    <%--</select>--%>
+                                <%--</div>--%>
+                                <%--<div id="intertimediv1" class="col-sm-1" style="display: none">--%>
+                                    <%--<label class="control-label">小时</label>--%>
+                                <%--</div>--%>
 
-							</div>
-                            <div class="form-group">
-                                <label for="expression" class="col-sm-2 control-label">时间表达式</label>
-                                <div class="col-sm-8">
-                                    <input id="expression" name="expression" type="text" class="form-control" readonly>
-                                </div>
-                            </div>
-							<div  class="form-group">
-								<label for="onoff" class="col-sm-2 control-label">是否激活</label>
-								<div class="col-sm-8">
-									<select class="form-control selectpicker" id="onoff" name="onoff" >
-										<option value="0">否</option>
-										<option value="1">是</option>
-									</select>
-								</div>
-							</div>
-						</form>
+							<%--</div>--%>
+                            <%--<div class="form-group">--%>
+                                <%--<label for="expression" class="col-sm-2 control-label">时间表达式</label>--%>
+                                <%--<div class="col-sm-8">--%>
+                                    <%--<input id="expression" name="expression" type="text" class="form-control" readonly>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+							<%--<div  class="form-group">--%>
+								<%--<label for="onoff" class="col-sm-2 control-label">是否激活</label>--%>
+								<%--<div class="col-sm-8">--%>
+									<%--<select class="form-control selectpicker" id="onoff" name="onoff" >--%>
+										<%--<option value="0">否</option>--%>
+										<%--<option value="1">是</option>--%>
+									<%--</select>--%>
+								<%--</div>--%>
+							<%--</div>--%>
+						<%--</form>--%>
 
-						<div class="modal-footer" >
-							<input type="hidden" id="ID" name="ID" />
-							<button type="submit" class="btn btn-primary"  onclick ="insert()">确定</button>
-							<button type="button" class="btn green" data-dismiss="modal">取消</button>
-						</div>
-					</div>
-				</div>
-			</div>
+						<%--<div class="modal-footer" >--%>
+							<%--<input type="hidden" id="ID" name="ID" />--%>
+							<%--<button type="submit" class="btn btn-primary"  onclick ="insert()">确定</button>--%>
+							<%--<button type="button" class="btn green" data-dismiss="modal">取消</button>--%>
+						<%--</div>--%>
+					<%--</div>--%>
+				<%--</div>--%>
+			<%--</div>--%>
 		</div>
 
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
@@ -485,137 +485,7 @@
             return sql;
         }
     };
-    var formValidator = function(){
-    $("#addform").bootstrapValidator({
-        live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
-        excluded: [':disabled',  ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
-        // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
-        message: '验证失败',//好像从来没出现过
-        feedbackIcons: {//根据验证结果显示的各种图标
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            taskname: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            description: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            description: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            sourcetable: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            simplewashcolumn: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            goaltable: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            rules: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            // querys: {
-            //     validators: {
-            //         notEmpty: {//检测非空,radio也可用
-            //             message: '文本框必须输入'
-            //         }
-            //     }
-            // },
-            expression: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            starttime: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
-            },
-            txt_rules: {
-                validators: {
-                    notEmpty: {
-                        message: '请选择规则！'
-                    },callback: {
-                        message: '必须选择规则',
-                        callback: function(value, validator) {
-                            if (value == 0) {
-                                return false;
-                            } else {
-                                return true;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    });
-    }
-	var insert=function(){
-        $("#addform").bootstrapValidator('validate');//提交验证
-        if ($("#addform").data('bootstrapValidator').isValid()) {
-            var params = $("#addform").serialize();
-            $.post("/insertWashTimer.do",params,function(result){
-                if(result.success){
-                    var dialog = bootbox.dialog({
-                        title: '提示',
-                        message: '新增成功',
-                        buttons: {
-                            ok: {
-                                label: "确定",
-                                className: 'btn-info'
-                            }
-                        }
-                    });
-                    params = params + "&id="+result.id+"&stamp=";
-                    if($('#onoff').val()==1){
-                        $.post("/addTask.do",params,function(result){
 
-                        });
-                    }
-                    $('#myModal').modal('hide');
-                    $('#myModal').removeData("bs.modal");
-                }else{
-                    bootbox.alert("新增失败!");
-                }
-            });
-        }
-	};
     var addRow = function (i) {
         var list = document.getElementById("querybody");
         var line = document.getElementById("queryline");
@@ -705,43 +575,7 @@
     }).on('click',function(e){
         $("#lastTimeTo").datetimepicker("setStartDate", $("#lastTimeFrom").val());
     });
-    $('#everytime').datetimepicker({
-        language:  'zh-CN',
-        format: 'hh:ii',
-        startView:1,
-        autoclose: 1,
-        maxView:1
-    }).on('changeDate', function(e){
-        var time = $('#everytime').val();
-        var strs =  time.split(":"); //字符分割
-        $('#expression').val("0 "+strs[1]+" "+strs[0]+" * * ?");
-    });
-    for(var i=1;i<101;i++){
-        $('#intertime').append("<option value=" + i + ">" + i + "</option>");
-    }
-    $('#opti').on('changed.bs.select',function(e){
-        var op =$('#opti').val();
-        if (op  == "1"){
-            $('#expression').val("");
-            document.getElementById("everytimediv").setAttribute("style", "");
-            document.getElementById("intertimediv").setAttribute("style", "display:none");
-            document.getElementById("intertimediv1").setAttribute("style", "display:none");
-            $('#intertime').val("");
-            $('#intertime').selectpicker("refresh");
-        }
-        if (op == "2"){
-            $('#expression').val("");
-            document.getElementById("intertimediv").setAttribute("style", "");
-            document.getElementById("intertimediv1").setAttribute("style", "");
-            document.getElementById("everytimediv").setAttribute("style", "display:none");
-            $('#everytime').val("");
-            $('#everytime').datetimepicker("refresh");
-        }
-    });
-    $('#intertime').on('changed.bs.select',function(e){
-        var num = $('#intertime').val();
-        $('#expression').val("*  * 1/"+num+" * * ?");
-    });
+
     var i = 0;
     var showall = function(){
         i++;
@@ -762,7 +596,6 @@
         }
     };
     $(function () {
-        formValidator();
         $(":radio").click(function () {
             if ($(this).val() == 'sql') {
                 var termform = document.getElementById("formSearch").setAttribute("style", "display:none");
@@ -782,17 +615,7 @@
         });
 
 
-        $('#myModal').on('show.bs.modal', function () {
-            $('#sourcetable').val($('#txt_fromtable').val());
-            $('#sourcetable').selectpicker('refresh');
-            $('#goaltable').val($('#txt_totable').val());
-            $('#goaltable').selectpicker('refresh');
-            $('#rules').val($('#txt_search_rule').val());
-            $('#rules').selectpicker('refresh');
-            $('#querys').val(getsql());
-            $('#simplewashcolumn').val($('#txt_wash_column').val());
-            $('#simplewashcolumn').selectpicker('refresh');
-        });
+
         $('.date').datetimepicker().on('changeDate', function(ev) {
 //
         }).on('hide', function(event) {
@@ -800,17 +623,7 @@
             event.stopPropagation();
         });
 
-        $("#myModal").on("hide.bs.modal", function() {
-            $("#addform input").val("");
-            $("#addform select").selectpicker('val', 0);
-            $("#addform select").selectpicker('refresh');
-            $("#addform").data('bootstrapValidator').destroy();
-            $("#addform").data('bootstrapValidator',null);
-            formValidator();
-            document.getElementById("everytimediv").setAttribute("style", "");
-            document.getElementById("intertimediv").setAttribute("style", "display:none");
-            document.getElementById("intertimediv1").setAttribute("style", "display:none");
-        });
+
         $("#btn_query").click(function() {
             var sqlline= getsql();
             if ($("#txt_fromtable").val() == ""  ) {
@@ -1027,19 +840,6 @@
                     return {classes: strclass,
 					fontsize:14}
                 },
-//                    exportDataType: 'all',
-//                 exportTypes:[ 'csv', 'json', 'sql', 'xml','doc', 'excel', 'xlsx'],
-//                    rowStyle: function (row, index) {
-//                    //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
-//                    var strclass = "";
-//                if ( index%2 == 0) {
-//                    strclass = 'info';//还有一个active
-//                }
-//                else {
-//                    return {};
-//                }
-//                return { classes: strclass }
-//            },
                 columns: columns
             });
         };
@@ -1087,21 +887,7 @@
                 alert("规则加载失败" + data);
             }
         });
-        $.ajax({
-            url: "/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-            type: "get",
-            dataType: "json",
-            data: 'data',
-            success: function (data) {
-                $.each(data, function (i) {
-                    $('#rules.selectpicker').append("<option value=" + data[i].rules + ">" + data[i].name + "</option>");
-                });
-                $('#rules').selectpicker('refresh');
-            },
-            error: function (data) {
-                alert("规则加载失败" + data);
-            }
-        });
+
 
         $.ajax({
             url: "/getFromTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
@@ -1132,34 +918,7 @@
                 alert("目标表加载失败" + data);
             }
         });
-        $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-            type: "get",
-            dataType: "json",
-            success: function (data) {
-                $.each(data, function (i) {
-                    $('#sourcetable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
-                });
-                $('#sourcetable').selectpicker('refresh');
-            },
-            error: function (data) {
-                alert("目标表加载失败" + data);
-            }
-        });
-        $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
-            type: "get",
-            dataType: "json",
-            success: function (data) {
-                $.each(data, function (i) {
-                    $('#goaltable.selectpicker').append("<option value=" + data[i] + ">" + data[i] + "</option>");
-                });
-                $('#goaltable').selectpicker('refresh');
-            },
-            error: function (data) {
-                alert("目标表加载失败" + data);
-            }
-        });
+
 
         $.ajax({
             url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
