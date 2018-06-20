@@ -626,7 +626,7 @@
                 showRefresh: true,                  //是否显示刷新按钮
                 minimumCountColumns: 0,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
-               height: 520,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+               height: 490,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
                 showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
@@ -653,33 +653,31 @@
 //                exportDataType: 'all',
 //                exportTypes:[ 'csv', 'json', 'sql', 'xml','doc', 'excel', 'xlsx'],
                 columns: [ {
-                    field: 'irSid',
-                    title: 'ID',
-                    width: 80,
-                    align: 'center'
-                }, {
                     field: 'irStartid',
-                    title: '起始频道',
+                    title: 'IR_STARTID',
                     width: 80,
                     align: 'center'
                 },  {
+                    field: 'irGroupname',
+                    title: 'IR_GROUPNAME',
+                    width: 100
+                },{
                     field: 'irSitename',
-                    title: '网站名',
+                    title: 'IR_SITENAME',
                     width: 150
                 },  {
                     field: 'irChannel',
-                    title: '网站栏目',
+                    title: 'IR_CHANNEL',
                     width: 100
                 }, {
                     field: 'irUrltitle',
-                    title: '公告标题',
-//                    width: 470,
+                    title: 'IR_URLTITLE',
                     formatter: function(value,row,index){
                         return "<span data-toggle='tooltip'  class='common-ellipsis tooltip-show' style='width: 600px;' title='"+ value +"'>" + value +"</span>";
                     }
                 },{
                     field: 'irUrldate',
-                    title: '发布日期',
+                    title: 'IR_URLDATE',
                     sortable: true,
                     width: 100,
                     //——修改——获取日期列的值进行转换
@@ -688,12 +686,18 @@
                     }
                 },{
                     field: 'irUrlname',
-                    title: 'URL',
+                    title: 'IR_URLNAME',
                     width: 80,
                     formatter: function (value) {
                         return "<a href=\"" +value+"\">"+value+"</a>";
                     }
                 },{
+                    field: 'irSid',
+                    title: 'IR_SID',
+                    width: 80,
+                    align: 'center',
+                    visible:false
+                }, {
                     field: 'irAbstract',
                     title: 'IR_ABSTRACT',
                     width: 100,
@@ -712,16 +716,6 @@
                     field: 'irFormat',
                     title: 'IR_FORMAT',
                     width: 100,
-                    visible:false
-                },{
-                    field: 'irGroupname',
-                    title: 'IR_GROUPNAME',
-                    width: 100,
-                    visible:false
-                },{
-                    field: 'irHkey',
-                    title: 'IR_HKEY',
-                    width: 200,
                     visible:false
                 },{
                     field: 'irKeywords',
@@ -808,17 +802,29 @@
                         field: 'irContentStr',
                         title: 'IR_CONTENT',
                         width: 100,
-                        visible:false
+                        visible:false,
+                    formatter:function (data) {
+                        var encodeText = HTMLEncode(data);
+                        return encodeText;
+                    }
                     },{
                     field: 'irUrlcontentStr',
                     title: 'IR_URLCONTENT',
                     width: 100,
-                    visible:false
+                    visible:false,
+                    formatter:function (data) {
+                        var encodeText = HTMLEncode(data);
+                        return encodeText;
+                    }
                 },{
                     field: 'irUrlbodyStr',
                     title: 'IR_URLBODY',
                     width: 100,
-                    visible:false
+                    visible:false,
+                    formatter:function (data) {
+                        var encodeText = HTMLEncode(data);
+                        return encodeText;
+                    }
                 },{
                     field: 'irBbsnum',
                     title: 'IR_BBSNUM',
@@ -1300,7 +1306,20 @@
         uploader.splice(0, 100);
         $("#filelist").empty();
     });
-
+    function HTMLEncode(html) {
+        var temp = document.createElement("div");
+        (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+        var output = temp.innerHTML;
+        temp = null;
+        return output;
+    }
+    // function HTMLDecode(text) {
+    //     var temp = document.createElement("div");
+    //     temp.innerHTML = text;
+    //     var output = temp.innerText || temp.textContent;
+    //     temp = null;
+    //     return output;
+    // }
 
 </script>
 

@@ -178,14 +178,24 @@ fn = "";
                     }
                     else if (t < 11) {
                         if (item.type == "java.util.Date") {
-                            columns.push({
-                                "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                "visible": true,
-                                "formatter": function (value) {
-                                    return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
-                                }
-                            });
+                            if(item.name.endsWith("time")){
+                                columns.push({
+                                    "field": item.name,
+                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "formatter": function (value) {
+                                        return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
+                                    }
+                                });
+                            }
+                            else{
+                                columns.push({
+                                    "field": item.name,
+                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "formatter": function (value) {
+                                        return moment(value, "x").format("YYYY-MM-DD")
+                                    }
+                                });
+                            }
                         }
                         else {
                             columns.push({
@@ -198,17 +208,26 @@ fn = "";
                     }
                     else  {
                         if (item.type == "java.util.Date") {
-                            columns.push({
-                                "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                "visible": false,
-                                "formatter": function (value) {
-                                    if(value==null){
-                                        return null;
+                            if(item.name.endsWith("time")){
+                                columns.push({
+                                    "field": item.name,
+                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "visible": false,
+                                    "formatter": function (value) {
+                                        return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
                                     }
-                                    return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
-                                }
-                            });
+                                });
+                            }
+                            else{
+                                columns.push({
+                                    "field": item.name,
+                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "visible": false,
+                                    "formatter": function (value) {
+                                        return moment(value, "x").format("YYYY-MM-DD")
+                                    }
+                                });
+                            }
                         }
                         else {
                             columns.push({

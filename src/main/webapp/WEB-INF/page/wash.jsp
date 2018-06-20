@@ -928,14 +928,26 @@
             $.each(arr, function (i, item) {
                 if(i!=0){
                     if (item.type == "java.util.Date") {
-                        columns.push({
-                            "field": item.name,
-                            "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                            "visible": false,
-                            "formatter": function (value) {
-                                return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
-                            }
-                        });
+                        if(item.name.endsWith("time")){
+                            columns.push({
+                                "field": item.name,
+                                "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                "visible": false,
+                                "formatter": function (value) {
+                                    return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
+                                }
+                            });
+                        }
+                        else{
+                            columns.push({
+                                "field": item.name,
+                                "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                "visible": false,
+                                "formatter": function (value) {
+                                    return moment(value, "x").format("YYYY-MM-DD")
+                                }
+                            });
+                        }
                     }
                     else {
                         columns.push({

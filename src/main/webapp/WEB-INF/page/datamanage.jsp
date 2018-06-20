@@ -580,7 +580,7 @@
                 showRefresh: true,                  //是否显示刷新按钮
                 minimumCountColumns: 0,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
-                height: 520,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                height: 500,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
                 showToggle: false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
@@ -597,7 +597,17 @@
                         return {};
                     }
                     return {classes: strclass}
-                }
+                },
+                onLoadSuccess: function(row,data){
+                    $("[data-toggle='tooltip']").tooltip();
+                    $('#tb_departments').bootstrapTable('showColumn', 'irStartid');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irGroupname');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irSitename');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irChannel');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irUrltitle');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irUrldate');
+                    $('#tb_departments').bootstrapTable('showColumn', 'irUrlname');
+                },
             });
         };
 
@@ -687,30 +697,9 @@
                 success: function (returnValue) {
                     var arr = returnValue.fields;
                     arr.pop();
-                    var t = 1;
                     $.each(arr, function (i, item) {
-                        if (t < 6) {
                             if (item.type == "java.util.Date") {
-                                columns.push({
-                                    "field": item.name,
-                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                    "visible": true,
-                                    "formatter": function (value) {
-                                        return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
-                                    }
-                                });
-                            }
-                            else {
-                                columns.push({
-                                    "field": item.name,
-                                    "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                    "visible": true
-                                });
-                            }
-                            t = t + 1;
-                        }
-                        else {
-                            if (item.type == "java.util.Date") {
+                                if(item.name.endsWith("time")){
                                 columns.push({
                                     "field": item.name,
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
@@ -719,6 +708,17 @@
                                         return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
                                     }
                                 });
+                                }
+                                else{
+                                    columns.push({
+                                        "field": item.name,
+                                        "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                        "visible": false,
+                                        "formatter": function (value) {
+                                            return moment(value, "x").format("YYYY-MM-DD")
+                                        }
+                                    });
+                                }
                             }
                             else {
                                 columns.push({
@@ -727,8 +727,6 @@
                                     "visible": false
                                 });
                             }
-                            t = t + 1;
-                        }
                     });
                     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                         // limit: 10,   //页面大小
