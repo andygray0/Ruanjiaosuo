@@ -123,9 +123,6 @@
         },
         columns: [
             {
-                checkbox: true
-            },
-            {
                 title: '序号',
                 align: 'center',
                 valign: 'bottom',

@@ -84,7 +84,7 @@ public class OperateLogController {
     @ResponseBody
     public Map<String,Object> getByPage(Integer limit, Integer page){
         Map<String,Object> map = new HashMap<String, Object>();
-        List<OperateLog> roleList = operateLogService.findByPage(limit, page, "id", "ASC" );
+        List<OperateLog> roleList = operateLogService.findByPage(limit, page, "id", "DESC" );
         int total = operateLogService.countTotal();
         map.put("rows", roleList);
         map.put("total", total);

@@ -44,7 +44,7 @@ public class LoginLogController {
         paramsMap.put("page", page);
         paramsMap.put("startNo", (page - 1) * limit);
         paramsMap.put("sort", "id");
-        paramsMap.put("direction", "ASC");
+        paramsMap.put("direction", "DESC");
         paramsMap.put("userName", userName);
         if(null != loginTimeStartTime && !loginTimeStartTime.trim().equals("")){
             loginTimeStartTime += ":00";
