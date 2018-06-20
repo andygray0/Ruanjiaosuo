@@ -46,6 +46,9 @@
         .fixed-table-body {
             /*max-height: 240px;*/
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
 
     </style>
 

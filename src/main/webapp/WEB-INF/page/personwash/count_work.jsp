@@ -26,6 +26,9 @@
         #wcr div.bootstrap-select {
             width: 700px;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
 
     </style>
 

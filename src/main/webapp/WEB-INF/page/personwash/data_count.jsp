@@ -30,6 +30,9 @@
         #detail-pop-data-size-count .fixed-table-body{
             max-height:222px;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
 
     </style>
 

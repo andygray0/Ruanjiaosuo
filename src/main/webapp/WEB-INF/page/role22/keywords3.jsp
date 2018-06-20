@@ -60,6 +60,9 @@
             color: red;
             border-bottom: none!important;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
     </style>
 
 </head>

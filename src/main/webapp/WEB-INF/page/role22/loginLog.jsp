@@ -18,6 +18,9 @@
         #filterDiv form .form-group {
             margin-left:10px;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
     </style>
 
 </head>

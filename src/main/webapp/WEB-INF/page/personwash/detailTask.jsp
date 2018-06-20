@@ -17,6 +17,9 @@
         white-space: nowrap;
         font-size: 12px;
     }
+    .fixed-table-header{
+        background-color: #bee7f3;
+    }
 </style>
 
 <div style="background-color:#FFFFFF;">

@@ -27,6 +27,9 @@
             white-space:nowrap;
             word-break:keep-all;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
     </style>
 
 </head>

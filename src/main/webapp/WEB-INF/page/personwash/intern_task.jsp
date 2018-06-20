@@ -25,6 +25,9 @@
         .colorOfmintcream{
             background-color:mintcream;
         }
+        .fixed-table-header{
+            background-color: #bee7f3;
+        }
     </style>
 
 </head>
