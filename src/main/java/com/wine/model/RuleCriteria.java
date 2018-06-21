@@ -1,4 +1,4 @@
-package com.wine.model3;
+package com.wine.model;
 
 import java.util.ArrayList;
 import java.util.Date;

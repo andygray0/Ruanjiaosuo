@@ -1,12 +1,10 @@
 package com.wine.web.controller;
 
 
-import com.wine.dao3.RuleMapper;
 import com.wine.model.Strategy;
-import com.wine.model3.Rule;
+import com.wine.model.Rule;
 import com.wine.service.RuleService;
 import com.wine.service.StrategyService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

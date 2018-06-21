@@ -1,4 +1,4 @@
-package com.wine.model3;
+package com.wine.model;
 
 import java.io.Serializable;
 import java.util.Date;

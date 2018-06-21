@@ -1,7 +1,7 @@
-package com.wine.dao3;
+package com.wine.dao;
 
-import com.wine.model3.Rule;
-import com.wine.model3.RuleCriteria;
+import com.wine.model.Rule;
+import com.wine.model.RuleCriteria;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

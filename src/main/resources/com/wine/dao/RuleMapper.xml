@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wine.dao3.RuleMapper" >
-  <resultMap id="BaseResultMap" type="com.wine.model3.Rule" >
+<mapper namespace="com.wine.dao.RuleMapper" >
+  <resultMap id="BaseResultMap" type="com.wine.model.Rule" >
     <id column="t_ID" property="id" jdbcType="INTEGER" />
     <result column="t_NAME" property="name" jdbcType="VARCHAR" />
     <result column="t_DESCRIPTION" property="description" jdbcType="VARCHAR" />
@@ -77,7 +77,7 @@
     t.OUTPUT as t_OUTPUT, t.CONFIG as t_CONFIG, t.KEYWORD as t_KEYWORD, t.PATH as t_PATH, 
     t.SCRIPT as t_SCRIPT, t.BZ as t_BZ, t.MODIFY as t_MODIFY
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model3.RuleCriteria" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.wine.model.RuleCriteria" >
     select
     <if test="distinct" >
       distinct
@@ -101,13 +101,13 @@
     delete from rule
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.wine.model3.RuleCriteria" >
+  <delete id="deleteByExample" parameterType="com.wine.model.RuleCriteria" >
     delete from rule t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.wine.model3.Rule" >
+  <insert id="insert" parameterType="com.wine.model.Rule" >
     insert into rule (ID, NAME, DESCRIPTION, 
       INPUT, OUTPUT, CONFIG, 
       KEYWORD, PATH, SCRIPT, 
@@ -117,7 +117,7 @@
       #{keyword,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{script,jdbcType=VARCHAR}, 
       #{bz,jdbcType=VARCHAR}, now())
   </insert>
-  <insert id="insertSelective" parameterType="com.wine.model3.Rule" >
+  <insert id="insertSelective" parameterType="com.wine.model.Rule" >
     insert into rule
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -190,7 +190,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.wine.model3.RuleCriteria" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.wine.model.RuleCriteria" resultType="java.lang.Integer" >
     select count(*) from rule t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -254,7 +254,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.Rule" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.wine.model.Rule" >
     update rule
     <set >
       <if test="name != null" >
@@ -290,7 +290,7 @@
     </set>
     where ID = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wine.model3.Rule" >
+  <update id="updateByPrimaryKey" parameterType="com.wine.model.Rule" >
     update rule
     set NAME = #{name,jdbcType=VARCHAR},
       DESCRIPTION = #{description,jdbcType=VARCHAR},

@@ -2,9 +2,9 @@ package com.wine.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wine.dao3.RuleMapper;
-import com.wine.model3.RuleCriteria;
-import com.wine.model3.Rule;
+import com.wine.dao.RuleMapper;
+import com.wine.model.RuleCriteria;
+import com.wine.model.Rule;
 import com.wine.service.RuleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

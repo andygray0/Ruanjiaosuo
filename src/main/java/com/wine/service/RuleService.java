@@ -1,6 +1,6 @@
 package com.wine.service;
 
-import com.wine.model3.Rule;
+import com.wine.model.Rule;
 
 import java.util.List;
 import java.util.Map;
