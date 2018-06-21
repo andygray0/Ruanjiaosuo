@@ -51,6 +51,9 @@ fn = "";
             background-color: #fff;
             padding: 15px;
         }
+        #tb_departments th{
+            background-color: #bee7f3;
+        }
         .tb_dep_content{
             background-color: #fff;
             margin: 0 15px 15px 15px;
@@ -115,6 +118,7 @@ fn = "";
                 }
             });
         }
+        $('#tb_departments').bootstrapTable('resetView');
     };
     $("#btn_insert").click(function () {
         var data = {
@@ -213,6 +217,7 @@ fn = "";
                                     "field": item.name,
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "visible": false,
+                                    "width":120,
                                     "formatter": function (value) {
                                         return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
                                     }
@@ -223,6 +228,7 @@ fn = "";
                                     "field": item.name,
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "visible": false,
+                                    "width":120,
                                     "formatter": function (value) {
                                         return moment(value, "x").format("YYYY-MM-DD")
                                     }
@@ -233,6 +239,7 @@ fn = "";
                             columns.push({
                                 "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                 "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                "width":120,
                                 "visible": false
                             });
                         }
@@ -266,14 +273,14 @@ fn = "";
                 sidePagination: "client",           //分页方式：client客户端分页，server服务端分页（*）
                 pageNumber:1,                       //初始化加载第一页，默认第一页
                 pageSize: 10,                       //每页的记录行数（*）
-                pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+                pageList: [10],        //可供选择的每页的行数（*）
                 search: false,                       //是否显示表格搜索，此搜索是客户端搜索，不会进服务端，所以，个人感觉意义不大
                 strictSearch: false,
                 showColumns: true,                  //是否显示所有的列
                 showRefresh: true,                  //是否显示刷新按钮
                 minimumCountColumns: 2,             //最少允许的列数
                 clickToSelect: true,                //是否启用点击选中行
-                height: 520,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+                // height: 520,                        //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
                 uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
                 showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
@@ -293,7 +300,10 @@ fn = "";
                     }
                     return {classes: strclass}
                 },
-                columns: columns
+                columns: columns,
+                onLoadSuccess:function () {
+                    $('#tb_departments').bootstrapTable('resetView');
+                }
             });
         };
 
@@ -320,6 +330,12 @@ fn = "";
         return oInit;
     };
 
+    $(function () {
+        $(window).resize(function () {
+            $('#tb_departments').bootstrapTable('resetView');
+            $('#tb_departments').bootstrapTable('resetWidth');
+        });
+    });
 </script>
 </body>
 </html>
