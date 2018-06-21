@@ -23,7 +23,7 @@
     <link href="../js/bootstrap-validator/css/bootstrapValidator.min.css" rel="stylesheet"  type="text/css"/>
     <%--<link href="../js/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"  type="text/css"/>--%>
     <link href="../js/selectpage/selectpage.css" rel="stylesheet"  type="text/css"/>
-
+    <link href="../css/common.css" rel="stylesheet"  type="text/css"/>
 
     <style>
         .modal .modal-dialog .modal-content .form-horizontal .controls .input-file{

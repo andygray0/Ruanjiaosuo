@@ -30,7 +30,7 @@
     <link href="../js/bootstrap-validator/css/bootstrapValidator.min.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../css/common.css" rel="stylesheet"  type="text/css"/>
     <style>
         .th-inner{
             font-size:14px

@@ -22,6 +22,7 @@
     <link href="../js/bootstrap-table/bootstrap-table.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"  type="text/css"/>
     <link href="../js/bootstrap-validator/css/bootstrapValidator.min.css" rel="stylesheet"  type="text/css"/>
+    <link href="../css/common.css" rel="stylesheet"  type="text/css"/>
 
     <style>
         .modal .modal-dialog .modal-content .form-horizontal .controls .input-file{

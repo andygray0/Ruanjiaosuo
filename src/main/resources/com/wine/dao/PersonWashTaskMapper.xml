@@ -289,7 +289,7 @@
 
 
     <select id="findByTableNameAndId" resultType="com.wine.model.PersonWashCleanResult">
-        SELECT  *  FROM  ${tableName}  WHERE  IR_SID  =  ${irSid}
+        SELECT  *  FROM  radar2.${tableName}  WHERE  IR_SID  =  ${irSid}
     </select>
 
     <insert id="insertOneCheckData">
