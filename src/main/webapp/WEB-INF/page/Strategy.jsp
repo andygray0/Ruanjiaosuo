@@ -340,48 +340,50 @@
     $("#myModal").on("hide.bs.modal", function() {
         $(":input").val("");
     });
-    var validate =function(){$("#addform").bootstrapValidator({
-        live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
-        excluded: [':disabled',  ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
-        // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
-        message: '验证失败',//好像从来没出现过
-        feedbackIcons: {//根据验证结果显示的各种图标
-            valid: 'glyphicon glyphicon-ok',
-            invalid: 'glyphicon glyphicon-remove',
-            validating: 'glyphicon glyphicon-refresh'
-        },
-        fields: {
-            rulename: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
-                    }
-                }
+    var validate =function() {
+        $("#addform").bootstrapValidator({
+            live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
+            excluded: [':disabled'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+            // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
+            message: '验证失败',//好像从来没出现过
+            feedbackIcons: {//根据验证结果显示的各种图标
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
             },
-            description: {
-                validators: {
-                    notEmpty: {//检测非空,radio也可用
-                        message: '文本框必须输入'
+            fields: {
+                rulename: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
                     }
-                }
-            },
-            txt_rules: {
-                validators: {
-                    callback: {
-                        message: '必须选择规则',
-                        callback: function(value, validator) {
-                            var rules = $('#txt_rules').selectPageText();
-                            if (rules =="") {
-                                return false;
-                            } else {
-                                return true;
+                },
+                description: {
+                    validators: {
+                        notEmpty: {//检测非空,radio也可用
+                            message: '文本框必须输入'
+                        }
+                    }
+                },
+                txt_rules: {
+                    validators: {
+                        callback: {
+                            message: '必须选择规则',
+                            callback: function (value, validator) {
+                                var rules = $('#txt_rules').selectPageText();
+                                if (rules == "") {
+                                    return false;
+                                } else {
+                                    return true;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-    });}
+        });
+    }
 
     function insert(){
         $("#addform").bootstrapValidator('validate');//提交验证
@@ -431,6 +433,7 @@
             callback: function (result) {
                 if (result) {
                     if (rows) {
+                        var res = "";
                         for (var i = 0; i < rows.length; i++) {
                             $.ajax({
                                 url: "/deletestrategy.do",
@@ -439,13 +442,17 @@
                                 async: false,
                                 success: function (result) {
                                     if (!result.success) {
-                                        bootbox.alert("删除失败!ID=" + result.id + "。" + result.msg);
                                     }
                                     else{
-                                        bootbox.alert("删除成功！");
+                                        res = res + rows[i].name;
                                     }
                                 }
                             })
+                        }
+                        if(res==""){
+                            bootbox.alert("删除成功！");
+                        }else{
+                            bootbox.alert(res+"删除失败！");
                         }
                     }
                     var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
@@ -508,6 +515,11 @@
         });
         $("#myModal").on("hide.bs.modal", function() {
             $(this).removeData("bs.modal");
+            $('#txt_rules').val('');
+            $('#txt_rules').selectPageClear();
+            $("#addform").data('bootstrapValidator').destroy();
+            $("#addform").data('bootstrapValidator',null);
+            validate();
         });
 
 
