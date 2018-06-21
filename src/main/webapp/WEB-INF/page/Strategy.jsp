@@ -67,6 +67,9 @@
         <button id="btn_add" type="button" data-toggle="modal" data-target="#myModal" class="btn btn-default">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
         </button>
+        <button id="btn_add" type="button"  onclick="getData()" class="btn btn-default">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>修改
+        </button>
         <button id="btn_delete" type="button" class="btn btn-default" onclick="deleteRows()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
         </button>
@@ -97,13 +100,13 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" >策略配置</label>
                         <div class="col-sm-8">
-                            <input id="txt_rules"  name="txt_rules" type="text" class="input-xlarge">
+                            <input id="rules"  name="rules" type="text" class="input-xlarge">
                         </div>
                     </div>
-
+                    <input type="text" id="ID" name="id" hidden />
                 </form>
                 <div class="modal-footer bg-info" style="padding: 5px;">
-                    <input type="hidden" id="ID" name="ID" />
+
                     <button type="submit" class="btn btn-primary"  onclick ="insert()">确定</button>
                     <button type="button" class="btn green" data-dismiss="modal">取消</button>
                 </div>
@@ -203,53 +206,13 @@
                     title: 'ID'
                 },{
                     field: 'name',
-                    title: '名称',
-                    editable: {
-                        type: 'text',
-                        title: '名称',
-                        validate: function (v) {
-                            if (!v) return '名称不能为空';
-                        }
-                    }
+                    title: '名称'
                 }, {
                     field: 'description',
-                    title: '描述',
-                    editable: {
-                        type: 'text',
-                        title: '描述',
-                        validate: function (v) {
-                            if (!v) return '描述不能为空';
-                        }
-                    }
+                    title: '描述'
                 },{
                     field: 'rules',
-                    title: '策略配置',
-                    editable: {
-                        type: 'text',
-                        title: '策略配置',
-                        validate: function (v) {
-                            if (!v) return '配置不能为空';
-                        },
-                        // seperator: ',',
-                        // source:[{ value: 1, text: '篮球' },
-                        //     { value: 2, text: '足球' },
-                        //     { value: 3, text: '游泳' }]
-                        //     function () {
-                        //     var result = [{value:'',text:'---请选择---'}];
-                        //     $.ajax({
-                        //         url: '/rulelist.do',
-                        //         async: false,
-                        //         type: "get",
-                        //         data: {},
-                        //         success: function (data, status) {
-                        //             $.each(data, function (key, value) {
-                        //                 result.push({ value: value.id, text: value.name });
-                        //             });
-                        //         }
-                        //     });
-                        //     return result;
-                        // }
-                    }
+                    title: '策略配置'
                 }
                 ],
                 rowStyle: function (row, index) {
@@ -262,35 +225,6 @@
                         return {};
                     }
                     return {classes: strclass}
-                },
-                onEditableSave: function (field, row) {
-                    $.ajax({
-                        type: "post",
-                        url: "/strategyedit.do",
-                        data: row,
-                        dataType: 'JSON',
-                        success: function (data, status) {
-                            if (status == "success") {
-                                var dialog = bootbox.dialog({
-                                    title: '提示',
-                                    message: '修改成功',
-                                    buttons: {
-                                        ok: {
-                                            label: "确定",
-                                            className: 'btn-info',
-                                        }
-                                    }
-                                });
-                            }
-                        },
-                        error: function () {
-                            bootbox.alert('编辑失败');
-                        },
-                        complete: function () {
-
-                        }
-
-                    });
                 }
 
             });
@@ -366,12 +300,12 @@
                         }
                     }
                 },
-                txt_rules: {
+                rules: {
                     validators: {
                         callback: {
                             message: '必须选择规则',
                             callback: function (value, validator) {
-                                var rules = $('#txt_rules').selectPageText();
+                                var rules = $('#rules').selectPageText();
                                 if (rules == "") {
                                     return false;
                                 } else {
@@ -389,24 +323,30 @@
         $("#addform").bootstrapValidator('validate');//提交验证
         if ($("#addform").data('bootstrapValidator').isValid()) {
             var params = $("#addform").serialize();
-            var ruless = $('#txt_rules').val();
-            params = params + '&rules=' +ruless;
+            var isnew = "";
+            if($('#ID').val()==""){
+                isnew = "新增";
+            }else{
+                isnew = "修改";
+                var rows = $("#tb_departments").bootstrapTable('getSelections');
+                if(
+                    $('#rulename').val() == rows[0].name
+                    && $('#description').val() == rows[0].description
+                    && $('#rules').val() == rows[0].rules
+                ){
+                    bootbox.alert('数据未发生改变！');
+                    $('#myModal').modal('hide');
+                    $('#myModal').removeData("bs.modal");
+                    return ;
+                }
+            }
             $.post("/insertstrategy.do",params,function(result){
                 if(result){
-                    var dialog = bootbox.dialog({
-                        title: '提示',
-                        message: '新增成功',
-                        buttons: {
-                            ok: {
-                                label: "确定",
-                                className: 'btn-info'
-                            }
-                        }
-                    });
+                    bootbox.alert(isnew+"成功!");
                     $('#myModal').modal('hide');
                     $('#myModal').removeData("bs.modal");
                 }else{
-                    bootbox.alert("新增失败!");
+                    bootbox.alert(isnew+"失败!");
                 }
             });
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
@@ -442,9 +382,7 @@
                                 async: false,
                                 success: function (result) {
                                     if (!result.success) {
-                                    }
-                                    else{
-                                        res = res + rows[i].name;
+                                        res = res + rows[i].name +",";
                                     }
                                 }
                             })
@@ -490,7 +428,7 @@
             dataType: "json",
             data: 'data',
             success: function (data) {
-                    $('#txt_rules').selectPage({
+                    $('#rules').selectPage({
                         showField : 'name',
                         keyField : 'id',
                         data : data,
@@ -502,10 +440,10 @@
                         listSize : 15,
                         multiple : true,
                         eSelect:function(){
-                            $("#addform").data('bootstrapValidator').updateStatus('txt_rules', 'NOT_VALIDATED').validateField("txt_rules")
+                            $("#addform").data('bootstrapValidator').updateStatus('rules', 'NOT_VALIDATED').validateField("rules")
                         },
                         eTagRemove:function(){
-                            $("#addform").data('bootstrapValidator').updateStatus('txt_rules', 'NOT_VALIDATED').validateField("txt_rules")
+                            $("#addform").data('bootstrapValidator').updateStatus('rules', 'NOT_VALIDATED').validateField("rules")
                         }
                     });
             },
@@ -515,8 +453,8 @@
         });
         $("#myModal").on("hide.bs.modal", function() {
             $(this).removeData("bs.modal");
-            $('#txt_rules').val('');
-            $('#txt_rules').selectPageClear();
+            $('#rules').val('');
+            $('#rules').selectPageClear();
             $("#addform").data('bootstrapValidator').destroy();
             $("#addform").data('bootstrapValidator',null);
             validate();
@@ -524,6 +462,23 @@
 
 
     });
+    var getData = function () {
+        var rows = $("#tb_departments").bootstrapTable('getSelections');
+        if(rows.length == 1){
+            $('#rulename').val(rows[0].name);
+            $('#description').val(rows[0].description);
+            $('#ID').val(rows[0].id);
+            $('#rules').val(rows[0].rules);
+            $('#rules').selectPageRefresh();
+            // $("#addform").data('bootstrapValidator',null);
+            $("#addform").data('bootstrapValidator').updateStatus('rules', 'NOT_VALIDATED');
+            $("#myModal").modal('show');
+        }
+        else{
+            bootbox.alert("请选择一行！");
+        }
+
+    }
 </script>
 
 </body>

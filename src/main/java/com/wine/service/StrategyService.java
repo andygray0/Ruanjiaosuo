@@ -11,4 +11,6 @@ public interface StrategyService {
     List showlist();
     Boolean deleteByID(int id);
     Boolean strategyedit(int id,String name,String description,String rules);
+    Strategy getById(int id);
+    int updateById(Strategy strategy);
 }

@@ -6,9 +6,11 @@ import com.wine.dao.StrategyMapper;
 import com.wine.model.Strategy;
 import com.wine.model.StrategyCriteria;
 import com.wine.service.StrategyService;
+import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.net.PortUnreachableException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +62,15 @@ public class StrategyServiceImpl implements StrategyService {
         return true;
     }
 
+    @Override
+    public Strategy getById(int id){
+        return strategyMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updateById(Strategy strategy){
+        return strategyMapper.updateByPrimaryKeySelective(strategy);
+    }
 
 
 }

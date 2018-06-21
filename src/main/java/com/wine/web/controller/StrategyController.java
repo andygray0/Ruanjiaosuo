@@ -23,7 +23,19 @@ public class StrategyController {
     }
     @RequestMapping(value = "/insertstrategy.do")
     @ResponseBody
-    public Boolean insert(String rulename,String description,String rules){
+    public Boolean insertorupdate(String rulename,String description,String rules,String id){
+        if(id!=""&&id!=null){
+            try {
+                Strategy strategy = strategyService.getById(Integer.parseInt(id));
+                strategy.setId(Integer.parseInt(id));
+                strategy.setRules(rules);
+                strategy.setDescription(description);
+                strategyService.updateById(strategy);
+            }catch(Exception e){
+                return false;
+            }
+            return true;
+        }
         Strategy strategy = new Strategy();
         strategy.setDescription(description);
         strategy.setName(rulename);
