@@ -1032,9 +1032,9 @@
     where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </update>
-  <update id="modify" parameterType="java.lang.String" >
+  <update id="modify" parameterType="String" >
     update urlcontent
-    set ${column} = ${modify}
+    set ${column} = #{modify}
     ${sql}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wine.model3.TobewashWithBLOBs" >
