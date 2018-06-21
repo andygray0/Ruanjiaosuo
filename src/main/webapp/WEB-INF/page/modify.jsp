@@ -698,6 +698,12 @@
                     align: 'center',
                     visible:false
                 }, {
+                    field: 'irHkey',
+                    title: 'IR_HKEY',
+                    width: 80,
+                    align: 'center',
+                    visible:false
+                }, {
                     field: 'irAbstract',
                     title: 'IR_ABSTRACT',
                     width: 100,
