@@ -12,9 +12,9 @@
 .fixed-table-body thead{
     background-color: #bee7f3;
 }
-.fixed-table-body{
-    color: #7c7c7c;
-}
+/*.fixed-table-body{*/
+    /*color: #7c7c7c;*/
+/*}*/
 
 .addRow{
     padding: 0px 12px;
