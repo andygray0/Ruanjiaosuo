@@ -221,7 +221,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/showrules.do',         //请求后台的URL（*）
+                url: '/datawashRule/showrules.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -271,7 +271,7 @@
                     field: 'path',
                     title: '文件名',
                     formatter: function (value,row) {
-                        return "<a style=\"border-bottom:dashed 1px #0088cc\" onclick=\"window.open(\'/exportjar.do?id="+row.id+"\')\">"+value+"</a>   <button data-toggle=\"modal\" data-target=\"#myModal2\" type=\"button\" onclick=\"changeId("+row.id+")\" > 更改</button>";
+                        return "<a style=\"border-bottom:dashed 1px #0088cc\" onclick=\"window.open(\'/datawashRule/exportjar.do?id="+row.id+"\')\">"+value+"</a>   <button data-toggle=\"modal\" data-target=\"#myModal2\" type=\"button\" onclick=\"changeId("+row.id+")\" > 更改</button>";
                     }
                 },
                     // {
@@ -301,7 +301,7 @@
                 onEditableSave: function (field, row) {
                     $.ajax({
                         type: "post",
-                        url: "/ruleedit.do",
+                        url: "/datawashRule/ruleedit.do",
                         data: row,
                         dataType: 'JSON',
                         success: function (data, status) {
@@ -392,7 +392,7 @@
                     if(rows){
                         for(var i = 0;i < rows.length;i++){
                             $.ajax({
-                                url:"/deleterule.do",
+                                url:"/datawashRule/deleterule.do",
                                 data:{id:rows[i].id},
                                 type:'post',
                                 async:false,
@@ -542,7 +542,7 @@
 
     var changerule = function () {
         var params = $("#addform2").serialize();
-        $.post("/changejar.do",params,function(result){
+        $.post("/datawashRule/changejar.do",params,function(result){
             if(result){
                 var dialog = bootbox.dialog({
                     title: '提示',
@@ -612,7 +612,7 @@
                 }
                 else{
                     var params = $("#addform").serialize();
-                    $.post("/insertrule.do",params,function(result){
+                    $.post("/datawashRule/insertrule.do",params,function(result){
                         if(result){
                             var dialog = bootbox.dialog({
                                 title: '提示',

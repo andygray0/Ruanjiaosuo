@@ -128,7 +128,7 @@ fn = "";
         };
         $("body").mLoading("show");
         $.ajax({
-            url: "/insertresult.do",
+            url: "/datawash/insertresult.do",
             type: "get",
             dataType: "json",
             data: data,
@@ -249,7 +249,7 @@ fn = "";
                 $('#tb_departments').bootstrapTable(
                     "refreshOptions",
                     {
-                        url : '/getexcel.do?fn=<%=fn%>'+'.xlsx', // 获取数据的地址
+                        url : '/datawash/getexcel.do?fn=<%=fn%>'+'.xlsx', // 获取数据的地址
                         columns : columns,
 
                     }

@@ -23,9 +23,23 @@ public class AccessUrlInterceptor extends HandlerInterceptorAdapter {
         // 忽略的地址
         List<String> ignoreUrlList = Arrays.asList(
                 path + "/admin/login.do",
-                path + "/urlconlist.do",
+                path + "/modify/urlconlist.do",
                 path + "/admin/logout.do",
-                path + "/noAuthority/getValidCode.do"
+                path + "/noAuthority/getValidCode.do",
+                path + "/datamanage/getFieldList.do",
+                path + "/datamanage/getFieldList1.do",
+                path + "/datawash/washAndApprove.do",
+                path + "/datamanage/getColumns.do",
+                path + "/datamanage/getColumn.do",
+                path + "/datamanage/getWashColumn.do",
+                path + "/uploadFile.do" ,
+                path + "/datawashRule/ruleslist.do",
+                path + "/datawashRule/rulelist.do",
+                path + "/datawash/getFromTables.do",
+                path + "/datawash/getToTables.do",
+                path + "/datawash/getUrlconByQuery.do"
+
+
         );
 
 

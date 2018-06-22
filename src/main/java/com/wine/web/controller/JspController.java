@@ -63,30 +63,17 @@ public class JspController {
     /**
      * 数据管理
      */
-    @RequestMapping("/datamanage/toIndex.do")
-    public String datamanageToIndex(){
-        return "manage";
-    }
-    @RequestMapping("/datamanage/modify.do")
+
+    @RequestMapping("/modify/index.do")
     public String datamanageuploadModify(){
         return "modify";
     }
-    @RequestMapping("/datamanage/upload.do")
-    public String datamanageUpload(){
-        return "upload";
-    }
+
     @RequestMapping("/datamanage/manage.do")
     public String datamanageManage(){
         return "datamanage";
     }
 
-    /**
-     * 数据监控
-     */
-    @RequestMapping("/datamanageMonitor/report.do")
-    public String datamanageMonitorReport(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2FData%20monitoring.frm";
-    }
 
     /**
      * 首页
@@ -96,19 +83,9 @@ public class JspController {
         return "home/index_content";
     }
 
-    /**
-     * 监控规则管理
-     */
-    @RequestMapping("/datamanageRule/toIndex.do")
-    public String datamanageRuleToIndex(){
-        return "home/index";
-    }
-    /**
-     * 数据监控
-     */
-    @RequestMapping("/datamanage/monitor.do")
+    @RequestMapping("/dataMonitor/report.do")
     public String datamanageMonitor(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2FData%20monitoring.frm";
+        return "/ReportServer?formlet=rjs_Report%2FdataMonit%2FEnterData.frm";
     }
 
     /**
@@ -119,18 +96,21 @@ public class JspController {
         return "wash";
     }
 
-    @RequestMapping("/datawash/result.do")
-    public String datawashResult(){
-        return "result";
-    }
-    @RequestMapping("/datawash/washlog.do")
+
+    @RequestMapping("/washlog/index.do")
     public String datawashLog(){
         return "washlog";
     }
-    @RequestMapping("/datawash/newTimer.do")
+
+    @RequestMapping("/washtimer/newTimer.do")
     public String newTimer(){
         return "newTimer";
     }
+    @RequestMapping("/washtimer/index.do")
+    public String washtimer(){
+        return "timedTasks";
+    }
+
     /**
      * 清洗规则管理
      */
@@ -145,62 +125,6 @@ public class JspController {
     }
 
 
-    /**
-     * 人工清洗
-     */
-    @RequestMapping("/personwash/toIndex.do")
-    public String personwashToIndex(){
-        return "editable";
-    }
-
-//    /**
-//     * 待查数据分配
-//     */
-//    @RequestMapping("/personwashWaitDataAllot/toIndex.do")
-//    public String personwashWaitDataAllottoIndex(){
-//        return "toclean";
-//    }
-
-    /**
-     * 2017年四季度行业运行数据分析报告
-     */
-    @RequestMapping("/analyzereport2017Fourth/report.do")
-    public String analyzereport2017FourthReport(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2F2017+Season+4%2Findex.frm";
-    }
-
-    /**
-     * 2017年三季度行业运行数据分析报告
-     */
-    @RequestMapping("/analyzereport2017Third/report.do")
-    public String analyzereport2017ThirdReport(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2F2017+Season+3%2Findex.frm";
-    }
-    /**
-     * 2017年二季度行业运行数据分析报告
-     */
-    @RequestMapping("/analyzereport2017Second/report.do")
-    public String analyzereport2017SecondReport(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2F2017+Season+2%2Findex.frm";
-    }
-    /**
-     * 2017年一季度行业运行数据分析报告
-     */
-    @RequestMapping("/analyzereport2017First/report.do")
-    public String analyzereport2017FirstReport(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2F2017+Season+1%2Findex.frm";
-    }
-    /**
-     * 2017年度行业运行数据分析报告
-     */
-    @RequestMapping("/analyzereport2017/report.do")
-    public String analyzereport2017Report(){
-        return "redirect:/ReportServer?formlet=rjs_Report%2F2017%2Findex.frm";
-    }
-    @RequestMapping("/report/nav.do")
-    public String reportNav(){
-        return "rpt_nav";
-    }
 
 
     @RequestMapping("/darhPicture/toIndex.do")

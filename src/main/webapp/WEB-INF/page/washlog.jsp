@@ -120,7 +120,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/showlogs.do',         //请求后台的URL（*）
+                url: '/washlog/showlogs.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -291,41 +291,7 @@
         });
         return o;
     };
-    // function deleteRows(){
-    //     var rows = $("#tb_departments").bootstrapTable('getAllSelections');
-    //     bootbox.confirm({
-    //         message: "确定删除这些记录？",
-    //         buttons: {
-    //             confirm: {
-    //                 label: "确认"
-    //             },
-    //             cancel:{
-    //                 label:"取消"
-    //             }
-    //         },
-    //         callback: function(result) {
-    //             if(result) {
-    //                 if(rows){
-    //                     for(var i = 0;i < rows.length;i++){
-    //                         $.ajax({
-    //                             url:"/deleterule.do",
-    //                             data:{id:rows[i].id},
-    //                             type:'post',
-    //                             success:function(result){
-    //                                 if(!result.success){
-    //                                     bootbox.alert("删除失败!ID="+result.id+"。"+result.msg);
-    //                                 }
-    //                             }
-    //                         })
-    //                     }
-    //
-    //                 }
-    //                 $('#tb_departments').bootstrapTable('refresh');
-    //             }
-    //         }
-    //     });
-    //
-    // }
+
     var alertmsg = function (id) {
         var row =$('#tb_departments').bootstrapTable('getRowByUniqueId', id);
         bootbox.alert(row.errlog);

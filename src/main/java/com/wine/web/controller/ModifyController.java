@@ -26,18 +26,13 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
-public class TobewashController {
+@RequestMapping("/modify")
+public class ModifyController {
     @Resource
     private TobewashService tobewashService;
     @Resource
     private UrlconService urlconService;
 
-    @RequestMapping(value = "/shownew.do")
-    @ResponseBody
-    public Map shownew(int year, int month, int limit, int page) {
-        Map map = tobewashService.shownew(year, month, limit, page);
-        return map;
-    }
 
     @RequestMapping(value = "/showQuery.do")
     @ResponseBody
@@ -215,35 +210,19 @@ public class TobewashController {
     }
 
 
-    @RequestMapping(value = "/datamanage/getColumns.do")
+
+
+    @RequestMapping(value = "/insertexcel.do")
     @ResponseBody
-    public Map getColumns(String i) {
+    public Map insertexcel(String fn,int type){
         Map map = new HashMap();
-        if (i.equals("urlcontent")) {
-            map = tobewashService.getColumns();
-        } else {
-            map = urlconService.getColumns();
+        try{
+            return tobewashService.insertExcel(fn,type);}
+        catch (Exception e){
+            map.put("success",false);
+            map.put("msg",e.getMessage());
+            return map;
         }
-        return map;
     }
 
-    @RequestMapping(value = "/datamanage/getColumn.do")
-    @ResponseBody
-    public Map getColumn() {
-        Map map =new HashMap();
-        PersonWashWaitCheckData tobewash = new PersonWashWaitCheckData();
-        Field[] fields=tobewash.getClass().getDeclaredFields();
-        map.put("fields",fields);
-        return map;
-    }
-
-    @RequestMapping(value = "/datamanage/getWashColumn.do")
-    @ResponseBody
-    public Map getWashColumn() {
-        Map map =new HashMap();
-        PersonWashCleanResult personWashCleanResult = new PersonWashCleanResult();
-        Field[] fields=personWashCleanResult.getClass().getDeclaredFields();
-        map.put("fields",fields);
-        return map;
-    }
 }

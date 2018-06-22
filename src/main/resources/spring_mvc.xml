@@ -121,7 +121,7 @@
         </mvc:interceptor>
 
 
-		<!--<bean class="com.wine.web.interceptor.AccessUrlInterceptor"/>-->
+		<bean class="com.wine.web.interceptor.AccessUrlInterceptor"/>
 
 	</mvc:interceptors>
 	

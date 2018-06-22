@@ -178,7 +178,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/showStrategy.do',         //请求后台的URL（*）
+                url: '/datawashRule/showStrategy.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -340,7 +340,7 @@
                     return ;
                 }
             }
-            $.post("/insertstrategy.do",params,function(result){
+            $.post("/datawashRule/insertOrUpdatestrategy.do",params,function(result){
                 if(result){
                     bootbox.alert(isnew+"成功!");
                     $('#myModal').modal('hide');
@@ -376,7 +376,7 @@
                         var res = "";
                         for (var i = 0; i < rows.length; i++) {
                             $.ajax({
-                                url: "/deletestrategy.do",
+                                url: "/datawashRule/deletestrategy.do",
                                 data: {id: rows[i].id},
                                 type: 'post',
                                 async: false,
@@ -423,7 +423,7 @@
     $(function() {
 
         $.ajax({
-            url: "/rulelist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawashRule/rulelist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             data: 'data',

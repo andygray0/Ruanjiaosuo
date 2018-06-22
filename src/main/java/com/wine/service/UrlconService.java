@@ -10,7 +10,6 @@ import java.util.Map;
 public interface UrlconService {
     Map findByQuery(int limit, int page, Date fromdate, Date todate, Date lasttimefrom, Date lasttimeto,String sitename,String channel);
     List<UrlconWithBLOBs> find( Date fromdate, Date todate, Date lasttimefrom, Date lasttimeto,String sitename,String channel);
-    Boolean washedit(String irUrlname,String irBiddingOrg,String irBidOrg,String irBidMoney ,String irUrltitle);
     Map getColumns();
     Map showQuery(int limit, int page,String fromtable,String sql);
     Urlcon getById(Integer id);

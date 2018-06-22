@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/datawashRule")
 public class RuleController {
     @Resource
     RuleService ruleService;

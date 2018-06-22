@@ -187,7 +187,7 @@
                         <input id="expression" name="expression" type="text" class="form-control" readonly>
                     </div>
                 </div>
-                <div  class="form-group">
+                <div  class="form-group" style="display: none;">
                     <label for="onoff" class="col-sm-2 control-label">是否激活</label>
                     <div class="col-sm-8">
                         <select class="form-control selectpicker" id="onoff" name="onoff"  disabled="true">
@@ -267,13 +267,13 @@
         //初始化Table
         oTableInit.Init = function () {
             $.ajax({
-                url:"/getAllTasks.do",
+                url:"/washtimer/getAllTasks.do",
                 type:'post',
                 async:false,
                 success:function(result){
                     if(result.length==0){
                         $.ajax({
-                            url:"/pauseAllTimer.do",
+                            url:"/washtimer/pauseAllTimer.do",
                             type:'post',
                             async:false
                         })
@@ -281,7 +281,7 @@
                 }
             });
             $('#tb_departments').bootstrapTable({
-                url: '/showTimedTasks.do',         //请求后台的URL（*）
+                url: '/washtimer/showTimedTasks.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -374,7 +374,7 @@
                 onEditableSave: function (field, row) {
                     $.ajax({
                         type: "post",
-                        url: "/timerEdit.do",
+                        url: "/washtimer/timerEdit.do",
                         data: row,
                         dataType: 'JSON',
                         success: function (data, status) {
@@ -464,7 +464,7 @@
                     if(rows){
                         for(var i = 0;i < rows.length;i++){
                             $.ajax({
-                                url:"/deleteWashTimer.do",
+                                url:"/washtimer/deleteWashTimer.do",
                                 data:{id:rows[i].id},
                                 type:'post',
                                 async:false,
@@ -494,7 +494,7 @@
             var msg= "";
             for(var i = 0;i < rows.length;i++){
                 $.ajax({
-                    url:"/startTimedTask.do",
+                    url:"/washtimer/startTimedTask.do",
                     data:{id:rows[i].id},
                     type:'post',
                     async:false,
@@ -503,7 +503,7 @@
                             msg = msg + "定时任务"+result.id+"启用失败!"+result.msg+'<br/>';
                         }else{
                             $.ajax({
-                                url:"/startWashTimer.do",
+                                url:"/washtimer/startWashTimer.do",
                                 data:{id:result.id},
                                 type:'post',
                                 async:false,
@@ -543,7 +543,7 @@
             var msg = "";
             for(var i = 0;i < rows.length;i++){
                 $.ajax({
-                    url:"/stopWashTimer.do",
+                    url:"/washtimer/stopWashTimer.do",
                     data:{id:rows[i].id},
                     type:'post',
                     async:false,
@@ -694,7 +694,7 @@
             } else{
                 $("#onoff").attr("disabled", false);
                 var params = $("#addform").serialize();
-                $.post("/modifyWashTimer.do", params, function (result) {
+                $.post("/washtimer/modifyWashTimer.do", params, function (result) {
                     if (result.success) {
                         bootbox.dialog({
                             title: '提示',
@@ -718,7 +718,7 @@
     };
     $(function () {
         $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawash/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -732,7 +732,7 @@
             }
         });
         $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawash/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -747,7 +747,7 @@
         });
 
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -762,7 +762,7 @@
         });
 
         $.ajax({
-            url: "/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawashRule/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             data: 'data',

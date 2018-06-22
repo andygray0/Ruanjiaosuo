@@ -683,7 +683,7 @@
                         text:"清洗过程可能较长，请耐心等待..."//加载文字，默认值：加载中...
 
                     });
-                    $.post("/wash.do",temp,function(result){
+                    $.post("/datawash/wash.do",temp,function(result){
                         if(result.success){
                             $("body").mLoading("hide");
                             var dialog = bootbox.dialog({
@@ -781,7 +781,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/getUrlconByQuery.do',         //请求后台的URL（*）
+                url: '/datawash/getUrlconByQuery.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 toolbar: '#toolbar',                //工具按钮用哪个容器
                 striped: true,                      //是否显示行间隔色
@@ -873,7 +873,7 @@
     $(function() {
 
         $.ajax({
-            url: "/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawashRule/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             data: 'data',
@@ -890,7 +890,7 @@
 
 
         $.ajax({
-            url: "/getFromTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawash/getFromTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -905,7 +905,7 @@
         });
 
         $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawash/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -921,7 +921,7 @@
 
 
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -934,7 +934,7 @@
             }
         });
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -949,7 +949,7 @@
         });
 
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {

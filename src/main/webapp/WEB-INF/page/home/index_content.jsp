@@ -187,7 +187,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/urlconlist.do',         //请求后台的URL（*）
+                url: '/modify/urlconlist.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 datashowcolumns: false,
                 striped: true,                      //是否显示行间隔色

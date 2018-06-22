@@ -560,7 +560,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/showQuery.do',         //请求后台的URL（*）
+                url: '/datamanage/showQuery.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 datashowcolumns: false,
                 toolbar: '#toolbar',
@@ -655,7 +655,7 @@
         });
 
         $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datawash/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -669,7 +669,7 @@
         });
 
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {

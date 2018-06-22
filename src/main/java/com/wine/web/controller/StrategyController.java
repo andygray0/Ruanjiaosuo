@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/datawashRule")
 public class StrategyController {
     @Resource
     StrategyService strategyService;
@@ -21,7 +22,7 @@ public class StrategyController {
     public Map showStrategy(int page ,int limit,String name){
         return strategyService.showlist(page,limit,name);
     }
-    @RequestMapping(value = "/insertstrategy.do")
+    @RequestMapping(value = "/insertOrUpdatestrategy.do")
     @ResponseBody
     public Boolean insertorupdate(String rulename,String description,String rules,String id){
         if(id!=""&&id!=null){

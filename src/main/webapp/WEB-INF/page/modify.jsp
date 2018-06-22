@@ -606,7 +606,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/showQuery.do',         //请求后台的URL（*）
+                url: '/modify/showQuery.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 datashowcolumns:false,
                 toolbar: '#toolbar',
@@ -1069,7 +1069,7 @@
                         };
                         $("body").mLoading("show");
                         $.ajax({
-                            url:"/modify.do",
+                            url:"/modify/modify.do",
                             data: temp,
                             type:'post',
                             async:false,
@@ -1129,7 +1129,7 @@
                     };
                         $("body").mLoading("show");
                         $.ajax({
-                            url:"/deleterows.do",
+                            url:"/modify/deleterows.do",
                             data: temp,
                             type:'post',
                             async:false,
@@ -1149,7 +1149,7 @@
                 });
         });
         $.ajax({
-            url: "/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -1162,7 +1162,7 @@
             }
         });
         $.ajax({
-            url: "/getFieldList1.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/datamanage/getFieldList1.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {
@@ -1188,7 +1188,7 @@
             var sql = getsql();
             var val = encodeURI(sql);
             val = encodeURI(val);
-            window.open("/exportExcel.do?sql= " + val + "&fields=" + fields);
+            window.open("/modify/exportExcel.do?sql= " + val + "&fields=" + fields);
         });
         $("#btn_all").click(function () {
             i++;
@@ -1207,7 +1207,7 @@
             }
         });
         $("#btn_model").click(function () {
-            window.open("/getmodel.do")}
+            window.open("/modify/getmodel.do")}
         );
 
         $(".bootstrap-table .dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")
@@ -1286,7 +1286,7 @@
                 if(texts == "新增导入"){
                     type = 0;
                 }
-                $.post("/insertexcel.do?fn="+fname+"&type="+type, function(data) {//type=0 新增导入type=1覆盖导入
+                $.post("/modify/insertexcel.do?fn="+fname+"&type="+type, function(data) {//type=0 新增导入type=1覆盖导入
                     if(data.success==true){
                         bootbox.alert("导入成功");
                     }

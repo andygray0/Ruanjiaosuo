@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/washtimer")
 public class TimerController {
     @Resource
     WashTimerService washTimerService;
@@ -237,10 +238,31 @@ public class TimerController {
         }
             return true;
     }
-
-    @RequestMapping(value = "/showlogs.do")
+    @RequestMapping(value = "/addTask.do")
     @ResponseBody
-    Map showlogs(int limit ,int page , String name){
-        return washLogService.showlogs(limit,page,name);
+    public void addTask(String taskname,String id,String starttime,String expression,String rules,String querys,String sourcetable,String goaltable,Integer onoff) throws InterruptedException{
+        System.out.println("----add--------task----------");
+        ScheduleTask task=new ScheduleTask();
+//        task.setExpression("0/30 * * * * ?");
+        task.setExpression(expression);
+        task.setId(id);
+        task.setGroup("com.wine.quartz.job.MyJob");
+        task.setTrigger("dopost");
+        task.setName(taskname+id);
+        task.setParam(new Object[]{sourcetable,goaltable,rules,querys,starttime,id});
+        taskService.addTask(task);
+    }
+    @RequestMapping(value = "/stopTasks.do")
+    @ResponseBody
+    public void stopTask(){
+        taskService.pauseAllTask();
+    }
+
+    @RequestMapping(value = "/deleteTasks.do")
+    @ResponseBody
+    public void deleteTask(){
+        List list=taskService.getAllTask();
+        list.size();
+        taskService.deleteTasks(list);
     }
 }

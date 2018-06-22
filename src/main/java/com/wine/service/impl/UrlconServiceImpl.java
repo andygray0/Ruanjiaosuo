@@ -62,22 +62,7 @@ public class UrlconServiceImpl implements UrlconService{
         List<UrlconWithBLOBs> list = urlconMapper.selectByExampleWithBLOBs(urlconCriteria);
         return list;
     }
-    @Override
-    public Boolean washedit(String irUrlname,String irBiddingOrg,String irBidOrg,String irBidMoney,String irUrltitle){
-        UrlconCriteria urlconCriteria = new UrlconCriteria();
-        UrlconCriteria.Criteria criteria = urlconCriteria.createCriteria();
-        criteria.andIrUrlnameLike(irUrlname);
-        List<UrlconWithBLOBs> urlcon = urlconMapper.selectByExampleWithBLOBs(urlconCriteria);
-        if (urlcon.size()>0){
-            urlcon.get(0).setIrBiddingOrg(irBiddingOrg);
-            urlcon.get(0).setIrBidOrg(irBidOrg);
-            urlcon.get(0).setIrBidMoney(irBidMoney);
-            urlcon.get(0).setIrUrltitle(irUrltitle);
-            urlconMapper.updateByExampleWithBLOBs( urlcon.get(0),urlconCriteria);
-            return true;
-        }
-        else return false;
-    }
+
     @Override
     public Map showQuery(int limit, int page,String fromtable,String sql){
         PageHelper.startPage(page,limit);

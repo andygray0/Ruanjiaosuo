@@ -39,7 +39,10 @@
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-
+	<servlet-mapping>
+		<servlet-name>dispatcherServlet</servlet-name>
+		<url-pattern>ReportServer</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>GetCheckCodeImage</servlet-name>
 		<servlet-class>com.wine.web.servlet.GetCheckCodeImage</servlet-class>
