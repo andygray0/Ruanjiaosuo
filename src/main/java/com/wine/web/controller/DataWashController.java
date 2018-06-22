@@ -65,8 +65,6 @@ public class DataWashController {
     @RequestMapping(value = "/wash.do")
     @ResponseBody
     public Map createExcelFile(HttpServletResponse response,String columnname,String fromtable, String sql, String rule, String totable) {
-        List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
-        List<String> rules =  Arrays.asList(rule.split(","));
         Date currentTime = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String dateString = formatter.format(currentTime);
@@ -79,9 +77,11 @@ public class DataWashController {
         String rulenames = ruleService.getNamesByIds(rule);
         washlog.setRules(rulenames);
         washlog.setQuerys("select * from "+fromtable+" "+sql);
-        washlog.setCounts(list.size());
         washlog.setExway(0);
         washlog.setSimplewashcolumn(columnname);
+        List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
+        washlog.setCounts(list.size());
+        List<String> rules =  Arrays.asList(rule.split(","));
         if(list.size()<1){
             Map map = new HashMap();
             map.put("success",false);
@@ -579,8 +579,6 @@ public class DataWashController {
     @RequestMapping(value = "/washAndApprove.do")
     @ResponseBody
     public Map createExcelFile2(HttpServletResponse response,String fromtable,String columnname,String sql, String rule, String totable,String taskname) {
-        List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
-        List<String> rules =  Arrays.asList(rule.split(","));
         WashLog washlog = new WashLog();
         washlog.setName(taskname);
         washlog.setGoaltable(totable);
@@ -589,9 +587,11 @@ public class DataWashController {
         String rulenames = ruleService.getNamesByIds(rule);
         washlog.setRules(rulenames);
         washlog.setQuerys("select * from "+fromtable+" "+sql);
-        washlog.setCounts(list.size());
         washlog.setExway(1);
         washlog.setSimplewashcolumn(columnname);
+        List<UrlconWithBLOBs> list = urlconService.getAllBySql(fromtable,sql);
+        washlog.setCounts(list.size());
+        List<String> rules =  Arrays.asList(rule.split(","));
         if(list.size()<1){
             Map map = new HashMap();
             map.put("success",false);
