@@ -1047,7 +1047,7 @@
             }
         });
         $.ajax({
-            url: "/getToTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+            url: "/getFromTables.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
             type: "get",
             dataType: "json",
             success: function (data) {

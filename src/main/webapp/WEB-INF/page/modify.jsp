@@ -1295,7 +1295,7 @@
                     }
                 }).error(function() { bootbox.alert({
                     title: "提示",
-                    message: "文件有误，请检查后重新导入！"
+                    message: "导入失败！请联系管理员开放权限后再试用！"
                 })
                 });
             } catch(e) {
