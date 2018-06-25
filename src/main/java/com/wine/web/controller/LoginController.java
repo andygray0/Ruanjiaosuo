@@ -164,7 +164,7 @@ public class LoginController extends BaseController {
 					List<String> list2 = new ArrayList<String>();
 					if(role != null){
 						urlPrefixList = roleService.findUrlPrefixStringWithRole(role.getId());
-						list2 = roleService.findUrlPrefixStringWithRole(role.getId());
+						list2 = roleService.findUrlPrefixStringWithRoleReport(role.getId());
 						urlPrefixList.addAll(list2);
 					}
 					request.getSession().setAttribute(Constants.CURRENT_ROLE_URL_PREFIX_LIST, urlPrefixList);
