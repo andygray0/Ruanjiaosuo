@@ -68,7 +68,7 @@
         </div>
     </div>
     <div id="toolbar" class="btn-group">
-        <button id="btn_add" type="button" class="btn btn-default" onclick="window.location.href='/datawash/newTimer.do'">
+        <button id="btn_add" type="button" class="btn btn-default" onclick="window.location.href='/washtimer/newTimer.do'">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
         </button>
         <button id="btn_modify" type="button"   class="btn btn-default"  onclick="modifyTask()">

@@ -85,7 +85,7 @@
                 <div id="legend" class="">
                     <legend class="">&nbsp;&nbsp;新增</legend>
                 </div>
-                    <form id="addform" class="form-horizontal" style="margin-left: 15px">
+                    <form id="addform" class="form-horizontal" style="margin-left: 15px" onkeydown="if(event.keyCode==13)return false;">
 
                             <div class="form-group">
 
@@ -109,7 +109,7 @@
 
                                 <!-- File Upload -->
                                 <div class="col-sm-8">
-                                    <button id="browse">选择文件</button>
+                                    <button id="browse"  onkeydown="if(event.keyCode==13)return false;">选择文件</button>
                                 </div>
                                 <div id="filelist"   class="col-sm-8"></div>
 
@@ -129,7 +129,7 @@
                     </form>
                 <div class="modal-footer bg-info" style="padding: 5px;">
                     <input type="hidden" id="ID" name="ID" />
-                    <button type="submit" id="btn-add" class="btn btn-primary" >确定</button>
+                    <button type="submit" id="btn-add" class="btn btn-primary" onclick ="insert()">确定</button>
                     <button type="button" class="btn green" data-dismiss="modal">取消</button>
                 </div>
             </div>
@@ -209,6 +209,14 @@
         //2.初始化Button的点击事件
         var oButtonInit = new ButtonInit();
         oButtonInit.Init();
+
+        validate();
+        $("#myModal").on("hide.bs.modal", function() {
+            $(this).removeData("bs.modal");
+            $("#addform").data('bootstrapValidator').destroy();
+            $("#addform").data('bootstrapValidator',null);
+            validate();
+        });
 
     });
 
@@ -567,10 +575,10 @@
         $('#tb_departments').bootstrapTable('removeAll');
         $('#tb_departments').bootstrapTable('refresh',temp);
     }
-    $(function () {
+    var validate =function() {
         $("#addform").bootstrapValidator({
             // live: 'disabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
-            excluded: [':disabled',  ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
+            excluded: [':disabled', ':not(:visible)'],//排除无需验证的控件，比如被禁用的或者被隐藏的
             // submitButtons: '#btn-add',//指定提交按钮，如果验证失败则变成disabled，但我没试成功，反而加了这句话非submit按钮也会提交到action指定页面
             message: '验证失败',//好像从来没出现过
             feedbackIcons: {//根据验证结果显示的各种图标
@@ -602,18 +610,18 @@
                 }
             }
         });
-        $("#btn-add").click(function () {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
+    };
+        var insert = function () {//非submit按钮点击后进行验证，如果是submit则无需此句直接验证
             $("#addform").bootstrapValidator('validate');//提交验证
             if ($("#addform").data('bootstrapValidator').isValid()) {//获取验证结果，如果成功，执行下面代码
                 var content = $("#filelist").html();
-                if(content == null || content.length == 0)
-                {
+                if (content == null || content.length == 0) {
                     bootbox.alert("请添加文件");
                 }
-                else{
+                else {
                     var params = $("#addform").serialize();
-                    $.post("/datawashRule/insertrule.do",params,function(result){
-                        if(result){
+                    $.post("/datawashRule/insertrule.do", params, function (result) {
+                        if (result) {
                             var dialog = bootbox.dialog({
                                 title: '提示',
                                 message: '新增成功',
@@ -626,7 +634,7 @@
                             });
                             $('#myModal').modal('hide');
                             $('#myModal').removeData("bs.modal");
-                        }else{
+                        } else {
                             bootbox.alert("新增失败!");
                         }
                     });
@@ -635,12 +643,11 @@
                         page: 1   //页码
                     };
                     $('#tb_departments').bootstrapTable('removeAll');
-                    $('#tb_departments').bootstrapTable('refresh',temp);
+                    $('#tb_departments').bootstrapTable('refresh', temp);
                 }
 
             }
-        });
-    });
+        };
 </script>
 </body>
 </html>

@@ -102,7 +102,7 @@
     <div id="addFormDiv" style="display: none;">
         <div>
             <!-- form -->
-            <form class="form-horizontal" role="form" id="mainForm" style="width:95%;">
+            <form class="form-horizontal" role="form" id="mainForm" style="width:95%;" onkeydown="if(event.keyCode==13)return false;">
                 <div class="form-group">
                     <label for="loginName" class="col-sm-2 control-label">用户名称</label>
                     <div class="col-sm-10">

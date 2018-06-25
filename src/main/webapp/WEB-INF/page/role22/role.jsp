@@ -89,7 +89,7 @@
 
     <div id="addRoleFormDiv" style="display: none;">
         <div>
-            <form class="form-horizontal" role="form" id="addRoleForm" style="width:95%;">
+            <form class="form-horizontal" role="form" id="addRoleForm" style="width:95%;" onkeydown="if(event.keyCode==13)return false;">
                 <div class="form-group">
                     <label for="name" class="col-sm-2 control-label">角色名称</label>
                     <div class="col-sm-10">

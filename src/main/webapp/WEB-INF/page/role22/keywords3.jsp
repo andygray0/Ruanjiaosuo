@@ -73,7 +73,7 @@
     <div id="popModifyFieldsDiv" style="display: none;">
         <div>最多可以设置10个扩展字段</div>
         <div>
-            <form role="form">
+            <form role="form" onkeydown="if(event.keyCode==13) return false;">
             <table class="table">
                 <thead>
                     <tr>
@@ -101,13 +101,13 @@
         <h5 style="margin-left:100px;color:darkred;">确定要删除所选择的记录吗？</h5>
     </div>
 
-    <div id="saveKeywordDataForm" style="display: none;">
+    <div id="saveKeywordDataForm" style="display: none;" onkeydown="if(event.keyCode==13)return false;">
         <div>
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13)return false;">
                 <div class="form-group">
                     <label for="keyword" class="col-sm-4 control-label">关键字</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" id="keyword" name="keyword" placeholder="请输入关键字">
+                        <input type="text" class="form-control" id="keyword1" name="keyword" placeholder="请输入关键字">
                     </div>
                 </div>
                 <div id="addFormExtendField">
@@ -118,7 +118,7 @@
     </div>
 
     <div id="saveKeywordCategoryFormDiv" style="display: none;">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" onkeydown="if(event.keyCode==13) return false;">
             <div class="form-group">
                 <label for="categoryName" class="col-sm-3 control-label">关键字分类名称</label>
                 <div class="col-sm-8">
@@ -181,7 +181,7 @@
     <div class="right" style="width:68%;float:left;height:100%;margin-left:10px;">
 
                 <div class="panel panel-default">
-                    <div class="panel-heading" style="padding:5 0 10 10;">
+                    <div class="panel-heading">
                         <h3 class="panel-title">关键字详情</h3>
                     </div>
                     <div class="panel-body" style="margin-bottom:50px;height:80%;overflow:auto;">
@@ -210,7 +210,7 @@
 
                     <div id="queryParamsDiv">
                         <div class="panel panel-default">
-                            <div class="panel-heading" style="padding:5 0 5 10;">
+                            <div class="panel-heading" >
                                 <h5 class="panel-title">条件查询<button class="btn btn-primary btn-xs" style="float: right;margin-right:4px;margin-top:-2px;" data-toggle="collapse" data-target="#demo">显隐</button></h5>
                             </div>
                             <div class="panel-body" style="padding:0;">
@@ -714,9 +714,7 @@
             $("#myModal").modal("hide");
             $.post('/keywords3/deleteByIdOfKeywordCategory.do',{id : id},function (data) {
                 var len = $("#keyword-categories-list-ul li").length;
-                if(len == 0){
                     window.location.href = "/keywords3/toIndex.do";
-                }
             });
         }
 

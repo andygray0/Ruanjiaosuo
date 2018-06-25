@@ -328,7 +328,10 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
                     dataType: 'script',
                     resetForm: false,
                     success: function(msg) {
-                        if (msg == '2') location.href = '/admin/toHome.do';
+                        if (msg == '2') {
+                            if(window.parent != null){
+                                window.parent.location.href = '/admin/toHome.do';}
+                        }
                        else if (msg == '1') {
                             epoint.dialog.warn('用户名或密码或验证码输入错误！');
                         }

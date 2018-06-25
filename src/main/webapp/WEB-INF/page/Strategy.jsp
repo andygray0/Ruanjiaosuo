@@ -83,7 +83,7 @@
                 <div id="legend" class="">
                     <legend class="">&nbsp;&nbsp;新增</legend>
                 </div>
-                <form id="addform" class="form-horizontal" style="margin-left: 15px">
+                <form id="addform" class="form-horizontal" style="margin-left: 15px" onkeydown="if(event.keyCode==13)return false;">
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">策略名称</label>
@@ -104,6 +104,7 @@
                         </div>
                     </div>
                     <input type="text" id="ID" name="id" hidden />
+                    <input type="text" value="解决bootstrap与AJAX异步提交表单的冲突" hidden />
                 </form>
                 <div class="modal-footer bg-info" style="padding: 5px;">
 
