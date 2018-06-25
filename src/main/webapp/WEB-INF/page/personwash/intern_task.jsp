@@ -14,6 +14,7 @@
 
     <link href="../../js/plupload-2.0.0/js/jquery.ui.plupload/css/jquery.ui.plupload.css" rel="stylesheet"  type="text/css" />
     <link href="../../js/mloading/jquery.mloading.css" rel="stylesheet"  type="text/css" />
+    <link href="../../css/common.css" rel="stylesheet"  type="text/css"/>
 
     <style type="text/css">
         div.content_html {

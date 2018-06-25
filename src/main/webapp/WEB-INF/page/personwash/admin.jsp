@@ -18,6 +18,7 @@
     <link href="../../js/bootstrap-select/css/bootstrap-select.css" rel="stylesheet"  type="text/css"/>
 
     <link href="../../js/mloading/jquery.mloading.css" rel="stylesheet"  type="text/css" />
+    <link href="../../css/common.css" rel="stylesheet"  type="text/css"/>
 
 
 

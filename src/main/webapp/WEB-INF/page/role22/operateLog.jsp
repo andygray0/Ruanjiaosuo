@@ -10,6 +10,7 @@
     <link href="../../js/bootstrap-table/bootstrap-table.css" rel="stylesheet" type="text/css"/>
     <link href="../../js/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet" type="text/css"/>
     <link href="../../js/bootstrapValidator/bootstrapValidator.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../css/common.css" rel="stylesheet"  type="text/css"/>
 
     <style type="text/css">
         .fixed-table-body{

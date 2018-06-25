@@ -10,6 +10,7 @@
     <link href="../../js/bootstrapValidator/bootstrapValidator.min.css" rel="stylesheet"  type="text/css" />
     <link href="../../js/zTree/css/zTreeStyle/zTreeStyle.css" rel="stylesheet"  type="text/css"/>
     <link href="../../js/zTree/css/bootstrap/bootstrapStyle.css" rel="stylesheet"  type="text/css"/>
+    <link href="../../css/common.css" rel="stylesheet"  type="text/css"/>
 
 </head>
 <body>
