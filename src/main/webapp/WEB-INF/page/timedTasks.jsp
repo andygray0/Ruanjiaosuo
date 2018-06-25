@@ -236,6 +236,19 @@
 <script type="text/javascript" src="../js/bootstrap-select/js/i18n/defaults-zh_CN.min.js"></script>
 
 <script type="text/javascript">
+    var rulelist = [];
+    $.ajax({
+        url: "/datawashRule/ruleslist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+        type: "get",
+        dataType: "json",
+        async:false,
+        success: function (data) {
+            rulelist= data;
+        },
+        error: function (data) {
+            alert("规则加载失败" + data);
+        }
+    });
     function trim(str){
         return str.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -339,7 +352,16 @@
                     title: '查询条件'
                 },{
                     field: 'rules',
-                    title: '清洗规则'
+                    title: '清洗规则',
+                        formatter:function (val) {
+                        var res = '';
+                            $.each(rulelist, function (i) {
+                                    if(rulelist[i].rules == val){
+                                        res = rulelist[i].name;
+                                    }
+                            });
+                            return res;
+                        }
                 },{
                     field: 'starttime',
                     title: '开始时间',

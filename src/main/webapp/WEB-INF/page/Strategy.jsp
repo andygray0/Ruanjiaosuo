@@ -145,6 +145,19 @@
 <script type="text/javascript" src="../js/selectpage/selectpage.js"></script>
 
 <script type="text/javascript">
+    var rulelist = [];
+    $.ajax({
+        url: "/datawashRule/rulelist.do",//写你自己的方法，返回map，我返回的map包含了两个属性：data：集合，total：集合记录数量，所以后边会有data.data的写法。。。
+        type: "get",
+        dataType: "json",
+        async:false,
+        success: function (data) {
+            rulelist= data;
+        },
+        error: function (data) {
+            alert("规则加载失败" + data);
+        }
+    });
     function trim(str){
         return str.replace(/(^\s*)|(\s*$)/g, "");
     }
@@ -212,7 +225,24 @@
                     title: '描述'
                 },{
                     field: 'rules',
-                    title: '策略配置'
+                    title: '策略配置',
+                    formatter:function (val) {
+                        var list = val.split(',');
+                        var res = '';
+                        $.each(list, function (i) {
+                            $.each(rulelist, function (j) {
+                                if(rulelist[j].id == list[i]){
+                                    if(i ==0 ){
+                                        res = rulelist[j].name;
+                                    }
+                                    else{
+                                    res = res + ',' + rulelist[j].name;
+                                    }
+                                }
+                            });
+                        });
+                        return res;
+                    }
                 }
                 ],
                 rowStyle: function (row, index) {
