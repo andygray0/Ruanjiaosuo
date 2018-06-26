@@ -136,7 +136,23 @@ fn = "";
                 $("body").mLoading("hide");
                 $("#btn_insert").remove();
                 if(result.success){
-                    bootbox.alert("导入成功:" + result.msg);
+                    bootbox.dialog({
+                        message: "导入成功:" + result.msg,
+                        title: "提示",
+                        buttons: {
+                            Cancel: {
+                                label: "Cancel",
+                                className: "btn-primary"
+                            }
+                            , OK: {
+                                label: "OK",
+                                className: "btn-primary",
+                                callback: function () {
+                                    window.location.href = '/admin/toHome.do?ref=personwash';
+                                }
+                            }
+                        }
+                    });
                 }
                 else {
                     bootbox.alert("导入失败:" + result.msg)
@@ -184,8 +200,9 @@ fn = "";
                         if (item.type == "java.util.Date") {
                             if(item.name.endsWith("time")){
                                 columns.push({
-                                    "field": item.name,
+                                    "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "width":120,
                                     "formatter": function (value) {
                                         return moment(value, "x").format("YYYY-MM-DD HH:mm:ss")
                                     }
@@ -193,8 +210,9 @@ fn = "";
                             }
                             else{
                                 columns.push({
-                                    "field": item.name,
+                                    "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
+                                    "width":120,
                                     "formatter": function (value) {
                                         return moment(value, "x").format("YYYY-MM-DD")
                                     }
@@ -205,7 +223,8 @@ fn = "";
                             columns.push({
                                 "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                 "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
-                                "visible": true
+                                "visible": true,
+                                "width":120,
                             });
                         }
                         t = t + 1;
@@ -214,7 +233,7 @@ fn = "";
                         if (item.type == "java.util.Date") {
                             if(item.name.endsWith("time")){
                                 columns.push({
-                                    "field": item.name,
+                                    "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "visible": false,
                                     "width":120,
@@ -225,7 +244,7 @@ fn = "";
                             }
                             else{
                                 columns.push({
-                                    "field": item.name,
+                                    "field": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "title": item.name.replace(/([A-Z])/g, "_$1").toUpperCase(),
                                     "visible": false,
                                     "width":120,
