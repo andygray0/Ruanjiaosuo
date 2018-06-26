@@ -5,6 +5,12 @@
   Time: 18:20
   To change this template use File | Settings | File Templates.
 --%>
+<%
+    String ref = request.getParameter("ref");
+    if (ref == null) {
+        ref = "";
+    }
+%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -218,6 +224,11 @@
         $(".dataReport").click(function () {
             window.open($(this).data('url'));
         });
+
+        var xxx = "<%=request.getParameter("ref")%>"
+        if(xxx  == "personwash"){
+            $('.content_html').attr("src",'/personWashAdmin/toIndex.do');
+        }
     });
 
 </script>

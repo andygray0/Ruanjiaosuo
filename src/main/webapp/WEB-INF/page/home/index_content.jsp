@@ -262,7 +262,7 @@
                     title: 'URL',
                     width: 80,
                     formatter: function (value, row, index) {
-                        return "<a href=" + value + ">链接地址</a>";
+                        return "<a href=" + value + " target = '_blank'>链接地址</a>";
                     }
                 }]
             });
