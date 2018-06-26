@@ -409,7 +409,7 @@ public class TobewashServiceImpl implements TobewashService{
                     count ++;
                 }
             }
-            if(type!=count){
+            if(type==count){
                 return 1;
             }
             else{
