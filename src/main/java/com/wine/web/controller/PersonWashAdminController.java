@@ -167,19 +167,28 @@ public class PersonWashAdminController {
 
         // 2.
         List<String> list = BeanKit.getDynamicFieldsBySuffixIsNotNull(check, "Check");
-        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+//        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+        List<CommonTableField> fieldList = commonService.findTableFieldInfo(check.getClTarget(), list);
         Map<String, Map<String,Object>> tableFieldMap = new HashMap<String, Map<String,Object>>();
-        for(CommonTableField field : fieldList){
+        for(String lis  : list){
             Map<String,Object> map = new HashMap<String,Object>();
-            map.put("value", BeanKit.getValueByField(field.getName(),check));
-            map.put("reason", BeanKit.getValueByField(field.getName() + "_check".toUpperCase(),check));
-            map.put("property", StrKit.toCamelName(field.getName().toLowerCase()));
-            map.put("field", field.getName());
-            map.put("title", field.getTitle());
-            tableFieldMap.put(StrKit.toCamelName(field.getName().toLowerCase()), map);
+            map.put("value", BeanKit.getValueByField(lis,check));
+            map.put("reason", BeanKit.getValueByField(lis + "_check".toUpperCase(),check));
+//            map.put("property", StrKit.toCamelName(field.getName().toLowerCase()));
+//            map.put("field", field.getName());
+            int i = 0;
+            for(CommonTableField field  : fieldList){
+                if(lis.equals(field.getName())) {
+                    map.put("title", field.getTitle());
+                    i++;
+                }
+            }
+            if(i == 0 ){
+                map.put("title", lis);
+            }
+            tableFieldMap.put(StrKit.toCamelName(lis.toLowerCase()), map);
         }
         model.addAttribute("coreMap", tableFieldMap);
-
         // 3.
         List<String> coreList = new ArrayList<String>();
         String needUpdateFields = "";
