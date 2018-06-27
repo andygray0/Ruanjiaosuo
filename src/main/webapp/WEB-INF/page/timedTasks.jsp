@@ -52,7 +52,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">过滤条件</div>
         <div class="panel-body panel-body-head">
-            <form  class="form-horizontal">
+            <form  class="form-horizontal" onkeydown="if(event.keyCode==13)return false;">
 
                 <label class="control-label col-sm-1">任务名称</label>
                 <div class="col-sm-2 input-append ">
