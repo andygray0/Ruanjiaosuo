@@ -49,12 +49,12 @@
                 <div class="form-group">
                     <label for="year1" class="col-sm-1 control-label">年份</label>
                     <div class="col-sm-3">
-                        <input type="text" class="form-control" id="year1" readonly placeholder="请选择年份">
+                        <input type="text" class="form-control" id="year1" placeholder="请选择年份">
                     </div>
                     <label for="season1" class="col-sm-1 control-label">月份</label>
                     <div class="col-sm-3">
                         <select type="text" class="form-control" id="season1" placeholder="请选择">
-                            <option value="">------请选择月份-------</option>
+                            <option value="">请选择月份</option>
                             <option value="1">一月</option>
                             <option value="2">二月</option>
                             <option value="3">三月</option>
