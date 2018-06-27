@@ -694,12 +694,11 @@
                                         label: "取消",
                                         className: 'btn-danger'
                                     },
-                                    noclose: {
+                                    ok: {
                                         label: "查看结果",
                                         className: 'btn-warning',
                                         callback: function(){
                                             window.open('/datawash/result.do?fn='+result.fn+'&logid='+result.logid+'&totable='+$("#txt_totable").val());
-                                            return false;
                                         }
                                     }
                                 }
