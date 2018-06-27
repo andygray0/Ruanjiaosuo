@@ -103,18 +103,26 @@ public class PersonWashInternController {
 
         // 2.
         List<String> list = BeanKit.getDynamicFieldsBySuffixIsNotNull(check, "Check");
-        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+//        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+        List<CommonTableField> fieldList = commonService.findTableFieldInfo(check.getClTarget(), list);
         Map<String, Map<String,Object>> tableFieldMap = new HashMap<String, Map<String,Object>>();
-        for(CommonTableField field : fieldList){
+        for(String lis  : list){
             Map<String,Object> map = new HashMap<String,Object>();
-            map.put("tableField", field);
-            map.put("saved", tempSaveList.contains(field.getName()));
-            map.put("value", BeanKit.getValueByField(field.getName(),check));
-            map.put("reason", BeanKit.getValueByField(field.getName() + "_check".toUpperCase(),check));
-            map.put("property", StrKit.toCamelName(field.getName().toLowerCase()));
-            map.put("field", field.getName());
-            map.put("title", field.getTitle());
-            tableFieldMap.put(StrKit.toCamelName(field.getName().toLowerCase()), map);
+            map.put("value", BeanKit.getValueByField(lis,check));
+            map.put("reason", BeanKit.getValueByField(lis + "_check".toUpperCase(),check));
+            map.put("property", StrKit.toCamelName(lis.toLowerCase()));
+            map.put("field", lis);
+            int i = 0;
+            for(CommonTableField field  : fieldList){
+                if(lis.equals(field.getName())) {
+                    map.put("title", field.getTitle());
+                    i++;
+                }
+            }
+            if(i == 0 ){
+                map.put("title", lis);
+            }
+            tableFieldMap.put(StrKit.toCamelName(lis.toLowerCase()), map);
         }
         model.addAttribute("coreMap", tableFieldMap);
 
@@ -220,23 +228,32 @@ public class PersonWashInternController {
 
     @RequestMapping("/popLookupCheckDataDialog")
     public String popLookupCheckDataDialog(Model model, Integer id){
-
         // 1.
         PersonWashWaitCheckData check = personWashService.findCheckDataById(id, "*");
         model.addAttribute("check", check);
 
         // 2.
         List<String> list = BeanKit.getDynamicFieldsBySuffixIsNotNull(check, "Check");
-        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+//        List<CommonTableField> fieldList = commonService.findTableFieldInfo("URLCONTENT_CHECK_2017", list);
+        List<CommonTableField> fieldList = commonService.findTableFieldInfo(check.getClTarget(), list);
         Map<String, Map<String,Object>> tableFieldMap = new HashMap<String, Map<String,Object>>();
-        for(CommonTableField field : fieldList){
+        for(String lis  : list){
             Map<String,Object> map = new HashMap<String,Object>();
-            map.put("value", BeanKit.getValueByField(field.getName(),check));
-            map.put("reason", BeanKit.getValueByField(field.getName() + "_check".toUpperCase(),check));
-            map.put("property", StrKit.toCamelName(field.getName().toLowerCase()));
-            map.put("field", field.getName());
-            map.put("title", field.getTitle());
-            tableFieldMap.put(StrKit.toCamelName(field.getName().toLowerCase()), map);
+            map.put("value", BeanKit.getValueByField(lis,check));
+            map.put("reason", BeanKit.getValueByField(lis + "_check".toUpperCase(),check));
+            map.put("property", StrKit.toCamelName(lis.toLowerCase()));
+            map.put("field", lis);
+            int i = 0;
+            for(CommonTableField field  : fieldList){
+                if(lis.equals(field.getName())) {
+                    map.put("title", field.getTitle());
+                    i++;
+                }
+            }
+            if(i == 0 ){
+                map.put("title", lis);
+            }
+            tableFieldMap.put(StrKit.toCamelName(lis.toLowerCase()), map);
         }
         model.addAttribute("coreMap", tableFieldMap);
 
