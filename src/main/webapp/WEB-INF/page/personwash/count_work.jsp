@@ -23,9 +23,7 @@
 
     <style type="text/css">
 
-        #wcr div.bootstrap-select {
-            width: 700px;
-        }
+
         .fixed-table-header{
             background-color: #bee7f3;
         }
@@ -35,20 +33,35 @@
 </head>
 <body style="width:100%;margin:0 auto; padding: 5px;">
 
+<div id="top-div">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">条件过滤</h3>
+        </div>
+        <div class="panel-body" style="padding-bottom:0px;">
+            <form class="form-horizontal" role="form" id="form-of-filter">
+                <div class="form-group">
+                    <label for="multiInternFilter" class="col-sm-1 control-label">姓名</label>
+                    <div class="col-sm-3" id="wcr">
+                        <select id="multiInternFilter" class="form-control selectpicker" >
+                            <option value="">请选择...</option>　　
+                            <c:if test="${not empty internList}">
+                                <c:forEach items="${internList}" var="intern" varStatus="status">
+                                    <option value="${intern.loginName}">${intern.loginName}</option>
+                                </c:forEach>
+                            </c:if>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     <div style="background-color:#FFFFFF;">
         <div style="margin-bottom:0;">
             <div id="toolbar">
-                <label>姓名</label>
 
-                <div id="wcr">
-                    <select id="multiInternFilter" class="selectpicker" multiple data-live-search="true" data-live-search-placeholder="搜索" data-actions-box="true">
-                        　　<c:if test="${not empty internList}">
-                        <c:forEach items="${internList}" var="intern" varStatus="status">
-                            <option value="${intern.loginName}">${intern.loginName}</option>
-                        </c:forEach>
-                    </c:if>
-                    </select>
-                </div>
 
                 <!--
                 <div style="margin-top:10px;">
@@ -64,27 +77,6 @@
         </div>
 
     </div>
-
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true">
-        <div class="modal-dialog" style="width:750px;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h4 class="modal-title" id="myModalLabel2"></h4>
-                </div>
-                <div class="modal-body" style="max-height:400px;overflow-y:auto;">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" data-operate="" class="btn btn-primary" >保存</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
-    
 
     <script type="text/javascript" src="../../js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../../js/bootstrap/js/bootstrap.js"></script>
@@ -159,13 +151,10 @@ var tableInit = getDefaultDataGrid({
         var ass = $('#multiInternFilter').selectpicker('val');
 
         var realvalue = "";
-        if(ass && ass.length > 0){
-            $.each(ass, function (index, item) {
-                realvalue += "," + "'" + item + "'";
-            });
-            realvalue = realvalue.substring(1);
-        }
 
+        if(ass!=""){
+            realvalue = "'"+ass+"'";
+        }
         var temp = {
             limit: params.limit,
             page: Math.floor(params.offset / params.limit) + 1,
@@ -182,12 +171,12 @@ tableInit.Init();
             var ass = $('#multiInternFilter').selectpicker('val');
 
             var realvalue = "";
-            if(ass && ass.length > 0){
-                $.each(ass, function (index, item) {
-                    realvalue += "," + "'" + item + "'";
-                });
-                realvalue = realvalue.substring(1);
+
+            if(ass!=""){
+                realvalue = "'"+ass+"'";
             }
+
+
 
             $("#mainDg").bootstrapTable("refresh",{
                 query : {
