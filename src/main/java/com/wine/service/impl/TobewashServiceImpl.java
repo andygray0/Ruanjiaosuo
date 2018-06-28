@@ -13,6 +13,7 @@ import com.wine.service.TobewashService;
 import com.wine.utils.StrKit;
 import org.apache.poi.ss.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -335,9 +336,14 @@ public class TobewashServiceImpl implements TobewashService{
                     urlcon.setIrSreserved2(jsonArray.getJSONObject(i).getString("IR_SRESERVED2"));
                     urlcon.setIrSreserved3(jsonArray.getJSONObject(i).getString("IR_SRESERVED3"));
                     save(urlcon);
-                }catch (Exception e){
+                }catch (DataIntegrityViolationException e){
+                    e.getCause().getLocalizedMessage();
                     int p = i+2;
-                    throw new RuntimeException("第"+p+"行"+e.getMessage());
+                    throw new RuntimeException("第"+p+"行,"+e.getCause().getLocalizedMessage());
+                }
+                catch (Exception e){
+                    int p = i+2;
+                    throw new RuntimeException("第"+p+"行,"+e.getMessage());
                 }
             }
             map.put("success",true);
