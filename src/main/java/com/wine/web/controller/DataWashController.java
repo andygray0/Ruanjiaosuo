@@ -105,21 +105,10 @@ public class DataWashController {
         Iterator<String> iterator = item.keySet().iterator();
         int column = 0;
         while (iterator.hasNext()) {
-            if (columnname.equals("")){
                 String key = iterator.next(); // 得到keypr
                 Cell cell = row0.createCell(column++);
                 cell.setCellValue(toupper(key));
-            }
-            else{
-                String key = iterator.next(); // 得到keypr
-                String upperkey =toupper(key);
-                if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")){
-                    Cell cell = row0.createCell(column++);
-                    cell.setCellValue(upperkey);
-                }
-            }
         }
-
         for (int rowNum = 1; rowNum <= jo.size(); rowNum++) {
             Row row = sheet.createRow(rowNum);
             JSONObject item1 = jo.getJSONObject(rowNum-1);
@@ -127,25 +116,12 @@ public class DataWashController {
             column = 0;// 从第0列开始放
             while (iterator1.hasNext()) {
                 String key = iterator1.next(); // 得到key
-                if (columnname.equals("")){
-                    String value = item1.getString(key); // 得到key对应的value
-                    if(value!=null&&value.length()>32767){
-                        value = value.substring(0,32767);
-                    }
-                    Cell cell = row.createCell(column++);
-                    cell.setCellValue(value);
+                String value = item1.getString(key); // 得到key对应的value
+                if(value!=null&&value.length()>32767){
+                    value = value.substring(0,32767);
                 }
-                else{
-                    String upperkey =toupper(key);
-                    if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")) {
-                        String value = item1.getString(key); // 得到key对应的value
-                        if (value != null && value.length() > 32767) {
-                            value = value.substring(0, 32767);
-                        }
-                        Cell cell = row.createCell(column++);
-                        cell.setCellValue(value);
-                    }
-                }
+                Cell cell = row.createCell(column++);
+                cell.setCellValue(value);
 
             }
         }
@@ -167,7 +143,7 @@ public class DataWashController {
         File sss = new File(excelPath);
         System.out.println(sss.getAbsolutePath());
         washLogService.insert(washlog);
-        Map map = clean(dt,rules,washlog.getId());
+        Map map = clean(dt,rules,washlog.getId(),columnname);
         try{
             response.setHeader("Content-Disposition", "attachment;filename="
                     + new String((map.get("fn") + ".xlsx").getBytes(), "iso-8859-1"));
@@ -189,7 +165,7 @@ public class DataWashController {
         return result;
     }
 
-    private Map clean(String fn,List<String> rules,int id){
+    private Map clean(String fn,List<String> rules,int id,String columnname){
         WashLog washLog = washLogService.getByID(id);
         Map<String, Object> map = new HashMap<String, Object>();
         String msg = "";
@@ -200,18 +176,18 @@ public class DataWashController {
                 String cmd ="";
                 if(i==0) {
                     if(rule.getBz().endsWith("jar")){
-                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar "+rule.getBz()+" "+fn+" "+fn+"result";
+                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar "+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
                     }
                     else{
-                        cmd = "cmd /c f: && cd upload && python "+rule.getBz()+" "+fn+" "+fn+"result";
+                        cmd = "cmd /c f: && cd upload && python "+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
                     }
                 }
                 else{
                     if(rule.getBz().endsWith("jar")) {
-                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar " + rule.getBz() + " " + fn + "result " + fn + "result";
+                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar " + rule.getBz() + " " + fn + "result " + fn + "result " + columnname;
                     }
                     else{
-                        cmd = "cmd /c f: &&cd upload &&python "+rule.getBz()+" "+fn+ "result "+fn+"result";
+                        cmd = "cmd /c f: &&cd upload &&python "+rule.getBz()+" "+fn+ "result "+fn+"result " + columnname;
                     }
                 }
                 Process pro = Runtime.getRuntime().exec(cmd); //添加要进行的命令，"cmd  /c calc"中calc代表要执行打开计算器，如何设置关机请自己查找cmd命令
@@ -610,28 +586,16 @@ public class DataWashController {
         String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
         Workbook workbook = new XSSFWorkbook();//HSSFWorkbook();//WorkbookFactory.create(inputStream);
-        if(workbook != null) {
             Sheet sheet = workbook.createSheet();
             Row row0 = sheet.createRow(0);
             JSONObject item = jo.getJSONObject(0);
             Iterator<String> iterator = item.keySet().iterator();
             int column = 0;
             while (iterator.hasNext()) {
-                if (columnname.equals("")||columnname.equals("null")){
                     String key = iterator.next(); // 得到keypr
                     Cell cell = row0.createCell(column++);
                     cell.setCellValue(toupper(key));
-                }
-                else{
-                    String key = iterator.next(); // 得到keypr
-                    String upperkey =toupper(key);
-                    if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")){
-                        Cell cell = row0.createCell(column++);
-                        cell.setCellValue(upperkey);
-                    }
-                }
             }
-
             for (int rowNum = 1; rowNum <= jo.size(); rowNum++) {
                 Row row = sheet.createRow(rowNum);
                 JSONObject item1 = jo.getJSONObject(rowNum-1);
@@ -639,26 +603,12 @@ public class DataWashController {
                 column = 0;// 从第0列开始放
                 while (iterator1.hasNext()) {
                     String key = iterator1.next(); // 得到key
-                    if (columnname.equals("")){
                         String value = item1.getString(key); // 得到key对应的value
                         if(value!=null&&value.length()>32767){
                             value = value.substring(0,32767);
                         }
                         Cell cell = row.createCell(column++);
                         cell.setCellValue(value);
-                    }
-                    else{
-                        String upperkey =toupper(key);
-                        if(upperkey.equals("IR_SID")||upperkey.equals(columnname)||upperkey.equals("IR_URLNAME")||upperkey.equals("IR_URLTITLE")) {
-                            String value = item1.getString(key); // 得到key对应的value
-                            if (value != null && value.length() > 32767) {
-                                value = value.substring(0, 32767);
-                            }
-                            Cell cell = row.createCell(column++);
-                            cell.setCellValue(value);
-                        }
-                    }
-
                 }
             }
             try {
@@ -676,11 +626,10 @@ public class DataWashController {
                 washLogService.insert(washlog);
                 return map;
             }
-        }
         File sss = new File(excelPath);
         System.out.println(sss.getAbsolutePath());
         washLogService.insert(washlog);
-        Map map = clean(dt,rules,washlog.getId());
+        Map map = clean(dt,rules,washlog.getId(),columnname);
 
         try{
             insertresult( map.get("fn").toString(),totable,washlog.getId());

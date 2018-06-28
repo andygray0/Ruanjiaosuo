@@ -1141,18 +1141,6 @@
             $('#txt_wash_column').selectpicker('refresh');
         }
     });
-    $('#txt_wash_column').on('hide.bs.select',function () {
-        if($('#txt_wash_column').val()!=""){
-            $('#txt_totable').val($('#txt_fromtable').val());
-            $('#txt_totable').attr("disabled",true);
-            $('#txt_totable').selectpicker('refresh');
-        }
-        else{
-            $('#txt_totable').attr("disabled",false);
-            $('#txt_totable').val("");
-            $('#txt_totable').selectpicker('refresh');
-        }
-    });
 </script>
 </body>
 
