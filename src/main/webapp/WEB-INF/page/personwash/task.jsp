@@ -134,8 +134,16 @@
 
                         var ts = parseInt(row.taskStatus);
                         var ss = "";
+                        var feedback = row.virtualFeedbackTime;
+                        var timestamp = Date.parse(new Date());
                         switch(ts){
-                            case 0 : ss = '<span style="color:gray;">查询中</span>';break;
+                            case 0 : if (feedback<timestamp){
+                                ss = '<span style="color:darkred;">查询中 已超时</span>';
+                            }
+                            else{
+                                ss = '<span style="color:gray;">查询中</span>';
+                            }
+                            break;
                             case 1 : ss = '<span style="color:blueviolet;">待验证</span>';break;
                             case 2 : ss = '<span style="color:green;">验证通过</span>';break;
                             case 3 : ss = '<span style="color:red;">验证退回</span>';break;
