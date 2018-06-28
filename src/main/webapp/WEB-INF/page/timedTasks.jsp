@@ -184,7 +184,7 @@
                 <div class="form-group">
                     <label for="expression" class="col-sm-2 control-label">时间表达式</label>
                     <div class="col-sm-8">
-                        <input id="expression" name="expression" type="text" class="form-control" readonly>
+                        <input id="expression" name="expression" type="text" class="form-control" >
                     </div>
                 </div>
                 <div  class="form-group" style="display: none;">
@@ -718,9 +718,10 @@
                 var params = $("#addform").serialize();
                 $.post("/washtimer/modifyWashTimer.do", params, function (result) {
                     if (result.success) {
+                        $.post("/washtimer/stopWashTimer.do",{id:$('#taskid').val()});
                         bootbox.dialog({
                             title: '提示',
-                            message: '修改成功',
+                            message: '修改成功,重新启动生效',
                             buttons: {
                                 ok: {
                                     label: "确定",
