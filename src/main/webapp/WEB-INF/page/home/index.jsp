@@ -28,6 +28,10 @@
         iframe{
             border: none;
         }
+        .menu_bank{
+            box-sizing: border-box;
+            padding-top:35px;
+        }
     </style>
     <script type="text/javascript">
         <%
@@ -208,7 +212,8 @@
 
     $(document).ready(function() {
         // nav 动态获取剩余部分高度 适应不同分辨率滚动
-        var boxBottomHeight = $(window).height()-$(".menu_bank").height()-$(".box").height() - 50 ;
+
+        var boxBottomHeight = $(window).height()-$(".menu_bank").height()-$(".box").height()-35;
         $(".submenu").css("max-height",boxBottomHeight);
 
         $(".link:first-child").eq(0).click(function () {
