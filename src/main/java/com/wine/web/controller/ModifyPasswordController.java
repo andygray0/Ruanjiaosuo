@@ -39,18 +39,12 @@ public class ModifyPasswordController {
         user = userService.findById(user.getId());
         String dbPwd = user.getPassword();
 
-        oldPwd = new String(Base64Decoder.decode(oldPwd));
-        newPwd = new String(Base64Decoder.decode(newPwd));
-
-        String encryptOldPwd = ThreeDes.getInstance().encrypt(oldPwd);
-        String encryptNewPwd = ThreeDes.getInstance().encrypt(newPwd);
-
-        if(!dbPwd.equals(encryptOldPwd)){ // 旧密码错误
+        if(!dbPwd.equals(oldPwd)){ // 旧密码错误
             msg = "旧密码错误, 修改失败！";
             flag = false;
         } else { // 旧密码正确， 才能修改密码
             try{
-                userService.updateByOneField(user.getId(), "password", encryptNewPwd);
+                userService.updateByOneField(user.getId(), "password", newPwd);
             } catch (Exception e){
                 msg = "服务器异常, 修改失败！";
                 flag = false;
