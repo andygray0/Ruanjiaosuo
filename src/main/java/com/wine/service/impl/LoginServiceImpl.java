@@ -50,9 +50,7 @@ public class LoginServiceImpl implements LoginService {
 	public User doLogin(LoginForm loginForm,String ip) {
 		UserCriteria condition = new UserCriteria();
 		Criteria c = condition.createCriteria();
-		ThreeDes des = ThreeDes.getInstance();
-		String encrypt = des.encrypt(loginForm.getPassword());
-		c.andPasswordEqualTo(encrypt);
+		c.andPasswordEqualTo(loginForm.getPassword());
 		c.andLoginNameEqualTo(loginForm.getUsername());
 		List<User> users = null;
 		try {

@@ -22,6 +22,7 @@
     <script type="text/javascript" src="login_files/IEWarning.js"></script>
     <link href="./login_files/IEWarning.css" rel="stylesheet">
 <script src="login_files/WebResource.axd" type="text/javascript" sourcecontrol="EpointCommon"></script>
+    <script src="js/jquery.md5.js" type="text/javascript" ></script>
 <script type="text/javascript" defer="defer"> var $$ = function (id) { return (typeof (id) == 'object') ? id : document.getElementById(id); }
 var ErrorMsg = "CA类型不在支持范围内"; 
 var SignSn = ""; 
@@ -317,7 +318,7 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
                     }
                 }
 
-                var pwd = document.getElementById("password").value;
+                var pwd =  document.getElementById("password").value;
                 if (pwd == '') {
                     epoint.dialog.warn('系统不能完成您的登录请求，请输入密码!');
                     return false;
@@ -327,6 +328,11 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
                     type: 'POST',
                     dataType: 'script',
                     resetForm: false,
+                    data:{
+                        username:document.getElementById("username").value,
+                        password:pwd,
+                        validcode:document.getElementById("validcode").value
+                    },
                     success: function(msg) {
                         if (msg == '2') {
                             if(window.parent != null){
@@ -354,7 +360,7 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
                         validCodeImageChanged($("#validImg").get(0));
                     }
                 };
-                $('#Form1').ajaxSubmit(options);
+                $.ajax(options);
             }
             catch (ex) {
             }
