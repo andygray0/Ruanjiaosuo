@@ -47,8 +47,9 @@
 </head>
 
 <body>
-<h3 style="margin-left: 15px">定时任务</h3>
+
 <div class="panel-body" >
+    <h3 style="margin-left: 15px">定时任务</h3>
     <div class="panel panel-default">
         <div class="panel-heading">过滤条件</div>
         <div class="panel-body panel-body-head">
@@ -87,11 +88,11 @@
     </div>
     <table id="tb_departments" class="table table-hover  text-nowrap"></table>
 </div>
-<div id="myModal" class="modal fade"  role="dialog"   aria-hidden="true" >
+<div id="myModal" class="modal fade"  role="dialog"   aria-hidden="true" style="overflow-y:  hidden">
     <div class="modal-dialog modal-lg" style="width: 50%">
         <div class="modal-content">
             <legend  > &nbsp;&nbsp;修改定时任务</legend>
-            <form id="addform" class="form-horizontal" >
+            <form id="addform" class="form-horizontal" style="height:400px;overflow-y: scroll;overflow-x: hidden">
                 <div class="form-group">
                     <label for="taskname" class="col-sm-2 control-label">任务ID</label>
                     <div class="col-sm-8">
@@ -137,7 +138,7 @@
                 <div class="form-group">
                     <label for="querys" class="col-sm-2 control-label">查询条件</label>
                     <div class="col-sm-8">
-                        <input id="querys" name="querys" type="text" class="form-control">
+                        <input id="querys" name="querys" type="text" class="form-control" readonly>
                     </div>
                 </div>
                 <div class="form-group">
@@ -185,6 +186,13 @@
                     <label for="expression" class="col-sm-2 control-label">时间表达式</label>
                     <div class="col-sm-8">
                         <input id="expression" name="expression" type="text" class="form-control" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="expression" class="col-sm-2 control-label"></label>
+                    <div class="col-sm-8">
+                    <p>示例："0 */10 * * * ?" 每隔10分钟执行一次</p>
+                    <p> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"0 15 10 * * ?" 每天10:15运行</p>
                     </div>
                 </div>
                 <div  class="form-group" style="display: none;">
