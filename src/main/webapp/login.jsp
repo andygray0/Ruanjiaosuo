@@ -330,7 +330,7 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
                     resetForm: false,
                     data:{
                         username:document.getElementById("username").value,
-                        password:pwd,
+                        password:$.md5(pwd),
                         validcode:document.getElementById("validcode").value
                     },
                     success: function(msg) {
