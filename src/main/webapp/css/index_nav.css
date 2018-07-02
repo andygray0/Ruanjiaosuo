@@ -216,11 +216,22 @@ body {
 
 /*content_html*/
 
+/*.content_html{*/
+    /*width: 84%;*/
+    /*padding-top: 50px;*/
+    /*left: 16%;*/
+    /*height: 100%;*/
+    /*overflow-y: auto;*/
+    /*background: url("../img/menu/bg_content.jpg") repeat;*/
+/*}*/
 .content_html{
+    position: fixed;
+    top: 50px;
     width: 84%;
-    padding-top: 50px;
     left: 16%;
     height: 100%;
-    overflow-y: auto;
-    background: url("../img/menu/bg_content.jpg") repeat;
+}
+iframe{
+    width: 100%;
+    height: 100%;
 }

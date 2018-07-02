@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="../../../css/style.css" media="screen" type="text/css">
     <link href="../../../img/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <style>
-        iframe{
-            border: none;
-        }
+        /*iframe{*/
+            /*border: none;*/
+        /*}*/
         .menu_bank{
             box-sizing: border-box;
             padding-top:35px;
@@ -110,7 +110,10 @@
         </div>
     </div>
     <%--<div class="content_html"> </div>--%>
-    <iframe class="content_html" src="/admin/indexT.do"></iframe>
+    <div class="content_html">
+        <iframe class="content_html"  border="0" frameborder="0" src="/admin/indexT.do"></iframe>
+    </div>
+
 
 </div>
 
