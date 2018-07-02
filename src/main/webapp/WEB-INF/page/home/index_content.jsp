@@ -13,7 +13,7 @@
     <style>
         .echTable{
             height:250px;
-            max-width: 1200px;
+            max-width: 1100px;
         }
     </style>
 </head>

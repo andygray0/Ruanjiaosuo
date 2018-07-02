@@ -103,9 +103,8 @@ html,body{
 .yearData div{
     float: left;
     height: 30px;
-    width: 180px;
+    width: 15%;
     line-height: 30px;
-
 }
 .yearData .yData{
     font-size: 14px;
