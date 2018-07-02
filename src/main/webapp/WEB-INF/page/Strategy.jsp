@@ -100,7 +100,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" >策略配置</label>
                         <div class="col-sm-8">
-                            <input id="rules"  name="rules" type="text" class="input-xlarge">
+                            <input id="rules"  name="rules" type="text" style="width:200px">
                         </div>
                     </div>
                     <input type="text" id="ID" name="id" hidden />
