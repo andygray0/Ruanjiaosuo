@@ -57,6 +57,14 @@ public class UserController {
         return "ok";
     }
 
+    @RequestMapping("/modifyPass")
+    @ResponseBody
+    @OperateLogMethodLevelAnnotation(method = "删除选中的用户")
+    public String modifyPass(String ids){
+        userService.modifyPassByIds(ids);
+        return "ok";
+    }
+
     @RequestMapping("/validUniqueField")
     @ResponseBody
     public Map<String,Object> validUniqueField(String field, String value){

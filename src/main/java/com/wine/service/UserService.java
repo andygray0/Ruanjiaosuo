@@ -13,4 +13,7 @@ public interface UserService extends BaseService<User> {
     int countTotal(String loginName, Integer roleId);
 
     List<User> findByPage(Integer limit, Integer page, String id, String asc, String loginName, Integer roleId);
+
+    void modifyPassByIds(String ids);
+
 }

@@ -26,4 +26,15 @@ public class UserServiceImpl extends BaseServiceImpl<User,Dao> implements UserSe
         int startNo = (page - 1) * limit;
         return mapper.findByPage(limit, startNo, id, asc,loginName, roleId);
     }
+
+    @Override
+    public void modifyPassByIds(String ids){
+        String[] idlist = ids.split(",");
+        for(int i = 0; i<idlist.length;i++){
+            int id = Integer.parseInt(idlist[i]);
+            User user = mapper.getById(id);
+            user.setPassword("e10adc3949ba59abbe56e057f20f883e");
+            mapper.update(user);
+        }
+    }
 }

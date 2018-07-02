@@ -190,6 +190,9 @@
     <delete id="deleteBatchByIds" parameterType="String">
         DELETE FROM user WHERE id IN (${ids})
     </delete>
+    <select id="getById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+       SELECT *  FROM user WHERE id = #{id}
+    </select>
 
     <select id="findCountUniqueField" resultType="_int">
         SELECT count(1) AS c FROM user WHERE ${field} = #{value}

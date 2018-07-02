@@ -74,7 +74,9 @@
         <button id="btn_delete" type="button" class="btn btn-default">
             <span onclick="deleteUser();" class="glyphicon glyphicon-remove" aria-hidden="true">删除</span>
         </button>
-
+        <button id="btn_reset" type="button" class="btn btn-default">
+            <span onclick="resetPassword();" class="glyphicon glyphicon-edit" aria-hidden="true">重置密码</span>
+        </button>
     </div>
 
 
@@ -139,6 +141,9 @@
 
     <div id="deleteRoleConfirmTipDiv" style="display: none;">
         <h5 style="margin-left:100px;color:darkred;">确定要删除所选择的记录吗？</h5>
+    </div>
+    <div id="resetPasswordConfirmTipDiv" style="display: none;">
+        <h5 style="margin-left:100px;color:darkred;">确定要重置选择的记录的密码吗？</h5>
     </div>
 
     <div id="repeatFieldValueDiv" style="display: none;">
@@ -350,6 +355,7 @@
                 $.post("/user/saveUserWithRole.do",formDatas,function(data){
                     $('#myModal').modal('hide');
                     $('#userDg').bootstrapTable('refresh');
+                    bootbox.alert("用户新建成功，初始密码为123456")
                 });
             } else {
                 $('#'+ "mainForm").data('bootstrapValidator').validate();
@@ -357,9 +363,43 @@
 
         }
 
+        function resetPassword(){
+            var rows = $('#userDg').bootstrapTable('getSelections');
+            if(rows.length == 0){ // 一条也没选中
+                showModalDialog({
+                    title : '删除',
+                    id : 'myModal',
+                    div : 'deleteRoleTipDiv',
+                    btnHide : true
+                });
+            } else { // 提示是否要删除
+
+                var ids = "";
+                $.each(rows, function(index, item){
+                    ids += "," + item.id;
+                });
+                ids = ids.substring(1);
+
+                showModalDialog({
+                    title : '重置密码',
+                    id : 'myModal',
+                    div : 'resetPasswordConfirmTipDiv',
+                    operate : 'modify',
+                    btnText : '重置密码',
+                    btnClick : "modifyPass('"+ ids + "');"
+                });
+            }
+        }
 
         function deleteUsers(ids) {
             $.post("/user/deleteUsers.do",{ids : ids},function(data){
+                $('#myModal').modal('hide');
+                $('#userDg').bootstrapTable('refresh');
+            });
+        }
+
+        function modifyPass(ids) {
+            $.post("/user/modifyPass.do",{ids : ids},function(data){
                 $('#myModal').modal('hide');
                 $('#userDg').bootstrapTable('refresh');
             });
