@@ -111,7 +111,7 @@
     </div>
     <%--<div class="content_html"> </div>--%>
     <div class="content_html">
-        <iframe class="content_html"  border="0" frameborder="0" src="/admin/indexT.do"></iframe>
+        <iframe class="content_load"  border="0" frameborder="0" src="/admin/indexT.do"></iframe>
     </div>
 
 
@@ -221,13 +221,13 @@
 
         $(".link:first-child").eq(0).click(function () {
             if($(this).text() === '首页' ){
-                $('.content_html').attr("src",'/admin/indexT.do');
+                $('.content_load').attr("src",'/admin/indexT.do');
             }
         });
 
 
         $(".urlLoad").click(function () {
-            $(".content_html").attr("src",$(this).data('url'));
+            $(".content_load").attr("src",$(this).data('url'));
         });
         $(".dataReport").click(function () {
             window.open($(this).data('url'));
@@ -235,7 +235,7 @@
 
         var xxx = "<%=request.getParameter("ref")%>"
         if(xxx  == "personwash"){
-            $('.content_html').attr("src",'/personWashAdmin/toIndex.do');
+            $('.content_load').attr("src",'/personWashAdmin/toIndex.do');
         }
     });
 
