@@ -395,6 +395,7 @@
             $.post("/user/deleteUsers.do",{ids : ids},function(data){
                 $('#myModal').modal('hide');
                 $('#userDg').bootstrapTable('refresh');
+                bootbox.alert("删除成功！");
             });
         }
 
@@ -402,6 +403,7 @@
             $.post("/user/modifyPass.do",{ids : ids},function(data){
                 $('#myModal').modal('hide');
                 $('#userDg').bootstrapTable('refresh');
+                bootbox.alert("密码重置为“123456”！");
             });
         }
 
