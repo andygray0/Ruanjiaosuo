@@ -8,10 +8,7 @@ import com.wine.model.PersonWashWaitCheckData;
 import com.wine.model3.TobewashWithBLOBs;
 import com.wine.service.TobewashService;
 import com.wine.service.UrlconService;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,6 +110,12 @@ public class ModifyController {
                     if ("irContentStr".equals(key) || "irUrlcontentStr".equals(key) || "irUrlbodyStr".equals(key)) {
                         key = key.replaceAll("Str", "");
                     }
+                    if("irLasttime".equals(key) || "irLoadtime".equals(key) || "irUrltime".equals(key)){
+                        sheet.setColumnWidth(column, 21 * 256);
+                    }
+                     if ("irUrldate".equals(key)){
+                        sheet.setColumnWidth(column, 11 * 256);
+                    }
                     Cell cell = row0.createCell(column++);
                     cell.setCellValue(toupper(key));
                 }
@@ -127,13 +130,32 @@ public class ModifyController {
                     String key = iterator1.next(); // 得到key
                     if(list1.contains(key)){
                     Cell cell = row.createCell(column++);
+                    CellStyle cellStyle = workbook.createCellStyle();
+                    CreationHelper creationHelper = workbook.getCreationHelper();
                     String cellValue = item1.getString(key);
                     if("irContentStr".equals(key) ||  "irUrlcontentStr".equals(key)  || "irUrlbodyStr".equals(key) ){
                         if(cellValue != null && cellValue.length() > 32767){
                             cellValue = cellValue.substring(0, 32767);
                         }
                     }
-                    cell.setCellValue(cellValue);}
+                    if("irLasttime".equals(key) || "irLoadtime".equals(key) || "irUrltime".equals(key)){
+                        cellStyle.setDataFormat(
+                                creationHelper.createDataFormat().getFormat("yyyy/MM/dd  hh:mm:ss")
+                        );
+                        cell.setCellValue(new Date(Long.parseLong(cellValue)));
+                        cell.setCellStyle(cellStyle);
+                    }
+                    else if ("irUrldate".equals(key)){
+                            cellStyle.setDataFormat(
+                                    creationHelper.createDataFormat().getFormat("yyyy/MM/dd")
+                            );
+                        cell.setCellValue(new Date(Long.parseLong(cellValue)));
+                        cell.setCellStyle(cellStyle);
+                        }
+                        else{
+                        cell.setCellValue(cellValue);
+                    }
+                    }
                 }
             }
             try {
