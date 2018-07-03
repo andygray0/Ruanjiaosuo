@@ -689,7 +689,7 @@
                     title: 'IR_URLNAME',
                     width: 80,
                     formatter: function (value) {
-                        return "<a href=\"" +value+"\">"+value+"</a>";
+                        return "<a href=\"" +value+"\" target='_blank' >"+value+"</a>";
                     }
                 },{
                     field: 'irSid',
