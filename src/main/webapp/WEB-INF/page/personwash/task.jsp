@@ -129,6 +129,7 @@
 
             var columns = [
                 {
+                    title:"任务列表",
                     field: "taskName",
                     formatter: function (value,row,index) {
 

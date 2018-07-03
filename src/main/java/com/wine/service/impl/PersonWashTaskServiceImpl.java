@@ -30,6 +30,8 @@ public class PersonWashTaskServiceImpl implements PersonWashTaskService {
 
     @Override
     public List<PersonWashTask> findByPage(ParamPage<PersonWashTask> page, PersonWashTask task) {
+        page.setOrder("CREATE_TIME");
+        page.setDirection("DESC");
         return personWashTaskMapper.findByPage(page, task);
     }
 
