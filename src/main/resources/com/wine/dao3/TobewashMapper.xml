@@ -872,9 +872,6 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
     update urlcontent
     <set >
-      <if test="irSid != null" >
-        IR_SID = #{irSid,jdbcType=INTEGER},
-      </if>
       <if test="irStartid != null" >
         IR_STARTID = #{irStartid,jdbcType=INTEGER},
       </if>
@@ -1028,9 +1025,14 @@
       <if test="irUrlbody != null" >
         IR_URLBODY = #{irUrlbody,jdbcType=LONGVARBINARY},
       </if>
+    <if test="irHkey != null" >
+      IIR_HKEY = #{irHkey,jdbcType=VARCHAR},
+    </if>
+    <if test="irBbsnum != null" >
+      IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER},
+    </if>
     </set>
-    where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
-      and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
+    where IR_SID = #{irSid,jdbcType=INTEGER}
   </update>
   <update id="modify" parameterType="String" >
     update urlcontent

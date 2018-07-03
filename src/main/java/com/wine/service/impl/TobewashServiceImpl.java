@@ -411,7 +411,7 @@ public class TobewashServiceImpl implements TobewashService{
             int count =0;
             for(int h = 0; h<headerRow.getLastCellNum();h++){
                 String key = getHeaderCellValue(headerRow,h,headType);
-                if(key=="IR_SID"){
+                if(key.equals("IR_SID")){
                     count ++;
                 }
             }

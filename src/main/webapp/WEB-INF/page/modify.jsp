@@ -1289,6 +1289,7 @@
                 $.post("/modify/insertexcel.do?fn="+fname+"&type="+type, function(data) {//type=0 新增导入type=1覆盖导入
                     if(data.success==true){
                         bootbox.alert("导入成功");
+                        $('#tb_departments').bootstrapTable('refresh');
                     }
                     else{
                         bootbox.alert("导入失败,"+data.msg.toString());
