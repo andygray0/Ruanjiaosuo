@@ -355,7 +355,7 @@
                 $.post("/user/saveUserWithRole.do",formDatas,function(data){
                     $('#myModal').modal('hide');
                     $('#userDg').bootstrapTable('refresh');
-                    bootbox.alert("用户新建成功，初始密码为123456")
+                    bootbox.alert("用户新建成功，初始密码为123456，首次登陆请修改初始密码！")
                 });
             } else {
                 $('#'+ "mainForm").data('bootstrapValidator').validate();
