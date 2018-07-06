@@ -398,6 +398,7 @@
             callback: function(result) {
                 if(result) {
                     if(rows){
+                        var count = 0;
                         for(var i = 0;i < rows.length;i++){
                             $.ajax({
                                 url:"/datawashRule/deleterule.do",
@@ -409,10 +410,13 @@
                                         bootbox.alert("删除失败!ID="+result.id+"。"+result.msg);
                                     }else{
                                         $('#tb_departments').bootstrapTable('refresh');
-                                        bootbox.alert("删除成功");
+                                        count++;
                                     }
                                 }
                             })
+                        }
+                        if(count == rows.length){
+                            bootbox.alert("删除成功！");
                         }
                     }
                 }
@@ -473,12 +477,16 @@
     uploader.bind('UploadProgress',
         function(uploader, file) {
             $('#'+file.id).html("   "+file.percent + "%");
+            if(file.percent == 100){
+                $('#'+file.id).html("正在处理...");
+            }
         }
     );
     //单个文件上完成后事件
     uploader.bind('FileUploaded',
         function(up, file,result) {
             $('#bz').val($.parseJSON(result.response));
+            $('#'+file.id).html("已完成");
         }
     );
 
@@ -528,12 +536,16 @@
     uploader2.bind('UploadProgress',
         function(uploader, file) {
             $('#'+file.id).html("   "+file.percent + "%");
+            if(file.percent == 100){
+                $('#'+file.id).html("正在处理...");
+            }
         }
     );
     //单个文件上完成后事件
     uploader2.bind('FileUploaded',
         function(up, file,result) {
             $('#bz2').val($.parseJSON(result.response));
+            $('#'+file.id).html("已完成");
         }
     );
 
@@ -549,6 +561,10 @@
     });
 
     var changerule = function () {
+        if($('#bz2').val()==""||$('#bz2').val()==undefined){
+            bootbox.alert('请等待文件上传完成！');
+            return false;
+        }
         var params = $("#addform2").serialize();
         $.post("/datawashRule/changejar.do",params,function(result){
             if(result){
@@ -600,13 +616,6 @@
                             message: '文本框必须输入'
                         }
                     }
-                },
-                filelist: {
-                    validators: {
-                        notEmpty: {//检测非空,radio也可用
-                            message: '文本框必须输入'
-                        }
-                    }
                 }
             }
         });
@@ -617,6 +626,9 @@
                 var content = $("#filelist").html();
                 if (content == null || content.length == 0) {
                     bootbox.alert("请添加文件");
+                }
+                else if($('#bz').val() == undefined||$('#bz').val() == ""){
+                    bootbox.alert("请等待文件上传完成！");
                 }
                 else {
                     var params = $("#addform").serialize();
