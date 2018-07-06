@@ -41,7 +41,7 @@ public class MyJob {
         formparams.add(new BasicNameValuePair("taskname", washTimer.getName()));
         formparams.add(new BasicNameValuePair("columnname", washTimer.getReserved2()));
         UrlEncodedFormEntity entity = new UrlEncodedFormEntity(formparams, Consts.UTF_8);
-        HttpPost httppost = new HttpPost("http://localhost:9999/datawash/washAndApprove.do");
+        HttpPost httppost = new HttpPost("http://localhost/datawash/washAndApprove.do");
         httppost.setEntity(entity);
         System.out.println(httppost.getURI());
         org.apache.http.client.HttpClient httpClient = new DefaultHttpClient();
