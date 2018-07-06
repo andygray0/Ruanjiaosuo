@@ -579,7 +579,10 @@
                         buttons: {
                             ok: {
                                 label: "确定",
-                                className: 'btn-info'
+                                className: 'btn-info',
+                                callback:function(){
+                                    window.location.href = '/washtimer/index.do';
+                                }
                             }
                         }
                     });
@@ -591,6 +594,7 @@
                     }
                     $('#myModal').modal('hide');
                     $('#myModal').removeData("bs.modal");
+
                 }else{
                     bootbox.alert("新增失败!");
                 }
