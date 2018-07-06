@@ -166,7 +166,7 @@
     <script type="text/javascript" src="../../js/bootstrapValidator/zh_CN.min.js"></script>
     <script type="text/javascript" src="../../js/zTree/jquery.ztree.all.min.js"></script>
     <script type="text/javascript" src="../../js/common/common.js"></script>
-
+    <script type="text/javascript" src="../js/bootbox.min.js"></script>
 
     <script type="text/javascript">
 
