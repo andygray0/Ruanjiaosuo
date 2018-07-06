@@ -23,7 +23,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` IS NOT NULL
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 		and `radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` IN (2016,2017)
 	)
@@ -53,7 +53,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` IS NOT NULL
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 		and `radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` IN (2016,2017)
 	)
@@ -95,7 +95,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` IS NOT NULL
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 	)
 GROUP BY
@@ -118,7 +118,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` IS NOT NULL
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 	)
 GROUP BY
@@ -179,7 +179,7 @@ FROM
 					`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 				)
 				AND (
-					`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+					`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 				)
 			)
 		GROUP BY
@@ -234,7 +234,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` <> ''
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 	)
 GROUP BY
@@ -272,7 +272,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_ORG` <> ''
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5)
 		)
 	)
 GROUP BY
@@ -2517,6 +2517,16 @@ eGm@aQ7uKm9@<C.5`=?%4=Lbh"6OJ^Bkc]A(_1L/^g+Ln@(nKU#q@ssoORgG#]A%OR[1/8SE"$
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
+<DefinitionMap key="column">
+<OneValueCDDefinition seriesName="年份" valueName="中标企业数量" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+<CategoryName value="中标区域"/>
+</OneValueCDDefinition>
+</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -2527,16 +2537,6 @@ eGm@aQ7uKm9@<C.5`=?%4=Lbh"6OJ^Bkc]A(_1L/^g+Ln@(nKU#q@ssoORgG#]A%OR[1/8SE"$
 <CategoryName value="area"/>
 <ChartSummaryColumn name="grow" function="com.fr.data.util.function.NoneFunction" customName="增长率"/>
 </MoreNameCDDefinition>
-</DefinitionMap>
-<DefinitionMap key="column">
-<OneValueCDDefinition seriesName="年份" valueName="中标企业数量" function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds2]]></Name>
-</TableData>
-<CategoryName value="中标区域"/>
-</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>

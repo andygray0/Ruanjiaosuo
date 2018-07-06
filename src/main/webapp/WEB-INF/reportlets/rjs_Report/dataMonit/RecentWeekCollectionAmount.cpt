@@ -111,14 +111,14 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[952500,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,518160,1066800,1127760,723900]]></RowHeight>
+<![CDATA[952500,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,723900,518160,1257300,1127760,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
 <![CDATA[4648200,6438900,4648200,6438900,2743200,2743200,2743200,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <FloatElementList>
 <com.fr.report.cell.FloatElement>
 <FloatElementName name="Float26"/>
 <PrivilegeControl/>
-<Location leftDistance="0" topDistance="975360" width="27492960" height="12557760"/>
+<Location leftDistance="0" topDistance="990600" width="27492960" height="12557760"/>
 <O t="CC">
 <LayoutAttr selectedIndex="0"/>
 <ChangeAttr enable="false" changeType="button" timeInterval="5" buttonColor="-8421505" carouselColor="-8421505" showArrow="true">
@@ -168,7 +168,7 @@
 </Title>
 <Attr4VanChart useHtml="false" floating="false" x="0.0" y="0.0" limitSize="false" maxHeight="15.0"/>
 </Title4VanChart>
-<Plot class="com.fr.plugin.chart.line.VanChartLinePlot">
+<Plot class="com.fr.plugin.chart.area.VanChartAreaPlot">
 <VanChartPlotVersion version="20170715"/>
 <GI>
 <AttrBackground>
@@ -258,45 +258,14 @@
 </GI>
 </AttrTooltip>
 </Attr>
-<Attr class="com.fr.plugin.chart.base.VanChartAttrTrendLine">
-<TrendLine>
-<Attr trendLineName="" trendLineType="exponential" prePeriod="0" afterPeriod="0"/>
-<LineStyleInfo>
-<AttrAlpha>
-<Attr alpha="1.0"/>
-</AttrAlpha>
-<AttrColor>
-<Attr/>
-</AttrColor>
-<AttrLineStyle>
-<newAttr lineStyle="0"/>
-</AttrLineStyle>
-<AttrBorder>
-<Attr lineStyle="0" isRoundBorder="false" roundRadius="0"/>
-<newColor borderColor="-16777216"/>
-</AttrBorder>
-</LineStyleInfo>
-</TrendLine>
-</Attr>
-<Attr class="com.fr.plugin.chart.base.VanChartAttrLine">
-<VanAttrLine>
-<Attr lineWidth="1" lineStyle="0" nullValueBreak="true"/>
-</VanAttrLine>
-</Attr>
-<Attr class="com.fr.plugin.chart.base.VanChartAttrMarker">
-<VanAttrMarker>
-<Attr isCommon="true" markerType="RoundMarker" radius="2.5" width="30.0" height="30.0"/>
-<Background name="NullBackground"/>
-</VanAttrMarker>
-</Attr>
 <Attr class="com.fr.plugin.chart.base.AttrLabel">
 <AttrLabel>
 <labelAttr enable="true"/>
 <labelDetail class="com.fr.plugin.chart.base.AttrLabelDetail">
-<Attr showLine="false" autoAdjust="true" position="3" isCustom="false"/>
+<Attr showLine="false" autoAdjust="false" position="1" isCustom="true"/>
 <TextAttr>
 <Attr alignText="0">
-<FRFont name="宋体" style="0" size="72"/>
+<FRFont name="微软雅黑 Light" style="0" size="72"/>
 </Attr>
 </TextAttr>
 <AttrToolTipContent>
@@ -339,6 +308,42 @@
 </AttrToolTipContent>
 </labelDetail>
 </AttrLabel>
+</Attr>
+<Attr class="com.fr.plugin.chart.base.VanChartAttrTrendLine">
+<TrendLine>
+<Attr trendLineName="" trendLineType="exponential" prePeriod="0" afterPeriod="0"/>
+<LineStyleInfo>
+<AttrAlpha>
+<Attr alpha="1.0"/>
+</AttrAlpha>
+<AttrColor>
+<Attr/>
+</AttrColor>
+<AttrLineStyle>
+<newAttr lineStyle="0"/>
+</AttrLineStyle>
+<AttrBorder>
+<Attr lineStyle="0" isRoundBorder="false" roundRadius="0"/>
+<newColor borderColor="-16777216"/>
+</AttrBorder>
+</LineStyleInfo>
+</TrendLine>
+</Attr>
+<Attr class="com.fr.plugin.chart.base.VanChartAttrLine">
+<VanAttrLine>
+<Attr lineWidth="1" lineStyle="2" nullValueBreak="true"/>
+</VanAttrLine>
+</Attr>
+<Attr class="com.fr.plugin.chart.base.VanChartAttrMarker">
+<VanAttrMarker>
+<Attr isCommon="true" markerType="RoundFilledMarker" radius="3.0" width="30.0" height="30.0"/>
+<Background name="NullBackground"/>
+</VanAttrMarker>
+</Attr>
+<Attr class="com.fr.plugin.chart.base.AttrAreaSeriesFillColorBackground">
+<AttrAreaSeriesFillColorBackground>
+<Attr alpha="0.15"/>
+</AttrAreaSeriesFillColorBackground>
 </Attr>
 </AttrList>
 </ConditionAttr>
@@ -498,7 +503,7 @@
 </TextAttr>
 <TitleVisible value="true" position="0"/>
 </Title>
-<newAxisAttr isShowAxisLabel="true"/>
+<newAxisAttr isShowAxisLabel="false"/>
 <AxisLineStyle AxisStyle="0" MainGridStyle="1"/>
 <newLineColor lineColor="-5197648"/>
 <AxisPosition value="2"/>
@@ -506,7 +511,7 @@
 <ArrowShow arrowShow="false"/>
 <TextAttr>
 <Attr alignText="0">
-<FRFont name="微软雅黑 Light" style="0" size="80" foreground="-10066330"/>
+<FRFont name="Verdana" style="0" size="88" foreground="-10066330"/>
 </Attr>
 </TextAttr>
 <AxisLabelCount value="=1"/>

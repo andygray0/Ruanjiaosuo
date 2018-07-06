@@ -1354,18 +1354,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds1]]></Name>
-</TableData>
-<CategoryName value="月份"/>
-<ChartSummaryColumn name="tb1中标单位" function="com.fr.data.util.function.NoneFunction" customName="tb1中标单位"/>
-<ChartSummaryColumn name="tb2中标单位" function="com.fr.data.util.function.NoneFunction" customName="tb2中标单位"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -1375,6 +1363,18 @@ FROM
 </TableData>
 <CategoryName value="月份"/>
 <ChartSummaryColumn name="中标单位同比" function="com.fr.data.util.function.NoneFunction" customName="中标单位同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds1]]></Name>
+</TableData>
+<CategoryName value="月份"/>
+<ChartSummaryColumn name="tb1中标单位" function="com.fr.data.util.function.NoneFunction" customName="去年中标单位"/>
+<ChartSummaryColumn name="tb2中标单位" function="com.fr.data.util.function.NoneFunction" customName="今年中标单位"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
@@ -2545,6 +2545,17 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
+<DefinitionMap key="line">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+<CategoryName value="月份"/>
+<ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
 <DefinitionMap key="column">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -2555,17 +2566,6 @@ FROM
 <CategoryName value="月份"/>
 <ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb1交易金额"/>
 <ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb2交易金额"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
-<DefinitionMap key="line">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds2]]></Name>
-</TableData>
-<CategoryName value="月份"/>
-<ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>

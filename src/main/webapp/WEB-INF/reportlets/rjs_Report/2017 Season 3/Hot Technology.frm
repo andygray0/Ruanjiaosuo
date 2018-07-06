@@ -71,7 +71,7 @@ FROM
 					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 				)
 				AND (
-					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 				)
 				AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_NET_THINGS` <> ''
 			)
@@ -106,7 +106,7 @@ LEFT JOIN (
 				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 			)
 			AND (
-				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 			)
 			AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_NET_THINGS` <> ''
 		)
@@ -153,7 +153,7 @@ FROM
 					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 				)
 				AND (
-					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 				)
 				AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_CLOUD_COMPUTING` <> ''
 			)
@@ -188,7 +188,7 @@ LEFT JOIN (
 				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 			)
 			AND (
-				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 			)
 			AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_CLOUD_COMPUTING` <> ''
 		)
@@ -235,7 +235,7 @@ FROM
 					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 				)
 				AND (
-					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 				)
 				AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_INFO_SAFETY` <> ''
 			)
@@ -270,7 +270,7 @@ LEFT JOIN (
 				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 			)
 			AND (
-				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 			)
 			AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_INFO_SAFETY` <> ''
 		)
@@ -324,7 +324,7 @@ WHERE
 			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 		)
 		AND (
-			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6,7,8,9)
+			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6,7,8)
 		)
 		AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_NET_THINGS` <> ''
 	)
@@ -368,7 +368,7 @@ WHERE
 			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 		)
 		AND (
-			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 		)
 		AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_CLOUD_COMPUTING` <> ''
 	)
@@ -412,7 +412,7 @@ WHERE
 			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 		)
 		AND (
-			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+			radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 		)
 		AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_INFO_SAFETY` <> ''
 	)
@@ -459,7 +459,7 @@ FROM
 					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 				)
 				AND (
-					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+					radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 				)
 				AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_BIG_DATA` <> ''
 			)
@@ -494,7 +494,7 @@ LEFT JOIN (
 				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 			)
 			AND (
-				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8, 9)
+				radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3, 4, 5, 6, 7, 8)
 			)
 			AND radar2.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`CL_BIG_DATA` <> ''
 		)
@@ -588,8 +588,8 @@ LEFT JOIN (
 <Alpha alpha="1.0"/>
 </Border>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
-<WestAttr size="30"/>
-<West class="com.fr.form.ui.container.cardlayout.WCardTitleLayout">
+<NorthAttr size="30"/>
+<North class="com.fr.form.ui.container.cardlayout.WCardTitleLayout">
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -605,14 +605,14 @@ LEFT JOIN (
 <Alpha alpha="1.0"/>
 </Border>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
-<SouthAttr/>
-<South class="com.fr.form.ui.CardAddButton">
+<EastAttr size="25"/>
+<East class="com.fr.form.ui.CardAddButton">
 <WidgetName name="Add"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
 <AddTagAttr layoutName="tabpane0"/>
-</South>
+</East>
 <Center class="com.fr.form.ui.container.cardlayout.WCardTagLayout">
 <WidgetName name="tabpane0"/>
 <WidgetAttr description="">
@@ -629,7 +629,7 @@ LEFT JOIN (
 </WidgetTitle>
 <Alpha alpha="1.0"/>
 </Border>
-<LCAttr vgap="1" hgap="0" compInterval="0"/>
+<LCAttr vgap="0" hgap="1" compInterval="0"/>
 <Widget class="com.fr.form.ui.CardSwitchButton">
 <WidgetName name="6cdf1fda-2764-4f36-b483-380efd9d5762"/>
 <WidgetAttr description="">
@@ -637,6 +637,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[大数据]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -646,6 +650,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[物联网]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="1"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -655,6 +663,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[云计算]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="2"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -664,17 +676,21 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[信息安全]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="3"/>
 </Widget>
-<DisplayPosition type="1"/>
+<DisplayPosition type="0"/>
 <FLAttr alignment="0"/>
 <ColumnWidth defaultValue="80">
 <![CDATA[200,80,80,80,80,80,80,80,80,80,80]]></ColumnWidth>
-<TextDirection type="1"/>
+<TextDirection type="0"/>
 <TemplateStyle class="com.fr.general.cardtag.DefaultTemplateStyle"/>
 </Center>
 <CardTitleLayout layoutName="cardlayout0"/>
-</West>
+</North>
 <Center class="com.fr.form.ui.container.WCardLayout">
 <WidgetName name="cardlayout0"/>
 <WidgetAttr description="">
@@ -686,7 +702,7 @@ LEFT JOIN (
 <WidgetTitle>
 <O>
 <![CDATA[title]]></O>
-<FRFont name="微软雅黑 Light" style="0" size="96" foreground="-8355712"/>
+<FRFont name="微软雅黑 Light" style="0" size="96" foreground="-4144960"/>
 <Position pos="0"/>
 <Background name="ColorBackground"/>
 </WidgetTitle>
@@ -1017,7 +1033,7 @@ Vd<,n!ehp\t~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="502" y="0" width="428" height="294"/>
+<BoundsAttr x="501" y="0" width="429" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -1061,7 +1077,7 @@ Vd<,n!ehp\t~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="502" y="0" width="428" height="294"/>
+<BoundsAttr x="501" y="0" width="429" height="293"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -1338,7 +1354,7 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="930" height="347"/>
+<BoundsAttr x="0" y="0" width="930" height="362"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -1382,7 +1398,7 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="294" width="930" height="347"/>
+<BoundsAttr x="0" y="293" width="930" height="362"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -1894,11 +1910,11 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -1906,11 +1922,11 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -1920,7 +1936,7 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="502" height="294"/>
+<BoundsAttr x="0" y="0" width="501" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -2438,7 +2454,7 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="502" height="294"/>
+<BoundsAttr x="0" y="0" width="501" height="293"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -2448,9 +2464,14 @@ rkK5-qof:'\AE<pnEfQb[%9N0`9sRTn+Qcg1r=>[1jeAJjE(2_dm;Ke2dTkeg,H4RmJ\1~
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="930" height="641"/>
+<Size width="930" height="655"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="0" tabNameIndex="0"/>
+<tabFitAttr index="0" tabNameIndex="0">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab1"/>
@@ -2793,7 +2814,7 @@ PIW-FK86q+BLm5`KqR@\O26[t\VEqtlg7B>;D?N~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="501" y="0" width="429" height="294"/>
+<BoundsAttr x="500" y="0" width="430" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -2837,7 +2858,7 @@ PIW-FK86q+BLm5`KqR@\O26[t\VEqtlg7B>;D?N~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="501" y="0" width="429" height="294"/>
+<BoundsAttr x="500" y="0" width="430" height="293"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -3105,7 +3126,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="930" height="347"/>
+<BoundsAttr x="0" y="0" width="930" height="362"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -3149,7 +3170,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="294" width="930" height="347"/>
+<BoundsAttr x="0" y="293" width="930" height="362"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -3661,11 +3682,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -3673,11 +3694,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -3687,7 +3708,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="501" height="294"/>
+<BoundsAttr x="0" y="0" width="500" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -4205,7 +4226,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="501" height="294"/>
+<BoundsAttr x="0" y="0" width="500" height="293"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -4215,9 +4236,14 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="930" height="641"/>
+<Size width="930" height="655"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="1" tabNameIndex="1"/>
+<tabFitAttr index="1" tabNameIndex="1">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab2"/>
@@ -4555,7 +4581,7 @@ R4"<n>`,qsW]ATM-0]APS1rHdSeq(Eb9EUeha$N~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="501" y="0" width="429" height="294"/>
+<BoundsAttr x="500" y="0" width="430" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -4599,7 +4625,7 @@ R4"<n>`,qsW]ATM-0]APS1rHdSeq(Eb9EUeha$N~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="501" y="0" width="429" height="294"/>
+<BoundsAttr x="500" y="0" width="430" height="293"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -4873,7 +4899,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="930" height="347"/>
+<BoundsAttr x="0" y="0" width="930" height="362"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -4917,7 +4943,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="294" width="930" height="347"/>
+<BoundsAttr x="0" y="293" width="930" height="362"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -5429,11 +5455,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -5441,11 +5467,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -5455,7 +5481,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="501" height="294"/>
+<BoundsAttr x="0" y="0" width="500" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -5973,7 +5999,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="501" height="294"/>
+<BoundsAttr x="0" y="0" width="500" height="293"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -5983,9 +6009,14 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="930" height="641"/>
+<Size width="930" height="655"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="2" tabNameIndex="2"/>
+<tabFitAttr index="2" tabNameIndex="2">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab3"/>
@@ -6299,7 +6330,7 @@ hZ%jF!rfk1i[ZYrbZXMQrrN~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="502" y="0" width="428" height="294"/>
+<BoundsAttr x="501" y="0" width="429" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -6343,7 +6374,7 @@ hZ%jF!rfk1i[ZYrbZXMQrrN~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="502" y="0" width="428" height="294"/>
+<BoundsAttr x="501" y="0" width="429" height="293"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -6617,7 +6648,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="930" height="347"/>
+<BoundsAttr x="0" y="0" width="930" height="362"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -6661,7 +6692,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="294" width="930" height="347"/>
+<BoundsAttr x="0" y="293" width="930" height="362"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -7173,11 +7204,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -7185,11 +7216,11 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -7199,7 +7230,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="502" height="294"/>
+<BoundsAttr x="0" y="0" width="501" height="293"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -7717,7 +7748,7 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="502" height="294"/>
+<BoundsAttr x="0" y="0" width="501" height="293"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -7727,14 +7758,19 @@ _I1>+u8=Q9bs4=e(BITBc_]AUMHRYHlW-#s$+@+_aqd_D7=ugmHs6J#l$4E%uXaUr9CSKruV
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="930" height="641"/>
+<Size width="930" height="655"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="3" tabNameIndex="3"/>
+<tabFitAttr index="3" tabNameIndex="3">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <carouselAttr isCarousel="false" carouselInterval="1.0"/>
 </Center>
 </InnerWidget>
-<BoundsAttr x="3" y="39" width="1146" height="770"/>
+<BoundsAttr x="3" y="22" width="1146" height="787"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.FreeButton">

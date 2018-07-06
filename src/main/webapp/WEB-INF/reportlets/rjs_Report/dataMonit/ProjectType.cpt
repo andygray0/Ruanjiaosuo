@@ -1662,18 +1662,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds4]]></Name>
-</TableData>
-<CategoryName value="一级项目分类"/>
-<ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb1交易金额"/>
-<ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb2交易金额"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -1683,6 +1671,18 @@ FROM
 </TableData>
 <CategoryName value="一级项目分类"/>
 <ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds4]]></Name>
+</TableData>
+<CategoryName value="一级项目分类"/>
+<ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="去年交易金额"/>
+<ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="今年交易金额"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
@@ -2916,18 +2916,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds3]]></Name>
-</TableData>
-<CategoryName value="一级项目分类"/>
-<ChartSummaryColumn name="tb1项目数量" function="com.fr.data.util.function.NoneFunction" customName="tb1项目数量"/>
-<ChartSummaryColumn name="tb2项目数量" function="com.fr.data.util.function.NoneFunction" customName="tb2项目数量"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -2937,6 +2925,18 @@ FROM
 </TableData>
 <CategoryName value="一级项目分类"/>
 <ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds3]]></Name>
+</TableData>
+<CategoryName value="一级项目分类"/>
+<ChartSummaryColumn name="tb1项目数量" function="com.fr.data.util.function.NoneFunction" customName="去年项目数量"/>
+<ChartSummaryColumn name="tb2项目数量" function="com.fr.data.util.function.NoneFunction" customName="今年项目数量"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>

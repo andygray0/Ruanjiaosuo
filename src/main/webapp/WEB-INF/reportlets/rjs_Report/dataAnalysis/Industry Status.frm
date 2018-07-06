@@ -615,7 +615,7 @@ ON a.month = b.month]]></Query>
 <Hotkeys>
 <![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="503" y="7" width="80" height="21"/>
+<BoundsAttr x="470" y="5" width="68" height="26"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -638,7 +638,7 @@ ON a.month = b.month]]></Query>
 <![CDATA[1]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="249" y="7" width="80" height="21"/>
+<BoundsAttr x="218" y="7" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -654,7 +654,7 @@ ON a.month = b.month]]></Query>
 <FRFont name="微软雅黑 Light" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="169" y="7" width="80" height="21"/>
+<BoundsAttr x="138" y="7" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -677,7 +677,7 @@ ON a.month = b.month]]></Query>
 <![CDATA[2017]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="83" y="7" width="80" height="21"/>
+<BoundsAttr x="53" y="7" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -693,7 +693,7 @@ ON a.month = b.month]]></Query>
 <FRFont name="微软雅黑 Light" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="3" y="7" width="80" height="21"/>
+<BoundsAttr x="3" y="7" width="50" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -716,7 +716,7 @@ ON a.month = b.month]]></Query>
 <![CDATA[11]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="415" y="7" width="80" height="21"/>
+<BoundsAttr x="383" y="7" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -732,14 +732,14 @@ ON a.month = b.month]]></Query>
 <FRFont name="微软雅黑 Light" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="335" y="7" width="80" height="21"/>
+<BoundsAttr x="303" y="7" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
+<Widget widgetName="Search"/>
 <Widget widgetName="year"/>
 <Widget widgetName="startmonth"/>
 <Widget widgetName="lastmonth"/>
-<Widget widgetName="Search"/>
 </MobileWidgetList>
 <Display display="true"/>
 <DelayDisplayContent delay="true"/>
@@ -3788,16 +3788,6 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<OneValueCDDefinition seriesName="year" valueName="数量" function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds4]]></Name>
-</TableData>
-<CategoryName value="month"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -3808,6 +3798,16 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <CategoryName value="month"/>
 <ChartSummaryColumn name="growth" function="com.fr.data.util.function.NoneFunction" customName="同比"/>
 </MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<OneValueCDDefinition seriesName="year" valueName="数量" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds4]]></Name>
+</TableData>
+<CategoryName value="month"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>
@@ -5306,16 +5306,6 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<OneValueCDDefinition seriesName="year" valueName="money" function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds5]]></Name>
-</TableData>
-<CategoryName value="month"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -5326,6 +5316,16 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <CategoryName value="month"/>
 <ChartSummaryColumn name="growth" function="com.fr.data.util.function.NoneFunction" customName="同比"/>
 </MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<OneValueCDDefinition seriesName="year" valueName="money" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds5]]></Name>
+</TableData>
+<CategoryName value="month"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>
@@ -6848,6 +6848,11 @@ b$,6C@MkKKX!X#Z6`C+0,Y:+De9mGg0$Xl;+W`kZVZqP#^J[Mme*7(B~
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
+<DefinitionMap key="line">
+<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</OneValueCDDefinition>
+</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -6874,11 +6879,6 @@ b$,6C@MkKKX!X#Z6`C+0,Y:+De9mGg0$Xl;+W`kZVZqP#^J[Mme*7(B~
 </Category>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
 </NormalReportDataDefinition>
-</DefinitionMap>
-<DefinitionMap key="line">
-<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>

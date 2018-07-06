@@ -19,7 +19,7 @@
 		(
 			sum(
 				`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_BID_MONEY`
-			) / 1000
+			) / 10000
 		),
 		2
 	) AS `交易金额`
@@ -3166,33 +3166,6 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<NormalReportDataDefinition>
-<Series>
-<SeriesDefinition>
-<SeriesName>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=B6]]></Attributes>
-</O>
-</SeriesName>
-<SeriesValue>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=C6:F6]]></Attributes>
-</O>
-</SeriesValue>
-</SeriesDefinition>
-</Series>
-<Category>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=C4:F4]]></Attributes>
-</O>
-</Category>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</NormalReportDataDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -3207,6 +3180,33 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <O t="Formula" class="Formula">
 <Attributes>
 <![CDATA[=C5:F5]]></Attributes>
+</O>
+</SeriesValue>
+</SeriesDefinition>
+</Series>
+<Category>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C4:F4]]></Attributes>
+</O>
+</Category>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<NormalReportDataDefinition>
+<Series>
+<SeriesDefinition>
+<SeriesName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B6]]></Attributes>
+</O>
+</SeriesName>
+<SeriesValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C6:F6]]></Attributes>
 </O>
 </SeriesValue>
 </SeriesDefinition>
@@ -4697,33 +4697,6 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<NormalReportDataDefinition>
-<Series>
-<SeriesDefinition>
-<SeriesName>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=B10]]></Attributes>
-</O>
-</SeriesName>
-<SeriesValue>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=C10:F10]]></Attributes>
-</O>
-</SeriesValue>
-</SeriesDefinition>
-</Series>
-<Category>
-<O t="Formula" class="Formula">
-<Attributes>
-<![CDATA[=C8:F8]]></Attributes>
-</O>
-</Category>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</NormalReportDataDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -4738,6 +4711,33 @@ U_tKm9$Rt./UW;@)3<>lhM(f%Jm&^BC@F0ViCT"E[IA,Em!hg*6R#";Nr4Z0"tha1o_@6nbO
 <O t="Formula" class="Formula">
 <Attributes>
 <![CDATA[=C9:F9]]></Attributes>
+</O>
+</SeriesValue>
+</SeriesDefinition>
+</Series>
+<Category>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C8:F8]]></Attributes>
+</O>
+</Category>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<NormalReportDataDefinition>
+<Series>
+<SeriesDefinition>
+<SeriesName>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=B10]]></Attributes>
+</O>
+</SeriesName>
+<SeriesValue>
+<O t="Formula" class="Formula">
+<Attributes>
+<![CDATA[=C10:F10]]></Attributes>
 </O>
 </SeriesValue>
 </SeriesDefinition>
@@ -6481,11 +6481,6 @@ V0:<.e4)F\=L9Ad\rrW~
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -6512,6 +6507,11 @@ V0:<.e4)F\=L9Ad\rrW~
 </Category>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
 </NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>

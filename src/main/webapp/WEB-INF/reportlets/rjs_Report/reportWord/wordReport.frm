@@ -2954,7 +2954,7 @@ FROM
 </Parameter>
 </Parameters>
 <Content>
-<![CDATA[var REPORT_URL='/ReportServer?formlet=rjs_Report%2FreportWord%2FwordReport.frm&op=export&format=excel&sessionID='+aaa;    
+<![CDATA[var REPORT_URL='/WebReport/ReportServer?formlet=rjs_Report%2FreportWord%2FwordReport.frm&op=export&format=excel&sessionID='+aaa;    
 window.location=(FR.cjkEncode(REPORT_URL));]]></Content>
 </JavaScript>
 </Listener>

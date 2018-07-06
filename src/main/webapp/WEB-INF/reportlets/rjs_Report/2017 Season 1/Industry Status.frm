@@ -27,7 +27,7 @@ FROM
 	`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`
 WHERE
 	(
-		`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3)
+		`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2)
 		and `radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` in (2016,2017)
 	)
 GROUP BY
@@ -83,7 +83,7 @@ FROM
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2016
 							)
 							AND (
-								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3)
+								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2)
 							)
 						)
 					GROUP BY
@@ -112,7 +112,7 @@ FROM
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 							)
 							AND (
-								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3)
+								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2)
 							)
 						)
 					GROUP BY
@@ -149,7 +149,7 @@ WHERE
 			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLyear` = 2017
 		)
 		AND (
-			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2, 3)
+			`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` IN (1, 2)
 		)
 	)
 ORDER BY
@@ -3841,11 +3841,6 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -3872,6 +3867,11 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 </Category>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
 </NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>
@@ -5201,11 +5201,6 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -5232,6 +5227,11 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 </Category>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
 </NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>
@@ -5318,13 +5318,13 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 </C>
 <C c="2" r="3" s="0">
 <O>
-<![CDATA[1-3月]]></O>
+<![CDATA[1-2月]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="3" r="3" s="0">
 <O>
-<![CDATA[1-6月]]></O>
+<![CDATA[1-5月]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
@@ -5392,13 +5392,13 @@ jN.V8\_2UXO<u<?G[T(YR]Am%3T:ZrB:NS)jZ3NS\;LLWX>MG?JYCPP+o[4Fr\H%9Hd(nt@+b
 </C>
 <C c="2" r="7" s="0">
 <O>
-<![CDATA[1-3月]]></O>
+<![CDATA[1-2月]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="3" r="7" s="0">
 <O>
-<![CDATA[1-6月]]></O>
+<![CDATA[1-5月]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
@@ -6851,11 +6851,6 @@ $/gX5@86I9UtV'+.f8E9IT;?'Nig$SgJ)O_?o1?WI'6K./u,i4iblm(Ol0I."WH!r~
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="line">
-<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="column">
 <NormalReportDataDefinition>
 <Series>
@@ -6882,6 +6877,11 @@ $/gX5@86I9UtV'+.f8E9IT;?'Nig$SgJ)O_?o1?WI'6K./u,i4iblm(Ol0I."WH!r~
 </Category>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
 </NormalReportDataDefinition>
+</DefinitionMap>
+<DefinitionMap key="line">
+<OneValueCDDefinition function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>

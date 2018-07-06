@@ -447,7 +447,7 @@ FROM
 <Alpha alpha="1.0"/>
 </Border>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
-<NorthAttr size="27"/>
+<NorthAttr size="28"/>
 <North class="com.fr.form.ui.container.WParameterLayout">
 <WidgetName name="para"/>
 <WidgetAttr description="">
@@ -478,7 +478,7 @@ FROM
 <Hotkeys>
 <![CDATA[enter]]></Hotkeys>
 </InnerWidget>
-<BoundsAttr x="512" y="6" width="80" height="21"/>
+<BoundsAttr x="491" y="2" width="68" height="26"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -501,7 +501,7 @@ FROM
 <![CDATA[1]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="256" y="6" width="80" height="21"/>
+<BoundsAttr x="240" y="5" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -517,7 +517,7 @@ FROM
 <FRFont name="微软雅黑 Light" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="176" y="6" width="80" height="21"/>
+<BoundsAttr x="160" y="5" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -540,7 +540,7 @@ FROM
 <![CDATA[2017]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="90" y="6" width="80" height="21"/>
+<BoundsAttr x="72" y="5" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -556,7 +556,7 @@ FROM
 <FRFont name="微软雅黑" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="10" y="6" width="80" height="21"/>
+<BoundsAttr x="10" y="5" width="62" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.ComboBox">
@@ -579,7 +579,7 @@ FROM
 <![CDATA[3]]></O>
 </widgetValue>
 </InnerWidget>
-<BoundsAttr x="422" y="6" width="80" height="21"/>
+<BoundsAttr x="406" y="5" width="80" height="21"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.Label">
@@ -595,14 +595,14 @@ FROM
 <FRFont name="微软雅黑 Light" style="0" size="72"/>
 <border style="0" color="-723724"/>
 </InnerWidget>
-<BoundsAttr x="342" y="6" width="80" height="21"/>
+<BoundsAttr x="326" y="5" width="80" height="21"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
+<Widget widgetName="Search"/>
 <Widget widgetName="year"/>
 <Widget widgetName="startMonth"/>
 <Widget widgetName="lastMonth"/>
-<Widget widgetName="Search"/>
 </MobileWidgetList>
 <Display display="true"/>
 <DelayDisplayContent delay="true"/>
@@ -2455,16 +2455,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<OneValueCDDefinition seriesName="年份" valueName="中标企业数量" function="com.fr.data.util.function.NoneFunction">
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds2]]></Name>
-</TableData>
-<CategoryName value="中标区域"/>
-</OneValueCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -2475,6 +2465,16 @@ FROM
 <CategoryName value="area"/>
 <ChartSummaryColumn name="grow" function="com.fr.data.util.function.NoneFunction" customName="增长率"/>
 </MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<OneValueCDDefinition seriesName="年份" valueName="中标企业数量" function="com.fr.data.util.function.NoneFunction">
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+<CategoryName value="中标区域"/>
+</OneValueCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
 </CustomDefinition>

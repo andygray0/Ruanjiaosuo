@@ -312,7 +312,7 @@
 <TickLine201106 type="2" secType="0"/>
 <ArrowShow arrowShow="false"/>
 <TextAttr>
-<Attr alignText="0">
+<Attr rotation="30" alignText="0">
 <FRFont name="Verdana" style="0" size="88" foreground="-10066330"/>
 </Attr>
 </TextAttr>
@@ -683,7 +683,7 @@
 <TickLine201106 type="2" secType="0"/>
 <ArrowShow arrowShow="false"/>
 <TextAttr>
-<Attr alignText="0">
+<Attr rotation="30" alignText="0">
 <FRFont name="Verdana" style="0" size="88" foreground="-10066330"/>
 </Attr>
 </TextAttr>
@@ -1075,7 +1075,7 @@
 <TickLine201106 type="2" secType="0"/>
 <ArrowShow arrowShow="false"/>
 <TextAttr>
-<Attr alignText="0">
+<Attr rotation="30" alignText="0">
 <FRFont name="Verdana" style="0" size="88" foreground="-10066330"/>
 </Attr>
 </TextAttr>

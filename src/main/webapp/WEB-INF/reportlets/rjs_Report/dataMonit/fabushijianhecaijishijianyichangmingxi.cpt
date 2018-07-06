@@ -111,59 +111,75 @@
 <ColumnPrivilegeControl/>
 <RowPrivilegeControl/>
 <RowHeight defaultValue="723900">
-<![CDATA[1036320,1036320,1158240,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
+<![CDATA[1036320,1036320,2057400,723900,723900,723900,723900,723900,723900,723900,723900]]></RowHeight>
 <ColumnWidth defaultValue="2743200">
-<![CDATA[2743200,5486400,4206240,4632960,4754880,4236720,16184880,2743200,2743200,2743200,2743200]]></ColumnWidth>
+<![CDATA[2743200,2743200,5486400,4206240,4632960,5273040,3749040,13335000,2743200,2743200,2743200,2743200]]></ColumnWidth>
 <CellElementList>
-<C c="0" r="0" cs="7" s="0">
+<C c="0" r="0" cs="8" s="0">
 <O>
-<![CDATA[ 发布时间和采集时间相同异常明细]]></O>
+<![CDATA[发布时间和采集时间相同异常明细]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="0" r="1" s="1">
 <O>
-<![CDATA[起始编号]]></O>
+<![CDATA[IR_SID]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="1" r="1" s="1">
 <O>
-<![CDATA[网站名称]]></O>
+<![CDATA[起始编号]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="2" r="1" s="1">
 <O>
-<![CDATA[频道]]></O>
+<![CDATA[网站名称]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="3" r="1" s="1">
 <O>
-<![CDATA[分组名称]]></O>
+<![CDATA[频道]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="4" r="1" s="1">
 <O>
-<![CDATA[发布时间]]></O>
+<![CDATA[分组名称]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="5" r="1" s="1">
 <O>
+<![CDATA[发布时间]]></O>
+<PrivilegeControl/>
+<Expand/>
+</C>
+<C c="6" r="1" s="1">
+<O>
 <![CDATA[发布日期]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
-<C c="6" r="1" s="2">
+<C c="7" r="1" s="2">
 <O>
 <![CDATA[公告链接]]></O>
 <PrivilegeControl/>
 <Expand/>
 </C>
 <C c="0" r="2" s="3">
+<O t="DSColumn">
+<Attributes dsName="ds1" columnName="IR_SID"/>
+<Complex/>
+<RG class="com.fr.report.cell.cellattr.core.group.FunctionGrouper"/>
+<Parameters/>
+</O>
+<PrivilegeControl/>
+<Expand dir="0"/>
+</C>
+<C c="1" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="起始编号"/>
 <Complex/>
@@ -175,7 +191,7 @@
 <PrivilegeControl/>
 <Expand dir="0"/>
 </C>
-<C c="1" r="2" s="3">
+<C c="2" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="网站名称"/>
 <Complex/>
@@ -187,7 +203,7 @@
 <PrivilegeControl/>
 <Expand dir="0" leftParentDefault="false"/>
 </C>
-<C c="2" r="2" s="3">
+<C c="3" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="频道"/>
 <Complex/>
@@ -199,7 +215,7 @@
 <PrivilegeControl/>
 <Expand dir="0" leftParentDefault="false"/>
 </C>
-<C c="3" r="2" s="3">
+<C c="4" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="分组名称"/>
 <Complex/>
@@ -211,7 +227,7 @@
 <PrivilegeControl/>
 <Expand dir="0" leftParentDefault="false"/>
 </C>
-<C c="4" r="2" s="3">
+<C c="5" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="发布时间"/>
 <Complex/>
@@ -223,7 +239,7 @@
 <PrivilegeControl/>
 <Expand dir="0" leftParentDefault="false"/>
 </C>
-<C c="5" r="2" s="3">
+<C c="6" r="2" s="3">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="发布日期"/>
 <Complex/>
@@ -235,7 +251,7 @@
 <PrivilegeControl/>
 <Expand dir="0" leftParentDefault="false"/>
 </C>
-<C c="6" r="2" s="4">
+<C c="7" r="2" s="4">
 <O t="DSColumn">
 <Attributes dsName="ds1" columnName="公告链接"/>
 <Complex/>
@@ -253,7 +269,7 @@
 <Attributes name="url"/>
 <O t="Formula" class="Formula">
 <Attributes>
-<![CDATA[=g3]]></Attributes>
+<![CDATA[=H3]]></Attributes>
 </O>
 </Parameter>
 </Parameters>
@@ -272,6 +288,18 @@
 <Margin top="288000" left="288000" bottom="288000" right="288000"/>
 </PaperSetting>
 </ReportSettings>
+<Header reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Header>
+<Footer reportPageType="0">
+<Background name="NullBackground"/>
+<LeftList/>
+<CenterList/>
+<RightList/>
+</Footer>
 </ReportAttrSet>
 <PrivilegeControl/>
 </Report>

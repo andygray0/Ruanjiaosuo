@@ -744,8 +744,8 @@ LEFT JOIN (
 <Alpha alpha="1.0"/>
 </Border>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
-<WestAttr size="30"/>
-<West class="com.fr.form.ui.container.cardlayout.WCardTitleLayout">
+<NorthAttr size="30"/>
+<North class="com.fr.form.ui.container.cardlayout.WCardTitleLayout">
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
@@ -761,14 +761,14 @@ LEFT JOIN (
 <Alpha alpha="1.0"/>
 </Border>
 <LCAttr vgap="0" hgap="0" compInterval="0"/>
-<SouthAttr/>
-<South class="com.fr.form.ui.CardAddButton">
+<EastAttr size="25"/>
+<East class="com.fr.form.ui.CardAddButton">
 <WidgetName name="Add"/>
 <WidgetAttr description="">
 <PrivilegeControl/>
 </WidgetAttr>
 <AddTagAttr layoutName="tabpane0"/>
-</South>
+</East>
 <Center class="com.fr.form.ui.container.cardlayout.WCardTagLayout">
 <WidgetName name="tabpane0"/>
 <WidgetAttr description="">
@@ -785,7 +785,7 @@ LEFT JOIN (
 </WidgetTitle>
 <Alpha alpha="1.0"/>
 </Border>
-<LCAttr vgap="1" hgap="0" compInterval="0"/>
+<LCAttr vgap="0" hgap="1" compInterval="0"/>
 <Widget class="com.fr.form.ui.CardSwitchButton">
 <WidgetName name="6cdf1fda-2764-4f36-b483-380efd9d5762"/>
 <WidgetAttr description="">
@@ -793,6 +793,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[大数据]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -802,6 +806,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[物联网]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="1"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -811,6 +819,10 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[云计算]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="2"/>
 </Widget>
 <Widget class="com.fr.form.ui.CardSwitchButton">
@@ -820,17 +832,21 @@ LEFT JOIN (
 </WidgetAttr>
 <Text>
 <![CDATA[信息安全]]></Text>
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomType isCustomType="true"/>
 <SwitchTagAttr layoutName="tabpane0" index="3"/>
 </Widget>
-<DisplayPosition type="1"/>
+<DisplayPosition type="0"/>
 <FLAttr alignment="0"/>
 <ColumnWidth defaultValue="80">
 <![CDATA[200,80,80,80,80,80,80,80,80,80,80]]></ColumnWidth>
-<TextDirection type="1"/>
+<TextDirection type="0"/>
 <TemplateStyle class="com.fr.general.cardtag.DefaultTemplateStyle"/>
 </Center>
 <CardTitleLayout layoutName="cardlayout0"/>
-</West>
+</North>
 <Center class="com.fr.form.ui.container.WCardLayout">
 <WidgetName name="cardlayout0"/>
 <WidgetAttr description="">
@@ -842,7 +858,7 @@ LEFT JOIN (
 <WidgetTitle>
 <O>
 <![CDATA[title]]></O>
-<FRFont name="微软雅黑 Light" style="0" size="96"/>
+<FRFont name="微软雅黑 Light" style="0" size="96" foreground="-4144960"/>
 <Position pos="0"/>
 <Background name="ColorBackground"/>
 </WidgetTitle>
@@ -1158,7 +1174,7 @@ R~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -1202,7 +1218,7 @@ R~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -1446,7 +1462,7 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="919" height="304"/>
+<BoundsAttr x="0" y="0" width="955" height="297"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -1490,7 +1506,7 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="262" width="919" height="304"/>
+<BoundsAttr x="0" y="260" width="955" height="297"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -2002,11 +2018,11 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -2014,11 +2030,11 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -2028,7 +2044,7 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -2546,7 +2562,7 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -2556,9 +2572,14 @@ h$NS;e6Q0bT7_0i`:pi'7'h%]A&C+.)@S=R^A47/pE]Ae+GABnm^Ii^B+~
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="919" height="566"/>
+<Size width="955" height="557"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="0" tabNameIndex="0"/>
+<tabFitAttr index="0" tabNameIndex="0">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab1"/>
@@ -2871,7 +2892,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -2915,7 +2936,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -3168,7 +3189,7 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="919" height="304"/>
+<BoundsAttr x="0" y="0" width="955" height="297"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -3212,7 +3233,7 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="262" width="919" height="304"/>
+<BoundsAttr x="0" y="260" width="955" height="297"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -3724,11 +3745,11 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -3736,11 +3757,11 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -3750,7 +3771,7 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -4268,7 +4289,7 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -4278,9 +4299,14 @@ E3uP@AH0r]A9is/p4]AL>)hj]A"#rp"XqaC/?^E7l;8BqjhHokUfc+Y;rrE~
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="919" height="566"/>
+<Size width="955" height="557"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="1" tabNameIndex="1"/>
+<tabFitAttr index="1" tabNameIndex="1">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab2"/>
@@ -4593,7 +4619,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -4637,7 +4663,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="415" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -4890,7 +4916,7 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="919" height="304"/>
+<BoundsAttr x="0" y="0" width="955" height="297"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -4934,7 +4960,7 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="262" width="919" height="304"/>
+<BoundsAttr x="0" y="260" width="955" height="297"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -5446,11 +5472,11 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -5458,11 +5484,11 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -5472,7 +5498,7 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -5990,7 +6016,7 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -6000,9 +6026,14 @@ W?;ts[7e"]A_"#F[oc%qVQ+g^sLi(4EWUS2CL)T8O0)Fn$Osd<C.KaS%8ef:YcfG^l$pq\C&i
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="919" height="566"/>
+<Size width="955" height="557"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="2" tabNameIndex="2"/>
+<tabFitAttr index="2" tabNameIndex="2">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <Widget class="com.fr.form.ui.container.cardlayout.WTabFitLayout">
 <WidgetName name="Tab3"/>
@@ -6315,7 +6346,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="421" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report1"/>
@@ -6359,7 +6390,7 @@ s<L8^_Un&-d!Ir"_[rri~
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="504" y="0" width="421" height="262"/>
+<BoundsAttr x="502" y="0" width="453" height="260"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -6612,7 +6643,7 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 <ReportFitAttr fitStateInPC="2" fitFont="false"/>
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="925" height="304"/>
+<BoundsAttr x="0" y="0" width="955" height="297"/>
 </Widget>
 <body class="com.fr.form.ui.ElementCaseEditor">
 <WidgetName name="report0"/>
@@ -6656,7 +6687,7 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 <ElementCaseMobileAttrProvider horizontal="1" vertical="1" zoom="true" refresh="false" isUseHTML="false" isMobileCanvasSize="false"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="262" width="925" height="304"/>
+<BoundsAttr x="0" y="260" width="955" height="297"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.container.WTitleLayout">
@@ -7168,11 +7199,11 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[交易金额(亿元)]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[项目数量]]></O>
+<![CDATA[投资金额]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -7180,11 +7211,11 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 <SeriesDefinition>
 <SeriesName>
 <O>
-<![CDATA[交易金额(亿元)]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesName>
 <SeriesValue>
 <O>
-<![CDATA[投资金额]]></O>
+<![CDATA[项目数量]]></O>
 </SeriesValue>
 </SeriesDefinition>
 </DefinitionList>
@@ -7194,7 +7225,7 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 </Chart>
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <body class="com.fr.form.ui.ChartEditor">
 <WidgetName name="chart0"/>
@@ -7712,7 +7743,7 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 <ChartMobileAttrProvider zoomOut="0" zoomIn="2"/>
 </body>
 </InnerWidget>
-<BoundsAttr x="0" y="0" width="504" height="262"/>
+<BoundsAttr x="0" y="0" width="502" height="260"/>
 </Widget>
 <Sorted sorted="false"/>
 <MobileWidgetList>
@@ -7722,14 +7753,19 @@ UQIBk]A%&OH3s@7iB&?44-ZgrWdA.ZY[3YU2)9@m:p(9^GAXhOP=^uEUrF%R!W7me`od\jU-L
 </MobileWidgetList>
 <WidgetZoomAttr compState="0"/>
 <AppRelayout appRelayout="true"/>
-<Size width="925" height="566"/>
+<Size width="955" height="557"/>
 <ResolutionScalingAttr percent="1.2"/>
-<tabFitAttr index="3" tabNameIndex="3"/>
+<tabFitAttr index="3" tabNameIndex="3">
+<initial>
+<Background name="ColorBackground" color="-12105104"/>
+</initial>
+<isCustomStyle isCustomStyle="true"/>
+</tabFitAttr>
 </Widget>
 <carouselAttr isCarousel="false" carouselInterval="1.0"/>
 </Center>
 </InnerWidget>
-<BoundsAttr x="2" y="32" width="1146" height="679"/>
+<BoundsAttr x="2" y="17" width="1146" height="699"/>
 </Widget>
 <Widget class="com.fr.form.ui.container.WAbsoluteLayout$BoundsWidget">
 <InnerWidget class="com.fr.form.ui.FreeButton">

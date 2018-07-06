@@ -62,7 +62,7 @@ FROM
 						AND (
 							`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 						)
-						AND (CL_BIG_DATA IS NOT NULL)
+						AND (CL_BIG_DATA != '')
 					)
 				UNION ALL
 					SELECT
@@ -81,7 +81,7 @@ FROM
 							AND (
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 							)
-							AND (CL_NET_THINGS IS NOT NULL)
+							AND (CL_NET_THINGS != '')
 						)
 					UNION ALL
 						SELECT
@@ -101,7 +101,7 @@ FROM
 									`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 								)
 								AND (
-									CL_CLOUD_COMPUTING IS NOT NULL
+									CL_CLOUD_COMPUTING != ''
 								)
 							)
 						UNION ALL
@@ -121,7 +121,7 @@ FROM
 									AND (
 										`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 									)
-									AND (CL_INFO_SAFETY IS NOT NULL)
+									AND (CL_INFO_SAFETY != '')
 								)
 							UNION ALL
 								SELECT
@@ -141,7 +141,7 @@ FROM
 											`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 										)
 										AND (
-											CL_INDUSTRIAL_CLOUD IS NOT NULL
+											CL_INDUSTRIAL_CLOUD != ''
 										)
 									)
 								UNION ALL
@@ -161,7 +161,7 @@ FROM
 											AND (
 												`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 											)
-											AND (CL_INFO_INDUSTRY IS NOT NULL)
+											AND (CL_INFO_INDUSTRY != '')
 										)
 			) AS tb1
 		LEFT JOIN (
@@ -181,7 +181,7 @@ FROM
 					AND (
 						`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 					)
-					AND (CL_BIG_DATA IS NOT NULL)
+					AND (CL_BIG_DATA != '')
 				)
 			UNION ALL
 				SELECT
@@ -200,7 +200,7 @@ FROM
 						AND (
 							`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 						)
-						AND (CL_NET_THINGS IS NOT NULL)
+						AND (CL_NET_THINGS != '')
 					)
 				UNION ALL
 					SELECT
@@ -220,7 +220,7 @@ FROM
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 							)
 							AND (
-								CL_CLOUD_COMPUTING IS NOT NULL
+								CL_CLOUD_COMPUTING != ''
 							)
 						)
 					UNION ALL
@@ -240,7 +240,7 @@ FROM
 								AND (
 									`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 								)
-								AND (CL_INFO_SAFETY IS NOT NULL)
+								AND (CL_INFO_SAFETY != '')
 							)
 						UNION ALL
 							SELECT
@@ -260,7 +260,7 @@ FROM
 										`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 									)
 									AND (
-										CL_INDUSTRIAL_CLOUD IS NOT NULL
+										CL_INDUSTRIAL_CLOUD != ''
 									)
 								)
 							UNION ALL
@@ -280,7 +280,7 @@ FROM
 										AND (
 											`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 										)
-										AND (CL_INFO_INDUSTRY IS NOT NULL)
+										AND (CL_INFO_INDUSTRY != '')
 									)
 		) AS tb2 ON tb1.技术热点 = tb2.技术热点
 	) AS tb;]]></Query>
@@ -351,7 +351,7 @@ FROM
 						AND (
 							`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 						)
-						AND (CL_BIG_DATA IS NOT NULL)
+						AND (CL_BIG_DATA !='')
 					)
 				UNION ALL
 					SELECT
@@ -375,7 +375,7 @@ FROM
 							AND (
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 							)
-							AND (CL_NET_THINGS IS NOT NULL)
+							AND (CL_NET_THINGS !='')
 						)
 					UNION ALL
 						SELECT
@@ -400,7 +400,7 @@ FROM
 									`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 								)
 								AND (
-									CL_CLOUD_COMPUTING IS NOT NULL
+									CL_CLOUD_COMPUTING !=''
 								)
 							)
 						UNION ALL
@@ -425,7 +425,7 @@ FROM
 									AND (
 										`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 									)
-									AND (CL_INFO_SAFETY IS NOT NULL)
+									AND (CL_INFO_SAFETY !='')
 								)
 							UNION ALL
 								SELECT
@@ -450,7 +450,7 @@ FROM
 											`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 										)
 										AND (
-											CL_INDUSTRIAL_CLOUD IS NOT NULL
+											CL_INDUSTRIAL_CLOUD !=''
 										)
 									)
 								UNION ALL
@@ -475,7 +475,7 @@ FROM
 											AND (
 												`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 											)
-											AND (CL_INFO_INDUSTRY IS NOT NULL)
+											AND (CL_INFO_INDUSTRY !='')
 										)
 			) AS tb1
 		LEFT JOIN (
@@ -500,7 +500,7 @@ FROM
 					AND (
 						`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 					)
-					AND (CL_BIG_DATA IS NOT NULL)
+					AND (CL_BIG_DATA !='')
 				)
 			UNION ALL
 				SELECT
@@ -524,7 +524,7 @@ FROM
 						AND (
 							`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 						)
-						AND (CL_NET_THINGS IS NOT NULL)
+						AND (CL_NET_THINGS !='')
 					)
 				UNION ALL
 					SELECT
@@ -549,7 +549,7 @@ FROM
 								`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 							)
 							AND (
-								CL_CLOUD_COMPUTING IS NOT NULL
+								CL_CLOUD_COMPUTING !=''
 							)
 						)
 					UNION ALL
@@ -574,7 +574,7 @@ FROM
 								AND (
 									`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 								)
-								AND (CL_INFO_SAFETY IS NOT NULL)
+								AND (CL_INFO_SAFETY !='')
 							)
 						UNION ALL
 							SELECT
@@ -599,7 +599,7 @@ FROM
 										`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 									)
 									AND (
-										CL_INDUSTRIAL_CLOUD IS NOT NULL
+										CL_INDUSTRIAL_CLOUD !=''
 									)
 								)
 							UNION ALL
@@ -624,7 +624,7 @@ FROM
 										AND (
 											`radar2`.`URLCONTENT_INFO_SOFT_EFFECTIVE_20171`.`IR_URLmonth` <= ${ lastmonth }
 										)
-										AND (CL_INFO_INDUSTRY IS NOT NULL)
+										AND (CL_INFO_INDUSTRY !='')
 									)
 		) AS tb2 ON tb1.技术热点 = tb2.技术热点
 	) AS tb;
@@ -1864,18 +1864,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds1]]></Name>
-</TableData>
-<CategoryName value="技术热点"/>
-<ChartSummaryColumn name="tb1项目数量" function="com.fr.data.util.function.NoneFunction" customName="tb1项目数量"/>
-<ChartSummaryColumn name="tb2项目数量" function="com.fr.data.util.function.NoneFunction" customName="tb2项目数量"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -1885,6 +1873,18 @@ FROM
 </TableData>
 <CategoryName value="技术热点"/>
 <ChartSummaryColumn name="项目数量同比" function="com.fr.data.util.function.NoneFunction" customName="项目数量同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds1]]></Name>
+</TableData>
+<CategoryName value="技术热点"/>
+<ChartSummaryColumn name="tb1项目数量" function="com.fr.data.util.function.NoneFunction" customName="去年项目数量"/>
+<ChartSummaryColumn name="tb2项目数量" function="com.fr.data.util.function.NoneFunction" customName="今年项目数量"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
@@ -3078,18 +3078,6 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
-<DefinitionMap key="column">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds2]]></Name>
-</TableData>
-<CategoryName value="技术热点"/>
-<ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb1交易金额"/>
-<ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb2交易金额"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
 <DefinitionMap key="line">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -3099,6 +3087,18 @@ FROM
 </TableData>
 <CategoryName value="技术热点"/>
 <ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
+<DefinitionMap key="column">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+<CategoryName value="技术热点"/>
+<ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="去年交易金额"/>
+<ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="今年交易金额"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
@@ -4265,6 +4265,17 @@ FROM
 <ChartDefinition>
 <CustomDefinition>
 <DefinitionMapList>
+<DefinitionMap key="line">
+<MoreNameCDDefinition>
+<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
+<TableData class="com.fr.data.impl.NameTableData">
+<Name>
+<![CDATA[ds2]]></Name>
+</TableData>
+<CategoryName value="月份"/>
+<ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
+</MoreNameCDDefinition>
+</DefinitionMap>
 <DefinitionMap key="column">
 <MoreNameCDDefinition>
 <Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
@@ -4275,17 +4286,6 @@ FROM
 <CategoryName value="月份"/>
 <ChartSummaryColumn name="tb1交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb1交易金额"/>
 <ChartSummaryColumn name="tb2交易金额" function="com.fr.data.util.function.NoneFunction" customName="tb2交易金额"/>
-</MoreNameCDDefinition>
-</DefinitionMap>
-<DefinitionMap key="line">
-<MoreNameCDDefinition>
-<Top topCate="-1" topValue="-1" isDiscardOtherCate="false" isDiscardOtherSeries="false" isDiscardNullCate="false" isDiscardNullSeries="false"/>
-<TableData class="com.fr.data.impl.NameTableData">
-<Name>
-<![CDATA[ds2]]></Name>
-</TableData>
-<CategoryName value="月份"/>
-<ChartSummaryColumn name="交易金额同比" function="com.fr.data.util.function.NoneFunction" customName="交易金额同比"/>
 </MoreNameCDDefinition>
 </DefinitionMap>
 </DefinitionMapList>
