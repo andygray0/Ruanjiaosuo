@@ -95,7 +95,7 @@ public class DataWashController {
         Date date = new Date();
         String dt;
         dt = simpleDateFormat.format(date);
-        String excelPath = "F:\\"+dt+".xlsx";
+        String excelPath = "/usr/temp/"+dt+".xlsx";
         String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
         Workbook workbook = new XSSFWorkbook();
@@ -176,18 +176,18 @@ public class DataWashController {
                 String cmd ="";
                 if(i==0) {
                     if(rule.getBz().endsWith("jar")){
-                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar "+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
+                        cmd = "java -Xms1024m -Xmx1300m -jar /usr/upload/"+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
                     }
                     else{
-                        cmd = "cmd /c f: && cd upload && python "+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
+                        cmd = "python /usr/upload/"+rule.getBz()+" "+fn+" "+fn+"result " + columnname;
                     }
                 }
                 else{
                     if(rule.getBz().endsWith("jar")) {
-                        cmd = "cmd /c f: &&cd upload &&java -Xms1024m -Xmx1300m -jar " + rule.getBz() + " " + fn + "result " + fn + "result " + columnname;
+                        cmd = "ava -Xms1024m -Xmx1300m -jar /usr/upload/" + rule.getBz() + " " + fn + "result " + fn + "result " + columnname;
                     }
                     else{
-                        cmd = "cmd /c f: &&cd upload &&python "+rule.getBz()+" "+fn+ "result "+fn+"result " + columnname;
+                        cmd = "python /usr/upload/"+rule.getBz()+" "+fn+ "result "+fn+"result " + columnname;
                     }
                 }
                 Process pro = Runtime.getRuntime().exec(cmd); //添加要进行的命令，"cmd  /c calc"中calc代表要执行打开计算器，如何设置关机请自己查找cmd命令
@@ -378,7 +378,7 @@ public class DataWashController {
     @RequestMapping(value = "/getexcel.do")
     @ResponseBody
     public JSONArray getexcel(String fn){
-        File file= new File("F:\\"+fn);
+        File file= new File("/usr/temp/"+fn);
         //字母表头为在第1行，第2种模板类型
         JSONArray  jsonArray = readExcle(file, 0, 2);
         return  jsonArray;
@@ -478,7 +478,7 @@ public class DataWashController {
     }
 
     public JSONArray getexcelwithcamel(String fn){
-        File file= new File("F:\\"+fn);
+        File file= new File("/usr/temp"+fn);
         //字母表头为在第1行，第2种模板类型
         JSONArray  jsonArray = readExcle2(file, 0, 2);
         return  jsonArray;
@@ -582,7 +582,7 @@ public class DataWashController {
         Date date = new Date();
         String dt;
         dt = simpleDateFormat.format(date);
-        String excelPath = "F:\\"+dt+".xlsx";
+        String excelPath = "/usr/temp/"+dt+".xlsx";
         String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
         Workbook workbook = new XSSFWorkbook();//HSSFWorkbook();//WorkbookFactory.create(inputStream);

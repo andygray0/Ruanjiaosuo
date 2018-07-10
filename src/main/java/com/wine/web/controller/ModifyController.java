@@ -76,7 +76,7 @@ public class ModifyController {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         Date date = new Date();
         fn = simpleDateFormat.format(date);
-        String excelPath = "F:\\"+fn+".xlsx";
+        String excelPath = "/usr/temp/"+fn+".xlsx";
 //        String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         String jsonStr = JSON.toJSONString(list,SerializerFeature.WriteMapNullValue);
         JSONArray jo = JSONArray.parseArray(jsonStr);
@@ -192,7 +192,7 @@ public class ModifyController {
     @ResponseBody
     public void getmodel(HttpServletResponse response, String sql) {
 
-        String excelPath = "F:\\upload\\daorumuban.xlsx";
+        String excelPath = "/usr/upload/daorumuban.xlsx";
 
         try{
             File sss = new File(excelPath);

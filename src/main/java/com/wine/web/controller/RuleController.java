@@ -74,7 +74,7 @@ public class RuleController {
     @ResponseBody
     public void exportExcel(HttpServletResponse response, Integer id) {
         Rule rule = ruleService.getById(id);
-        String excelPath = "F:\\upload\\"+rule.getBz();
+        String excelPath = "/usr/upload/"+rule.getBz();
         try{
             File sss = new File(excelPath);
             InputStream bis = new BufferedInputStream(new FileInputStream(sss));

@@ -51,7 +51,7 @@ public class FileUploadController {
                     String fileName =this.getName(myFileName);
                     //定义上传路径
                     resultStr = fileName;
-                    String path = "F://upload//" + fileName;
+                    String path = "/usr/upload/" + fileName;
                     File localFile = new File(path);
                     file.transferTo(localFile);
                     //往数据库里插一条附件信息

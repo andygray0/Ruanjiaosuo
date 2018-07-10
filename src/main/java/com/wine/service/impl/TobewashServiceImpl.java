@@ -355,7 +355,7 @@ public class TobewashServiceImpl implements TobewashService{
         }
     }
     public JSONArray getexcel(String fn){
-        File file= new File("F:\\"+fn);
+        File file= new File("/usr/temp/"+fn);
         //字母表头为在第1行，第2种模板类型
         JSONArray  jsonArray = readExcle(file, 0, 2);
         return  jsonArray;
@@ -399,7 +399,7 @@ public class TobewashServiceImpl implements TobewashService{
         return jsonArray;
     }
     public int checkIrSid(String fn,int type){
-        File file= new File("F:\\upload\\"+fn);
+        File file= new File("/usr/upload/"+fn);
         int headerIndex = 0,  headType=2;
         List<Map<String, Object>> lists = new ArrayList<Map<String, Object>>();
         try {
