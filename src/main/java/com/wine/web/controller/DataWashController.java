@@ -184,7 +184,7 @@ public class DataWashController {
                 }
                 else{
                     if(rule.getBz().endsWith("jar")) {
-                        cmd = "ava -Xms1024m -Xmx1300m -jar /usr/upload/" + rule.getBz() + " " + fn + "result " + fn + "result " + columnname;
+                        cmd = "java -Xms1024m -Xmx1300m -jar /usr/upload/" + rule.getBz() + " " + fn + "result " + fn + "result " + columnname;
                     }
                     else{
                         cmd = "python /usr/upload/"+rule.getBz()+" "+fn+ "result "+fn+"result " + columnname;
@@ -194,7 +194,7 @@ public class DataWashController {
                 //Process pro2 = Runtime.getRuntime().exec("calc");
                 pro.waitFor();
                 System.out.println("正在清洗："+fn);
-                BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("GBK"))); //虽然cmd命令可以直接输出，但是通过IO流技术可以保证对数据进行一个缓冲。
+                BufferedReader br = new BufferedReader(new InputStreamReader(pro.getInputStream(), Charset.forName("UTF-8"))); //虽然cmd命令可以直接输出，但是通过IO流技术可以保证对数据进行一个缓冲。
                 while ((msg = br.readLine()) != null) {
                     System.out.println(msg);
 
@@ -478,7 +478,7 @@ public class DataWashController {
     }
 
     public JSONArray getexcelwithcamel(String fn){
-        File file= new File("/usr/temp"+fn);
+        File file= new File("/usr/temp/"+fn);
         //字母表头为在第1行，第2种模板类型
         JSONArray  jsonArray = readExcle2(file, 0, 2);
         return  jsonArray;

@@ -262,7 +262,7 @@ public class TobewashServiceImpl implements TobewashService{
             map.put("msg","无法识别文件，或者文件IR_SID列不符合要求！");
             return map;
         }
-        JSONArray jsonArray = getexcel("upload\\"+fn);
+        JSONArray jsonArray = getexcel(fn);
         if(jsonArray.size()>0){
             int length = jsonArray.size();
             for(int i=0;i<length;i++){
@@ -355,7 +355,7 @@ public class TobewashServiceImpl implements TobewashService{
         }
     }
     public JSONArray getexcel(String fn){
-        File file= new File("/usr/temp/"+fn);
+        File file= new File("/usr/upload/"+fn);
         //字母表头为在第1行，第2种模板类型
         JSONArray  jsonArray = readExcle(file, 0, 2);
         return  jsonArray;
