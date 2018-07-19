@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.lang.reflect.Field;
@@ -190,9 +191,10 @@ public class ModifyController {
 
     @RequestMapping(value = "/getmodel.do")
     @ResponseBody
-    public void getmodel(HttpServletResponse response, String sql) {
+    public void getmodel(HttpServletRequest request, HttpServletResponse response, String sql) {
 
-        String excelPath = "/usr/upload/daorumuban.xlsx";
+        String realPath = request.getSession().getServletContext().getRealPath("/muban");
+        String excelPath = realPath +"/daorumuban.xlsx";
 
         try{
             File sss = new File(excelPath);
