@@ -199,6 +199,10 @@
     where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </delete>
+  <delete id="deleteById" parameterType="java.lang.Integer" >
+    delete from urlcontent
+    where IR_SID = #{id,jdbcType=INTEGER}
+  </delete>
   <delete id="deleteByExample" parameterType="com.wine.model3.TobewashCriteria" >
     delete from URLCONTENT t
     <if test="_parameter != null" >
