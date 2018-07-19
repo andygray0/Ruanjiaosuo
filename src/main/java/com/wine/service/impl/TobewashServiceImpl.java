@@ -7,7 +7,6 @@ import com.github.pagehelper.PageInfo;
 import com.wine.dao3.TobewashMapper;
 import com.wine.model3.Tobewash;
 import com.wine.model3.TobewashCriteria;
-import com.wine.model3.TobewashKey;
 import com.wine.model3.TobewashWithBLOBs;
 import com.wine.service.TobewashService;
 import com.wine.utils.StrKit;
@@ -137,10 +136,7 @@ public class TobewashServiceImpl implements TobewashService{
             return map;
         }
         for(int i=0;i<length;i++){
-            TobewashKey tobewashKey =new TobewashKey();
-            tobewashKey.setIrBbsnum(list.get(i).getIrBbsnum());
-            tobewashKey.setIrHkey(list.get(i).getIrHkey());
-            TobewashMapper.deleteByPrimaryKey(tobewashKey);
+            TobewashMapper.deleteById(list.get(i).getIrSid());
         }
         map.put("success",true);
         map.put("msg","修改成功！");

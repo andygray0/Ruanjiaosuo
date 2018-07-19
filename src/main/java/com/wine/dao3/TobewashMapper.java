@@ -39,4 +39,6 @@ public interface TobewashMapper {
     List<Tobewash> selectBySql(String whereSql);
 
     int modify(@Param("sql") String sql ,@Param("column") String column , @Param("modify") String modify);
+
+    int deleteById(Integer id);
 }
