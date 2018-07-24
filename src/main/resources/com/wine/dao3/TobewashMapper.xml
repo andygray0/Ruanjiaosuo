@@ -1030,7 +1030,7 @@
         IR_URLBODY = #{irUrlbody,jdbcType=LONGVARBINARY},
       </if>
     <if test="irHkey != null" >
-      IIR_HKEY = #{irHkey,jdbcType=VARCHAR},
+      IR_HKEY = #{irHkey,jdbcType=VARCHAR},
     </if>
     <if test="irBbsnum != null" >
       IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER},
