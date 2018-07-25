@@ -62,15 +62,12 @@
         <div style="margin-bottom:0;">
             <div id="toolbar">
 
-
-                <!--
                 <div style="margin-top:10px;">
                     <button class="btn btn-primary" onclick="exportExcel();">
                         <span class="glyphicon glyphicon-export"></span>
                         <span>导出Excel</span>
                     </button>
                 </div>
-                -->
 
             </div>
             <table id="mainDg" style="background:rgb(255,255,255);" class="table table-hover"></table>
