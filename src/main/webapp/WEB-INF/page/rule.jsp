@@ -77,7 +77,7 @@
         </button>
         <%--<button type="button" id="download" style="margin-left:50px" id="btn_download" class="btn btn-primary" onClick ="$('#tb_departments').tableExport({ type: 'xlsx', escape: 'false' })">数据导出</button>--%>
     </div>
-    <table id="tb_departments" class="table table-hover"></table>
+    <table id="tb_departments" class="table table-hover text-nowrap"></table>
 
     <div id="myModal" class="modal fade"  role="dialog"   aria-hidden=true>
         <div class="modal-dialog modal-lg" style="width: 50%">
