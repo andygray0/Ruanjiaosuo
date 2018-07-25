@@ -192,7 +192,7 @@
             <form id="formSearch1" class="form-horizontal" style="display:none">
                 <label class="control-label col-sm-1">查询条件</label>
                 <div class="col-sm-3 ">
-                    <textarea rows="3"   id="sqlwhere">where </textarea>
+                    <textarea rows="3"   id="sqlwhere">where 1=1</textarea>
 
                 </div>
 

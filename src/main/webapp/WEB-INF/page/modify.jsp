@@ -205,7 +205,7 @@
             <form id="formSearch1" class="form-horizontal" style="display:none">
                 <label class="control-label col-sm-1">查询条件</label>
                 <div class="col-sm-3 ">
-                    <textarea rows="3"   id="sqlwhere">where </textarea>
+                    <textarea rows="3"   id="sqlwhere">where 1=1</textarea>
 
                 </div>
 
@@ -671,10 +671,7 @@
                     width: 100
                 }, {
                     field: 'irUrltitle',
-                    title: 'IR_URLTITLE',
-                    formatter: function(value,row,index){
-                        return "<span data-toggle='tooltip'  class='common-ellipsis tooltip-show' style='width: 600px;' title='"+ value +"'>" + value +"</span>";
-                    }
+                    title: 'IR_URLTITLE'
                 },{
                     field: 'irUrldate',
                     title: 'IR_URLDATE',
