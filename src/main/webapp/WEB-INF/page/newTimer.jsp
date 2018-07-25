@@ -829,6 +829,7 @@
                     fromtable: $("#txt_fromtable").val(),
                     sql: sqlline
                 };
+                $('#tb_departments').bootstrapTable('refreshOptions',{pageNumber:1});
                 $('#tb_departments').bootstrapTable("refresh", temp);
             }
         });

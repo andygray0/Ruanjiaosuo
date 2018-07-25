@@ -688,6 +688,7 @@
             }
             else {
                 var columns = [];
+                $('#tb_departments').bootstrapTable('refreshOptions',{pageNumber:1});
             $.ajax({
                 url: '/datamanage/getColumns.do',
                 type: 'post',
