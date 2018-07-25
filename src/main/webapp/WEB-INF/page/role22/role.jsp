@@ -164,6 +164,7 @@
     <script type="text/javascript" src="../../js/bootstrapValidator/zh_CN.min.js"></script>
     <script type="text/javascript" src="../../js/zTree/jquery.ztree.all.min.js"></script>
     <script type="text/javascript" src="../../js/common/common.js"></script>
+    <script type="text/javascript" src="../../js/bootbox.min.js"></script>
 
 
     <script type="text/javascript">
@@ -327,6 +328,10 @@
                     btnHide : true
                 });
             } else {
+                if(rows[0].id == 1){
+                    bootbox.alert("管理员不能修改自己的菜单！");
+                    return ;
+                }
                 showModalDialog({
                     title : '分配菜单',
                     id : 'myModal',
@@ -517,6 +522,10 @@
                     btnHide : true
                 });
             } else {
+                if(rows[0].id == 1){
+                    bootbox.alert("管理员不能修改自己的权限！");
+                    return ;
+                }
                 showModalDialog({
                     title: '分配权限',
                     id: 'myModal',
