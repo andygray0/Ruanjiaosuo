@@ -631,6 +631,7 @@
                 showToggle:false,                    //是否显示详细视图和列表视图的切换按钮
                 cardView: false,                    //是否显示详细视图
                 detailView: false,                   //是否显示父子表
+                paginationShowPageGo: true,
                 // showExport: true,
                 // exportTypes:[ 'csv','xlsx'],
                 onLoadSuccess: function(row,data){

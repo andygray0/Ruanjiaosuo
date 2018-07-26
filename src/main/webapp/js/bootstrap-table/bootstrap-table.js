@@ -1405,6 +1405,7 @@
             $pre,
             $next,
             $number,
+            $pagego,
             data = this.getData(),
             pageList = this.options.pageList;
 
@@ -1583,8 +1584,21 @@
 
             html.push(
                 sprintf('<li class="page-item page-next"><a class="page-link" href="#">%s</a></li>',
-                this.options.paginationNextText),
-                '</ul>',
+                this.options.paginationNextText)
+                );
+            if(this.totalPages>= 10 && this.options.paginationShowPageGo){
+                html.push('<li class="bootstrap-table-page-go">',
+                    '<select>');
+                for(var goi=1;goi<=this.totalPages;goi++){
+                    html.push('<option value="'+goi+'"');
+                    if(goi === this.options.pageNumber){
+                        html.push(' selected');
+                    }
+                    html.push('>'+goi+'</option>');
+                }
+                html.push('</select>','</li>');
+            };
+            html.push( '</ul>',
                 '</div>');
         }
         this.$pagination.html(html.join(''));
@@ -1594,7 +1608,7 @@
             $pre = this.$pagination.find('.page-pre');
             $next = this.$pagination.find('.page-next');
             $number = this.$pagination.find('.page-item').not('.page-next, .page-pre');
-
+            $pagego = this.$pagination.find('.bootstrap-table-page-go');
             if (this.options.smartDisplay) {
                 if (this.totalPages <= 1) {
                     this.$pagination.find('div.pagination').hide();
@@ -1624,6 +1638,7 @@
             $pre.off('click').on('click', $.proxy(this.onPagePre, this));
             $next.off('click').on('click', $.proxy(this.onPageNext, this));
             $number.off('click').on('click', $.proxy(this.onPageNumber, this));
+            $pagego.find('select').off('change').on('change', $.proxy(this.onPageGo, this));
         }
     };
 
@@ -1691,7 +1706,14 @@
         this.updatePagination(event);
         return false;
     };
-
+    BootstrapTable.prototype.onPageGo = function (event) {
+        if (this.options.pageNumber === +$(event.currentTarget).val()) {
+            return;
+        }
+        this.options.pageNumber = +$(event.currentTarget).val();
+        this.updatePagination(event);
+        return false;
+    };
     BootstrapTable.prototype.initRow = function(item, i, data, parentDom) {
         var that=this,
             key,
