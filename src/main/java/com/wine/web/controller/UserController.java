@@ -81,7 +81,7 @@ public class UserController {
     @ResponseBody
     @OperateLogMethodLevelAnnotation(method = "保存一个用户，同时设置角色")
     public String saveUserWithRole(User user){
-        user.setPassword(ThreeDes.getInstance().encrypt("123456"));
+        user.setPassword(ThreeDes.getInstance().MD5("123456"));
         user.setCreated(new Date());
         user.setLastlogin(new Date());
 
