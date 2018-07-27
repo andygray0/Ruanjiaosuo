@@ -1,6 +1,7 @@
 package com.wine.utils;
 
 import java.security.Key;
+import java.security.MessageDigest;
 import java.security.Security;
 
 import javax.crypto.Cipher;
@@ -96,13 +97,37 @@ public class ThreeDes {
 
 		return key;
 	}
-	
+	public String MD5(String s) {
+		try {
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			byte[] bytes = md.digest(s.getBytes("utf-8"));
+			return toHex(bytes);
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	private static String toHex(byte[] bytes) {
+
+		final char[] HEX_DIGITS = "0123456789abcdef".toCharArray();
+		StringBuilder ret = new StringBuilder(bytes.length * 2);
+		for (int i=0; i<bytes.length; i++) {
+			ret.append(HEX_DIGITS[(bytes[i] >> 4) & 0x0f]);
+			ret.append(HEX_DIGITS[bytes[i] & 0x0f]);
+		}
+		return ret.toString();
+	}
 	public static void main(String[] args) {
 		//System.out.println(new ThreeDes().encrypt(args[0]));
-		System.out.println(new ThreeDes().encrypt("toor"));
+		System.out.println(new ThreeDes().encrypt("root"));
 		System.out.println(new ThreeDes().encrypt("123456"));
 		System.out.println(new ThreeDes().encrypt("www.ganta.site"));//
 		System.out.println(new ThreeDes().decrypt("omnsvseSe9JMJLAs5Xp6nSNaS+NlmHBR"));//
+		System.out.println(new  ThreeDes().MD5("123456"));//
+		System.out.println(new  ThreeDes().MD5("toor"));//
+		System.out.println(new  ThreeDes().MD5("admin"));//
+
 	}
 
 }
