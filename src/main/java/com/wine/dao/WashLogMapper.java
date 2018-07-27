@@ -27,4 +27,6 @@ public interface WashLogMapper {
     int updateByPrimaryKeySelective(WashLog record);
 
     int updateByPrimaryKey(WashLog record);
+
+    Integer getTodayWash();
 }

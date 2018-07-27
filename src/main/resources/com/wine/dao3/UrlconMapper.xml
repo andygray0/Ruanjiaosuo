@@ -143,6 +143,10 @@
     <result column="t_IR_EXPERT" property="irExpert" jdbcType="LONGVARCHAR" />
     <result column="t_IR_SIGN_DATE" property="irSignDate" jdbcType="LONGVARCHAR" />
   </resultMap>
+  <resultMap id="YKResultMap" type="com.wine.model3.YearCount" >
+    <result column="年份" property="year" jdbcType="INTEGER" />
+    <result column="数据量" property="count" jdbcType="INTEGER" />
+  </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
       <foreach collection="oredCriteria" item="criteria" separator="or" >
@@ -299,6 +303,15 @@
     <include refid="Blob_Column_List" />
     from ${fromtable} t ${wheresql}
   </select>
+    <select id="getYearCount" resultMap="YKResultMap"  >
+        select * from lxty.national_amount_update
+    </select>
+    <select id="getTodayCollection" resultType="java.lang.Integer"  >
+        select today_count from lxty.today_colletion
+    </select>
+    <select id="getStartid" resultType="java.lang.Integer"  >
+        select startid_count from lxty.startid_count
+    </select>
   <select id="selectFromTables" parameterType="java.lang.String"  resultType="java.lang.String" >
    select DISTINCT table_name from information_schema.tables where table_name like '%urlcontent_ckm_20%'
   </select>

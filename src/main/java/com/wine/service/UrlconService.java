@@ -2,6 +2,7 @@ package com.wine.service;
 import com.wine.model.PersonWashCleanResult;
 import com.wine.model3.Urlcon;
 import com.wine.model3.UrlconWithBLOBs;
+import com.wine.model3.YearCount;
 
 import java.util.Date;
 import java.util.List;
@@ -18,4 +19,7 @@ public interface UrlconService {
     List<String> showFromTables();
     List<String> showToTables();
     List<UrlconWithBLOBs> getAllBySql(String fromtable,String sql);
+    List<YearCount> getYearCount();
+    Integer getTodayCollection();
+    Integer getStartid();
 }

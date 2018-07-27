@@ -45,4 +45,5 @@ public interface PersonWashMapper {
 
     List<DetailDataSizeCount> findAllOfDetailCount(@Param("year") Integer year, @Param("month") Integer month);
 
+    Integer getToAllot();
 }

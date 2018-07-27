@@ -93,4 +93,9 @@ public class PersonWashServiceImpl implements PersonWashService {
     public List<DetailDataSizeCount> findAllOfDetailCount(Integer year, Integer month) {
         return personWashMapper.findAllOfDetailCount(year, month);
     }
+
+    @Override
+    public Integer getToAllot(){
+        return personWashMapper.getToAllot();
+    }
 }

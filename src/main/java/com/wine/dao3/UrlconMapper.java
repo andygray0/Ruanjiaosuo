@@ -4,6 +4,8 @@ import com.wine.model3.Urlcon;
 import com.wine.model3.UrlconCriteria;
 import com.wine.model3.UrlconWithBLOBs;
 import java.util.List;
+
+import com.wine.model3.YearCount;
 import org.apache.ibatis.annotations.Param;
 
 public interface UrlconMapper {
@@ -40,4 +42,10 @@ public interface UrlconMapper {
     List<String> selectFromTables();
 
     List<String> selectToTables();
+
+    List<YearCount> getYearCount();
+
+    Integer getTodayCollection();
+
+    Integer getStartid();
 }

@@ -54,4 +54,9 @@ public class WashLogServiceImpl extends BaseServiceImpl<WashLog,Dao> implements 
         map.put("rows",list);
         return map;
     }
+
+    @Override
+    public Integer getTodayWash(){
+        return washLogMapper.getTodayWash();
+    }
 }

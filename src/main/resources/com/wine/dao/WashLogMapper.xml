@@ -102,6 +102,9 @@
     from wash_log t
     where t.id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getTodayWash" resultType="java.lang.Integer" >
+    select IFNULL(sum(counts), 0) AS s from wash_log where TO_DAYS(fromtime)=TO_DAYS(NOW()) and successflag = 1
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from wash_log
     where id = #{id,jdbcType=INTEGER}

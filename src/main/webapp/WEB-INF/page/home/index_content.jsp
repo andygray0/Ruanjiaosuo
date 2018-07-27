@@ -21,13 +21,13 @@
 <div class="cont">
     <div class="topDataNum">
         <ul>
-            <li class="dataMon"><span class="dataMon-sp1">雷达采集入库数据</span><span class="dataMon-sp2">660</span><span
+            <li class="dataMon"><span class="dataMon-sp1">雷达采集入库数据</span><span id="num1" class="dataMon-sp2">660</span><span
                     class="dataMon-sp3">条</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">活跃采集点</span><span class="dataMon-sp2">25</span><span
+            <li class="dataMon"><span class="dataMon-sp1">活跃采集点</span><span id="num2" class="dataMon-sp2">25</span><span
                     class="dataMon-sp3">个</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">数据清洗数量</span><span class="dataMon-sp2">3289</span><span
+            <li class="dataMon"><span class="dataMon-sp1">数据清洗数量</span><span id="num3" class="dataMon-sp2">3289</span><span
                     class="dataMon-sp3">条</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">人工清洗待分配数据</span><span class="dataMon-sp2">1336</span><span
+            <li class="dataMon"><span class="dataMon-sp1">人工清洗待分配数据</span><span id="num4" class="dataMon-sp2">1336</span><span
                     class="dataMon-sp3">条</span></li>
         </ul>
     </div>
@@ -36,11 +36,7 @@
         <div class="yData">年度数据</div>
         <div class="allData">
             <span>总采集数据量</span>
-            <span> 6501847</span>
-        </div>
-        <div class="insData">
-            <span>信息化数据量</span>
-            <span> 1735134</span>
+            <span id="allcount"> </span>
         </div>
     </div>
 
@@ -62,7 +58,37 @@
 <script src="../../../js/echarts.js"></script>
 <script>
     $(function(){
+        $.ajax({
+            url: '/datamanage/getNums.do',
+            type: 'post',
+            dataType: "json",
+            async: false,
+            success: function (returnValue) {
+                $('#num1').html(returnValue.todatcount);
+                $('#num2').html(returnValue.startidcount);
+                $('#num3').html(returnValue.washcount);
+                $('#num4').html(returnValue.toAllot);
+            }
+        });
         // 基于准备好的dom，初始化echarts实例
+        var data1 = [];
+        var data2 = [];
+        var all=0;
+        $.ajax({
+            url: '/datamanage/getYearCount.do',
+            type: 'post',
+            dataType: "json",
+            async: false,
+            success: function (returnValue) {
+                var arr = returnValue;
+                $.each(arr, function (i, item) {
+                  data1.push(arr[i].year);
+                  data2.push(arr[i].count);
+                  all = all + arr[i].count;
+                });
+                $('#allcount').html(all);
+            }
+        });
         var myChart = echarts.init(document.getElementById('echTable'));
         option = {
             tooltip: {
@@ -72,7 +98,7 @@
                 }
             },
             legend: {
-                data: ['信息化数量', '总采集数量'],
+                data: [ '总采集数量'],
                 left: '4%',
                 top: '2%',
                 textStyle: {
@@ -116,7 +142,7 @@
             },
             yAxis: {
                 type: 'category',
-                data: ['2013', '2014', '2015', '2016', '2017'],
+                data: data1,
                 axisLabel: {
                     show: true,
                     textStyle: {
@@ -136,23 +162,6 @@
             },
             series: [
                 {
-                    name: '信息化数量',
-                    type: 'bar',
-                    itemStyle: {
-                        normal: {
-                            color: '#00b5e2'
-                        }
-                    },
-                    stack: '总量',
-                    label: {
-                        normal: {
-                            show: true,
-                            position: 'insideRight'
-                        }
-                    },
-                    data: [193896, 266059, 494414, 638864, 141901]
-                },
-                {
                     name: '总采集数量',
                     type: 'bar',
                     itemStyle: {
@@ -167,7 +176,7 @@
                             position: 'insideRight'
                         }
                     },
-                    data: [620895, 930236, 1642699, 2687999, 620018]
+                    data: data2
                 }
             ]
         };

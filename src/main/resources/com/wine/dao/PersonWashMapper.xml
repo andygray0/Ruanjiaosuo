@@ -47,6 +47,14 @@
         <include refid="mainWhere" />
     </select>
 
+    <select id="getToAllot" parameterType="com.wine.model.WaitCheckData" resultType="_int">
+        SELECT
+        count(*) AS s
+        FROM
+        urlcontent_check_2017
+        WHERE CL_COUNT > 0 AND CL_WORK_STATUS IS NULL
+    </select>
+
     <select id="findAllWithCondition" resultType="com.wine.model.WaitCheckData">
         SELECT
         a.ID,

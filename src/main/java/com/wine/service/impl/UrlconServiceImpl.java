@@ -7,6 +7,7 @@ import com.wine.model.PersonWashCleanResult;
 import com.wine.model3.Urlcon;
 import com.wine.model3.UrlconCriteria;
 import com.wine.model3.UrlconWithBLOBs;
+import com.wine.model3.YearCount;
 import com.wine.service.UrlconService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -141,6 +142,20 @@ public class UrlconServiceImpl implements UrlconService{
     @Override
     public List<UrlconWithBLOBs> getAllBySql(String fromtable,String sql){
         return urlconMapper.selectBySql(fromtable,sql);
+    }
+    @Override
+    public List<YearCount> getYearCount(){
+        return urlconMapper.getYearCount();
+    }
+
+    @Override
+    public Integer getTodayCollection(){
+        return urlconMapper.getTodayCollection();
+    }
+
+    @Override
+    public Integer getStartid(){
+        return urlconMapper.getStartid();
     }
 }
 

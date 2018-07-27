@@ -1,4 +1,5 @@
 package com.wine.web.controller;
+import com.alibaba.fastjson.JSON;
 import com.wine.model.*;
 import com.wine.model3.*;
 import com.wine.service.*;
@@ -18,6 +19,10 @@ public class DataManageController {
     private UrlconService urlconService;
     @Autowired
     private TobewashService tobewashService;
+    @Autowired
+    private WashLogService washLogService;
+    @Autowired
+    private PersonWashService personWashService;
 
     @RequestMapping(value = "/showQuery.do")
     @ResponseBody
@@ -104,4 +109,30 @@ public class DataManageController {
         map.put("fields",fields);
         return map;
     }
+    @RequestMapping(value = "/getYearCount.do")
+    @ResponseBody
+    public List getYearCount() {
+        Map map =new HashMap();
+        PersonWashCleanResult personWashCleanResult = new PersonWashCleanResult();
+        List<YearCount> list = urlconService.getYearCount();
+        return list;
+    }
+
+    @RequestMapping(value = "/getNums.do")
+    @ResponseBody
+    public Map getNums() {
+        Map map =new HashMap();
+        PersonWashCleanResult personWashCleanResult = new PersonWashCleanResult();
+        Integer todatcount = urlconService.getTodayCollection();
+        Integer startidcount = urlconService.getStartid();
+        Integer washcount = washLogService.getTodayWash();
+        Integer toAllot = personWashService.getToAllot();
+        map.put("todatcount",todatcount);
+        map.put("startidcount",startidcount);
+        map.put("washcount",washcount);
+        map.put("toAllot",toAllot);
+        return map;
+    }
+
+
 }

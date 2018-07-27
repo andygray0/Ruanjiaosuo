@@ -39,4 +39,6 @@ public interface PersonWashService {
     List<PersonWashWaitCheckData> findCheckDataListByTaskId(Integer id);
 
     List<DetailDataSizeCount> findAllOfDetailCount(Integer year, Integer month);
+
+    Integer getToAllot();
 }

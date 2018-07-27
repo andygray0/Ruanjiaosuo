@@ -12,4 +12,5 @@ public interface WashLogService extends BaseService<WashLog> {
     WashLog getByID(int id);
     int findAllLogs(String date);
     Map showlogs(int limit , int page , String name);
+    Integer getTodayWash();
 }
