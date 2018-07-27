@@ -85,7 +85,7 @@ public class JspController {
 
     @RequestMapping("/dataMonitor/report.do")
     public String datamanageMonitor(){
-        return "/ReportServer?formlet=rjs_Report%2FdataMonit%2FEnterData.frm";
+        return "forward:/ReportServer?formlet=rjs_Report%2FdataMonit%2FEnterData.frm";
     }
 
     /**
