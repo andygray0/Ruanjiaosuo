@@ -255,7 +255,7 @@ public class TobewashServiceImpl implements TobewashService{
         Map map =new HashMap();
         if(checkIrSid(fn,type)==0){
             map.put("success",false);
-            map.put("msg","无法识别文件，或者文件IR_SID列不符合要求！");
+            map.put("msg","无法识别文件，或者文件不符合导入模板要求！");
             return map;
         }
         JSONArray jsonArray = getexcel(fn);
@@ -404,14 +404,27 @@ public class TobewashServiceImpl implements TobewashService{
             Sheet sheet = wb.getSheetAt(0);
             //读取表头行
             Row headerRow = getHeaderRow(sheet, 0);
-            int count =0;
+            int count = 0;
+            int count1 = 0;
             for(int h = 0; h<headerRow.getLastCellNum();h++){
                 String key = getHeaderCellValue(headerRow,h,headType);
                 if(key.equals("IR_SID")){
                     count ++;
                 }
+                if(key.equals("IR_URLTITLE")){
+                    count1 ++;
+                }
+                if(key.equals("IR_STARTID")){
+                    count1 ++;
+                }
+                if(key.equals("IR_GROUPNAME")){
+                    count1 ++;
+                }
+                if(key.equals("IR_LOADTIME")){
+                    count1 ++;
+                }
             }
-            if(type==count){
+            if(type==count&&count1==4){
                 return 1;
             }
             else{
