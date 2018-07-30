@@ -827,9 +827,9 @@
                     limit: 10,   //页面大小
                     page: 1,  //页码
                     fromtable: $("#txt_fromtable").val(),
-                    sql: sqlline
+                    sql: sqlline,
+                    pageNumber:1
                 };
-                $('#tb_departments').bootstrapTable('refreshOptions',{pageNumber:1});
                 $('#tb_departments').bootstrapTable("refresh", temp);
             }
         });

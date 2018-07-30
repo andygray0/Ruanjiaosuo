@@ -689,7 +689,6 @@
             }
             else {
                 var columns = [];
-                $('#tb_departments').bootstrapTable('refreshOptions',{pageNumber:1});
             $.ajax({
                 url: '/datamanage/getColumns.do',
                 type: 'post',
@@ -735,7 +734,8 @@
                         // page: 1,  //页码
                         // sql: getsql(),
                         // i: $("#manageTables").val(),
-                        columns: columns
+                        columns: columns,
+                        pageNumber:1
                     };
                     $('#tb_departments').bootstrapTable("refreshOptions", temp);
                     $(".bootstrap-table .dropdown-menu>li").first().prepend("<button onclick=\"showall();\">全选/全不选</button>")

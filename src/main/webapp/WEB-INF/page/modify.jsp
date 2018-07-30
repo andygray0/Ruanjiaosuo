@@ -1022,8 +1022,7 @@
                 return ;
             }
            var sql = getsql();
-            $('#tb_departments').bootstrapTable('refreshOptions',{pageNumber:1});
-            $('#tb_departments').bootstrapTable('refresh', {query:{limit: 10,page: 1,sql: sql, i:'urlcontent'}});
+            $('#tb_departments').bootstrapTable('refresh', {query:{limit: 10,page: 1,sql: sql, i:'urlcontent'},pageNumber:1});
         });
         $("#btn_modify").click(function () {
             var urlDateFrom = $.trim($("#urlDateFrom").val());
