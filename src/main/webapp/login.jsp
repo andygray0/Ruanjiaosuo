@@ -19,8 +19,8 @@
 	登录
 </title><meta http-equiv="Content-Language" content="zh-cn"><link href="./login_files/login_TP.css" rel="stylesheet">
     <script type="text/javascript" src="login_files/conver.js"></script>
-    <script type="text/javascript" src="login_files/IEWarning.js"></script>
-    <link href="./login_files/IEWarning.css" rel="stylesheet">
+    <%--<script type="text/javascript" src="login_files/IEWarning.js"></script>--%>
+    <%--<link href="./login_files/IEWarning.css" rel="stylesheet">--%>
 <script src="login_files/WebResource.axd" type="text/javascript" sourcecontrol="EpointCommon"></script>
     <script src="js/jquery.md5.js" type="text/javascript" ></script>
 <script type="text/javascript" defer="defer"> var $$ = function (id) { return (typeof (id) == 'object') ? id : document.getElementById(id); }
@@ -75,17 +75,6 @@ EpCaObj.prototype.analysisOrgData = function (OrgData) { return $$('TT').GetTSIn
                 location.href = '/admin/toHome.do';
             }
             init();
-            $("#password").keypress(function (e) {
-                var c = e.keyCode || e.which;
-                var s = e.shiftKey;
-                if (((c >= 65 && c <= 90) && !s) || ((c >= 97 && c <= 122) && s)) {
-                    $('#login_password_error').css("display", "block");
-                    $('#login_password_error').html($("#capslockopen").html());
-                }
-                else {
-                    $('#login_password_error').css("display", "none");
-                }
-            });
         });
 
         function hideInfo() {
@@ -102,26 +91,25 @@ EpCaObj.prototype.analysisOrgData = function (OrgData) { return $$('TT').GetTSIn
             $(".logininfo").click(function () {
                 $(this).next().find("INPUT").focus();
             });
-            $(".input").find("INPUT")
-                .focus(function () {
-//                    $(this).parent().prev().hide();
-                })
-                .keypress(function () {
+            $(".inputtxt")
+                .keydown(function () {
                     $(this).parent().prev().hide();
                 })
                 .blur(function () {
                     if ($(this).val().trim() == "") {
                         $(this).val("").parent().prev().show();
                     }
-                    else
+                    else{
                         $(this).parent().prev().hide();
+                    }
+
                 })
             setTimeout(function () { _checkInput(); }, 500);
 
             function _checkInput() {
-                $(".input").find("INPUT").each(function () {
+                $(".inputtxt").each(function () {
                     if ($(this).val().trim() == "")
-                        $(this).val("").prev().show();
+                     $(this).val("").prev().show();
                     else
                         $(this).prev().hide();
                 })
@@ -174,12 +162,12 @@ if (!theForm) {
 </script>
 
 
-<script src="login_files/WebResource(2).axd" type="text/javascript"></script>
+<%--<script src="login_files/WebResource(2).axd" type="text/javascript"></script>--%>
 
-<script src="login_files/ScriptResource.axd" type="text/javascript"></script>
-<script src="login_files/ScriptResource(1).axd" type="text/javascript"></script>
-<script src="login_files/MicrosoftAjax4.js" type="text/javascript"></script>
-<script src="login_files/MicrosoftAjaxWebForms4.js" type="text/javascript"></script>
+<%--<script src="login_files/ScriptResource.axd" type="text/javascript"></script>--%>
+<%--<script src="login_files/ScriptResource(1).axd" type="text/javascript"></script>--%>
+<%--<script src="login_files/MicrosoftAjax4.js" type="text/javascript"></script>--%>
+<%--<script src="login_files/MicrosoftAjaxWebForms4.js" type="text/javascript"></script>--%>
 <script type="text/javascript">
 //<![CDATA[
 
@@ -190,43 +178,19 @@ if (!theForm) {
 
 	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAtA10dapb8Gpunmb/tRXrvwEVY5u54TgWwyd97xcy3QiqUyVhErd+Q+WA5NmkAG8aG7uf+mGOLRGpOtBg7mGmNnr/mBQWjGf8X+aqb387iRrn+It9Ifo1lfmzwOIIGaW1nkXVs84NlnabZFTCCWmioAgPPljozsGPwprDBn4pNMpmN6ZYJNGAQHn0c9zMgZU3Az0pbtemMeEG4g1PnXXStToB1sXhjFVfRWXiyFQITYSNQbP6YqxU2tEFbSK4JToex1sKhI">
 </div>
-        <script type="text/javascript">
-//<![CDATA[
-Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'Form1', ['tUpdatePanel2',''], [], [], 90, '');
-//]]>
-</script>
+        <%--<script type="text/javascript">--%>
+<%--//<![CDATA[--%>
+<%--Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'Form1', ['tUpdatePanel2',''], [], [], 90, '');--%>
+<%--//]]>--%>
+<%--</script>--%>
 
         <div id="UpdatePanel2" style="height: 100%;">
 	
                 <div style="display: none">
 
                     <span id="EpCa1"><div><object classid="clsid:219D9F1F-DE00-4C5C-82E9-E8CBAA79CB6D" width="0" height="0" id="iWebOA" codebase=""></object><object classid="clsid:FF1FE7A0-0578-4FEE-A34E-FB21B277D561" height="0" width="0" id="DJAx"></object>
-<object classid="clsid:3F367B74-92D9-4C5E-AB93-234F8A91D5E6" height="0" width="0" id="oSeccom"></object>
-<object classid="clsid:9EB69914-8BCD-49F0-A3BB-F1A33B41FD79" height="0" width="0" id="TT"></object>
+
 <script type="text/javascript">
-            function ReadBlueKey(){
-                try {
-                    var aObject = new ActiveXObject('Syunew3A.s_simnew3');
-                    var DevicePath = aObject.FindPort(0);
-                    if (aObject.LastError != '') {
-                        epoint.dialog.alert('未发现加密锁(或加密锁驱动未安装)，请插入加密锁或重新安装驱动!');
-                        return '';
-                    }
-                    var a = aObject.GetID_1(DevicePath);
-                    var b = aObject.GetID_2(DevicePath);
-                    return hex(a) + hex(b);
-                } catch (ex) {
-                    epoint.dialog.alert('读取加密锁报错：' + ex.message + '（可能是未安装加密锁驱动）');
-                    return '';
-                }
-            }
-            //模拟vbscript中的hex算法
-            function hex(number) {
-                if (number < 0) {
-                    number = 0xFFFFFFFF + number + 1;
-                }
-                return number.toString(16).toUpperCase();
-            }
             </script></div></span>
                 </div>
                 <div class="LoginMain" style="height: 710px;">
@@ -245,7 +209,7 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'Form1', ['tUpdate
                                             <form name="Form1"  id="Form1" action="/admin/login.do" method="post" >
 
                                             <div class="loginid">
-                                                <div class="logininfo">请输入用户名</div>
+                                                <div class="logininfo"  style="display: block;">请输入用户名</div>
                                                 <div class="TextboxContainer">
 		<input name="username" type="text" id="username" tabindex="1" class="inputtxt"><div class="clearboth">
 
@@ -259,17 +223,14 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'Form1', ['tUpdate
 
 		</div>
 	</div>
-                                                <span class="error" id="login_password_error" style="display: none"></span>
-                                                <span id="capslockopen" class="error" style="display: none;">
-                                                    <b>大写锁定已打开</b></span>
                                             </div>
 
-                                                <div class="loginid">
-                                                    <div class="logininfo">验证码</div>
+                                                <div class="logincode">
+                                                    <div class="logininfo"  style="display: block;">验证码</div>
                                                     <div class="TextboxContainer">
-                                                        <input name="validcode" maxlength="6" type="text" id="validcode" tabindex="1" class="inputtxt" style="width:100px;">
-                                                        <img id="validImg" style="height: 40px;width:150px;margin-top:10px;cursor:pointer;" alt="验证码" src="/noAuthority/getValidCode.do" onclick="validCodeImageChanged(this);" />
-                                                        <div class="clearboth"></div>
+                                                        <input name="validcode" maxlength="6" type="text" id="validcode" tabindex="3" class="inputtxt" style="height: 40px;width:100px;vertical-align:middle;">
+                                                        <img id="validImg" style="height: 40px;width:150px;cursor:pointer;vertical-align:middle;" alt="验证码" src="/noAuthority/getValidCode.do" onclick="validCodeImageChanged(this);" />
+                                                        <%--<div class="clearboth"></div>--%>
                                                     </div>
                                                 </div>
                                             </form>
@@ -298,10 +259,6 @@ Sys.WebForms.PageRequestManager._initialize('ScriptManager1', 'Form1', ['tUpdate
 
     
 
-<script type="text/javascript">
-//<![CDATA[
-TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"password"};Init_Button('Imagebutton1','normal',true,'');//]]>
-</script>
 </form>
     <script type="text/javascript" defer="defer">
         function checkMes() {
@@ -369,8 +326,8 @@ TextBoxParams["username"]={Id:"username"};TextBoxParams["password"]={Id:"passwor
     </script>
     <script type="text/javascript">
         function focus() {
-            if (document.getElementById("username") != "") {
-                document.getElementById("password").focus();
+            if (document.getElementById("username").value != "" && document.getElementById("password").value !="") {
+                document.getElementById("validcode").focus();
             }
             else {
                 document.getElementById("username").focus();
