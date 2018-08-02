@@ -35,14 +35,15 @@
         <div class="form-group">
             <label for="xlsx" class="col-sm-2 control-label">模板</label>
             <div class="col-sm-8" style="max-height:300px;overflow-y:auto;" id="xlsx">
-                <div class="plupload_filelist" id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
                 <br />
                 <div id="container">
-                    <button id="pickfiles" class="btn btn-success"  style="float:right;margin-top:-15px;">
+                    <button id="pickfiles" class="btn btn-success"  style="float:left;margin-top:-15px;">
                         <span class="glyphicon glyphicon-upload" aria-hidden="true">上传Excel文件</span>
                     </button>
                 </div>
                 <br />
+                <div class="plupload_filelist" id="filelist">Your browser doesn't have Flash, Silverlight or HTML5 support.</div>
+
                 <div id="errMsgDiv">
                     <ul class="list-group">
                     </ul>
@@ -52,7 +53,7 @@
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
-                <button id="gen-report-btn" type="button" class="btn btn-primary" style="margin-top:-40px;">
+                <button id="gen-report-btn" type="button" class="btn btn-primary" style="float:right;margin-top:-40px;margin-right:120px;">
                     <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
                     <span>生成报告</span>
                 </button>
