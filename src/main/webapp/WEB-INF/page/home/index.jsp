@@ -21,6 +21,7 @@
 <head>
 
     <title>全国招标采购大数据分析平台首页</title>
+    <link rel="shortcut icon" href="../favicon.ico"/>
     <link rel="stylesheet" href="../../../css/index_nav.css">
     <link rel="stylesheet" href="../../../css/style.css" media="screen" type="text/css">
     <link href="../../../img/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">

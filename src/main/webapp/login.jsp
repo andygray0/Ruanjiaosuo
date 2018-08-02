@@ -4,7 +4,11 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="login_files/jquery-1.10.2.min.js" charset="UTF-8" language="javascript"></script>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <script type="text/javascript" src="login_files/jquery-1.10.2.min.js" charset="UTF-8" language="javascript"></script>
 <script type="text/javascript" src="login_files/jquery.ui.js" charset="UTF-8" language="javascript"></script>
     <script type="text/javascript" src="js/ui/jquery.form.js"></script>
 <script type="text/javascript" src="login_files/CommonFunction.js" charset="UTF-8" language="javascript"></script>
