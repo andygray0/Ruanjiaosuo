@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.wine.dao3.TobewashMapper" >
   <resultMap id="BaseResultMap" type="com.wine.model3.Tobewash" >
-    <id column="t_IR_HKEY" property="irHkey" jdbcType="VARCHAR" />
-    <id column="t_IR_BBSNUM" property="irBbsnum" jdbcType="INTEGER" />
-    <result column="t_IR_SID" property="irSid" jdbcType="INTEGER" />
+    <id column="t_IR_SID" property="irSid" jdbcType="INTEGER" />
+    <result column="t_IR_HKEY" property="irHkey" jdbcType="VARCHAR" />
+    <result column="t_IR_BBSNUM" property="irBbsnum" jdbcType="INTEGER" />
     <result column="t_IR_STARTID" property="irStartid" jdbcType="INTEGER" />
     <result column="t_IR_SERVICEID" property="irServiceid" jdbcType="VARCHAR" />
     <result column="t_IR_PKEY" property="irPkey" jdbcType="VARCHAR" />
@@ -195,12 +195,12 @@
       and t.IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.wine.model3.TobewashKey" >
-    delete from urlcontent
+    delete from URLCONTENT
     where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </delete>
   <delete id="deleteById" parameterType="java.lang.Integer" >
-    delete from urlcontent
+    delete from URLCONTENT
     where IR_SID = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.wine.model3.TobewashCriteria" >
@@ -210,7 +210,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    insert into urlcontent (IR_HKEY, IR_BBSNUM, IR_SID, 
+    insert into URLCONTENT (IR_HKEY, IR_BBSNUM, IR_SID,
       IR_STARTID, IR_SERVICEID, IR_PKEY, 
       IR_URLNAME, IR_EXTNAME, IR_SITENAME, 
       IR_CHANNEL, IR_GROUPNAME, IR_URLTITLE, 
@@ -250,7 +250,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    insert into urlcontent
+    insert into URLCONTENT
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="irHkey != null" >
         IR_HKEY,
@@ -587,7 +587,7 @@
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update urlcontent t
+    update URLCONTENT t
     <set >
       <if test="record.irHkey != null" >
         t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
@@ -757,7 +757,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update urlcontent t
+    update URLCONTENT t
     set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
       t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
       t.IR_SID = #{record.irSid,jdbcType=INTEGER},
@@ -817,7 +817,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update urlcontent t
+    update URLCONTENT t
     set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
       t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
       t.IR_SID = #{record.irSid,jdbcType=INTEGER},
@@ -874,7 +874,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    update urlcontent
+    update URLCONTENT
     <set >
       <if test="irStartid != null" >
         IR_STARTID = #{irStartid,jdbcType=INTEGER},
@@ -1039,12 +1039,12 @@
     where IR_SID = #{irSid,jdbcType=INTEGER}
   </update>
   <update id="modify" parameterType="String" >
-    update urlcontent
+    update URLCONTENT
     set ${column} = #{modify}
     ${sql}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    update urlcontent
+    update URLCONTENT
     set IR_SID = #{irSid,jdbcType=INTEGER},
       IR_STARTID = #{irStartid,jdbcType=INTEGER},
       IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},
@@ -1101,7 +1101,7 @@
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wine.model3.Tobewash" >
-    update urlcontent
+    update URLCONTENT
     set IR_SID = #{irSid,jdbcType=INTEGER},
       IR_STARTID = #{irStartid,jdbcType=INTEGER},
       IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},

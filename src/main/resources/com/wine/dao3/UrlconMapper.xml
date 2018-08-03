@@ -307,10 +307,10 @@
         select * from lxty.national_amount_update
     </select>
     <select id="getTodayCollection" resultType="java.lang.Integer"  >
-        select today_count from lxty.today_colletion
+        select today_count from lxty.TODAY_COLLETION
     </select>
     <select id="getStartid" resultType="java.lang.Integer"  >
-        select startid_count from lxty.startid_count
+        select startid_count from lxty.STARTID_COUNT
     </select>
   <select id="selectFromTables" parameterType="java.lang.String"  resultType="java.lang.String" >
    select DISTINCT table_name from information_schema.tables where table_name like '%urlcontent_ckm_20%'
