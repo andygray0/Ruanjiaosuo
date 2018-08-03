@@ -587,7 +587,7 @@
                 detailView: false,                   //是否显示父子表
                 showExport: false,
                 exportTypes:[ 'csv','xlsx'],
-                paginationShowPageGo: true,
+                // paginationShowPageGo: true,
                 rowStyle: function (row, index) {
                     //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
                     var strclass = "";

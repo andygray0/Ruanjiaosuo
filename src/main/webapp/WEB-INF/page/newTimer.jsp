@@ -921,7 +921,7 @@
                 detailView: false,                   //是否显示父子表
                 showExport: false,
                 async:false,
-                paginationShowPageGo: true,
+                // paginationShowPageGo: true,
                 onLoadSuccess: function(row,data){
                     $("[data-toggle='tooltip']").tooltip();
                     //添加默认列

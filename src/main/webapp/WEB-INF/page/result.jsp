@@ -308,7 +308,7 @@ fn = "";
 //                    exportDataType: 'all',
                 exportTypes:[ 'csv', 'json', 'sql', 'xml','doc', 'excel', 'xlsx'],
                 exportDataType:"all",
-                paginationShowPageGo: true,
+                // paginationShowPageGo: true,
                 rowStyle: function (row, index) {
                     //这里有5个取值代表5中颜色['active', 'success', 'info', 'warning', 'danger'];
                     var strclass = "";
