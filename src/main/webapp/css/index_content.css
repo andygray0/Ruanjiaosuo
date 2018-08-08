@@ -101,9 +101,10 @@ html,body{
 
 
 .yearData div{
+    margin-left: 20px;
     float: left;
     height: 30px;
-    width: 15%;
+    /*width: 15%;*/
     line-height: 30px;
 }
 .yearData .yData{
