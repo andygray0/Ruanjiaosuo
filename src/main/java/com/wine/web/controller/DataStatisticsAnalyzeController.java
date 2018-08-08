@@ -111,18 +111,36 @@ public class DataStatisticsAnalyzeController {
 
 
     @RequestMapping("/download")
-    public void download(String filename, HttpServletRequest request, HttpServletResponse response){
+    public void download(Integer id, HttpServletRequest request, HttpServletResponse response){
 
         InputStream is = null;
         OutputStream os = null;
 
         try{
-          String endCodeFileName = new String(filename.getBytes("GBK"),"ISO8859-1");
+            String filename = "";
+            String oufile = "";
+            DataStatisticsAnalyze dataStatisticsAnalyze = dataStatisticsAnalyzeService.getById(id);
+            if(dataStatisticsAnalyze!=null){
+                 filename = dataStatisticsAnalyze.getYear()+"年"+dataStatisticsAnalyze.getSeason()+".docx";
+                 if(dataStatisticsAnalyze.getSeason().equals("第一季度")){
+                     oufile = dataStatisticsAnalyze.getYear()+"S1.docx";
+                 }
+                if(dataStatisticsAnalyze.getSeason().equals("第二季度")){
+                    oufile = dataStatisticsAnalyze.getYear()+"S2.docx";
+                }
+                if(dataStatisticsAnalyze.getSeason().equals("第三季度")){
+                    oufile = dataStatisticsAnalyze.getYear()+"S3.docx";
+                }
+                if(dataStatisticsAnalyze.getSeason().equals("第四季度")){
+                    oufile = dataStatisticsAnalyze.getYear()+"S4.docx";
+                }
+            }
+
           response.reset();
           response.setHeader("Content-Type",
                   "application/octet-stream;charset=UTF-8");
           response.setHeader("Content-Disposition",
-                  "attachment;filename=" + endCodeFileName);
+                  "attachment;filename=" + oufile);
           response.setHeader("Connection", "close");
 
           String realPath = request.getSession().getServletContext().getRealPath("/docxfiles");

@@ -27,6 +27,11 @@ public class DataStatisticsAnalyzeServiceImpl implements DataStatisticsAnalyzeSe
     }
 
     @Override
+    public DataStatisticsAnalyze getById(Integer id) {
+        return dataStatisticsAnalyzeMapper.getById(id);
+    }
+
+    @Override
     public void insertEntity(DataStatisticsAnalyze analyze) {
         dataStatisticsAnalyzeMapper.insertEntity(analyze);
     }

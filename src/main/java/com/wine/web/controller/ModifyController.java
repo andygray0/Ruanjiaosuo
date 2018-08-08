@@ -202,7 +202,7 @@ public class ModifyController {
             response.reset();
             response.setContentType("application/vnd.ms-excel;charset=utf-8");
             response.setHeader("Content-Disposition", "attachment;filename="
-                    + new String(("导入模板.xlsx").getBytes(), "iso-8859-1"));
+                    + new String(("daorumuban.xlsx").getBytes(), "iso-8859-1"));
             int len = 0;
             BufferedOutputStream out = new BufferedOutputStream(response.getOutputStream());
             while((len = bis.read()) != -1){
