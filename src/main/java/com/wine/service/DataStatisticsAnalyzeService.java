@@ -16,4 +16,6 @@ public interface DataStatisticsAnalyzeService {
     int countByYearAndSeason(Integer year, String season);
 
     void updateEntityByYearAndSeason(Integer year, String season, String createBy);
+
+    DataStatisticsAnalyze getById(Integer id);
 }

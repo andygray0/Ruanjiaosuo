@@ -57,7 +57,7 @@ public class PersonWashCountWorkController {
     public void exportExcel(HttpServletResponse response){
         List<PersonWashTask> list = personWashTaskService.findAllTaskList();
 
-        String filename = "工作量统计";
+        String filename = "gongzuoliangtongji";
         String[] headers = {"分配任务","姓名","分配数据量(项)","实际查询数据量(项)","查询次数","实际完成数据量(项)","工作量"};
         String[] keys = {"task_name","check_intern","item_count","real_query_item_count","check_times","real_finished_item_count","work_load"};
         List<Map<String,Object>> mapList = BeanKit.getMapListFromBeanList(list, keys);

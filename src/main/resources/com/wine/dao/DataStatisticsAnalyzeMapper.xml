@@ -34,6 +34,14 @@
         ${page.limit}
     </select>
 
+    <select id="getById" resultType="com.wine.model.DataStatisticsAnalyze">
+        SELECT
+        a.*
+        FROM
+        data_statistics_analyze a
+        where  ID = #{id}
+    </select>
+
 
     <insert id="insertEntity" parameterType="com.wine.model.DataStatisticsAnalyze"
             useGeneratedKeys="true" keyProperty="id" >

@@ -181,7 +181,7 @@ public class PersonWashDataCountController {
         }
 
 
-        String filename = year + "年" + month + "月" + "数据量统计详情";
+        String filename = year + "S" + month  + "DataCountDetail";
         String[] headers = {"分配任务","数据量(条)","1项数据量(条)","2项数据量(条)","3项数据量(条)","4项数据量(条)","5项数据量(条)","数据量(项)"};
         String[] keys = {"task_name","record_count","item1","item2","item3","item4","item5","item_count"};
         List<Map<String,Object>> mapList = BeanKit.getMapListFromBeanList(countList, keys);
@@ -260,7 +260,7 @@ public class PersonWashDataCountController {
         }
 
 
-        String filename = "数据量统计";
+        String filename = "shujuliangtongji";
         String[] headers = {"年份","月份","总数据量(条数)","查询中(条数)","待验证(条数)","已完结(条数)"};
         String[] keys = {"year","month","item_record","query_record","valid_record","finish_record"};
         List<Map<String,Object>> mapList = BeanKit.getMapListFromBeanList(dataList, keys);

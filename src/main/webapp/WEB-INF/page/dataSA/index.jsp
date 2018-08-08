@@ -204,7 +204,7 @@
                     title: '操作',
                     align: 'center',
                     formatter: function (value, row, index) {
-                        var alink = '<a href="javascript:void(0);" onclick="downloadDocx('+ row.year +',\''+ row.season +'\')">下载</a>';
+                        var alink = '<a href="javascript:void(0);" onclick="downloadDocx('+ row.id +')">下载</a>';
                         return  alink;
                     }
                 }
@@ -239,9 +239,8 @@
     }
 
 
-    function downloadDocx(year, season) {
-        var filename = year + "年" + season + ".docx";
-        window.open("/dataStatisticsAnalyze/download.do?filename=" + filename);
+    function downloadDocx(id) {
+        window.open("/dataStatisticsAnalyze/download.do?id=" + id);
     }
 
 

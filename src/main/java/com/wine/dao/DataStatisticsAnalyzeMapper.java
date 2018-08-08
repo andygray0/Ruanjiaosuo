@@ -18,4 +18,5 @@ public interface DataStatisticsAnalyzeMapper {
 
     void updateEntityByYearAndSeason(@Param("year") Integer year, @Param("season") String season,@Param("createBy") String createBy);
 
+    DataStatisticsAnalyze getById(@Param("id") Integer id);
 }
