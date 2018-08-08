@@ -18,7 +18,7 @@
 <script type="text/javascript" src="login_files/customerfunction.js" charset="UTF-8" language="javascript"></script>
 <link href="./login_files/Main.css" rel="stylesheet">
 <link href="./login_files/Css.css" rel="stylesheet">
-<link id="skinCss" href="./login_files/Css(1).css" rel="stylesheet">
+<%--<link id="skinCss" href="./login_files/Css(1).css" rel="stylesheet">--%>
 <title>
 	登录
 </title><meta http-equiv="Content-Language" content="zh-cn"><link href="./login_files/login_TP.css" rel="stylesheet">
@@ -210,7 +210,7 @@ if (!theForm) {
                                     </div>
                                     <div class="AutoHeight" id="AutoHeight">
                                         <div class="input">
-                                            <form name="Form1"  id="Form1" action="/admin/login.do" method="post" >
+                                            <form name="Form1"  id="Form1" action="/admin/login.do" method="post" style="padding-bottom: 10px" >
 
                                             <div class="loginid">
                                                 <div class="logininfo"  style="display: block;">请输入用户名</div>
@@ -233,7 +233,7 @@ if (!theForm) {
                                                     <div class="logininfo"  style="display: block;">验证码</div>
                                                     <div class="TextboxContainer">
                                                         <input name="validcode" maxlength="6" type="text" id="validcode" tabindex="3" class="inputtxt" style="height: 40px;width:100px;vertical-align:middle;">
-                                                        <img id="validImg" style="height: 40px;width:150px;cursor:pointer;vertical-align:middle;" alt="验证码" src="/noAuthority/getValidCode.do" onclick="validCodeImageChanged(this);" />
+                                                        <img id="validImg" style="height: 40px;width:150px;cursor:pointer;vertical-align:middle;margin-top: -2px" alt="验证码" src="/noAuthority/getValidCode.do" onclick="validCodeImageChanged(this);" />
                                                         <%--<div class="clearboth"></div>--%>
                                                     </div>
                                                 </div>

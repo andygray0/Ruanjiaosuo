@@ -6,7 +6,12 @@
 /*}*/
 
     .LoginMain .body {
-        height: 540px;
+        /*height: 540px;*/
+        background-image: url(./2.jpg);
+        background-repeat: no-repeat;
+        background-position: 150px 50px;
+        /*width: 80%;*/
+        height: 60%;
     }
 
     .LoginMain .bottom {
@@ -23,9 +28,8 @@
     }
 
     .LoginMain .SystemName {
-        background-image: url(./TPLogin_BJRJS.png);
-        background-repeat: no-repeat;
-        background-position: -30px -30px;
+        /*background-image: url(./TPLogin_BJRJS.png);*/
+
         width: 480px;
         height: 540px;
 		margin-left: 125px;
@@ -33,6 +37,8 @@
     }
 
     .LoginMain .LoginWrapper {
+        background-color: #fff;
+        border-radius: 2px;
         float: left;
         width: 410px;
         height: 350px;
