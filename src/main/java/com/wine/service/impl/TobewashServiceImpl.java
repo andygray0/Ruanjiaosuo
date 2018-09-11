@@ -159,12 +159,12 @@ public class TobewashServiceImpl implements TobewashService{
     @Override
     public Map showlist(int limit, int page){
         PageHelper.startPage(page,limit);
-        PageHelper.orderBy("ir_sid desc");
+        PageHelper.orderBy("IR_LOADTIME DESC");
         Map map = new HashMap();
         TobewashCriteria TobewashCriteria = new TobewashCriteria();
         TobewashCriteria.Criteria criteria = TobewashCriteria.createCriteria();
         criteria.andIrUrldateIsNotNull();
-        List<Tobewash> list = TobewashMapper.selectBySql("where ir_sid > 1");
+        List<Tobewash> list = TobewashMapper.selectBySql("where 1=1");
         PageInfo pageInfo  = new PageInfo(list);
         map.put("total", pageInfo.getTotal());
         map.put("rows", list);
