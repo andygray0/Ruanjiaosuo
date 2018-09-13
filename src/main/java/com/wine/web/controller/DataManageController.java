@@ -31,7 +31,7 @@ public class DataManageController {
         if(i.equals("")){
             return null;
         }
-        if (i.equals("urlcontent")) {
+        if (i.equals("URLCONTENT_COPY")) {
             map = tobewashService.showQuery(limit, page, sql);
         } else {
             map = urlconService.showQuery(limit, page,i,sql);
@@ -82,7 +82,7 @@ public class DataManageController {
     @ResponseBody
     public Map getColumns(String i) {
         Map map = new HashMap();
-        if (i.equals("urlcontent")) {
+        if (i.equals("URLCONTENT_COPY")) {
             map = tobewashService.getColumns();
         } else {
             map = urlconService.getColumns();
