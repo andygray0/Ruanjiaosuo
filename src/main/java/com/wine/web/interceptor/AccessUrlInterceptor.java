@@ -37,7 +37,10 @@ public class AccessUrlInterceptor extends HandlerInterceptorAdapter {
                 path + "/datawashRule/rulelist.do",
                 path + "/datawash/getFromTables.do",
                 path + "/datawash/getToTables.do",
-                path + "/datawash/getUrlconByQuery.do"
+                path + "/datawash/getUrlconByQuery.do",
+                path + "/datamanage/getNums.do",
+                path + "/datamanage/getYearCount.do",
+                path + "/datamanage/showQuery.do"
 
 
         );
