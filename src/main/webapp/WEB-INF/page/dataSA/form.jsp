@@ -142,8 +142,6 @@
                 },
 
                 FileUploaded : function (uploader,file,responseObject) {
-                    var map = $.parseJSON(responseObject.response);
-                    window.open("/dataStatisticsAnalyze/download.do?filename=" + map.msg);
                     $("body").mLoading("hide");
                 }
             }
