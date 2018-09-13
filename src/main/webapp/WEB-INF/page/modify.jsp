@@ -960,7 +960,7 @@
                 limit: params.limit,   //页面大小
                 page: Math.floor(params.offset/params.limit)+1,
                 sql: getsql(),
-                i:'urlcontent'
+                i:'URLCONTENT_COPY'
             };
 
 
@@ -1022,7 +1022,7 @@
                 return ;
             }
            var sql = getsql();
-            $('#tb_departments').bootstrapTable('refresh', {query:{limit: 10,page: 1,sql: sql, i:'urlcontent'},pageNumber:1});
+            $('#tb_departments').bootstrapTable('refresh', {query:{limit: 10,page: 1,sql: sql, i:'URLCONTENT_COPY'},pageNumber:1});
         });
         $("#btn_modify").click(function () {
             var urlDateFrom = $.trim($("#urlDateFrom").val());
