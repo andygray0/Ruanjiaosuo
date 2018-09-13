@@ -114,7 +114,7 @@
             <div class="col-sm-1 input-append ">
                 <select type="text" id="manageTables" name="item" class="form-control intro selectpicker"  >
                     <option value="" style="display: none;">请选择</option>
-                    <option value="urlcontent">URLCONTENT</option>
+                    <option value="URLCONTENT_COPY">URLCONTENT_COPY</option>
                 </select>
             </div>
             </form>
