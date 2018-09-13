@@ -21,13 +21,13 @@
 <div class="cont">
     <div class="topDataNum">
         <ul>
-            <li class="dataMon"><span class="dataMon-sp1">雷达采集入库数据</span><span id="num1" class="dataMon-sp2">660</span><span
+            <li class="dataMon"><span class="dataMon-sp1">雷达采集入库数据</span><span id="num1" class="dataMon-sp2"></span><span
                     class="dataMon-sp3">条</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">活跃采集点</span><span id="num2" class="dataMon-sp2">25</span><span
+            <li class="dataMon"><span class="dataMon-sp1">活跃采集点</span><span id="num2" class="dataMon-sp2"></span><span
                     class="dataMon-sp3">个</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">数据清洗数量</span><span id="num3" class="dataMon-sp2">3289</span><span
+            <li class="dataMon"><span class="dataMon-sp1">数据清洗数量</span><span id="num3" class="dataMon-sp2"></span><span
                     class="dataMon-sp3">条</span></li>
-            <li class="dataMon"><span class="dataMon-sp1">人工清洗待分配数据</span><span id="num4" class="dataMon-sp2">1336</span><span
+            <li class="dataMon"><span class="dataMon-sp1">人工清洗待分配数据</span><span id="num4" class="dataMon-sp2"></span><span
                     class="dataMon-sp3">条</span></li>
         </ul>
     </div>
@@ -196,7 +196,7 @@
         //初始化Table
         oTableInit.Init = function () {
             $('#tb_departments').bootstrapTable({
-                url: '/modify/urlconlist.do',         //请求后台的URL（*）
+                url: '/datamanage/showQuery.do',         //请求后台的URL（*）
                 method: 'get',                      //请求方式（*）
                 datashowcolumns: false,
                 striped: true,                      //是否显示行间隔色
@@ -290,7 +290,9 @@
         oTableInit.queryParams = function (params) {
             var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
                 limit: params.limit,   //页面大小
-                page: Math.floor(params.offset / params.limit) + 1  //页码
+                page: Math.floor(params.offset / params.limit) + 1 , //页码
+                sql: '',
+                i :'URLCONTENT_COPY'
             };
             return temp;
         };
