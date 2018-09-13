@@ -149,7 +149,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from URLCONTENT t
+    from URLCONTENT_COPY t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -163,7 +163,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from URLCONTENT t
+    from URLCONTENT_COPY t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -176,35 +176,35 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from URLCONTENT t ${value}
+    from URLCONTENT_COPY t ${value}
   </select>
   <select id="selectBySql" resultMap="BaseResultMap" parameterType="String" >
     select
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from URLCONTENT t ${value}
+    from URLCONTENT_COPY t ${value}
   </select>
   <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="com.wine.model3.TobewashKey" >
     select 
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from URLCONTENT t
+    from URLCONTENT_COPY t
     where t.IR_HKEY = #{irHkey,jdbcType=VARCHAR}
       and t.IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="com.wine.model3.TobewashKey" >
-    delete from URLCONTENT
+    delete from URLCONTENT_COPY
     where IR_HKEY = #{irHkey,jdbcType=VARCHAR}
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </delete>
   <delete id="deleteById" parameterType="java.lang.Integer" >
-    delete from URLCONTENT
+    delete from URLCONTENT_COPY
     where IR_SID = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.wine.model3.TobewashCriteria" >
-    delete from URLCONTENT t
+    delete from URLCONTENT_COPY t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -250,7 +250,7 @@
       )
   </insert>
   <insert id="insertSelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    insert into URLCONTENT
+    insert into URLCONTENT_COPY
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="irHkey != null" >
         IR_HKEY,
@@ -581,13 +581,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.wine.model3.TobewashCriteria" resultType="java.lang.Integer" >
-    select count(*) from URLCONTENT t
+    select count(*) from URLCONTENT_COPY t
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update URLCONTENT t
+    update URLCONTENT_COPY t
     <set >
       <if test="record.irHkey != null" >
         t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
@@ -757,7 +757,7 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update URLCONTENT t
+    update URLCONTENT_COPY t
     set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
       t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
       t.IR_SID = #{record.irSid,jdbcType=INTEGER},
@@ -817,7 +817,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update URLCONTENT t
+    update URLCONTENT_COPY t
     set t.IR_HKEY = #{record.irHkey,jdbcType=VARCHAR},
       t.IR_BBSNUM = #{record.irBbsnum,jdbcType=INTEGER},
       t.IR_SID = #{record.irSid,jdbcType=INTEGER},
@@ -874,7 +874,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    update URLCONTENT
+    update URLCONTENT_COPY
     <set >
       <if test="irStartid != null" >
         IR_STARTID = #{irStartid,jdbcType=INTEGER},
@@ -1039,12 +1039,12 @@
     where IR_SID = #{irSid,jdbcType=INTEGER}
   </update>
   <update id="modify" parameterType="String" >
-    update URLCONTENT
+    update URLCONTENT_COPY
     set ${column} = #{modify}
     ${sql}
   </update>
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.wine.model3.TobewashWithBLOBs" >
-    update URLCONTENT
+    update URLCONTENT_COPY
     set IR_SID = #{irSid,jdbcType=INTEGER},
       IR_STARTID = #{irStartid,jdbcType=INTEGER},
       IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},
@@ -1101,7 +1101,7 @@
       and IR_BBSNUM = #{irBbsnum,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.wine.model3.Tobewash" >
-    update URLCONTENT
+    update URLCONTENT_COPY
     set IR_SID = #{irSid,jdbcType=INTEGER},
       IR_STARTID = #{irStartid,jdbcType=INTEGER},
       IR_SERVICEID = #{irServiceid,jdbcType=VARCHAR},

@@ -39,7 +39,7 @@ public class ModifyController {
         if(i.equals("")){
             return null;
         }
-        if (i.equals("urlcontent")) {
+        if (i.equals("URLCONTENT_COPY")) {
             map = tobewashService.showQuery(limit, page, sql);
         } else {
             map = urlconService.showQuery(limit, page,i,sql);
