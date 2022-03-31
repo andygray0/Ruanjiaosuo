@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<native2ascii_pattern>messages_zh_CN.properties</native2ascii_pattern>
-		<spring_version>3.2.1.RELEASE</spring_version>
+		<spring_version>5.3.18</spring_version>
 		<poi_version>3.16</poi_version>
 	</properties>
 	<dependencies>
